@@ -1,25 +1,32 @@
-package drivermanager;
+package DriverManager;
+
+import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import utils.ConfigReader;
+
 public class DriverFactory {
 	
-WebDriver driver = null;
-	
 	public static ThreadLocal<WebDriver> mydriver = new ThreadLocal<>();
-	public WebDriver launchBrowser(String browser)
+	
+	public static void launchBrowser(String browser)
 	{
-		if(browser.equals("Chrome"))
+		Properties prop = ConfigReader.initializeProperties();
+		
+		if(browser.equalsIgnoreCase("Chrome"))
 		{
 			mydriver.set(new ChromeDriver());
 		}
-		else if(browser.equals("Firefox"))
+		else if(browser.equalsIgnoreCase("Firefox"))
 		{
 			mydriver.set(new FirefoxDriver());
 		}
-		else if(browser.equals("EdgeDriver"))
+		else if(browser.equalsIgnoreCase("Edge"))
 		{
 			mydriver.set(new EdgeDriver());
 		}
@@ -30,13 +37,15 @@ WebDriver driver = null;
 		
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		getDriver().get(prop.getProperty("baseURL"));
 		
-		return getDriver();
 	}
 	
 	public static synchronized WebDriver getDriver()
 	{
 		return mydriver.get();
 	}
+
 
 }
