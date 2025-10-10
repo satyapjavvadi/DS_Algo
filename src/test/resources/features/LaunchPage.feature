@@ -1,7 +1,4 @@
-Feature: DS Algo Portal functional testing
- Background: User launches the browser and navigates to DS Algo portal
-
-#background steps are already implemented in driver factory class in init method
+Feature: DS Algo Portal functional testing 
 
   Scenario: Endpoint of the launch page URL
     Then the user should be on the DS Algo Portal page

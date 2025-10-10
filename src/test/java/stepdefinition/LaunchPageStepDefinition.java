@@ -1,47 +1,99 @@
 package stepdefinition;
 
-import io.cucumber.datatable.DataTable;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import DriverManager.DriverFactory;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
-import java.util.List;
+import pages.PageObjectManager;
 
 public class LaunchPageStepDefinition {
-	
-	WebDriver driver;
+
+	private final PageObjectManager pom;
+	WebDriver driver ;
 
 
-
-	@When("the user clicks the Get Started button")
-	public void the_user_clicks_the_button( ) {
-
-
+	public LaunchPageStepDefinition() {
+		this.driver = DriverFactory.getDriver();
+		pom = new PageObjectManager(driver);
 
 	}
-   	@Then("The user should be redirected to the home page")
-	public void theUserShouldBeRedirectedToTheHomePage() {
+
+	@Given("the user has a browser open")
+	public void the_user_has_a_browser_open() {
+
+		pom.getLaunchpage().verifyBrowserIsOpen();
+
 	}
 
-	@When("the user clicks the {string} button")
-	public void theUserClicksTheButton(String arg0) {
+	@When("the user enters the correct DS Algo portal URL")
+	public void the_user_enters_the_correct_ds_algo_portal_url() {
+
+		pom.getLaunchpage().verifyLaunchUrl();
+
 	}
 
-	@Then("the user should be on the DS Algo Portal page")
-	public void theUserShouldBeOnTheDSAlgoPortalPage() {
+	@Then("the user should be able to see the DS Algo portal")
+	public void the_user_should_be_able_to_see_the_ds_algo_portal() {
+
+		Assert.assertTrue(pom.getLaunchpage().isPreparingTextVisible(), "Interview prep text not visible");
+
 	}
 
-	@Then("the user should be able to see the content text on the Launch page")
-	public void theUserShouldBeAbleToSeeTheContentTextOnTheLaunchPage(DataTable dataTable) {
-		List<List<String>> data = dataTable.asLists(String.class);
+	@Given("the user is on the DS Algo Portal page")
+	public void the_user_is_on_the_ds_algo_portal_page() {
+
+		pom.getLaunchpage().verifyLaunchUrl();
+
 	}
 
-	@Then("the user should be able to see {int} button on the Launch page")
-	public void theUserShouldBeAbleToSeeButtonOnTheLaunchPage(int arg0) {
+	@When("the launch page loads")
+	public void the_launch_page_loads() {
+		Assert.assertTrue(pom.getLaunchpage().isPreparingTextVisible(), "Interview prep text not visible");
+
 	}
 
-	@Then("the user should be able to see button with text {string}")
-	public void theUserShouldBeAbleToSeeButtonWithText(String expectedButtonText) {
+	@Then("the user should be able to see {string}")
+	public void the_user_should_be_able_to_see(String prepInterviews) {
+
+		Assert.assertTrue(pom.getLaunchpage().isPreparingTextVisible(), "Text '" + prepInterviews + "' not visible");
+
 	}
+
+	@Then("the user should be able to see {string} button")
+	public void the_user_should_be_able_to_see_button(String getStartedText) {
+
+		Assert.assertTrue(pom.getLaunchpage().isGetStartedButtonVisible(getStartedText),
+				"Button '" + getStartedText + "' not visible");
+
+	}
+
+	@Then("the user should be able to see {string} copyrightInfo")
+	public void the_user_should_be_able_to_see_copyrightInfo(String copyrightInfo) {
+
+		WebElement copyright = driver.findElement(By.xpath("//*[contains(text(),'Copyright@NumpyNinja2021')]"));
+		Assert.assertTrue(copyright.isDisplayed(), "Text '" + copyrightInfo + " ' not visible");
+
+	}
+
+	@When("the user clikcs the {string} button")
+	public void the_user_clikcs_the_button(String GetStartedButtonText) {
+
+		pom.getLaunchpage().clickGetStartedButton(GetStartedButtonText);
+		Assert.assertTrue(pom.getLaunchpage().isGetStartedButtonEnabled(GetStartedButtonText),
+				"Get Started button not clickable");
+
+	}
+
+	@Then("the user should be navigated to home page")
+	public void the_user_should_be_navigated_to_home_page() {
+
+		pom.getLaunchpage().getCurrentUrl();
+	}
+
 }
