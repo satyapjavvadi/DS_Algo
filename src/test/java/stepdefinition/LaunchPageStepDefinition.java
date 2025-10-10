@@ -1,71 +1,47 @@
 package stepdefinition;
 
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.WebDriver;
 
 import DriverManager.DriverFactory;
 import io.cucumber.java.en.*;
 
+import java.util.List;
+
 public class LaunchPageStepDefinition {
 	
 	WebDriver driver;
-	
-	@Given("the user has a browser open")
-	public void the_user_has_a_browser_open() {
-		
-		driver = DriverFactory.getDriver();
+
+
+
+	@When("the user clicks the Get Started button")
+	public void the_user_clicks_the_button( ) {
+
 
 
 	}
-
-	@When("the user enters the correct DS Algo portal URL")
-	public void the_user_enters_the_correct_ds_algo_portal_url() {
-
-
+   	@Then("The user should be redirected to the home page")
+	public void theUserShouldBeRedirectedToTheHomePage() {
 	}
 
-	@Then("the user should be able to see the DS Algo portal with Preparing for the Interviews, Get Started button and Copyright info")
-	public void the_user_should_be_able_to_see_the_ds_algo_portal_with_preparing_for_the_interviews_get_started_button_and_copyright_info() {
-
-
+	@When("the user clicks the {string} button")
+	public void theUserClicksTheButton(String arg0) {
 	}
 
-	@Given("the user is on the DS Algo Portal page")
-	public void the_user_is_on_the_ds_algo_portal_page() {
-
-
+	@Then("the user should be on the DS Algo Portal page")
+	public void theUserShouldBeOnTheDSAlgoPortalPage() {
 	}
 
-	@When("the launch page loads")
-	public void the_launch_page_loads() {
-
-
+	@Then("the user should be able to see the content text on the Launch page")
+	public void theUserShouldBeAbleToSeeTheContentTextOnTheLaunchPage(DataTable dataTable) {
+		List<List<String>> data = dataTable.asLists(String.class);
 	}
 
-	@Then("the user should be able to see {string}")
-	public void the_user_should_be_able_to_see(String string) {
-
-
+	@Then("the user should be able to see {int} button on the Launch page")
+	public void theUserShouldBeAbleToSeeButtonOnTheLaunchPage(int arg0) {
 	}
 
-	@Then("the user should be able to see {string} button")
-	public void the_user_should_be_able_to_see_button(String string) {
-
-
+	@Then("the user should be able to see button with text {string}")
+	public void theUserShouldBeAbleToSeeButtonWithText(String expectedButtonText) {
 	}
-
-	@When("the user clikcs the {string} button")
-	public void the_user_clikcs_the_button(String string) {
-
-
-	}
-
-	@Then("the user shold be navigated to home page with NumpyNinja, Data Structures, Register and Sign in links")
-	public void the_user_shold_be_navigated_to_home_page_with_numpy_ninja_data_structures_register_and_sign_in_links() {
-
-
-	}
-
-
-
-
 }

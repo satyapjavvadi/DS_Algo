@@ -13,21 +13,19 @@ import utils.ConfigReader;
 import utils.ScreenShot;
 
 public class Hooks {
-	
-	WebDriver driver;
-	
-	@Before
-	public void setup()
-	{
-		Properties prop = ConfigReader.initializeProperties();
-		DriverFactory.launchBrowser(prop.getProperty("browserName"));
-		driver = DriverFactory.getDriver();
-		
+
+    WebDriver driver;
+
+    @Before
+    public void setup() {
+        Properties prop = ConfigReader.initializeProperties();
+        DriverFactory.launchBrowser(prop.getProperty("browserName"));
+        driver = DriverFactory.getDriver();
 
 
-	}
-	
-	@AfterStep
+    }
+
+    @AfterStep
     public void screenShot(Scenario scenario) {
         if (scenario.isFailed()) {
             String screenshotPath = ScreenShot.takeScreenshot(driver, scenario.getName());
@@ -35,15 +33,11 @@ public class Hooks {
             scenario.attach(screenshotPath.getBytes(), "image/png", "Failed Step Screenshot");
         }
     }
-	
-	@After
-	public void tearDown()
-	{
-		driver.quit();
-	}
-	
-	
-	
-	
+
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
+
 
 }

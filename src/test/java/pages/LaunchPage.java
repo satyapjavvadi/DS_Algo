@@ -5,7 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LaunchPage {
 	
-	WebDriver driver;
+	private WebDriver driver;
 	
 	public LaunchPage(WebDriver driver)
 	{

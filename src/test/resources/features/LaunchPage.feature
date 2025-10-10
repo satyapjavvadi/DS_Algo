@@ -1,39 +1,39 @@
-Feature: DS Algo Portal functional testing 
+Feature: DS Algo Portal functional testing
+ Background: User launches the browser and navigates to DS Algo portal
 
-Scenario: User opens the launch page
-Given the user has a browser open
-When the user enters the correct DS Algo portal URL
-Then the user should be able to see the DS Algo portal with Preparing for the Interviews, Get Started button and Copyright info
-       
-Scenario: Launch page shows "Preparing for the Interviews" 
-Given the user is on the DS Algo Portal page
-When the launch page loads
-Then the user should be able to see "Preparing for Interviews"
+#background steps are already implemented in driver factory class in init method
 
-Scenario: Get Started button is visible
-Given the user is on the DS Algo Portal page
-When the launch page loads
-Then the user should be able to see "Get Started" button
+  Scenario: Endpoint of the launch page URL
+    Then the user should be on the DS Algo Portal page
 
-Scenario: Copyright info is displayed
-Given the user is on the DS Algo Portal page
-When the launch page loads
-Then the user should be able to see "Copyright info"
-
-Scenario: Navigation from Launch to home Page 
-Given the user is on the DS Algo Portal page
-When the user clikcs the "Get Started " button
-Then the user shold be navigated to home page 
+  Scenario: Content text on the Launch page
+    Then the user should be able to see the content text on the Launch page
+      | Preparing for the Interviews          |
+      | Copyright info |
 
 
-Scenario Outline: Presence of "<links>" link in home page 
-Given the user is in launch page 
-When the  user clicks on "Get Started " button
-Then the user should see "<links>"
+  Scenario: Launch page should have 1 button
+   Then the user should be able to see 1 button on the Launch page
 
-Examples: 
- |links|
- |Numpy ninja|
- |Data Structures|
- |Register|
- |Sign in|
+   Scenario : Button should have text "Get Started"
+    Then the user should be able to see button with text "Get Started"
+
+
+    # below two scenario is for homepage feature file
+  Scenario: Navigation from Launch to home Page
+
+    When the user clicks the Get Started button
+    Then The user should be redirected to the home page
+
+
+  Scenario Outline: Presence of "<links>" link in home page
+
+    When the  user clicks on "Get Started " button
+    Then the user should see "<links>"
+
+    Examples:
+      | links           |
+      | Numpy ninja     |
+      | Data Structures |
+      | Register        |
+      | Sign in         |
