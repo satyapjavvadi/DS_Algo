@@ -19,10 +19,11 @@ public class LaunchPageStepDefinition {
 
 
 	public LaunchPageStepDefinition() {
-		this.driver = DriverFactory.getDriver();
-		pom = new PageObjectManager(driver);
+
+		pom = new PageObjectManager();
 
 	}
+
 
 	@Given("the user has a browser open")
 	public void the_user_has_a_browser_open() {
@@ -81,10 +82,10 @@ public class LaunchPageStepDefinition {
 
 	}
 
-	@When("the user clikcs the {string} button")
+	@When("the user clicks the {string} button")
 	public void the_user_clikcs_the_button(String GetStartedButtonText) {
 
-		pom.getLaunchpage().clickGetStartedButton(GetStartedButtonText);
+		pom.getLaunchpage().clickGetStartedButton();
 		Assert.assertTrue(pom.getLaunchpage().isGetStartedButtonEnabled(GetStartedButtonText),
 				"Get Started button not clickable");
 
@@ -95,5 +96,6 @@ public class LaunchPageStepDefinition {
 
 		pom.getLaunchpage().getCurrentUrl();
 	}
+
 
 }
