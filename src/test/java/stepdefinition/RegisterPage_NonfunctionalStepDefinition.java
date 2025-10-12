@@ -32,8 +32,8 @@ public class RegisterPage_NonfunctionalStepDefinition {
 	    throw new io.cucumber.java.PendingException();
 	}
 
-	@Then("User must see {string} button in Register UI")
-	public void user_must_see_button_in_register_ui(String string) {
+	@Then("User must see Register button in Register UI")
+	public void user_must_see_register_button_in_register_ui(String string) {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
