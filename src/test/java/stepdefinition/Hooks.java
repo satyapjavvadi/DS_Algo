@@ -20,6 +20,7 @@ public class Hooks {
 	public void setup() {
 		Properties prop = ConfigReader.initializeProperties();
 		driver = DriverFactory.launchBrowser(prop.getProperty("browserName"));
+
 		driver.get(prop.getProperty("baseURL"));
 
 	}

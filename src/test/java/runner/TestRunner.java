@@ -14,9 +14,10 @@ import io.cucumber.testng.CucumberOptions;
                 "rerun:target/failedrerun.txt"
         }, //reporting purpose
         monochrome = true,  //console output color
-        features = {"src/test/resources/features/LaunchPage.feature:38"},
+        features = {"src/test/resources/features"},
         tags = "@refFeature",//location of feature files
-        glue = "stepdefinition") //location of step definition files
+        glue = "stepdefinition")//location of step definition files
+       
 
 
 public class TestRunner extends AbstractTestNGCucumberTests {
