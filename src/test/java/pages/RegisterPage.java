@@ -62,7 +62,7 @@ public class RegisterPage {
 	}
 
 	public void Register_with_valid_credentials() {
-		usernamefield.sendKeys("testqa4");
+		usernamefield.sendKeys("testqa5");
 		passwordField.sendKeys("Qaninja@123");
 		confirmPasswordField.sendKeys("Qaninja@123");
 		Registerbtn.click();
