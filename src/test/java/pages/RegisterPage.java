@@ -15,6 +15,7 @@ public class RegisterPage {
 		PageFactory.initElements(driver, this);
 
 	}
+
 //locators
 	@FindBy(xpath = "//button[text()='Get Started']")
 	private WebElement getstartedbtn;
@@ -36,110 +37,124 @@ public class RegisterPage {
 
 	@FindBy(xpath = "//a[text()='Login ']")
 	private WebElement loginlink;
-	
+
 	@FindBy(xpath = "//div[@class='alert alert-primary']")
-    WebElement alertMessage;
-	
-	//home page elements
+	WebElement alertMessage;
+
+	// home page elements
 	@FindBy(xpath = "//a[text()='Sign out']")
 	private WebElement signouttext;
-	
 
-	//Actions
-	public void getstartedbtn() {
+	// Actions
+
+	public String validate_Registerlink() {
 		getstartedbtn.click();
-	}
-	
-	public String Registerlink() {
 		Registerlink.click();
-		String actualurl =driver.getCurrentUrl();
-		
-	String expectedurl = "https://dsportalapp.herokuapp.com/register";
-	
-	Assert.assertEquals(actualurl, expectedurl, "User did not land on the expected Registerpage URL");
-	System.out.println("User is on Register page"+actualurl);
-	
-	return actualurl;
-		
+		String actualurl = driver.getCurrentUrl();
+
+		String expectedurl = "https://dsportalapp.herokuapp.com/register";
+
+		Assert.assertEquals(actualurl, expectedurl, "User did not land on the expected Registerpage URL");
+		System.out.println("User is on Register page" + actualurl);
+
+		return actualurl;
+
 	}
-	public void Register_valid_credentials() {
-		usernamefield.sendKeys("testqa");
+
+	public void Register_with_valid_credentials() {
+		usernamefield.sendKeys("testqa4");
 		passwordField.sendKeys("Qaninja@123");
 		confirmPasswordField.sendKeys("Qaninja@123");
+		Registerbtn.click();
 	}
+
 	public void verifyHomePageNavigation() {
-        String currentUrl = driver.getCurrentUrl();
-        if (!currentUrl.contains("home")) {
-            throw new AssertionError("User not navigated to home page!");
-        }
+
+		String actualurl = driver.getCurrentUrl();
+		String expectedurl = "https://dsportalapp.herokuapp.com/home";
+
+		Assert.assertEquals(actualurl, expectedurl, "User did not land on the expected Homepage URL");
+		System.out.println("User is on Home page" + actualurl);
 	}
-        
+
 	public void Register_without_username() {
 		usernamefield.sendKeys("");
 		passwordField.sendKeys("Qaninja@123");
 		confirmPasswordField.sendKeys("Qaninja@123");
+		Registerbtn.click();
 	}
-	
-	public String getusername_validationmessage() {
-		//validationMessage is an HTML5 attribute 
-		//that stores the browser’s native message for required fields (like “Please fill out this field”).
+
+	public String username_validationmessage() {
+		// validationMessage is an HTML5 attribute
+		// that stores the browser’s native message for required fields (like “Please
+		// fill out this field”).
 		return usernamefield.getAttribute("validationMessage");
 	}
-	
+
 	public void Register_with_specialcharusername() {
 		usernamefield.sendKeys("!@");
 		passwordField.sendKeys("Qaninja@123");
 		confirmPasswordField.sendKeys("Qaninja@123");
+		Registerbtn.click();
 	}
-	
-	public String  getalertmessagetext() {
+
+	public String Error_messagetext() {
 		return alertMessage.getText().trim();
-		
+
 	}
-	
+
 	public void Register_without_password() {
 		usernamefield.sendKeys("qatest");
 		passwordField.sendKeys("");
 		confirmPasswordField.sendKeys("");
+		Registerbtn.click();
 	}
-	
-	public String getpassword_validationmessage() {
+
+	public String password_validationmessage() {
 		return passwordField.getAttribute("validationMessage");
 	}
+
 	public void Register_without_confirmpassword() {
 		usernamefield.sendKeys("qatest");
 		passwordField.sendKeys("Qaninja@123");
 		confirmPasswordField.sendKeys("");
+		Registerbtn.click();
 	}
+
 	public String getconfirmpassword_validationmessage() {
 		return confirmPasswordField.getAttribute("validationMessage");
 	}
+
 	public void Register_with_numericpassword() {
 		usernamefield.sendKeys("qatest");
 		passwordField.sendKeys("123");
 		confirmPasswordField.sendKeys("123");
+		Registerbtn.click();
 	}
-	
+
 	public void Register_with_specialcharpassword() {
 		usernamefield.sendKeys("qatest");
 		passwordField.sendKeys("!@");
 		confirmPasswordField.sendKeys("!@");
+		Registerbtn.click();
 	}
-	
+
 	public void Register_with_shortpassword() {
 		usernamefield.sendKeys("qatest");
 		passwordField.sendKeys("A@1");
 		confirmPasswordField.sendKeys("A@1");
+		Registerbtn.click();
 	}
+
 	public void Register_with_mismatchpassword() {
 		usernamefield.sendKeys("qatest");
 		passwordField.sendKeys("Ninja@123");
 		confirmPasswordField.sendKeys("A@1");
+		Registerbtn.click();
 	}
-	
+
 	public void click_logout() {
 		loginlink.click();
 	}
-	
-	
+
 }

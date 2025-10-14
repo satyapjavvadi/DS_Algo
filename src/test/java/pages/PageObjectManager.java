@@ -6,8 +6,9 @@ import DriverManager.DriverFactory;
 
 public class PageObjectManager {
 
-	private final WebDriver driver;
-	private LaunchPage launchPage;
+    private final WebDriver driver;
+    private LaunchPage launchPage;
+    private RegisterPage registerPage;
 
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
@@ -22,6 +23,15 @@ public class PageObjectManager {
 			launchPage = new LaunchPage(driver);
 		}
 
-		return launchPage;
-	}
+        return launchPage;
+    }
+    
+    public RegisterPage getregisterpage() {
+        if(registerPage == null){
+            registerPage = new RegisterPage(driver);
+        }
+
+        return registerPage;
+    }
+    
 }
