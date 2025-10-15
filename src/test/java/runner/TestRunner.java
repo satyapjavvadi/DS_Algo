@@ -8,17 +8,16 @@ package runner;
 
 
 		@CucumberOptions(
-				monochrome=true,  //console output color
-				features = "C:\\Users\\prash\\github\\DS_Algo\\src\\test\\resources\\features\\homePagewithLogin.feature", //location of feature files
-				glue = "stepdefinition",
-				//tags = "@smoke", 
-				
 				plugin = {"pretty", 
-				"html:target/DS_Algo.html", "json:target/cucumber.json",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				"rerun:target/failedrerun.txt"//reporting purpose
-				}
-				)
+						"html:target/DS_Algo.html", "json:target/cucumber.json",
+						"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+						"rerun:target/failedrerun.txt"
+						}, //reporting purpose
+				monochrome=true,  //console output color
+				features = {"src/test/resources/features"}, //location of feature files
+				glue= "stepdefinition") //location of step definition files
+		        
+
 
 		public class TestRunner extends AbstractTestNGCucumberTests{
 			
