@@ -1,0 +1,632 @@
+<html>
+<head>
+<title>TestNG:  Default test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Default test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/12/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Oct 14 14:43:11 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>50 seconds (50751 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Data-Structures-page with details on clicking "Get Started" buttons of "Data Structures-Introduction" tab on the home page", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Data Structures-Introduction page with details.&quot;)
+public void the_user_should_be_able_to_see_data_structures_introduction_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:31)
+</pre></div><a href='#' onClick='toggleBox("stack-trace445350376", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace445350376'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Data Structures-Introduction page with details.&quot;)
+public void the_user_should_be_able_to_see_data_structures_introduction_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:31)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Linked List page with details on clicking "Get Started" buttons of "Linked List" tab on the home page", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Linked List page with details.&quot;)
+public void the_user_should_be_able_to_see_linked_list_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:41)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1919497442", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1919497442'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Linked List page with details.&quot;)
+public void the_user_should_be_able_to_see_linked_list_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:41)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Queue page with details on clicking "Get Started" buttons of "Queue" tab on the home page", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Queue page with details.&quot;)
+public void the_user_should_be_able_to_see_queue_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:51)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1688151539", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1688151539'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Queue page with details.&quot;)
+public void the_user_should_be_able_to_see_queue_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:51)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Tree details page while selecting "Tree" from the drop down", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Tree page with details.&quot;)
+public void the_user_should_be_able_to_see_tree_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:21)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1933808172", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1933808172'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Tree page with details.&quot;)
+public void the_user_should_be_able_to_see_tree_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:21)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Array page with details on clicking "Get Started" buttons of "Array" tab on the home page", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Array page with details.&quot;)
+public void the_user_should_be_able_to_see_array_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:36)
+</pre></div><a href='#' onClick='toggleBox("stack-trace521985523", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace521985523'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Array page with details.&quot;)
+public void the_user_should_be_able_to_see_array_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:36)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Graph page with details on clicking "Get Started" buttons of "Graph" tab on the home page", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Graph page with details.&quot;)
+public void the_user_should_be_able_to_see_graph_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:61)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1719519917", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1719519917'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Graph page with details.&quot;)
+public void the_user_should_be_able_to_see_graph_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:61)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Stack page with details on clicking "Get Started" buttons of "Stack" tab on the home page", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Stack page with details.&quot;)
+public void the_user_should_be_able_to_see_stack_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:46)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1303122461", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1303122461'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Stack page with details.&quot;)
+public void the_user_should_be_able_to_see_stack_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:46)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Graph details page while selecting "Graph" from the drop down", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Graph page with details.&quot;)
+public void the_user_should_be_able_to_see_graph_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:26)
+</pre></div><a href='#' onClick='toggleBox("stack-trace817460653", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace817460653'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Graph page with details.&quot;)
+public void the_user_should_be_able_to_see_graph_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:26)
+</pre></div></td>
+<td>4</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Linked List details page while selecting "Linked List" from the drop down", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page  after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page  after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Linked List page with details.&quot;)
+public void the_user_should_be_able_to_see_linked_list_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page  after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:11)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2005293363", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2005293363'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page  after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page  after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Linked List page with details.&quot;)
+public void the_user_should_be_able_to_see_linked_list_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page  after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:11)
+</pre></div></td>
+<td>5</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Array details page while selecting "Arrays" from the drop down", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Array page with details.&quot;)
+public void the_user_should_be_able_to_see_array_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:6)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1827710791", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1827710791'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Array page with details.&quot;)
+public void the_user_should_be_able_to_see_array_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:6)
+</pre></div></td>
+<td>5</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Queue details page while selecting "Queue" from the drop down", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Queue page with details.&quot;)
+public void the_user_should_be_able_to_see_queue_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:16)
+</pre></div><a href='#' onClick='toggleBox("stack-trace266843824", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace266843824'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user selects {string} from the drop down after Sign in.&quot;)
+public void the_user_selects_from_the_drop_down_after_sign_in(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Queue page with details.&quot;)
+public void the_user_should_be_able_to_see_queue_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:16)
+</pre></div></td>
+<td>4</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify that user is able to see Tree page with details on clicking "Get Started" buttons of "Tree" tab on the home page", "DS Algo Portal functional testing"</td>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Tree page with details.&quot;)
+public void the_user_should_be_able_to_see_tree_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:56)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1202508091", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1202508091'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;The user is on the Home page after sign in&apos; and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given(&quot;The user is on the Home page after sign in&quot;)
+public void the_user_is_on_the_home_page_after_sign_in() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When(&quot;The user clicks {string} buttons of {string} tab on the homepage after Sign in&quot;)
+public void the_user_clicks_buttons_of_tab_on_the_homepage_after_sign_in(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;The user should be able to see Tree page with details.&quot;)
+public void the_user_should_be_able_to_see_tree_page_with_details() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.The user is on the Home page after sign in(file:///C:/Users/prash/github/DS_Algo/src/test/resources/features/homePagewithLogin.feature:56)
+</pre></div></td>
+<td>3</td>
+<td>runner.TestRunner@3af9c5b7</td></tr>
+</table><p>
+</body>
+</html>
