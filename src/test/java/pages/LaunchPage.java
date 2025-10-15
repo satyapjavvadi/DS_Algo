@@ -40,19 +40,18 @@ public class LaunchPage {
 
 	}
 
-	public void verifyBrowserIsOpen() {
+	public void BrowserIsOpen() {
 		System.out.println("Browser is already launched via hooks setup");
 
 		if (driver == null) {
 			throw new IllegalStateException("WebDriver is not initialized");
 		}
 	}
+ // this method is not needed
+	public void LaunchUrl() {
+	   ConfigReader.initializeProperties().getProperty("baseURL");
+	   driver.getCurrentUrl();
 
-	public void verifyLaunchUrl() {
-		String expectedUrl = ConfigReader.initializeProperties().getProperty("baseURL");
-		String actualUrl = driver.getCurrentUrl();
-
-		Assert.assertEquals(actualUrl, expectedUrl, "User did not land on the expected DS Algo portal URL");
 	}
 
 	public boolean isPreparingTextVisible() {

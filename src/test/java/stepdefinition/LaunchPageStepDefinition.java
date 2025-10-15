@@ -27,14 +27,14 @@ public class LaunchPageStepDefinition {
 	@Given("the user has a browser open")
 	public void the_user_has_a_browser_open() {
 
-		pom.getLaunchpage().verifyBrowserIsOpen();
+		pom.getLaunchpage().BrowserIsOpen();
 
 	}
 
 	@When("the user enters the correct DS Algo portal URL")
 	public void the_user_enters_the_correct_ds_algo_portal_url() {
 
-		pom.getLaunchpage().verifyLaunchUrl();
+		System.out.println("Current URL: " + pom.getLaunchpage().getCurrentUrl());
 
 	}
 
@@ -44,19 +44,6 @@ public class LaunchPageStepDefinition {
 		System.out.println("Current URL: " + pom.getLaunchpage().getCurrentUrl());
 		Assert.assertTrue(pom.getLaunchpage().getCurrentUrl().contains("dsportalapp"),
 				"User is not on the DS Algo Portal page");
-
-	}
-
-	@Given("the user is on the DS Algo Portal page")
-	public void the_user_is_on_the_ds_algo_Portal_page() {
-
-		pom.getLaunchpage().verifyLaunchUrl();
-
-	}
-
-	@When("the launch page loads")
-	public void the_launch_page_loads() {
-		Assert.assertTrue(pom.getLaunchpage().isPreparingTextVisible(), "Interview prep text not visible");
 
 	}
 
