@@ -12,9 +12,11 @@ import org.openqa.selenium.support.ui.Select;
 
 public class HomePage {
 
-	WebDriver driver;
-	@FindBy(linkText = "Get Started")
-	WebElement getStartedBtn;
+	private WebDriver driver;
+
+	//this belongs to launch page
+	//@FindBy(linkText = "Get Started")
+	//WebElement getStartedBtn;
 
 	@FindBy(linkText = "NumpyNinja")
 	WebElement companyName;
