@@ -1,3 +1,4 @@
+@stackfeature
 Feature: Stack Page Functionality
 
   Background:

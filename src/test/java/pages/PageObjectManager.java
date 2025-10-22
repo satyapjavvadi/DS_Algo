@@ -7,7 +7,9 @@ import DriverManager.DriverFactory;
 public class PageObjectManager {
 
 	private final WebDriver driver;
+	
 	private LaunchPage launchPage;
+	private LoginPage loginPage;
 
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
@@ -23,5 +25,14 @@ public class PageObjectManager {
 		}
 
 		return launchPage;
+	}
+	
+	public LoginPage getLoginPage()
+	{
+		if(loginPage == null)
+		{
+	
+		}
+		return loginPage;
 	}
 }

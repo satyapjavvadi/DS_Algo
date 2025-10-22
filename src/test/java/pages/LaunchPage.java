@@ -8,9 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
-import utils.ConfigReader;
 
 public class LaunchPage {
 
@@ -46,12 +43,6 @@ public class LaunchPage {
 		if (driver == null) {
 			throw new IllegalStateException("WebDriver is not initialized");
 		}
-	}
- // this method is not needed
-	public void LaunchUrl() {
-	   ConfigReader.initializeProperties().getProperty("baseURL");
-	   driver.getCurrentUrl();
-
 	}
 
 	public boolean isPreparingTextVisible() {

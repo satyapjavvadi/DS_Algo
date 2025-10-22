@@ -1,3 +1,4 @@
+@loginfeature
 Feature: Login Functionality
 
   Background:
