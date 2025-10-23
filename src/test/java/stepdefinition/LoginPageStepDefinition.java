@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 
 public class LoginPageStepDefinition {
 	
-	@Given("the signed-in user has navigated to the login page")
+	@Given("the registered user has navigated to the login page")
 	public void the_signed_in_user_has_navigated_to_the_login_page() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();

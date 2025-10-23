@@ -11,11 +11,6 @@ public class LinkedListPageStepDefinition {
 	    throw new io.cucumber.java.PendingException();
 	}
 
-	@When("the Linked List page loads")
-	public void the_linked_list_page_loads() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
 
 	@Then("the user should be able to see {string}")
 	public void the_user_should_be_able_to_see(String string) {

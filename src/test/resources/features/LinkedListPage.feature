@@ -5,7 +5,7 @@ Feature: Linked List Page Functionality
     Given the signed-in user has navigated to the Linked List page
 
   Scenario Outline: Verifying static content on the Linked List page
-    When the Linked List page loads
+
     Then the user should be able to see "<expected_text>"
 
     Examples:
@@ -14,11 +14,11 @@ Feature: Linked List Page Functionality
       | Topics Covered    |
 
   Scenario: Verifying topic links under "Topics Covered"
-    When the Linked List page loads
+
     Then the user should be able to see Linked List topics as clickable links under "Topics Covered"
 
   Scenario Outline: Navigating to a Linked List topic page
-    Given the user is on the Linked List page
+
     When the user selects "<topic>" under Topics Covered
     Then the "<page_url>" content should be visible
 

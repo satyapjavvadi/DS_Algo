@@ -5,17 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StackPageStepDefinition {
-	@Given("the signed-in user has navigated to the Stack page")
+	@Given("the registered user has navigated to the Stack page")
 	public void the_signed_in_user_has_navigated_to_the_stack_page() {
 	    // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
 	}
 
-	@When("the Stack page loads")
-	public void the_stack_page_loads() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
+
 
 	@Then("the user should be able to see Stack topics as clickable links under {string}")
 	public void the_user_should_be_able_to_see_stack_topics_as_clickable_links_under(String string) {
@@ -23,11 +19,6 @@ public class StackPageStepDefinition {
 	    throw new io.cucumber.java.PendingException();
 	}
 
-	@Given("the user is on the Stack page")
-	public void the_user_is_on_the_stack_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
 
 	@Then("the detailed explanation for push and pop, including overflow and underflow should be visible")
 	public void the_detailed_explanation_for_push_and_pop_including_overflow_and_underflow_should_be_visible() {
