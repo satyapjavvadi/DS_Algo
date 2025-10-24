@@ -9,6 +9,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import pages.PageObjectManager;
 import utils.ConfigReader;
 import utils.ScreenShot;
 
@@ -16,13 +17,19 @@ public class Hooks {
 
 	WebDriver driver;
 
-	@Before
+	@Before(order = 0)
 	public void setup() {
 		Properties prop = ConfigReader.initializeProperties();
 		driver = DriverFactory.launchBrowser(prop.getProperty("browserName"));
 
 		driver.get(prop.getProperty("baseURL"));
 
+	}
+
+	@Before(value = "@Getstarted", order = 1)
+	public void GetstartedAction() {
+		PageObjectManager pom = new PageObjectManager();
+		pom.getLaunchpage().clickGetStartedButton();
 	}
 
 	@AfterStep
