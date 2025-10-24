@@ -94,6 +94,8 @@ public class LaunchPage {
 		}
 		return buttonTexts;
 	}
+	
+
 
 	public void clickButtonByText(String buttonText) {
 		for (WebElement button : buttons) {

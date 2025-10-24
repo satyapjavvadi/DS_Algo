@@ -7,6 +7,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 
+
 @CucumberOptions(
         plugin = {"pretty",
                 "html:target/DS_Algo.html", "json:target/cucumber.json",
@@ -15,10 +16,9 @@ import io.cucumber.testng.CucumberOptions;
         }, //reporting purpose
         monochrome = true,  //console output color
         features = {"src/test/resources/features"},
-        tags = "@refFeature",//location of feature files
-        glue = "stepdefinition")//location of step definition files
-       
-
+        tags = "@Registernonfunctional or @Getstarted",//location of feature files
+        glue = "stepdefinition") //location of step definition files
+//or @refFeature
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 
