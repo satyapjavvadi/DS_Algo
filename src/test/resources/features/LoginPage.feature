@@ -5,7 +5,7 @@ Feature: Login Functionality
     Given the registered user has navigated to the login page
 
   Scenario Outline: Invalid login attempts with various "<input combinations>"
-    Given the user provides <username> and <password>
+    Given the user provides "<username>" and "<password>"
     When the user <submission_method>
     Then the error message "<expected_error>" should be displayed
 

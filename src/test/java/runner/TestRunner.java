@@ -16,7 +16,7 @@ import io.cucumber.testng.CucumberOptions;
         monochrome = true,  //console output color
         features = {"src/test/resources/features"},
         tags = "@loginfeature",//location of feature files
-        glue = "stepdefinition", dryRun = true)//location of step definition files
+        glue = "stepdefinition")//location of step definition files
        
 
 

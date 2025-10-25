@@ -9,7 +9,7 @@ public class PageObjectManager {
 	private final WebDriver driver;
 	
 	private LaunchPage launchPage;
-	private LoginPage loginPage;
+	public LoginPage loginPage;
 
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
@@ -31,6 +31,7 @@ public class PageObjectManager {
 	{
 		if(loginPage == null)
 		{
+			loginPage = new LoginPage(driver);
 	
 		}
 		return loginPage;
