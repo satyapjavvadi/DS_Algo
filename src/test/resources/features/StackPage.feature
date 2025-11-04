@@ -1,10 +1,11 @@
+@stackfeature @Getstarted
 Feature: Stack Page Functionality
 
   Background:
-    Given the signed-in user has navigated to the Stack page
+    Given the registered user has navigated to the Stack page
 
   Scenario Outline: Verifying static content on the Stack page
-    When the Stack page loads
+
     Then the user should be able to see "<expected_text>"
 
     Examples:
@@ -13,11 +14,11 @@ Feature: Stack Page Functionality
       | Topics Covered  |
 
   Scenario: Verifying topic links under "Topics Covered"
-    When the Stack page loads
+
     Then the user should be able to see Stack topics as clickable links under "Topics Covered"
 
   Scenario Outline: Navigating to a Stack topic page
-    Given the user is on the Stack page
+
     When the user selects "<topic>" under Topics Covered
     Then the "<page_url>" content should be visible
 
@@ -72,6 +73,6 @@ Feature: Stack Page Functionality
       | Stack Applications    | Implementation|
 
   Scenario: Navigating to Practice Questions page
-    Given the user is on the Stack page
+
     When the user selects "Practice Questions" from the sidebar
     Then an appropriate error message should be displayed if the page fails to load

@@ -6,6 +6,10 @@ import DriverManager.DriverFactory;
 
 public class PageObjectManager {
 
+	private final WebDriver driver;
+	
+	private LaunchPage launchPage;
+	public LoginPage loginPage;
     private final WebDriver driver;
     private LaunchPage launchPage;
     private RegisterPage registerPage;
@@ -23,6 +27,18 @@ public class PageObjectManager {
 			launchPage = new LaunchPage(driver);
 		}
 
+		return launchPage;
+	}
+	
+	public LoginPage getLoginPage()
+	{
+		if(loginPage == null)
+		{
+			loginPage = new LoginPage(driver);
+	
+		}
+		return loginPage;
+	}
         return launchPage;
     }
     

@@ -16,6 +16,10 @@ import io.cucumber.testng.CucumberOptions;
         }, //reporting purpose
         monochrome = true,  //console output color
         features = {"src/test/resources/features"},
+        tags = "@loginfeature",//location of feature files
+        glue = "stepdefinition")//location of step definition files
+       
+
         tags = "@Registernonfunctional or @Getstarted",//location of feature files
         glue = "stepdefinition") //location of step definition files
 //or @refFeature
