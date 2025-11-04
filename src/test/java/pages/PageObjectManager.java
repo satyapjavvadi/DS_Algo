@@ -10,6 +10,9 @@ public class PageObjectManager {
 	
 	private LaunchPage launchPage;
 	public LoginPage loginPage;
+    private final WebDriver driver;
+    private LaunchPage launchPage;
+    private RegisterPage registerPage;
 
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
@@ -36,4 +39,15 @@ public class PageObjectManager {
 		}
 		return loginPage;
 	}
+        return launchPage;
+    }
+    
+    public RegisterPage getregisterpage() {
+        if(registerPage == null){
+            registerPage = new RegisterPage(driver);
+        }
+
+        return registerPage;
+    }
+    
 }
