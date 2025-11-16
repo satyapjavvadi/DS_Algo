@@ -8,7 +8,9 @@ public class PageObjectManager {
 
 	private final WebDriver driver;
 	private LaunchPage launchPage;
-
+	private DataStructures dataStructures;
+	private Graph graph;
+	
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
 		if (this.driver == null) {
@@ -24,4 +26,19 @@ public class PageObjectManager {
 
 		return launchPage;
 	}
+
+	public DataStructures getDataStructures() {
+		if (dataStructures == null) {
+			dataStructures = new DataStructures(driver);
+		}
+		
+			return dataStructures;
+	}
+	
+	public Graph getGraph() {
+	if (graph == null) {
+		graph = new Graph(driver);
+	}
+		return graph;
+}
 }

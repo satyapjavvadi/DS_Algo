@@ -1,53 +1,87 @@
-Feature: DS Algo Portal functional testing 
+ @Graph @GetStarted
+ Feature: DS Algo Portal functional testing 
 
 background: Signed in user is navigated to Graph module from Home Page
 
-scenario: Verify that user is able to see and click all links uder "Topics covered"   
-Given The user is on the "Graph" page
+scenario: Verifying static content on the Graph page
+
+Scenario Outline: Verifying static content on the DataStructures page
+Given The user is in the Graph page
+When The Graph page loads
+Then the user should be able to see "<expected_topic>" in graph page
+
+    Examples:
+      | expected_topic  |
+      | Graph          |
+      | Topics Covered |
+
+
+Scenario: Verify that user is able to see and click all links uder Topics covered   
+Given The user is in the Graph page
 When User scrolls down the page
-Then "Graph" and "graph representations" link under the topics covered should be visible and clickable
+Then  "<Topic_link>" under the topics covered should be visible and clickable
+Examples:
+    | Topic_link               |
+    | Graph                  |
+    | Graph Representations  |
 
-scenario: Verify that user is able to navigate to "Graph" page
-Given The user is on the "Graph" page
-When The user clicks "Graph" tab
-Then The user should be redirected to "Graph" page with related details
 
-scenario: Verify that user is able to navigate to "Graph Representations" page
-Given The user is on the "Graph" page
-When The user clicks "Graph Representations" tab
-Then The user should be redirected to "Graph Representations" page with related details
+Scenario: Verify that user is able to navigate to Graph Topic page
+Given The user is on the Graph page
+When The user clicks "<Topic>" tab under Topics covered
+Then The user should be redirected to "<Topic_url>" page with related details
+Examples:
+    | Topic                  | Topic_url                        |
+    | Graph                  | Graph                            |
+    | Graph Representations  | Graph Representations            |
 
-scenario: Verify that "Try here" tab is visible and clickable
-Given The user is on the "Graph" page
-When The user clicks "Try Here" button in Graph in page
-Then "Try here" button should be visible and clickable
 
-scenario: Verify that user is able to navigate to "try here" page for "Graph" page
-Given The user is on the "Graph" page
-When The user clicks "Try Here" button in Graph in page
+Scenario: Verify that "Try here>>>" tab is visible and clickable
+Given The user is on the Graph page
+When The user clicks "<Topic>" page
+Then Try here>>> button should be visible and clickable below the "<Topic>" content
+Examples:
+    | Topic                  |
+    | Graph                  |
+    | Graph Representations  |
+ 
+  
+Scenario: Verify that user is able to navigate to Try here>>> page from topic page
+Given The user is on the Graph page
+When The user clicks Try Here button in "<Topic>" in page
 Then The user should be redirected to a page having an try Editor with a Run button to test
+Examples:
+    | Topic                  |
+    | Graph                  |
+    | Graph Representations  |
 
-scenario: Verify that Run button is visible and clickable
-Given The user is on the "Graph" page
-When The user clicks "Try Here" button in Graph in page
+  
+Scenario: Verify that Run button is visible and clickable
+Given The user is on the Graph page
+When The user clicks Try Here button in Graph page
 Then Run button should be visible and clickable
 
-scenario: Verify that no action is performed when click on Run button without entering code
-Given The user is in the tryEditor page
+ 
+Scenario: Verify that user gets error message when click on Run button without entering code
+Given The user is in the tryEditor page in Graph module
 When The user clicks the Run Button without entering the code in the Editor
-Then The user should able to see the state of the page remains unchanged
+Then The user should able to get the error message "Empty Code Editor"
 
-scenario: Verify that user receives error for invalid python code
-Given The user is in the tryEditor page
-When The user write the invalid code in Editor and click the Run Button
-Then The user should able to see an error message "NameError: name 'hello' is not defined on line 1" in alert window
 
-scenario: Verify that user is able to see output for valid python code
-Given The user is in the tryEditor page
-When The user write the valid code in Editor and click the Run Button
-Then The user should able to see output in the console
+@singleTest   
+Scenario Outline: Verify Try Editor response for "<topic_page>" with "<code_type>" code
+Given User is in tryEditor page of "<topic_page>"
+When User enters "<code_type>" code in the Try Editor and clicks on "Run" button
+Then User must see "<expected_result>" in the UI
 
-scenario: Verify that user is able to navigate to "Practice Questions" page
-Given The user is in the "Graph" page
-When The user clicks the "Practice Questions" button
-Then The user should be redirected tolist of Practice Questions of Graph page.
+Examples:
+      | topic_page                | code_type | expected_result                                                          |
+      | Graph			          | valid     | Hello                            |
+      | Graph      				| invalid   | an error popup stating NameError: name 'invalid' is not defined on line 1 |
+      | Graph Representations    				  | valid  | Hello                            |
+      | Graph Representations     | invalid   | an error popup stating NameError: name 'invalid' is not definedon line 1  |
+
+Scenario: Verify that user is able to navigate to Practice Questions page
+Given The user is in the Graph page
+When The user clicks the Practice Questions button
+Then The user should be redirected to list of Practice Questions of Graph page.

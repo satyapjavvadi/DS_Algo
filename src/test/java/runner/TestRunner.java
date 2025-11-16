@@ -13,11 +13,12 @@ import io.cucumber.testng.CucumberOptions;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failedrerun.txt"
         }, //reporting purpose
+         
         monochrome = true,  //console output color
-        features = {"src/test/resources/features"},
-        tags = "@refFeature",//location of feature files
+         //which tag to run
+        features = {"C:\\Users\\prash\\github\\DS_Algo\\src\\test\\resources\\features\\DataStructures.feature"},//location of feature files
         glue = "stepdefinition")//location of step definition files
-       
+        
 
 
 public class TestRunner extends AbstractTestNGCucumberTests {
