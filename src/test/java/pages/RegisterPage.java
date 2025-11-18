@@ -34,7 +34,7 @@ public class RegisterPage {
 	@FindBy(xpath = "//a[contains(text(),'Register')]")
 	private WebElement Registerlink;
 
-	@FindBy(xpath = "//a[contains(text(),'Signin')]")
+	@FindBy(xpath = "//a[contains(text(),'Sign in')]")
 	private WebElement Signinlink;
 
 	@FindBy(xpath = "//a[contains(text(),'Login')]")
