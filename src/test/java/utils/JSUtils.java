@@ -1,8 +1,11 @@
 package utils;
 
+import java.time.Duration;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class JSUtils {
     public static void scrollIntoView(WebDriver driver, WebElement element) {
@@ -25,16 +28,16 @@ public class JSUtils {
         // Scroll to bottom
         scrollToBottom(driver);
 
-        // Instead of Thread.sleep, use a small JS wait or WaitUtils
-        try {
-            Thread.sleep(1000); // quick pause if needed
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        // JS wait until document is ready
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(
+            d -> js.executeScript("return document.readyState").equals("complete")
+        );
 
         // Scroll up slightly to trigger lazy loading
         scrollUp(driver, 100);
     }
+
     
     public static String getPageInnerText(WebDriver driver) {
         return (String) ((JavascriptExecutor) driver)
