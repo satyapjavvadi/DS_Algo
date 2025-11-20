@@ -1,62 +1,123 @@
 package stepdefinition;
 
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.PageObjectManager;
+import pages.StackPage;
+import utils.ExcelReader;
 
 public class StackPageStepDefinition {
+
+	private final PageObjectManager pom;
+	WebDriver driver;
+	private StackPage stackPage;
+
+	public StackPageStepDefinition() {
+
+		driver = DriverFactory.getDriver();
+		pom = new PageObjectManager(driver);
+
+		stackPage = pom.getStackPage();
+
+	}
+
 	@Given("the registered user has navigated to the Stack page")
 	public void the_signed_in_user_has_navigated_to_the_stack_page() {
-	    // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+		driver.get("https://dsportalapp.herokuapp.com/login");
+		pom.getLoginPage().enterUsername("validUser");
+		pom.getLoginPage().enterPassword("validPass");
+		pom.getLoginPage().clickLoginButton();
+
+		driver.get("https://dsportalapp.herokuapp.com/stack");
 	}
 
+	@Then("the user should be able to see static content from Excel")
+	public void verify_static_content_from_excel() throws IOException {
+		List<String> expectedTexts = ExcelReader.getExpectedTexts("StackPageScenarios.xlsx", "expected_text");
 
+		for (String text : expectedTexts) {
+			boolean visible = driver.getPageSource().contains(text);
+			Assert.assertTrue(visible, "Expected text not found: " + text);
+		}
 
-	@Then("the user should be able to see Stack topics as clickable links under {string}")
-	public void the_user_should_be_able_to_see_stack_topics_as_clickable_links_under(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		System.out.println("Validating static content:");
+		for (String text : expectedTexts) {
+			System.out.println("→ " + text);
+		}
+
 	}
 
+	@Then("the user should be able to navigate to each Stack topic from Excel")
+	public void verify_stack_landing_page_links() throws IOException {
+		List<Map<String, String>> rows = ExcelReader.getTopicNavigationRows("src/test/resources/DS_ExcelData.xlsx",
+				"StackPageContent");
 
-	@Then("the detailed explanation for push and pop, including overflow and underflow should be visible")
-	public void the_detailed_explanation_for_push_and_pop_including_overflow_and_underflow_should_be_visible() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		List<String> expectedTopics = rows.stream().map(row -> row.get("topic").trim()).collect(Collectors.toList());
+
+		List<String> actualTopics = pom.getStackPage().getVisibleTopicTexts();
+
+		for (String expected : expectedTopics) {
+			Assert.assertTrue(actualTopics.contains(expected), "❌ Missing topic link on Stack page: " + expected);
+		}
+
+		System.out.println("✅ All expected topic links are present on Stack landing page.");
 	}
 
-	@Then("the examples like Reverse Order, Undo, Call Stack, and Parentheses Balance should be visible")
-	public void the_examples_like_reverse_order_undo_call_stack_and_parentheses_balance_should_be_visible() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@When("the user validates scrollable content from Excel")
+	public void verify_scrollable_topic_content_from_excel() throws IOException {
+		List<Map<String, String>> rows = ExcelReader.getScrollValidationRows("src/test/resources/DS_ExcelData.xlsx",
+				"StackPageContent");
+
+		for (Map<String, String> row : rows) {
+			String topicPage = row.get("topic_page").trim();
+			String expectedContent = row.get("expected_content").trim();
+
+			String path = switch (topicPage) {
+			case "Operations in Stack" -> "operations-in-stack";
+			case "Stack Applications" -> "stack-applications";
+			case "Implementation" -> "implementation";
+			default -> throw new IllegalArgumentException("Unknown topic page: " + topicPage);
+			};
+
+			driver.get("https://dsportalapp.herokuapp.com/stack/" + path);
+
+			// Scroll down
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+			// Wait for body to be present
+			WebElement body = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
+
+			// Extract page text
+			String pageText = body.getText().toLowerCase();
+
+			// Validate each keyword
+			String[] keywords = expectedContent.toLowerCase().split(",");
+			for (String keyword : keywords) {
+				Assert.assertTrue(pageText.contains(keyword.trim()),
+						"❌ Missing keyword: " + keyword + " on page: " + topicPage);
+			}
+
+			System.out.println("✅ Verified scroll content for: " + topicPage);
+		}
 	}
-
-	@Then("the {string} button should be visible below the Operations in Stack content")
-	public void the_button_should_be_visible_below_the_operations_in_stack_content(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("the {string} button should be visible below the Implementation content")
-	public void the_button_should_be_visible_below_the_implementation_content(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("the {string} button should be visible below the Application content")
-	public void the_button_should_be_visible_below_the_application_content(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("the relevant topic content should appear")
-	public void the_relevant_topic_content_should_appear() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
-
-
-
 
 }

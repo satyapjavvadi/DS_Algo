@@ -1,10 +1,9 @@
 package stepdefinition;
 
 import org.openqa.selenium.WebDriver;
-
 import org.testng.Assert;
 
-import io.cucumber.java.en.Given;
+import DriverManager.DriverFactory;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
@@ -14,7 +13,8 @@ public class RegisterPageStepDefinition {
 	private WebDriver driver;
 
 	public RegisterPageStepDefinition() {
-		pom = new PageObjectManager();
+		driver = DriverFactory.getDriver();
+		pom = new PageObjectManager(driver);
 	}
 
 	@When("User clicks Register link in home page")
@@ -26,7 +26,8 @@ public class RegisterPageStepDefinition {
 	public void user_lands_on_Register_page() {
 		System.out.println("user is on Register page: " + pom.getregisterpage().Current_link_Check());
 
-		Assert.assertTrue(pom.getregisterpage().Current_link_Check().contains("register"), "user is not on Register page");
+		Assert.assertTrue(pom.getregisterpage().Current_link_Check().contains("register"),
+				"user is not on Register page");
 
 	}
 
@@ -42,12 +43,10 @@ public class RegisterPageStepDefinition {
 
 		System.out.println("user is on Home page:" + pom.getregisterpage().Current_link_Check());
 
-		Assert.assertTrue(pom.getregisterpage().Current_link_Check().contains("home"),
-				"user is not on Home page");
+		Assert.assertTrue(pom.getregisterpage().Current_link_Check().contains("home"), "user is not on Home page");
 
 	}
 
-	
 	@When("User clicks Register button after entering testdata {string} , {string} ,{string}")
 	public void user_clicks_register_button_after_entering_testdata(String username, String password,
 			String confirmpassword) {
@@ -57,11 +56,10 @@ public class RegisterPageStepDefinition {
 
 	@Then("User must see {string} in Register UI")
 	public void user_must_see_in_register_ui(String errormessage) {
-		
+
 		String actualerror_msg = pom.getregisterpage().Registerpage_errormessage();
-		
+
 		Assert.assertEquals(actualerror_msg, errormessage, "error message mismatch");
 	}
-
 
 }

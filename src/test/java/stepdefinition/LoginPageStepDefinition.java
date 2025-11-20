@@ -23,9 +23,10 @@ public class LoginPageStepDefinition {
 	private String password;
 
 	public LoginPageStepDefinition() {
-
-		pom = new PageObjectManager();
+		
 		driver = DriverFactory.getDriver();
+		pom = new PageObjectManager(driver);
+		
 		loginPage = pom.getLoginPage();
 
 	}

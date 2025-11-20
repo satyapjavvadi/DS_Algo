@@ -6,13 +6,25 @@
 	<artifactId>DSAlgo_Automation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
-		
-		
+
+
 		<!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.34.0</version>
+		</dependency>
+
+		<!-- Explicitly add JNA and JNA Platform dependencies -->
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>5.14.0</version> <!-- Use a recent, compatible version -->
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna-platform</artifactId>
+			<version>5.14.0</version> <!-- Must match the jna version -->
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
@@ -73,7 +85,7 @@
 			<artifactId>log4j-core</artifactId>
 			<version>3.0.0-alpha1</version>
 		</dependency>
-		
+
 		<!--
 		https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
 		<dependency>

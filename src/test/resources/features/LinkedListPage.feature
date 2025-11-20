@@ -1,4 +1,4 @@
-@LinkedListfeature
+@LinkedListfeature @GetStarted
 Feature: Linked List Page Functionality
 
   Background:
@@ -23,34 +23,34 @@ Feature: Linked List Page Functionality
     Then the "<page_url>" content should be visible
 
     Examples:
-      | topic                          | page_url                         |
-      | Introduction                   | Linked List Introduction            |
+      | topic                          | page_url                            |
+      | Introduction                   | Linked List                         |
       | Creating Linked List           | Creating Linked List                |
       | Types of Linked List           | Types of Linked List                |
       | Implement Linked List in Python| Implement Linked List in Python     |
       | Traversal                      | Traversal                           |
-      | Insertion                      | Insertion in Linked List            |
-      | Deletion                       | Deletion in Linked List             |
+      | Insertion                      | Insertion                           |
+      | Deletion                       | Deletion                            |
 
   Scenario Outline: Verifying sidebar navigation on topic pages
-    Given the user is on the "<topic_page>" page
-    When the user selects another topic from the sidebar
-    Then the related topic content should appear
+    Given the user is on the "<current_page>" page
+    When the user selects "<target_topic>" from the sidebar
+    Then the relevant topic content should appear "<target_topic>"
 
-    Examples:
-      | topic_page                     |
-      | Introduction                   |
-      | Creating Linked List           |
-      | Types of Linked List           |
-      | Implement Linked List in Python|
-      | Traversal                      |
-      | Insertion in Linked List       |
-      | Deletion in Linked List        |
+       Examples:
+      | current_page          | target_topic            |
+      | Introduction                   |  Introduction |
+      | Creating Linked List           |  Creating Linked List|
+      | Types of Linked List           |  Types of Linked List|
+      | Implement Linked List in Python|  Implement Linked List in Python|
+      | Traversal                      |  Traversal  |
+      | Insertion                      |  Insertion  |
+      | Deletion                       |  Deletion   |
 
   Scenario Outline: Verifying "Try here>>>" button visibility
     Given the user is on the "<topic_page>" page
     When the user scrolls through the content
-    Then the "Try here>>>" button should be visible below the <section> content
+    Then the "Try here>>>" button should be visible below the "<section>" content
 
     Examples:
       | topic_page                     | section                         |
@@ -59,8 +59,8 @@ Feature: Linked List Page Functionality
       | Types of Linked List           | Types of Linked List            |
       | Implement Linked List in Python| Implement Linked List in Python |
       | Traversal                      | Traversal                       |
-      | Insertion in Linked List       | Insertion                       |
-      | Deletion in Linked List        | Deletion                        |
+      | Insertion                      | Insertion                       |
+      | Deletion                       | Deletion                        |
 
   Scenario Outline: Opening the code editor from topic pages
     Given the user is on the "<topic_page>" page
@@ -74,23 +74,23 @@ Feature: Linked List Page Functionality
       | Types of Linked List           |
       | Implement Linked List in Python|
       | Traversal                      |
-      | Insertion in Linked List       |
-      | Deletion in Linked List        |
+      | Insertion                      |
+      | Deletion                       |
 
   Scenario Outline: Scrolling through code explanations
     Given the user is on the "<topic_page>" page
     When the user scrolls down
-    Then the <expected_content> should be visible
+    Then the "<expected_content>" should be visible
 
     Examples:
-      | topic_page                     | expected_content                                      |
-      | Creating Linked List           | append function and its explanation                  |
-      | Implement Linked List in Python| Node and SLinkedList class details                   |
-      | Traversal                      | sample Python code and output                        |
-      | Insertion in Linked List       | code and examples for inserting at various positions |
-      | Deletion in Linked List        | code example and output for node deletion            |
+      | topic_page                     | expected_content           |
+      | Creating Linked List           | append, explanation        |
+      | Implement Linked List in Python| Node, SLinkedList          |
+      | Traversal                      | Python, code               |
+      | Insertion                      | insert, position           |
+      | Deletion                       | delete,output              |
 
   Scenario: Navigating to Practice Questions page
-    Given the user is on the Linked List page
+    Given the user is on the "Linked List" page
     When the user selects "Practice Questions" from the sidebar
     Then an appropriate error message should be displayed if the page fails to load

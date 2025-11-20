@@ -2,18 +2,15 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LaunchPage {
+import utils.JSUtils;
 
-	private static JavascriptExecutor js;
-	private WebDriver driver;
+public class LaunchPage extends BaseTopicPage {
 
 	// Locators
 	@FindBy(xpath = "//*[text()='Preparing for the Interviews']")
@@ -33,7 +30,7 @@ public class LaunchPage {
 
 	// Constructor
 	public LaunchPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(driver, this);
 
 	}
@@ -74,9 +71,7 @@ public class LaunchPage {
 	}
 
 	public String getAllFieldSpellings() {
-		js = (JavascriptExecutor) driver;
-		String text = (String) js.executeScript("return document.documentElement.innerText;");
-		return text;
+		return JSUtils.getPageInnerText(driver);
 	}
 
 	public List<String> getButtonText() {
@@ -86,8 +81,6 @@ public class LaunchPage {
 		}
 		return buttonTexts;
 	}
-	
-
 
 	public void clickButtonByText(String buttonText) {
 		for (WebElement button : buttons) {

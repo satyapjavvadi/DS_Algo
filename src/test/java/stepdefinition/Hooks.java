@@ -15,7 +15,7 @@ import utils.ScreenShot;
 
 public class Hooks {
 
-	WebDriver driver;
+	private WebDriver driver;
 
 	@Before(order = 0)
 	public void setup() {
@@ -28,26 +28,21 @@ public class Hooks {
 
 	@Before(value = "@Getstarted", order = 1)
 	public void GetstartedAction() {
-		PageObjectManager pom = new PageObjectManager();
-		pom.getLaunchpage().clickGetStartedButton();
+		// WebDriver driver = DriverFactory.getDriver();
+		PageObjectManager pom = new PageObjectManager(driver);
+		pom.getLaunchPage().clickGetStartedButton();
 	}
 
 	@AfterStep
 	public void screenShot(Scenario scenario) {
 		if (scenario.isFailed()) {
-			String screenshotPath = ScreenShot.takeScreenshot(driver, scenario.getName());
-			// Attach screenshot to Extent report
-			scenario.attach(screenshotPath.getBytes(), "image/png", "Failed Step Screenshot");
+			// Capture screenshot as bytes
+			byte[] screenshot = ScreenShot.takeScreenshotAsBytes(driver, scenario.getName());
 
-			// File sourcePath= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			// byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
-			// scenario.attach(fileContent, "image/png", "image");
+			// Attach directly to Cucumber report
+			scenario.attach(screenshot, "image/png", "Failed Step Screenshot");
 		}
 	}
-
-	// INSTEAD OF SAVING SCREENSHOTS AS FILES AND THEN READING THEM, CAPTURE
-	// SCREENSHOTS AS BYTES AND ATTACH THEM DIRECTLY.
-	// THIS AVOIDS FILE CLUTTER AND IS FASTER
 
 	@After
 	public void tearDown() {

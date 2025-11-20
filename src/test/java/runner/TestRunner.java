@@ -16,18 +16,17 @@ import io.cucumber.testng.CucumberOptions;
         }, //reporting purpose
         monochrome = true,  //console output color
         features = {"src/test/resources/features"},
-        tags = "@loginfeature",//location of feature files
+       // tags = "@loginfeature or @refFeature or @LinkedListfeature or @stackfeature or @Getstarted",//location of feature files
         glue = "stepdefinition")//location of step definition files
        
 
-        tags = "@Registernonfunctional or @Getstarted",//location of feature files
-        glue = "stepdefinition") //location of step definition files
+       // tags = "@Registernonfunctional or @Getstarted",//location of feature files
 //or @refFeature
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
-    @DataProvider(parallel = false)
+    @DataProvider(parallel = true)
     public Object[][] scenarios() {
 
         return super.scenarios();

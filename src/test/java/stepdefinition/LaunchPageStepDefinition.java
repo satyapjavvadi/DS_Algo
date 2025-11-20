@@ -19,7 +19,8 @@ public class LaunchPageStepDefinition {
 
 	public LaunchPageStepDefinition() {
 
-		pom = new PageObjectManager();
+		driver = DriverFactory.getDriver();
+		pom = new PageObjectManager(driver);
 		driver = DriverFactory.getDriver();
 
 	}
@@ -27,22 +28,22 @@ public class LaunchPageStepDefinition {
 	@Given("the user has a browser open")
 	public void the_user_has_a_browser_open() {
 
-		pom.getLaunchpage().BrowserIsOpen();
+		pom.getLaunchPage().BrowserIsOpen();
 
 	}
 
 	@When("the user enters the correct DS Algo portal URL")
 	public void the_user_enters_the_correct_ds_algo_portal_url() {
 
-		System.out.println("Current URL: " + pom.getLaunchpage().getCurrentUrl());
+		System.out.println("Current URL: " + pom.getLaunchPage().getCurrentUrl());
 
 	}
 
 	@Then("the user should be on the DS Algo Portal page")
 	public void the_user_should_be_on_the_ds_algo_portal_page() {
 
-		System.out.println("Current URL: " + pom.getLaunchpage().getCurrentUrl());
-		Assert.assertTrue(pom.getLaunchpage().getCurrentUrl().contains("dsportalapp"),
+		System.out.println("Current URL: " + pom.getLaunchPage().getCurrentUrl());
+		Assert.assertTrue(pom.getLaunchPage().getCurrentUrl().contains("dsportalapp"),
 				"User is not on the DS Algo Portal page");
 
 	}
@@ -50,7 +51,7 @@ public class LaunchPageStepDefinition {
 	@Then("the user should be able to see the content text on the Launch page")
 	public void theUserShouldBeAbleToSeeTheContentTextOnTheLaunchPage(DataTable dataTable) {
 		List<String> expectedTexts = dataTable.asList(String.class);
-		String actualText = pom.getLaunchpage().getAllFieldSpellings();
+		String actualText = pom.getLaunchPage().getAllFieldSpellings();
 		System.out.println("actualText = " + actualText);
 
 		for (String expectedText : expectedTexts) {
@@ -61,7 +62,7 @@ public class LaunchPageStepDefinition {
 
 	@Then("the user should be able to see {int} button on the Launch page")
 	public void theUserShouldBeAbleToSeeButtonOnTheLaunchPage(int expectedButtonCount) {
-		int actualButtonCount = pom.getLaunchpage().getButtonText().size();
+		int actualButtonCount = pom.getLaunchPage().getButtonText().size();
 		System.out.println("actualButtonCount = " + actualButtonCount);
 		Assert.assertEquals(actualButtonCount, expectedButtonCount, "Button count does not match.");
 	}
@@ -69,22 +70,21 @@ public class LaunchPageStepDefinition {
 	@Then("the user should be able to see {string} copyrightInfo")
 	public void the_user_should_be_able_to_see_copyrightInfo(String copyrightInfo) {
 
-		Assert.assertTrue(pom.getLaunchpage().isCopyrightInfoVisible(), "Copyright Info is not visible");
+		Assert.assertTrue(pom.getLaunchPage().isCopyrightInfoVisible(), "Copyright Info is not visible");
 
 	}
 
 	@When("the user clicks the {string} button")
 	public void the_user_clicks_the_button(String GetStartedButtonText) {
 
-		pom.getLaunchpage().clickGetStartedButton();
-		Assert.assertTrue(pom.getLaunchpage().isGetStartedButtonEnabled(),
-				"Get Started button not clickable");
+		pom.getLaunchPage().clickGetStartedButton();
+		Assert.assertTrue(pom.getLaunchPage().isGetStartedButtonEnabled(), "Get Started button not clickable");
 
 	}
 
 	@Then("the user should be able to see button with text {string}")
 	public void theUserShouldBeAbleToSeeButtonWithText(String expectedButtonText) {
-		List<String> actualButtonText = pom.getLaunchpage().getButtonText();
+		List<String> actualButtonText = pom.getLaunchPage().getButtonText();
 		System.out.println("actualButtonText = " + actualButtonText);
 		Assert.assertTrue(actualButtonText.contains(expectedButtonText), "Button text does not match.");
 	}

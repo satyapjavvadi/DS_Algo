@@ -2,16 +2,17 @@ package pages;
 
 import java.util.List;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import utils.JSUtils;
 
-	private WebDriver driver;
+public class LoginPage extends BaseTopicPage {
+
+	private static final String LOGIN_URL = "https://dsportalapp.herokuapp.com/login";
 
 	// Locators
 	@FindBy(id = "id_username")
@@ -34,7 +35,7 @@ public class LoginPage {
 
 	// Constructor
 	public LoginPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 		PageFactory.initElements(driver, this);
 	}
 
@@ -52,8 +53,9 @@ public class LoginPage {
 	}
 
 	// Submission
+
 	public void clickLoginButton() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginButton);
+		JSUtils.clickElement(driver, loginButton);
 	}
 
 	public void pressEnterToSubmit() {
@@ -73,9 +75,11 @@ public class LoginPage {
 	}
 
 	public String getAllFieldSpellings() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		String text = (String) js.executeScript("return document.documentElement.innerText;");
-		return text;
+		return JSUtils.getPageInnerText(driver);
+	}
+
+	public void navigateToLoginPage() {
+		driver.get(LOGIN_URL);
 	}
 
 	// Reusable login helper
