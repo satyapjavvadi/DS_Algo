@@ -12,6 +12,10 @@ import org.openqa.selenium.WebDriver;
 
 public class ScreenShot {
 
+    public static byte[] takeScreenshotAsBytes(WebDriver driver) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
     public static String takeScreenshot(WebDriver driver, String screenshotName) {
         String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         String destination = System.getProperty("user.dir") + "/test-output/Screenshots/" + screenshotName + "_" + dateName + ".png";

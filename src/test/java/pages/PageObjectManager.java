@@ -10,7 +10,8 @@ public class PageObjectManager {
 	private LaunchPage launchPage;
 	private DataStructures dataStructures;
 	private Graph graph;
-	
+	private RegisterPage registerPage;
+	private LoginPage loginPage;
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
 		if (this.driver == null) {
@@ -41,4 +42,20 @@ public class PageObjectManager {
 	}
 		return graph;
 }
+	public RegisterPage getregisterpage() {
+if (registerPage == null) {
+	registerPage = new RegisterPage(driver);
 }
+return registerPage;
+	}
+	
+	public LoginPage getLoginPage() {
+	if (loginPage == null) {
+		loginPage = new LoginPage(driver);
+	}
+	return loginPage;
+}
+	
+	
+}
+

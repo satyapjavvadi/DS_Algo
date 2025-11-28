@@ -1,9 +1,6 @@
 package stepdefinition;
 
-import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
-
 import DriverManager.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -15,43 +12,31 @@ import utils.ScreenShot;
 
 public class Hooks {
 
-	WebDriver driver;
+    WebDriver driver;
 
-	@Before (order = 0)
-	public void setup() {
-		Properties prop = ConfigReader.initializeProperties();
-		driver = DriverFactory.launchBrowser(prop.getProperty("browserName"));
+    @Before(order = 0)
+    public void setup() {
+        DriverFactory.initDriver(); // browser is already set in TestRunner
+        driver = DriverFactory.getDriver();
+        driver.get("https://dsportalapp.herokuapp.com/");
+    }
 
-		driver.get(prop.getProperty("baseURL"));
+    @Before(value = "@Getstarted", order = 1)
+    public void GetstartedAction() {
+        PageObjectManager pom = new PageObjectManager();
+        pom.getLaunchpage().clickGetStartedButton();
+    }
 
-	}
-	
-	@Before(value = "Getstarted", order = 1)
-	
-	public void GetstartedAction() {
-		PageObjectManager pom = new PageObjectManager();
-		pom.getLaunchpage().clickGetStartedButton();
-	}
-	@AfterStep
-	public void screenShot(Scenario scenario) {
-		if (scenario.isFailed()) {
-			String screenshotPath = ScreenShot.takeScreenshot(driver, scenario.getName());
-			// Attach screenshot to Extent report
-			scenario.attach(screenshotPath.getBytes(), "image/png", "Failed Step Screenshot");
+    @AfterStep
+    public void screenShot(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshot = ScreenShot.takeScreenshotAsBytes(driver);
+            scenario.attach(screenshot, "image/png", "Failed Step Screenshot");
+        }
+    }
 
-			// File sourcePath= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			// byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
-			// scenario.attach(fileContent, "image/png", "image");
-		}
-	}
-
-	// INSTEAD OF SAVING SCREENSHOTS AS FILES AND THEN READING THEM, CAPTURE
-	// SCREENSHOTS AS BYTES AND ATTACH THEM DIRECTLY.
-	// THIS AVOIDS FILE CLUTTER AND IS FASTER
-
-	@After
-	public void tearDown() {
-		driver.quit();
-	}
-
+    @After
+    public void tearDown() {
+        DriverFactory.quitDriver();
+    }
 }
