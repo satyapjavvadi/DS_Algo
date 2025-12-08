@@ -1,10 +1,11 @@
+@dataStructurefeature @Getstarted 
 Feature: DS Algo Portal functional testing 
 
 Background: Signed in user is navigated to Data Structure module from Home Page
 
 Scenario Outline: Verifying static content on the DataStructures page
 Given The user is in the Data Structures - Introduction page
-#When The Data Structures - Introduction page loads
+When The Data Structures - Introduction page loads
 Then the user should be able to see "<expected_text>"
 
     Examples:
@@ -12,7 +13,7 @@ Then the user should be able to see "<expected_text>"
       | Data Structures-Introduction |
       | Topics Covered |
 
-      
+@Sing      
 Scenario: Verify that Time Complexity tab is visible and clickable 
 Given The user is in the Data Structures - Introduction page
 When The user clicks Time Complexity button
@@ -39,8 +40,8 @@ Scenario: Verify that user gets error message when click on Run button without e
 Given The user is in the tryEditor page
 When The user clicks the Run Button without entering the code in the Editor
 Then The user should able to get the error message "Empty Code Editor"
-@Singletest
- Scenario Outline: Verify Try Editor response for "<topic_tab>" with "<code_type>" code
+
+Scenario Outline: Verify Try Editor response for "<topic_tab>" with "<code_type>" code
     Given User is in "<topic_tab>" UI
     When User enters "<code_type>" code in the Try Editor and clicks on "Run" button
 	Then User must see "<expected_result>" in the UI
@@ -50,7 +51,7 @@ Then The user should able to get the error message "Empty Code Editor"
       | topic_tab                | code_type | expected_result |
       | Time Complexity          | valid     | Hello |
       | Time Complexity          | invalid   | an error popup stating NameError: name 'invalid' is not defined on line 1 |
-    
+
 Scenario: Verify that user is able to navigate to Practice Questions page
 Given The user is in the Time Complexity tab
 When The user clicks the Practice Questions tab

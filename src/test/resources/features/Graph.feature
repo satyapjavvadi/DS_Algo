@@ -1,11 +1,11 @@
- @Graph @GetStarted
+@graphfeature @Getstarted 
  Feature: DS Algo Portal functional testing 
 
 background: Signed in user is navigated to Graph module from Home Page
 
 scenario: Verifying static content on the Graph page
 
-Scenario Outline: Verifying static content on the DataStructures page
+Scenario Outline: Verifying static content on the graph page
 Given The user is in the Graph page
 When The Graph page loads
 Then the user should be able to see "<expected_topic>" in graph page

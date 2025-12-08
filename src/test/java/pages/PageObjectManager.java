@@ -7,11 +7,16 @@ import DriverManager.DriverFactory;
 public class PageObjectManager {
 
 	private final WebDriver driver;
+	
 	private LaunchPage launchPage;
-	private DataStructures dataStructures;
-	private Graph graph;
-	private RegisterPage registerPage;
 	private LoginPage loginPage;
+    private RegisterPage registerPage;
+    private LinkedListPage linkedlistPage;
+    private StackPage stackPage;
+    private DataStructurePage dataStructurePage;
+    private HomePage homePage;
+    private GraphPage graphPage;
+
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
 		if (this.driver == null) {
@@ -19,43 +24,69 @@ public class PageObjectManager {
 		}
 
 	}
+	
+	public DataStructurePage getDataStructurePage() {
+		if (dataStructurePage == null) {
+			dataStructurePage = new DataStructurePage(driver);
+		}
+		return dataStructurePage;
+	}
+	
+	public HomePage getHomePage() {
+		if (homePage == null) {
+			homePage = new HomePage(driver);
+		}
+		return homePage;
+	}
+	
+	public GraphPage getGraphPage() {
+		if (graphPage == null) {
+			graphPage = new GraphPage(driver);
+		}
+		return graphPage;
+	}
 
-	public LaunchPage getLaunchpage() {
+	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
 			launchPage = new LaunchPage(driver);
 		}
 
 		return launchPage;
 	}
-
-	public DataStructures getDataStructures() {
-		if (dataStructures == null) {
-			dataStructures = new DataStructures(driver);
+	
+	public LoginPage getLoginPage()
+	{
+		if(loginPage == null)
+		{
+			loginPage = new LoginPage(driver);
+	
 		}
-		
-			return dataStructures;
+		return loginPage;
 	}
-	
-	public Graph getGraph() {
-	if (graph == null) {
-		graph = new Graph(driver);
-	}
-		return graph;
-}
-	public RegisterPage getregisterpage() {
-if (registerPage == null) {
-	registerPage = new RegisterPage(driver);
-}
-return registerPage;
-	}
-	
-	public LoginPage getLoginPage() {
-	if (loginPage == null) {
-		loginPage = new LoginPage(driver);
-	}
-	return loginPage;
-}
-	
-	
-}
+    
+    public RegisterPage getregisterpage() {
+        if(registerPage == null){
+            registerPage = new RegisterPage(driver);
+        }
 
+        return registerPage;
+    }
+ 
+    /*
+public LinkedListPage getLinkedListPage() {
+	if(linkedlistPage == null) {
+		linkedlistPage = new LinkedListPage(driver);
+	}
+   
+	return linkedlistPage;
+	}
+
+public StackPage getStackPage() {	
+	if(stackPage == null) {
+		stackPage = new StackPage(driver);
+		
+	}
+	   return stackPage;
+	}
+*/
+}

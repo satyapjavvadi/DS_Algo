@@ -1,6 +1,6 @@
+@homeSigninfeature @Getstarted
 Feature: DS Algo Portal functional testing 
 Background: User is signed in
-
 
 
 Scenario Outline: Verify that user is able to see "<Links>" on the right corner of the Home page
@@ -11,7 +11,6 @@ Examples:
 | Links               |
 |  Mamta.chavan0785@gmail.com |
 |  Sign out           |
-
 
 
 Scenario Outline: Verify that user is able to see "<OptionName>" details page while selecting "<Option>" from the drop down
@@ -29,12 +28,12 @@ Examples:
  
 
 Scenario Outline: Verify that user is able to see respective page with details on clicking "Get Started" buttons of "<TabName>" tab on the home page
- 
+Given The user is on the Home page after sign in
 When The user clicks Get Started buttons of "<TabName>" tab on the homepage after Sign in
-Then The user should be able to see "<PageName>" page with details.
+Then The user should be able to see "<OptionName>" page with details.
 Examples:
 
-| TabName | PageName | 
+| TabName | OptionName | 
 | Data Structures-Introduction | Data Structures-Introduction |
 | Array | Array |
 | Linked List | Linked List |

@@ -16,8 +16,8 @@ public class HomePage {
 	private WebDriver driver;
 
 	// this belongs to launch page
-	@FindBy(linkText = "Get Started")
-	WebElement getStartedBtn;
+//	@FindBy(linkText = "Get Started")
+	//WebElement getStartedBtn;
 
 	@FindBy(linkText = "NumpyNinja")
 	WebElement companyName;
@@ -43,7 +43,7 @@ public class HomePage {
 	@FindBy(xpath = "//a[@class='dropdown-item']")
 	List<WebElement> dataStructureOptions;
 
-	@FindBy(xpath = "//div[@style='margin-top: 40px;margin-bottom: 40px;margin-right: 150px;margin-left: 80px;background-color: ;']/h4")
+	@FindBy(tagName = "h4")
 	WebElement headingTitle;
 
 	@FindBy(xpath = "//a[text()='Stack']")
@@ -52,35 +52,12 @@ public class HomePage {
 	@FindBy(xpath = "//div[@role='alert']")
 	WebElement ErrMsg;
 
-	@FindBy(xpath = "//a[text()='Arrays']")
-	WebElement arrayOption;
-
-	@FindBy(xpath = "//a[text()='Queue']")
-	WebElement queueOption;
-
-	@FindBy(xpath = "//a[text()='Tree']")
-	WebElement treeOption;
-
-	@FindBy(xpath = "//a[text()='Graph']")
-	WebElement graphOption;
-
-	@FindBy(xpath = "//a[@href='array']")
-	WebElement arrayGetStarted;
-
-	@FindBy(xpath = "//a[@href='stack']")
-	WebElement stackGetStarted;
-
-	@FindBy(xpath = "//a[@href='queue']")
-	WebElement queueGetStarted;
-
-	@FindBy(xpath = "//a[@href='tree']")
-	WebElement treeGetStarted;
-
-	@FindBy(xpath = "//a[@href='linked-list']")
-	WebElement linkedListGetStarted;
-
 	@FindBy(xpath = "//div[@class='card-body d-flex flex-column']")
 	private List<WebElement> parentCard;
+	
+
+	//@FindBy(xpath = "//div[@class='bs-example']")
+	//private List<WebElement> parentCardPage;
 	
 	@FindBy(xpath = "//a[text()=' Mamta.chavan0785@gmail.com ']")
 	WebElement loggedInUser;
@@ -98,9 +75,9 @@ public class HomePage {
 		driver.get(baseURL);
 	}
 
-	public void clickGetStarted() {
-		getStartedBtn.click();
-	}
+	//public void clickGetStarted() {
+		//getStartedBtn.click();
+	//}
 
 	public String getCompanyName() {
 		return companyName.getText();
@@ -148,7 +125,7 @@ public class HomePage {
 		return ErrMsg.getText();
 	}
 
-	public void clickArrayOption() {
+	/*public void clickArrayOption() {
 		dataStructureDropdown.click();
 		arrayOption.click();
 	}
@@ -167,56 +144,7 @@ public class HomePage {
 		dataStructureDropdown.click();
 		graphOption.click();
 	}
-
-	public void clickArrayGetStarted() {
-
-		arrayGetStarted.click();
-	}
-
-	public void clickStackGetStarted() {
-
-		stackGetStarted.click();
-	}
-
-	public void clickQueueGetStarted() {
-
-		queueGetStarted.click();
-	}
-
-	public void clickTreeGetStarted() {
-
-		treeGetStarted.click();
-	}
-
-	public void clickLinkedListGetStarted() {
-
-		linkedListGetStarted.click();
-	}
-
-	public void clickHeadings(String Heading) {
-		getStartedBtn.click();
-		switch (Heading) {
-		case "Array":
-			arrayGetStarted.click();
-			break;
-		case "Stack":
-			stackGetStarted.click();
-			break;
-		case "Queue":
-			queueGetStarted.click();
-			break;
-		case "Tree":
-			treeGetStarted.click();
-			break;
-		case "Linked List":
-			linkedListGetStarted.click();
-			break;
-		default:
-			System.out.println("No matching heading found");
-
-		}
-	}
-
+*/
 	public void enterSignIn() {
 		logInLink.click();
 		userName.sendKeys("mamta.chavan0785@gmail.com");
@@ -250,8 +178,51 @@ public class HomePage {
 		}
 		return title;
 	}
+	
+	public String getPageHeading(String OptionName) {
 
-	public void getTitlePage(String ExpectedTitle) {
+	switch (OptionName) {
+	case "Graph":
+		headingTitle.getText();
+		break;
+	case "Array":
+		headingTitle.getText();
+		break;
+	case "Linked List":
+		headingTitle.getText();
+		break;
+	case "Stack":
+		headingTitle.getText();
+		break;
+	case "Queue":
+		headingTitle.getText();
+		break;
+	case "Tree":
+		headingTitle.getText();
+		break;
+	
+	default:
+		System.out.println("Invalid Heading");
+		break;
+	}
+	System.out.println("Page Heading is: " + headingTitle.getText());
+	return headingTitle.getText();
+	//return OptionName;
+	}
+/*	public List<String> getPageTitles(String string2) {
+		List<String> title = new ArrayList<>();
+		for (WebElement child : parentCardPage) {
+			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
+
+			for (WebElement element : grandChild) {
+				title.add(element.getText());
+				System.out.println("Titles are: " + title);
+			}
+		}
+		return title;
+	}*/
+
+	public void clickTitlePage(String ExpectedTitle) {
 		String topicHeading;
 		for (WebElement child : parentCard) {
 			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));

@@ -1,59 +1,40 @@
 package DriverManager;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
 
-	private static WebDriver driver;
-	private static String browserName;
+	public static ThreadLocal<WebDriver> mydriver = new ThreadLocal<>();
 
-	public static void setBrowser(String browser) {
-		browserName = browser;
-	}
+	public static WebDriver launchBrowser(String browser) {
 
-	public static WebDriver initDriver() {
-		// String driverPath =
-		// System.getProperty("C:\\Users\\prash\\github\\DS_Algo\\src\\test\\resources\\edgedriver_win64\\msedgedriver.exe")
-		// + "/drivers/";
-		if (browserName == null) {
-			throw new RuntimeException(
-					"Browser is not set! Make sure @Parameters(\"browser\") is passed in TestNG XML.");
+		if (browser.equalsIgnoreCase("Chrome")) {
+			mydriver.set(new ChromeDriver());
+		} else if (browser.equalsIgnoreCase("Firefox")) {
+			mydriver.set(new FirefoxDriver());
+		} else if (browser.equalsIgnoreCase("Edge")) {
+			mydriver.set(new EdgeDriver());
+		} else {
+			throw new IllegalArgumentException("Browser not supported: " + browser);
 		}
 
-		switch (browserName.toLowerCase()) {
+		getDriver().manage().deleteAllCookies();
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-		case "chrome":
-			driver = WebDriverManager.chromedriver().create();
-			break;
+		return getDriver();
 
-		case "edge":
-
-			System.setProperty("webdriver.edge.driver",
-					"C:\\Users\\prash\\github\\DS_Algo\\src\\test\\resources\\edgedriver_win64\\msedgedriver.exe");
-			driver = new EdgeDriver();
-			break;
-		case "firefox":
-			driver = WebDriverManager.firefoxdriver().create();
-			break;
-
-		default:
-			throw new RuntimeException("Invalid browser: " + browserName);
-		}
-
-		driver.manage().window().maximize();
-		return driver;
 	}
 
-	public static WebDriver getDriver() {
-		return driver;
+	// adds thread safety for concurrent access(ThreadLocal itself is thread-safe,
+	// this can help avoid race conditions in some setups
+	public static synchronized WebDriver getDriver() {
+		return mydriver.get();
 	}
 
-	public static void quitDriver() {
-		if (driver != null) {
-			driver.quit();
-			driver = null;
-		}
-	}
 }
