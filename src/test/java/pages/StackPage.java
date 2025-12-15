@@ -1,23 +1,39 @@
 package pages;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
-public class StackPage extends BaseTopicPage {
+import utils.ConfigReader;
+import utils.WaitUtils;
+
+public class StackPage {
+
+	WebDriver driver;
 
 	@FindBy(css = "a[href='/stack/practice']")
-	private WebElement practiceBtn;
+	WebElement practiceBtn;
+
+	@FindBy(css = "a.list-group-item")
+	List<WebElement> topicLinks;
+
+	@FindBy(tagName = "body")
+	WebElement bodyText;
 
 	public StackPage(WebDriver driver) {
-		super(driver);
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
-	public boolean isTopicsCoveredVisible(String expectedText) {
-		return driver.getPageSource().contains(expectedText);
+	public void navigateToStackPage() {
+		driver.get(ConfigReader.getProperty("baseURL") + "stack");
+		WaitUtils.waitForTitleContains(driver, "Stack", 10);
 	}
 
 	public List<String> getVisibleTopicTexts() {
@@ -28,10 +44,31 @@ public class StackPage extends BaseTopicPage {
 		return topics;
 	}
 
-	public void clickPracticeQuestions() {
-		if (!driver.getCurrentUrl().contains("/stack")) {
-			throw new IllegalStateException("Not on Stack page!");
-		}
-		practiceBtn.click();
+	public boolean isSilentFailureDetected() {
+		String pageText = bodyText.getText();
+		List<String> boilerplate = Arrays.asList("NumpyNinja", "Data Structures", "ValidUser", "Sign out");
+		return boilerplate.stream().allMatch(pageText::contains);
 	}
+
+	public void assertPageHasContent() {
+		boolean silentFailure = isSilentFailureDetected();
+		Assert.assertFalse(silentFailure, "Page loaded with boilerplate only — no content or error message displayed.");
+	}
+
+	public void assertKeywordsPresent(String pageText, String expectedContent, String topicPage) {
+		for (String keyword : expectedContent.toLowerCase().split(",")) {
+			if (!pageText.contains(keyword.trim())) {
+				Assert.fail("❌ Missing keyword: " + keyword + " on page: " + topicPage);
+			}
+		}
+		System.out.println("✅ Verified scroll content for: " + topicPage);
+
+	}
+
+	public String getPageText() {
+		// Wait for presence of body element before returning text
+		WaitUtils.waitForVisibility(driver, bodyText, 10);
+		return bodyText.getText().toLowerCase();
+	}
+
 }

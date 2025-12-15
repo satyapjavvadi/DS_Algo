@@ -1,12 +1,13 @@
-@LinkedListfeature @GetStarted
+@LinkedListfeature @GetStarted @Login
 Feature: Linked List Page Functionality
 
+ 
   Background:
     Given the signed-in user has navigated to the Linked List page
 
   Scenario Outline: Verifying static content on the Linked List page
-
-    Then the user should be able to see "<expected_text>"
+ 
+   Then the user should be able to see "<expected_text>"
 
     Examples:
       | expected_text     |
@@ -38,14 +39,14 @@ Feature: Linked List Page Functionality
     Then the relevant topic content should appear "<target_topic>"
 
        Examples:
-      | current_page          | target_topic            |
-      | Introduction                   |  Introduction |
-      | Creating Linked List           |  Creating Linked List|
-      | Types of Linked List           |  Types of Linked List|
+      | current_page                   | target_topic                    |
+      | Introduction                   |  Introduction                   |
+      | Creating Linked LIst           |  Creating Linked LIst           |
+      | Types of Linked List           |  Types of Linked List           |
       | Implement Linked List in Python|  Implement Linked List in Python|
-      | Traversal                      |  Traversal  |
-      | Insertion                      |  Insertion  |
-      | Deletion                       |  Deletion   |
+      | Traversal                      |  Traversal                      |
+      | Insertion                      |  Insertion                      |
+      | Deletion                       |  Deletion                       |
 
   Scenario Outline: Verifying "Try here>>>" button visibility
     Given the user is on the "<topic_page>" page
@@ -76,6 +77,11 @@ Feature: Linked List Page Functionality
       | Traversal                      |
       | Insertion                      |
       | Deletion                       |
+      
+ Scenario Outline: Running code in Try Editor with Excel data
+  Given the user runs all Try Editor scenarios from "LinkedListPageContent" sheet
+
+    
 
   Scenario Outline: Scrolling through code explanations
     Given the user is on the "<topic_page>" page
@@ -91,6 +97,6 @@ Feature: Linked List Page Functionality
       | Deletion                       | delete,output              |
 
   Scenario: Navigating to Practice Questions page
-    Given the user is on the "Linked List" page
+    Given the user is on the Linked List Introduction page
     When the user selects "Practice Questions" from the sidebar
     Then an appropriate error message should be displayed if the page fails to load

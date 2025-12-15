@@ -11,54 +11,50 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader {
 
-	private static Workbook workbook;
-	private static Sheet sheet;
+	public static List<Map<String, String>> getScenarioRows(String filePath, String sheetName, String scenarioType)
+			throws IOException {
+		FileInputStream fis = new FileInputStream(filePath);
+		Workbook workbook = WorkbookFactory.create(fis);
+		// Sheet sheet = workbook.getSheet(sheetName);
 
-	public static List<String> getExpectedTexts(String filePath, String sheetName) throws IOException {
-		List<String> texts = new ArrayList<>();
-		FileInputStream fis = new FileInputStream("src/test/resources/DS_ExcelData.xlsx");
-		workbook = new XSSFWorkbook(fis);
-		sheet = workbook.getSheet("StackPageContent");
-
-		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-			Row row = sheet.getRow(i);
-			Cell cell = row.getCell(1);
-			if (cell != null) {
-				texts.add(cell.getStringCellValue().trim());
-			}
+		// Debug: List all sheet names
+		for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+			System.out.println("Sheet found: " + workbook.getSheetName(i));
 		}
 
-		workbook.close();
-		fis.close();
-		return texts;
-	}
+		Sheet sheet = workbook.getSheet(sheetName);
+		if (sheet == null) {
+			throw new IllegalStateException("Sheet not found: " + sheetName);
+		}
 
-	public static List<Map<String, String>> getTopicNavigationRows(String filePath, String sheetName)
-			throws IOException {
-		List<Map<String, String>> rows = new ArrayList<>();
-		FileInputStream fis = new FileInputStream(filePath);
-		workbook = new XSSFWorkbook(fis);
-		sheet = workbook.getSheet(sheetName);
-
+		// Place your header check here
 		Row header = sheet.getRow(0);
+		if (header == null) {
+			throw new IllegalStateException("Header row is missing in sheet: " + sheetName);
+		}
+
+		List<Map<String, String>> rows = new ArrayList<>();
+
+		// Now loop through data rows safely
 		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 			Row row = sheet.getRow(i);
-			if (row != null) {
-				String type = row.getCell(0).getStringCellValue().trim(); // Scenario_type
-				if ("topic_navigation".equalsIgnoreCase(type)) {
-					Map<String, String> rowData = new HashMap<>();
-					for (int j = 0; j < header.getLastCellNum(); j++) {
-						String key = header.getCell(j).getStringCellValue().trim();
-						Cell cell = row.getCell(j);
-						String value = cell != null ? cell.toString().trim() : "";
-						rowData.put(key, value);
-					}
-					rows.add(rowData);
-				}
+			if (row == null)
+				continue;
+
+			Map<String, String> rowData = new HashMap<>();
+			for (int j = 0; j < header.getLastCellNum(); j++) {
+				String key = header.getCell(j).getStringCellValue();
+				String value = row.getCell(j) != null ? row.getCell(j).toString() : "";
+				rowData.put(key, value);
+			}
+
+			if (rowData.get("scenario_type").equalsIgnoreCase(scenarioType)) {
+				rows.add(rowData);
 			}
 		}
 
@@ -67,34 +63,44 @@ public class ExcelReader {
 		return rows;
 	}
 
-	public static List<Map<String, String>> getScrollValidationRows(String filePath, String sheetName)
-			throws IOException {
-		List<Map<String, String>> rows = new ArrayList<>();
-		FileInputStream fis = new FileInputStream(filePath);
-		workbook = new XSSFWorkbook(fis);
-		sheet = workbook.getSheet(sheetName);
+	public static List<Map<String, String>> getTestData(String filePath, String sheetName) {
+		List<Map<String, String>> dataList = new ArrayList<>();
 
-		Row header = sheet.getRow(0);
-		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-			Row row = sheet.getRow(i);
-			if (row != null) {
-				String type = row.getCell(0).getStringCellValue().trim(); // Scenario_type
-				if ("scroll_validation".equalsIgnoreCase(type)) {
-					Map<String, String> rowData = new HashMap<>();
-					for (int j = 0; j < header.getLastCellNum(); j++) {
-						String key = header.getCell(j).getStringCellValue().trim();
-						Cell cell = row.getCell(j);
-						String value = cell != null ? cell.toString().trim() : "";
-						rowData.put(key, value);
-					}
-					rows.add(rowData);
-				}
+		try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = new XSSFWorkbook(fis)) {
+
+			Sheet sheet = workbook.getSheet(sheetName);
+			if (sheet == null) {
+				throw new IllegalArgumentException("❌ Sheet not found: " + sheetName);
 			}
+
+			// First row = header
+			Row headerRow = sheet.getRow(0);
+			int colCount = headerRow.getLastCellNum();
+
+			// Iterate rows
+			for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+				Row row = sheet.getRow(i);
+				if (row == null)
+					continue;
+
+				Map<String, String> rowData = new HashMap<>();
+				for (int j = 0; j < colCount; j++) {
+					Cell headerCell = headerRow.getCell(j);
+					Cell cell = row.getCell(j);
+
+					String header = headerCell.getStringCellValue().trim();
+					String value = (cell == null) ? "" : cell.toString().trim();
+
+					rowData.put(header, value);
+				}
+				dataList.add(rowData);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException("❌ Error reading Excel file: " + filePath, e);
 		}
 
-		workbook.close();
-		fis.close();
-		return rows;
+		return dataList;
 	}
 
 }

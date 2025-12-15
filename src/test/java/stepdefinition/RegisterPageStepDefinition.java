@@ -1,20 +1,17 @@
 package stepdefinition;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import DriverManager.DriverFactory;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
 
 public class RegisterPageStepDefinition {
 	private final PageObjectManager pom;
-	private WebDriver driver;
+	// private WebDriver driver;
 
-	public RegisterPageStepDefinition() {
-		driver = DriverFactory.getDriver();
-		pom = new PageObjectManager(driver);
+	public RegisterPageStepDefinition(PageObjectManager pom) {
+		this.pom = pom;
 	}
 
 	@When("User clicks Register link in home page")

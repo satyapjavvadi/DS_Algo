@@ -1,4 +1,4 @@
-@stackfeature @Getstarted
+@stackfeature @Getstarted @Login
 Feature: Stack Page Functionality
 
   Background:
@@ -25,7 +25,7 @@ Feature: Stack Page Functionality
       | topic_page            | section               |
       | Operations in Stack   | Operations in Stack   |
       | Implementation        | Implementation        |
-      |  Applications         | Application           |
+      |  Applications         |  Applications         |
 
   Scenario Outline: Opening the code editor from topic pages
     Given the user is on the "<topic_page>" page
@@ -37,8 +37,12 @@ Feature: Stack Page Functionality
       | Operations in Stack   |
       | Implementation        |
       |  Applications         |
+      
+  Scenario Outline: Running code in Try Editor with Excel data
+  Given the user runs all Try Editor scenarios from "StackPageContent" sheet
+    
 
-  Scenario Outline: Navigating between topics via sidebar
+  Scenario Outline: Verifying sidebar navigation on topic pages
     Given the user is on the "<current_page>" page
     When the user selects "<target_topic>" from the sidebar
     Then the relevant topic content should appear "<target_topic>"

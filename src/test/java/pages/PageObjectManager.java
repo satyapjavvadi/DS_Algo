@@ -2,18 +2,21 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
+import DriverManager.DriverFactory;
+
 public class PageObjectManager {
 
 	private final WebDriver driver;
-	
+
 	private LaunchPage launchPage;
 	private LoginPage loginPage;
-    private RegisterPage registerPage;
-    private LinkedListPage linkedlistPage;
-    private StackPage stackPage;
+	private RegisterPage registerPage;
+	private LinkedListPage linkedlistPage;
+	private StackPage stackPage;
+	private HomePage homePage;
 
-	public PageObjectManager(WebDriver driver) {
-		this.driver = driver;
+	public PageObjectManager() {
+		this.driver = DriverFactory.getDriver();
 		if (this.driver == null) {
 			throw new IllegalStateException("WebDriver is not initialized");
 		}
@@ -27,51 +30,48 @@ public class PageObjectManager {
 
 		return launchPage;
 	}
-	
-	public LoginPage getLoginPage()
-	{
-		if(loginPage == null)
-		{
+
+	public LoginPage getLoginPage() {
+		if (loginPage == null) {
 			loginPage = new LoginPage(driver);
-	
+
 		}
 		return loginPage;
 	}
-    
-    public RegisterPage getregisterpage() {
-        if(registerPage == null){
-            registerPage = new RegisterPage(driver);
-        }
 
-        return registerPage;
-    }
-    
-    public LinkedListPage getLinkedListPage() {
+	public RegisterPage getregisterpage() {
+		if (registerPage == null) {
+			registerPage = new RegisterPage(driver);
+		}
+
+		return registerPage;
+	}
+
+	public LinkedListPage getLinkedListPage() {
 		if (linkedlistPage == null) {
 			linkedlistPage = new LinkedListPage(driver);
 		}
 
 		return linkedlistPage;
 	}
-    
-    public StackPage getStackPage() {
+
+	public StackPage getStackPage() {
 		if (stackPage == null) {
 			stackPage = new StackPage(driver);
 		}
 
 		return stackPage;
 	}
-    
-    public BaseTopicPage getCurrentTopicPage(String currentUrl) {
-        if (currentUrl.matches(".*/stack/.*")) {
-           return getStackPage();
-        } else if (currentUrl.matches(".*/linked-list/.*")) {
-            return getLinkedListPage();
-        } //else if (currentUrl.matches(".*/$")) {
-        	//return getLaunchPage();
-        //}
-        // Add more modules as needed
-        throw new IllegalArgumentException("Unknown topic page for URL: " + currentUrl);
-    } 
+
+	public HomePage getHomePage() {
+		if (homePage == null) {
+			homePage = new HomePage(driver);
+		}
+		return homePage;
+	}
+
+	public WebDriver getDriver() {
+		return driver;
+	}
 
 }

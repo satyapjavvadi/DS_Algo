@@ -10,11 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import utils.JSUtils;
 
-public class LaunchPage extends BaseTopicPage {
+public class LaunchPage {
+
+	WebDriver driver;
 
 	// Locators
 	@FindBy(xpath = "//*[text()='Preparing for the Interviews']")
-	WebElement InterviewText;
+	WebElement interviewText;
 
 	@FindBy(linkText = "Get Started")
 	WebElement getStartedButton;
@@ -25,53 +27,29 @@ public class LaunchPage extends BaseTopicPage {
 	@FindBy(tagName = "button")
 	private List<WebElement> buttons;
 
-	@FindBy(xpath = "//nav[@class='navbar navbar-expand-md navbar-light bg-light']//a[normalize-space() != '']")
-	private List<WebElement> linkList;
-
 	// Constructor
 	public LaunchPage(WebDriver driver) {
-		super(driver);
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
-
 	}
 
-	public void BrowserIsOpen() {
-		System.out.println("Browser is already launched via hooks setup");
-
+	// Browser checks
+	public void browserIsOpen() {
 		if (driver == null) {
 			throw new IllegalStateException("WebDriver is not initialized");
 		}
 	}
 
-	public boolean isPreparingTextVisible() {
-		return InterviewText.isDisplayed();
-	}
-
-	public boolean isGetStartedButtonVisible() {
-		return getStartedButton.isDisplayed();
-	}
-
-	public boolean isGetStartedButtonEnabled() {
-		return getStartedButton.isEnabled();
+	public boolean doesPageContainText(String expectedText) {
+		return JSUtils.getPageInnerText(driver).contains(expectedText);
 	}
 
 	public void clickGetStartedButton() {
 		getStartedButton.click();
 	}
 
-	public boolean isCopyrightInfoVisible() {
-		return copyrightInfo.isDisplayed();
-	}
-
-	public String getCurrentUrl() {
-
-		String actualUrl = driver.getCurrentUrl();
-		System.out.println("Navigation to launch page successful: " + actualUrl);
-		return driver.getCurrentUrl();
-	}
-
-	public String getAllFieldSpellings() {
-		return JSUtils.getPageInnerText(driver);
+	public int getButtonCount() {
+		return buttons.size();
 	}
 
 	public List<String> getButtonText() {
@@ -82,13 +60,34 @@ public class LaunchPage extends BaseTopicPage {
 		return buttonTexts;
 	}
 
+	public boolean doesPageContainButtonWithText(String expectedButtonText) {
+		return getButtonText().contains(expectedButtonText);
+	}
+
 	public void clickButtonByText(String buttonText) {
 		for (WebElement button : buttons) {
-			if (button.getText().toLowerCase().equals(buttonText.toLowerCase())) {
+			if (button.getText().equalsIgnoreCase(buttonText)) {
 				button.click();
 				break;
 			}
 		}
 	}
 
+	// URL
+	public String getCurrentUrl() {
+		return driver.getCurrentUrl();
+	}
+
+	public boolean isOnPortalPage() {
+		return getCurrentUrl().contains("dsportalapp");
+	}
+
+	public boolean isButtonEnabled(String buttonText) {
+		for (WebElement button : buttons) {
+			if (button.getText().equalsIgnoreCase(buttonText)) {
+				return button.isEnabled();
+			}
+		}
+		return false;
+	}
 }
