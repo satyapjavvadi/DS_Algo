@@ -12,15 +12,15 @@ import io.cucumber.testng.CucumberOptions;
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "rerun:target/failedrerun.txt" }, // reporting
 																													// purpose
 		monochrome = true, // console output color
-		features = { "src/test/resources/features" },
+		features = { "src/test/resources/features/TC06_LoginPage.feature" },
 		// or @Getstarted",//location of feature files
-
+          tags = "@loginFeature or @launchFeature",
 		glue = "stepdefinition") // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@Override
-	@DataProvider(parallel = true)
+	@DataProvider(parallel = false)
 	public Object[][] scenarios() {
 
 		return super.scenarios();

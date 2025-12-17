@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import DriverManager.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,8 +27,8 @@ public class StackPage {
 	@FindBy(tagName = "body")
 	WebElement bodyText;
 
-	public StackPage(WebDriver driver) {
-		this.driver = driver;
+	public StackPage( ) {
+		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
 	}
 

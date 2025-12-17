@@ -13,19 +13,19 @@ public class DriverFactory {
 
 	public static WebDriver launchBrowser(String browser) {
 
-		if (browser.equalsIgnoreCase("Chrome")) {
-			mydriver.set(new ChromeDriver());
-		} else if (browser.equalsIgnoreCase("Firefox")) {
-			mydriver.set(new FirefoxDriver());
-		} else if (browser.equalsIgnoreCase("Edge")) {
-			mydriver.set(new EdgeDriver());
-		} else {
-			throw new IllegalArgumentException("Browser not supported: " + browser);
-		}
+		   if (browser.equalsIgnoreCase("Chrome")) {
+			   mydriver.set(new ChromeDriver());
+		   } else if (browser.equalsIgnoreCase("Firefox")) {
+			   mydriver.set(new FirefoxDriver());
+		   } else if (browser.equalsIgnoreCase("Edge")) {
+			   mydriver.set(new EdgeDriver());
+		   } else {
+			   throw new IllegalArgumentException("Browser not supported: " + browser);
+		   }
 
-		getDriver().manage().deleteAllCookies();
-		getDriver().manage().window().maximize();
-		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		   getDriver().manage().deleteAllCookies();
+		   getDriver().manage().window().maximize();
+		   getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 		return getDriver();
 

@@ -40,22 +40,22 @@ public class TopicUrlRegistry {
 		throw new IllegalArgumentException("❌ No URL mapping found for topic: " + topicName);
 	}
 
-	private static final Map<String, String> stackTopics = Map.of("Operations in Stack", "operations-in-stack",
-			"Stack Applications", "stack-applications", "Implementation", "implementation");
+//	private static final Map<String, String> stackTopics = Map.of("Operations in Stack", "operations-in-stack",
+//			"Stack Applications", "stack-applications", "Implementation", "implementation");
 
-	public static String getStackPath(String topicPage) {
-		String path = stackTopics.get(topicPage.trim());
-		if (path == null) {
-			throw new IllegalArgumentException("Unknown topic page: " + topicPage);
-		}
-		return path;
-	}
-
-	public static Set<String> getLinkedListExpectedTopics() {
-		return Set.of("Introduction", "Creating Linked LIst", // matches site typo
-				"Types of Linked List", "Implement Linked List in Python", "Traversal", "Insertion", "Deletion"
-
-		);
-	}
+//	public static String getStackPath(String topicPage) {
+//		String path = stackTopics.get(topicPage.trim());
+//		if (path == null) {
+//			throw new IllegalArgumentException("Unknown topic page: " + topicPage);
+//		}
+//		return path;
+//	}
+//
+//	public static Set<String> getLinkedListExpectedTopics() {
+//		return Set.of("Introduction", "Creating Linked LIst", // matches site typo
+//				"Types of Linked List", "Implement Linked List in Python", "Traversal", "Insertion", "Deletion"
+//
+//		);
+//	}
 
 }

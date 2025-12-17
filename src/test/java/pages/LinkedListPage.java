@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import DriverManager.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -57,8 +58,8 @@ public class LinkedListPage {
 	@FindBy(id = "output")
 	WebElement outputArea;
 
-	public LinkedListPage(WebDriver driver) {
-		this.driver = driver;
+	public LinkedListPage( ) {
+		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
 	}
 

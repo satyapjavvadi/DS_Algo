@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 
 import javax.swing.ToolTipManager;
 
+import DriverManager.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,8 +20,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class RegisterPage {
 	private WebDriver driver;
 
-	public RegisterPage(WebDriver driver) {
-		this.driver = driver;
+	public RegisterPage( ) {
+		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
 
 	}
