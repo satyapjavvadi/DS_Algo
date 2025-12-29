@@ -1,5 +1,8 @@
 package stepdefinition;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -11,6 +14,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import pages.PageObjectManager;
 import utils.ConfigReader;
+import utils.ExcelReader;
 import utils.ScreenShot;
 
 public class Hooks {
@@ -19,10 +23,17 @@ public class Hooks {
 
 	@Before(order = 0)
 	public void setup() {
+		// Load config file
 		Properties prop = ConfigReader.initializeProperties();
+
+		// Prefer TestNG parameter (set in TestRunner via System.setProperty),
+		// else fallback to config.properties
 		String browser = System.getProperty("browserName", prop.getProperty("browserName"));
+
+		// Launch browser via DriverFactory
 		driver = DriverFactory.launchBrowser(browser);
-		
+
+		// Navigate to bsdr URL
 		driver.get(prop.getProperty("baseURL"));
 
 	}
@@ -33,13 +44,29 @@ public class Hooks {
 		PageObjectManager pom = new PageObjectManager();
 		pom.getLaunchPage().clickGetStartedButton();
 	}
-	
-	/*@Before(value = "@Login", order = 2)
-	public void performLogin() {
-		PageObjectManager pom = new PageObjectManager(driver);
+
+	@Before(value = "@Login", order = 2)
+	public void performLogin() throws IOException {
+		PageObjectManager pom = new PageObjectManager();
+
+		String filePath = ConfigReader.getProperty("xlPath");
+		String sheetName = ConfigReader.getProperty("sheetName");
+
+		// Get first valid_login row from Excel
+		List<Map<String, String>> rows = ExcelReader.getScenarioRows(filePath, sheetName, "valid_login");
+
+		Map<String, String> row = rows.get(0);
+
+		String username = row.get("username");
+		String password = row.get("password");
+		String method = row.get("submission_method");
+		String expected = row.get("expected_message");
+
+		// Reuse Page Object helpers
 		pom.getLoginPage().navigateToLoginPage();
-		pom.getLoginPage().login("defaultUser", "defaultPass", "submits the login form");
-	}*/
+		pom.getLoginPage().login(username, password, method);
+
+	}
 
 	@AfterStep
 	public void screenShot(Scenario scenario) {
@@ -54,7 +81,9 @@ public class Hooks {
 
 	@After
 	public void tearDown() {
-		driver.quit();
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 
 }

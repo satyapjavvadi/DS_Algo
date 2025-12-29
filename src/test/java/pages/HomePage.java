@@ -9,15 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
+import utils.WaitUtils;
 
 public class HomePage {
 
 	private WebDriver driver;
-
-	// this belongs to launch page
-//	@FindBy(linkText = "Get Started")
-	//WebElement getStartedBtn;
 
 	@FindBy(linkText = "NumpyNinja")
 	WebElement companyName;
@@ -28,17 +25,9 @@ public class HomePage {
 	@FindBy(xpath = "//a[text()='Sign in']")
 	WebElement logInLink;
 
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement userName;
-
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement password;
-
-	@FindBy(xpath = "//input[@value='Login']")
-	WebElement loginBtn;
-
 	@FindBy(xpath = "//a[text()='Data Structures']")
 	WebElement dataStructureDropdown;
+
 	// all options in data structure dropdown
 	@FindBy(xpath = "//a[@class='dropdown-item']")
 	List<WebElement> dataStructureOptions;
@@ -54,17 +43,15 @@ public class HomePage {
 
 	@FindBy(xpath = "//div[@class='card-body d-flex flex-column']")
 	private List<WebElement> parentCard;
-	
 
-	//@FindBy(xpath = "//div[@class='bs-example']")
-	//private List<WebElement> parentCardPage;
-	
+	@FindBy(css = "div.alert[role='alert']")
+	private WebElement loginAlert;
+
 	@FindBy(xpath = "//a[text()=' Mamta.chavan0785@gmail.com ']")
 	WebElement loggedInUser;
-	
+
 	@FindBy(xpath = "//a[text()='Sign out']")
 	WebElement signOutLink;
-	
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -75,9 +62,13 @@ public class HomePage {
 		driver.get(baseURL);
 	}
 
-	//public void clickGetStarted() {
-		//getStartedBtn.click();
-	//}
+	public boolean getHomePage() {
+		return driver.getTitle().contains("/home");
+	}
+
+	public String getLoginSuccessMessage() {
+		return WaitUtils.getVisibleText(driver, loginAlert, 0);
+	}
 
 	public String getCompanyName() {
 		return companyName.getText();
@@ -91,11 +82,11 @@ public class HomePage {
 	public String getLogInLink() {
 		return logInLink.getText();
 	}
-	
+
 	public String getLoggedInUser() {
 		return loggedInUser.getText();
 	}
-	
+
 	public String getSignOutLink() {
 		return signOutLink.getText();
 	}
@@ -125,33 +116,6 @@ public class HomePage {
 		return ErrMsg.getText();
 	}
 
-	/*public void clickArrayOption() {
-		dataStructureDropdown.click();
-		arrayOption.click();
-	}
-
-	public void clickQueueOption() {
-		dataStructureDropdown.click();
-		queueOption.click();
-	}
-
-	public void clickTreeOption() {
-		dataStructureDropdown.click();
-		treeOption.click();
-	}
-
-	public void clickGraphOption() {
-		dataStructureDropdown.click();
-		graphOption.click();
-	}
-*/
-	public void enterSignIn() {
-		logInLink.click();
-		userName.sendKeys("mamta.chavan0785@gmail.com");
-		password.sendKeys("Chakuli123$");
-		loginBtn.click();
-	}
-
 	public void selectOption(String option) {
 		dataStructureDropdown.click();
 		for (WebElement opt : dataStructureOptions) {
@@ -178,49 +142,37 @@ public class HomePage {
 		}
 		return title;
 	}
-	
+
 	public String getPageHeading(String OptionName) {
 
-	switch (OptionName) {
-	case "Graph":
-		headingTitle.getText();
-		break;
-	case "Array":
-		headingTitle.getText();
-		break;
-	case "Linked List":
-		headingTitle.getText();
-		break;
-	case "Stack":
-		headingTitle.getText();
-		break;
-	case "Queue":
-		headingTitle.getText();
-		break;
-	case "Tree":
-		headingTitle.getText();
-		break;
-	
-	default:
-		System.out.println("Invalid Heading");
-		break;
-	}
-	System.out.println("Page Heading is: " + headingTitle.getText());
-	return headingTitle.getText();
-	//return OptionName;
-	}
-/*	public List<String> getPageTitles(String string2) {
-		List<String> title = new ArrayList<>();
-		for (WebElement child : parentCardPage) {
-			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
+		switch (OptionName) {
+		case "Graph":
+			headingTitle.getText();
+			break;
+		case "Array":
+			headingTitle.getText();
+			break;
+		case "Linked List":
+			headingTitle.getText();
+			break;
+		case "Stack":
+			headingTitle.getText();
+			break;
+		case "Queue":
+			headingTitle.getText();
+			break;
+		case "Tree":
+			headingTitle.getText();
+			break;
 
-			for (WebElement element : grandChild) {
-				title.add(element.getText());
-				System.out.println("Titles are: " + title);
-			}
+		default:
+			System.out.println("Invalid Heading");
+			break;
 		}
-		return title;
-	}*/
+		System.out.println("Page Heading is: " + headingTitle.getText());
+		return headingTitle.getText();
+		// return OptionName;
+	}
 
 	public void clickTitlePage(String ExpectedTitle) {
 		String topicHeading;

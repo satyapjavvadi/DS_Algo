@@ -24,20 +24,13 @@ public class GraphStepDefinition {
 
 	@Given("The user is on the Graph page")
 	public void the_user_is_on_the_graph_page() {
-		graphPage.clickLogIn(); // I will remove this and will use from HOOKs
 		graphPage.clickGraphGetStarted();
 
 	}
 
 	@Given("The user is in the Graph page")
 	public void the_user_is_in_the_graph_page() {
-		graphPage.clickLogIn();
 		graphPage.clickGraphGetStarted();
-	}
-
-	@When("User scrolls down the page")
-	public void user_scrolls_down_the_page() {
-
 	}
 
 	@Then("{string} under the topics covered should be visible and clickable")
@@ -92,7 +85,7 @@ public class GraphStepDefinition {
 
 	@Given("User is in tryEditor page of {string}")
 	public void user_is_in_try_editor_page_of(String string) {
-		graphPage.clickLogIn();
+		// graphPage.clickLogIn();
 		graphPage.clickGraphGetStarted();
 		graphPage.clickTopicUrl(string);
 		graphPage.clickTryherebtn();
@@ -139,11 +132,6 @@ public class GraphStepDefinition {
 		}
 	}
 
-	@When("The user clicks {string} button in Graph in page")
-	public void the_user_clicks_button_in_graph_in_page(String string) {
-
-	}
-
 	@When("The user clicks Try Here button in Graph page")
 	public void the_user_clicks_try_here_button_in_graph_page() {
 		graphPage.clickTopicUrl("Graph");
@@ -158,7 +146,6 @@ public class GraphStepDefinition {
 
 	@Given("The user is in the tryEditor page in Graph module")
 	public void the_user_is_in_the_try_editor_page_in_graph_module() {
-		graphPage.clickLogIn();
 		graphPage.clickGraphGetStarted();
 		graphPage.clickTopicUrl("Graph");
 		graphPage.clickTryherebtn();
@@ -180,8 +167,6 @@ public class GraphStepDefinition {
 	public void the_user_should_be_able_to_see_in_graph_page(String string) {
 		Assert.assertEquals(string, graphPage.getHeading(string));
 		System.out.println("Graph heading: " + string);
-		// Assert.assertEquals(string, dataStructures.getTopicsCoveredText());
-
 	}
 
 }

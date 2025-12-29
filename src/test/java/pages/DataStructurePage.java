@@ -12,22 +12,11 @@ import org.openqa.selenium.support.PageFactory;
 public class DataStructurePage {
 
 	WebDriver driver;
+
 	public DataStructurePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath = "//a[text()='Sign in']")
-	WebElement logInLink;// I will remove after satya's review
-
-	@FindBy(id = "id_username") // I will remove after satya's review
-	WebElement username;// I will remove after satya's review
-
-	@FindBy(id = "id_password") // I will remove after satya's review
-	WebElement password;// I will remove after satya's review
-
-	@FindBy(xpath = "//input[@value='Login']")
-	WebElement login;
 
 	@FindBy(xpath = "//a[@href='data-structures-introduction']")
 	WebElement dataStructureIntroGetStarted;
@@ -59,15 +48,6 @@ public class DataStructurePage {
 	@FindBy(xpath = "//div[@class='container']")
 	List<WebElement> practiceQuestions;
 
-
-//i will call this from hooks class 
-	public void getlogin() {
-		logInLink.click();
-		username.sendKeys("mamta.chavan0785@gmail.com");
-		password.sendKeys("Chakuli123$");
-		login.click();
-	}
-
 	public void clickTryherebtn() {
 		tryHereBtn.click();
 	}
@@ -98,16 +78,11 @@ public class DataStructurePage {
 	}
 
 	public void enterCode(String codeType) {
-
-		// codeEditor.clear();
-
 		if (codeType.equalsIgnoreCase("valid")) {
-
 			codeEditor.sendKeys("print('Hello')");
 			System.out.println("Valid code entered");
 		} else if (codeType.equalsIgnoreCase("invalid")) {
 			codeEditor.sendKeys("text");
-
 			System.out.println("Invalid code entered");
 		}
 	}
@@ -118,9 +93,7 @@ public class DataStructurePage {
 			return output.getText();
 		}
 
-		if (codeType.equalsIgnoreCase("invalid"))
-
-		{
+		if (codeType.equalsIgnoreCase("invalid")) {
 			Alert alert = driver.switchTo().alert();
 			String alertText = alert.getText();
 			System.out.println("Alert handled for invalid code" + alertText);

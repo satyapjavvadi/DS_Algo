@@ -1,13 +1,14 @@
 package pages;
 
-import java.util.List;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import utils.ConfigReader;
+import utils.JSUtils;
+import utils.WaitUtils;
 
 public class LoginPage {
 
@@ -15,22 +16,19 @@ public class LoginPage {
 
 	// Locators
 	@FindBy(id = "id_username")
-	WebElement usernameField;
+	private WebElement usernameField;
 
 	@FindBy(id = "id_password")
-	WebElement passwordField;
+	private WebElement passwordField;
 
 	@FindBy(xpath = "//input[@value='Login']")
-	WebElement loginButton;
-
-	@FindBy(tagName = "a")
-	List<WebElement> allLinks;
+	private WebElement loginButton;
 
 	@FindBy(css = ".alert, .error, .errormessage")
-	WebElement errorMessage;
+	private WebElement errorMessage;
 
 	@FindBy(linkText = "Register")
-	WebElement registerLink;
+	private WebElement registerLink;
 
 	// Constructor
 	public LoginPage(WebDriver driver) {
@@ -38,28 +36,34 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	// Input
+	public void navigateToLoginPage() {
+		driver.get(ConfigReader.getProperty("baseURL") + "login");
+		WaitUtils.waitForVisibility(driver, usernameField, 10);
+	}
+
 	public void enterUsername(String username) {
-		if (username != null && !username.isEmpty()) {
-			usernameField.sendKeys(username);
-		}
+		WebElement field = WaitUtils.waitForVisibility(driver, usernameField, 10);
+		field.clear();
+		field.sendKeys(username);
 	}
 
 	public void enterPassword(String password) {
 		if (password != null && !password.isEmpty()) {
+			passwordField.clear();
 			passwordField.sendKeys(password);
 		}
 	}
 
 	// Submission
 	public void clickLoginButton() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginButton);
+		JSUtils.clickElement(driver, loginButton);
 	}
 
 	public void pressEnterToSubmit() {
 		passwordField.sendKeys(Keys.ENTER);
 	}
 
+	// Helpers
 	public boolean isOnLoginPage() {
 		return driver.getCurrentUrl().contains("/login");
 	}
@@ -72,10 +76,8 @@ public class LoginPage {
 		return registerLink.isDisplayed();
 	}
 
-	public String getAllFieldSpellings() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		String text = (String) js.executeScript("return document.documentElement.innerText;");
-		return text;
+	public String getDisplayedErrorMessage() {
+		return errorMessage.getText().trim();
 	}
 
 	// Reusable login helper
@@ -86,6 +88,7 @@ public class LoginPage {
 		switch (method.toLowerCase().trim()) {
 		case "submits the login form":
 		case "initiates login":
+		case "submits the login form with mouse click":
 			clickLoginButton();
 			break;
 		case "presses enter":
@@ -97,16 +100,8 @@ public class LoginPage {
 		}
 	}
 
-	public WebElement getUsernameField() {
-		return usernameField;
-	}
-
-	public WebElement getPasswordField() {
-		return passwordField;
-	}
-
-	public String getDisplayedErrorMessage() {
-		return errorMessage.getText().trim();
+	public void waitForHomeRedirect() {
+		WaitUtils.waitForUrlContains(driver, "/home", 10);
 	}
 
 }

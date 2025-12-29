@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.DataStructurePage;
 import pages.LaunchPage;
+
 public class HomeStepDefinition {
 
 	WebDriver driver = DriverFactory.getDriver();
@@ -21,12 +22,12 @@ public class HomeStepDefinition {
 	public void the_user_is_on_the_home_page() {
 		System.out.println("Current URL: " + driver.getCurrentUrl());
 	}
-	
+
 	@When("The user selects {string} from the drop down without Sign in.")
 	public void the_user_selects_from_the_drop_down_without_sign_in(String Option) {
 		homePage.selectOption(Option);
 	}
-	
+
 	@Then("The user should able to see an warning message {string}")
 	public void the_user_should_able_to_see_an_warning_message(String string) {
 		Assert.assertEquals(string, homePage.getErrMsg());
@@ -36,7 +37,7 @@ public class HomeStepDefinition {
 	@Given("The user is on the Launch page")
 	public void the_user_is_on_the_launch_page() {
 		System.out.println("Current URL: " + driver.getCurrentUrl());
-		}
+	}
 
 	@When("The user clicks the Get Started button")
 	public void the_user_clicks_the_get_started_button() {
@@ -68,23 +69,18 @@ public class HomeStepDefinition {
 
 	@Then("The user should able to see {int} options Arrays {string} in dropdown menu")
 	public void the_user_should_able_to_see_options_arrays_in_dropdown_menu(Integer int6, String string) {
-
-	//	homePage.getDataStructureOptionsText();
 		Assert.assertTrue(homePage.getDataStructureOptionsText().contains("Arrays"));
 	}
-	
+
 	@When("The user clicks Get Started buttons of {string} on the homepage without Sign in")
 	public void the_user_clicks_get_started_buttons_of_on_the_homepage_without_sign_in(String TabName) {
 		homePage.clickTitlePage(TabName);
 
 	}
-	
+
 	@Given("The user is on the Home page after sign in")
 	public void the_user_is_on_the_home_page_after_sign_in() {
-	//	homePage.clickGetStarted();
-		homePage.enterSignIn();
-		//pom.
-
+		System.out.println("User is on Home page after sign in");
 	}
 
 	@When("The user selects {string} from the drop down after Sign in.")
@@ -95,9 +91,7 @@ public class HomeStepDefinition {
 
 	@Then("The user should be able to see {string} page with details.")
 	public void the_user_should_be_able_to_see_page_with_details(String OptionName) {
-		Assert.assertEquals(OptionName, homePage.getPageHeading(OptionName));//***Asked by Sumathi
-	//	Assert.assertEquals(OptionName, homePage.getHeadingTitle()); 
-		//System.out.println(dataStructures.getkHeading(OptionName));
+		Assert.assertEquals(OptionName, homePage.getPageHeading(OptionName));
 	}
 
 	@When("The user clicks Get Started buttons of {string} tab on the homepage after Sign in")
@@ -108,9 +102,7 @@ public class HomeStepDefinition {
 
 	@Given("The user has signed in with valid credentials")
 	public void the_user_has_signed_in_with_valid_credentials() {
-		//homePage.clickGetStarted();
-		homePage.enterSignIn();
-
+		System.out.println("User has signed in with valid credentials");
 	}
 
 	@When("The user lands on the Home page after sign in")
@@ -122,7 +114,7 @@ public class HomeStepDefinition {
 	public void the_user_should_be_able_to_see_on_the_right_corner_of_the_home_page(String Links) {
 		if (Links.equalsIgnoreCase("Sign out")) {
 			Assert.assertEquals(Links, homePage.getSignOutLink());
-		} else if (Links.equalsIgnoreCase("Mamta.chavan0785@gmail.com")) {
+		} else if (Links.equalsIgnoreCase("Validuser")) {
 			Assert.assertEquals(Links, homePage.getLoggedInUser());
 		}
 	}

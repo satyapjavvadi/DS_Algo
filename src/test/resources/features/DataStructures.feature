@@ -1,4 +1,4 @@
-@dataStructurefeature @Getstarted 
+@dataStructurefeature @Getstarted @Login 
 Feature: DS Algo Portal functional testing 
 
 Background: Signed in user is navigated to Data Structure module from Home Page
@@ -12,8 +12,7 @@ Then the user should be able to see "<expected_text>"
       | expected_text  |
       | Data Structures-Introduction |
       | Topics Covered |
-
-@Sing      
+     
 Scenario: Verify that Time Complexity tab is visible and clickable 
 Given The user is in the Data Structures - Introduction page
 When The user clicks Time Complexity button

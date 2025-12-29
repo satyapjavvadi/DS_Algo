@@ -1,7 +1,6 @@
-@homeSigninfeature @Getstarted
+@homeSigninfeature @Getstarted @Login 
 Feature: DS Algo Portal functional testing 
 Background: User is signed in
-
 
 Scenario Outline: Verify that user is able to see "<Links>" on the right corner of the Home page
 Given The user has signed in with valid credentials
@@ -9,7 +8,7 @@ When The user lands on the Home page after sign in
 Then The user should be able to see "<Links>" on the right corner of the Home page
 Examples:
 | Links               |
-|  Mamta.chavan0785@gmail.com |
+|  Validuser |
 |  Sign out           |
 
 

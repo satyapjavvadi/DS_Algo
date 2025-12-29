@@ -1,4 +1,4 @@
-@graphfeature @Getstarted 
+@graphfeature @Getstarted @Login 
  Feature: DS Algo Portal functional testing 
 
 background: Signed in user is navigated to Graph module from Home Page
@@ -66,9 +66,7 @@ Scenario: Verify that user gets error message when click on Run button without e
 Given The user is in the tryEditor page in Graph module
 When The user clicks the Run Button without entering the code in the Editor
 Then The user should able to get the error message "Empty Code Editor"
-
-
-@singleTest   
+ 
 Scenario Outline: Verify Try Editor response for "<topic_page>" with "<code_type>" code
 Given User is in tryEditor page of "<topic_page>"
 When User enters "<code_type>" code in the Try Editor and clicks on "Run" button
