@@ -1,7 +1,9 @@
 package pages;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,6 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import utils.ConfigReader;
+import utils.GraphExcelreader;
+import utils.WaitUtils;
 
 public class GraphPage {
 
@@ -58,6 +64,13 @@ public class GraphPage {
 		PageFactory.initElements(driver, this);
 
 	}
+	
+
+	public void navigateToGraphPage() {
+		driver.get(ConfigReader.getProperty("baseURL")+"/home");
+	//	WaitUtils.waitForVisibility(driver, usernameField, 10);
+	}
+
 
 	public List<String> getPracticeQuestionsList() {
 		List<String> questions = new ArrayList<>();
@@ -203,5 +216,4 @@ public class GraphPage {
 	public void clickPracticeQuestionsLink() {
 		practiceQuestionsLink.click();
 	}
-
 }

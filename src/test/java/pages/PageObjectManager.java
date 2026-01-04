@@ -11,12 +11,11 @@ public class PageObjectManager {
 	private LaunchPage launchPage;
 	private LoginPage loginPage;
     private RegisterPage registerPage;
-    private LinkedListPage linkedlistPage;
     private StackPage stackPage;
     private DataStructurePage dataStructurePage;
     private HomePage homePage;
     private GraphPage graphPage;
-
+    
 	public PageObjectManager() {
 		this.driver = DriverFactory.getDriver();
 		if (this.driver == null) {
@@ -72,21 +71,4 @@ public class PageObjectManager {
         return registerPage;
     }
  
-    /*
-public LinkedListPage getLinkedListPage() {
-	if(linkedlistPage == null) {
-		linkedlistPage = new LinkedListPage(driver);
-	}
-   
-	return linkedlistPage;
-	}
-
-public StackPage getStackPage() {	
-	if(stackPage == null) {
-		stackPage = new StackPage(driver);
-		
-	}
-	   return stackPage;
-	}
-*/
 }

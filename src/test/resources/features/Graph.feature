@@ -18,7 +18,6 @@ Then the user should be able to see "<expected_topic>" in graph page
 
 Scenario: Verify that user is able to see and click all links uder Topics covered   
 Given The user is in the Graph page
-When User scrolls down the page
 Then  "<Topic_link>" under the topics covered should be visible and clickable
 Examples:
     | Topic_link               |
@@ -74,10 +73,13 @@ Then User must see "<expected_result>" in the UI
 
 Examples:
       | topic_page                | code_type | expected_result                                                          |
-      | Graph			          | valid     | Hello                            |
+	  | Graph			          | valid     | Hello                            |
       | Graph      				| invalid   | an error popup stating NameError: name 'invalid' is not defined on line 1 |
       | Graph Representations    				  | valid  | Hello                            |
       | Graph Representations     | invalid   | an error popup stating NameError: name 'invalid' is not definedon line 1  |
+
+Scenario: Verify Try Editor response using Excel driven data
+  Given User reads and executes test data from excel TryEditor
 
 Scenario: Verify that user is able to navigate to Practice Questions page
 Given The user is in the Graph page

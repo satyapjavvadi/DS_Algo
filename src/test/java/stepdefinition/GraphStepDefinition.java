@@ -1,5 +1,9 @@
 package stepdefinition;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -9,6 +13,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.GraphPage;
 import pages.PageObjectManager;
+import utils.ConfigReader;
+import utils.GraphExcelreader;
 
 public class GraphStepDefinition {
 	private PageObjectManager pom;
@@ -92,7 +98,8 @@ public class GraphStepDefinition {
 	}
 
 	@When("User enters {string} code in the Try Editor and clicks on {string} button")
-	public void user_enters_code_in_the_try_editor_and_clicks_on_button(String code_type, String string2) {
+	public void user_enters_code_in_the_try_editor_and_clicks_on_button(String code_type, String string2)
+			throws IOException {
 		String valid = "print('Hello')";
 		String invalid = "invalid";
 		if (code_type.equalsIgnoreCase("valid")) {
@@ -106,6 +113,7 @@ public class GraphStepDefinition {
 
 	@Then("User must see {string} in the UI")
 	public void user_must_see_in_the_ui(String expected_result) {
+
 		if (expected_result.contains("error popup")) {
 			String output = graphPage.getErrorPopupText();
 			Assert.assertTrue(output.contains("NameError"));
@@ -167,6 +175,38 @@ public class GraphStepDefinition {
 	public void the_user_should_be_able_to_see_in_graph_page(String string) {
 		Assert.assertEquals(string, graphPage.getHeading(string));
 		System.out.println("Graph heading: " + string);
+	}
+
+	@Given("User reads and executes test data from excel TryEditor")
+	public void user_reads_and_executes_test_data_from_excel_try_editor() {
+		// graphPage.navigateToGraphPage();
+		List<Map<String, String>> testData = GraphExcelreader.getData();
+		for (Map<String, String> row : testData) {
+
+			String topic = row.get("topic_page");
+			String codeType = row.get("code_type");
+			String expected = row.get("expected_result");
+			graphPage.clickGraphGetStarted();
+			graphPage.clickTopicUrl(topic);
+			graphPage.clickTryherebtn();
+
+			if (codeType.equalsIgnoreCase("valid")) {
+				graphPage.enterCode("print('Hello')");
+				graphPage.clickRunButton();
+				Assert.assertTrue(graphPage.getOutputText().contains(expected));
+				System.out.println("Output: " + graphPage.getOutputText());
+				// Assert.assertEquals(graphPage.getOutputText(), expected);
+			} else {
+				graphPage.enterCode("invalid");
+				graphPage.clickRunButton();
+				String alertText = graphPage.getErrorPopupText();
+
+				Assert.assertTrue(alertText.contains(expected));
+			}
+
+			System.out.println("Executed for topic: " + topic);
+			graphPage.navigateToGraphPage();
+		}
 	}
 
 }
