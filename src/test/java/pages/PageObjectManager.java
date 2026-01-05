@@ -5,28 +5,18 @@ import DriverManager.DriverFactory;
 public class PageObjectManager {
 
 	private LaunchPage launchPage;
-	public LoginPage loginPage;
-    
-    
-    private RegisterPage registerPage;
-    private ArrayPage arrayPage;
-    private QueuePage queuePage;
-    private TreePage treePage;
-    private PracticeQuestionsPage practicePage;
-    
-
-	public PageObjectManager() {
-		this.driver = DriverFactory.getDriver();
-		if (this.driver == null) {
-			throw new IllegalStateException("WebDriver is not initialized");
-		}
-
-	}
 	private LoginPage loginPage;
 	private RegisterPage registerPage;
 	private LinkedListPage linkedlistPage;
 	private StackPage stackPage;
 	private HomePage homePage;
+	
+    private ArrayPage arrayPage;
+    private QueuePage queuePage;
+    private TreePage treePage;
+    private PracticeQuestionsPage practicePage;
+
+
 
 	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
@@ -44,7 +34,7 @@ public class PageObjectManager {
         
     public RegisterPage getregisterpage() {
         if(registerPage == null){
-            registerPage = new RegisterPage(driver);
+            registerPage = new RegisterPage();
         }
 
         return registerPage;
@@ -52,7 +42,7 @@ public class PageObjectManager {
     
     public ArrayPage getarraypage() {
         if(arrayPage == null){
-            arrayPage = new ArrayPage(driver);
+            arrayPage = new ArrayPage();
         }
 
         return arrayPage;
@@ -60,7 +50,7 @@ public class PageObjectManager {
     
     public QueuePage getqueuepage() {
         if(queuePage == null){
-            queuePage = new QueuePage(driver);
+            queuePage = new QueuePage();
         }
 
         return queuePage;
@@ -68,26 +58,21 @@ public class PageObjectManager {
     
     public TreePage gettreepage() {
         if(treePage == null){
-            treePage = new TreePage(driver);
+            treePage = new TreePage();
         }
 
         return treePage;
     }
     public PracticeQuestionsPage getpracticepage() {
         if(practicePage == null){
-            practicePage = new PracticeQuestionsPage(driver);
+            practicePage = new PracticeQuestionsPage();
         }
 
         return practicePage;
     }
-	}
+	
 
-	public RegisterPage getRegisterPage() {
-		if (registerPage == null) {
-			registerPage = new RegisterPage();
-		}
-		return registerPage;
-	}
+	
 
 	public LinkedListPage getLinkedListPage() {
 		if (linkedlistPage == null) {

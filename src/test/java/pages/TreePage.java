@@ -17,11 +17,7 @@ public class TreePage {
 	private WebDriver driver;
 	private static final int TIMEOUT = 20;
 
-	public TreePage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-
-	}
+	
 	// locators
 
 			@FindBy(xpath = "//*[@class='bg-secondary text-white']")

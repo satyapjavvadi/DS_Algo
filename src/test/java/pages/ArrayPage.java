@@ -20,11 +20,7 @@ import utils.WaitUtils;
 public class ArrayPage {
 	private WebDriver driver;
 
-	public ArrayPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-
-	}
+	
 
 	// locators
 

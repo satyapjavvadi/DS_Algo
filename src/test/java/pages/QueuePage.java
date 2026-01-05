@@ -18,11 +18,7 @@ import utils.WaitUtils;
 public class QueuePage {
 	private WebDriver driver;
 
-	public QueuePage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-
-	}
+	
 	
 	
 	// locators

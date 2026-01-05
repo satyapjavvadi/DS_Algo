@@ -21,11 +21,7 @@ public class PracticeQuestionsPage {
 
 	private WebDriver driver;
 
-	public PracticeQuestionsPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-
-	}
+	
 
 	// locators
 	@FindBy(xpath = "//div[@class='list-group']/a")
