@@ -1,13 +1,11 @@
 package pages;
 
+import java.security.PublicKey;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
 
-import javax.swing.ToolTipManager;
+import java.util.List;
 
 import DriverManager.DriverFactory;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +14,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.ExcelReader;
+import utils.TestContext;
+import utils.WaitUtils;
 
 public class RegisterPage {
 	private WebDriver driver;
@@ -58,7 +60,8 @@ public class RegisterPage {
 	@FindBy(xpath = "//input[@value='Register']")
 	private WebElement Registerbtn;
 
-	@FindBy(xpath = "//div[@class='alert alert-primary']")
+	// @FindBy(xpath = "//div[@class='alert alert-primary']")
+	@FindBy(css = "div.alert.alert-primary[role='alert']")
 	WebElement alertMessage;
 
 	@FindBy(xpath = "//ul/li")
@@ -79,45 +82,95 @@ public class RegisterPage {
 		return actualurl;
 
 	}
+	/*
+	 * public void Register_User(String username, String password, String
+	 * confirmpassword) throws InterruptedException { usernameField.clear(); if
+	 * (!username.isEmpty()) usernameField.sendKeys(username);
+	 * System.out.println("entering username" + username); passwordField.clear(); if
+	 * (!password.isEmpty()) passwordField.sendKeys(password);
+	 * System.out.println("entering pwd" + password); confirmPasswordField.clear();
+	 * if (!confirmpassword.isEmpty())
+	 * confirmPasswordField.sendKeys(confirmpassword);
+	 * System.out.println("entering confirm pwd" + confirmpassword);
+	 * Registerbtn.click(); Thread.sleep(500); }
+	 */
+	
+	public void enterUsername(String username) {
+        WebElement field = WaitUtils.waitForVisibility(driver, usernameField, 10);
+        field.clear();
+        field.sendKeys(username);
+    }
 
-	public void Register_User(String username, String password, String confirmpassword) {
-		usernameField.sendKeys(username);
-		passwordField.sendKeys(password);
-		confirmPasswordField.sendKeys(confirmpassword);
-		Registerbtn.click();
-	}
+    public void enterPassword(String password) {
+        if (password != null && !password.isEmpty()) {
+            passwordField.clear();
+            passwordField.sendKeys(password);
+        }
+    }
+    
+    public void enterConfirmPassword(String confirmpassword) {
+        if (confirmpassword != null && !confirmpassword.isEmpty()) {
+            confirmPasswordField.clear();
+            confirmPasswordField.sendKeys(confirmpassword);
+        }
+    }
+            public void clickregisterbutton() {
+            	Registerbtn.click();
+            	
+            }
+            
+        
+    
 
-	public String Registerpage_errormessage() {
 
-		try {
-			if (alertMessage != null && alertMessage.isDisplayed()) {
-				String errorMsg = alertMessage.getText().trim();
-				if (!errorMsg.isEmpty()) {
+	public String Registerpage_errormessage(boolean checkTooltip) {
 
-					return errorMsg;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("encounter excep " + e);
-		}
+		// 1. Check HTML5 tooltip only if allowed
+		if (checkTooltip) {
+			List<WebElement> fields = Arrays.asList(usernameField, passwordField, confirmPasswordField);
 
-		// List of form fields to check for validation messages
-		List<WebElement> fields = Arrays.asList(usernameField, passwordField, confirmPasswordField);
-		for (WebElement field : fields) {
-			try {
-				if (field != null) {
-					String validationMsg = field.getAttribute("validationMessage");
-					System.out.println("tooltip msg is " + validationMsg);
-					if (validationMsg != null && !validationMsg.isEmpty()) {
-						return validationMsg;
+			for (WebElement field : fields) {
+				try {
+					String tooltip = field.getAttribute("validationMessage");
+					if (tooltip != null && !tooltip.isEmpty()) {
+						return tooltip.trim();
 					}
+				} catch (Exception ignored) {
 				}
-			} catch (Exception e) {
-				System.out.println("encounter excep in tooltiperror " + e);
 			}
 		}
 
-		return null;
+		// 2. Check application alert <div>
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+			WebElement msg = wait.until(ExpectedConditions.visibilityOf(alertMessage));
+			return msg.getText().trim();
+		} catch (Exception e) {
+			return "NO_ALERT_FOUND";
+		}
+	}
+	
+	public void login(String method, String scenarioType) {
+        TestContext.testData = ExcelReader.getTestData(scenarioType);
+
+        enterUsername(TestContext.testData.get("username"));
+        enterPassword(TestContext.testData.get("password"));
+        enterConfirmPassword(TestContext.testData.get("confirmpassword"));
+
+        switch (method.toLowerCase().trim()) {
+            case "submits the register form":
+            case "initiates register":
+            case "submits the register form with mouse click":
+                Registerlink_click();
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown submission method: " + method);
+        }
+    }
+
+	public void browser_refresh() {
+		driver.navigate().refresh();
+
 	}
 
 	// non functional methods
@@ -143,9 +196,19 @@ public class RegisterPage {
 	public List<String> getbuttontext() {
 		List<String> button_names = new ArrayList<String>();
 		for (WebElement button : buttoncountElements) {
-			button_names.add(button.getText().trim());
-		}
-		return button_names;
+
+	        String text = button.getText().trim();
+
+	        // If getText() is empty, try value attribute
+	        if (text.isEmpty()) {
+	            text = button.getAttribute("value");
+	        }
+
+	        if (text != null && !text.trim().isEmpty()) {
+	            button_names.add(text.trim());
+	        }
+	    }
+	    return button_names;
 	}
 
 	public List<String> Registerpagelinktext() {

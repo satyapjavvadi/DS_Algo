@@ -7,12 +7,15 @@ import java.util.Properties;
 
 import io.cucumber.java.*;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import DriverManager.DriverFactory;
 import pages.PageObjectManager;
 import utils.ConfigReader;
 import utils.ExcelReader;
+import utils.ExcelReader;
 import utils.ScreenShot;
+import utils.TestContext;
 
 public class Hooks {
 
@@ -32,6 +35,8 @@ public class Hooks {
 				prop.getProperty("browserName")
 		);
 
+		DriverFactory.launchBrowser(browser);
+		DriverFactory.getDriver().get(prop.getProperty("baseURL"));
 		DriverFactory.launchBrowser(browser);
 		DriverFactory.getDriver().get(prop.getProperty("baseURL"));
 

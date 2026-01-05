@@ -12,6 +12,7 @@ public class DriverFactory {
 	public static ThreadLocal<WebDriver> mydriver = new ThreadLocal<>();
 
 	public static WebDriver launchBrowser(String browser) {
+		System.out.println("Launching browser: " + browser );
 
 		   if (browser.equalsIgnoreCase("Chrome")) {
 			   mydriver.set(new ChromeDriver());
@@ -31,8 +32,8 @@ public class DriverFactory {
 
 	}
 
-	// adds thread safety for concurrent access(ThreadLocal itself is thread-safe,
-	// this can help avoid race conditions in some setups
+	// adds thread safety for concurrent access(ThreadLocal itself isthread-safe, //
+	// this can help avoid race conditions in some setups 
 	public static synchronized WebDriver getDriver() {
 		return mydriver.get();
 	}

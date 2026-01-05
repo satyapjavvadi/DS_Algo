@@ -6,7 +6,8 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-	public static Properties initializeProperties() {
+	public static Properties initializeProperties() 
+	{
 		Properties prop = new Properties();
 		File propFile = new File(System.getProperty("user.dir") + "\\src\\test\\resources\\config.properties");
 
@@ -23,5 +24,11 @@ public class ConfigReader {
 	public static String getProperty(String key) {
 		return initializeProperties().getProperty(key);
 	}
+
+	public static String getProperty(String key) {
+		return initializeProperties().getProperty(key);
+	}
+	
+    
 
 }

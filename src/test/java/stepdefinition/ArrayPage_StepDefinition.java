@@ -7,31 +7,47 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-
+import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.ArrayPage;
 import pages.PageObjectManager;
 
 public class ArrayPage_StepDefinition {
 	private final PageObjectManager pom;
 	 WebDriver driver;
+	 private ArrayPage arrayPage;
 
 	public ArrayPage_StepDefinition() {
 		pom = new PageObjectManager();
+		driver=DriverFactory.getDriver();
+		arrayPage=pom.getarraypage();
+		
 	}
 
 	@Given("The registered user has navigated to the Array page")
 	public void the_registered_user_has_navigated_to_the_array_page() {
-		//write login page code 
-		//write home page code cicking of get started button in array card
+		driver.get("https://dsportalapp.herokuapp.com/login");
+		pom.getLoginPage().enterUsername("validUser");
+		pom.getLoginPage().enterPassword("validPass");
+		pom.getLoginPage().clickLoginButton();
+		pom.getarraypage().arrayGetStarted();
+
+		//driver.get("https://dsportalapp.herokuapp.com/array");
+		
 		System.out.println("user is on Array page" + pom.getarraypage().Arraypage_link_Check());
-		Assert.assertEquals(pom.getarraypage().Arraypage_link_Check().contains("array"), "user is not on Array page");
+		Assert.assertTrue(pom.getarraypage().Arraypage_link_Check().contains("array"), "user is not on Array page");
 	}
 
-	@Then("the user should be able to see {string}")
-	public void the_user_should_be_able_to_see(String expectedText) {
+	
+		
+	
+
+	@Then("the user should be able to see {string} in Array page")
+	public void the_user_should_be_able_to_see_in_array_page(String expectedText) {
 		List<String> headings = pom.getarraypage().getheadingtext();
+		System.out.println(headings);
 		boolean found = false;
 
 		for (String heading : headings) {
@@ -40,6 +56,7 @@ public class ArrayPage_StepDefinition {
 				break;
 			}
 		}
+		
 
 		Assert.assertTrue(found, "Expected heading '" + expectedText + "' not found. Actual headings: " + headings);
 	}
@@ -58,32 +75,42 @@ public class ArrayPage_StepDefinition {
 				"Mismatch in subtopic link texts in Array page: " + links);
 	}
 
-	@When("the user selects {string} under Topics Covered")
-	public void the_user_selects_under_topics_covered(String topic) {
+	@When("the user selects {string} Topics Covered")
+	public void the_user_selects_topics_covered(String topic) {
 		pom.getarraypage().clicktopiclink(topic);
 	}
 
 	@Then("the {string} content should be present")
 	public void the_content_should_be_present(String pageurltext) {
 		String currenturl = pom.getarraypage().Arraypage_link_Check();
-		Assert.assertEquals(currenturl.contains(pageurltext), "URL does not contain expected text: " + pageurltext);
+		Assert.assertTrue(currenturl.contains(pageurltext), "URL does not contain expected text: " + pageurltext);
 	}
 
-	@Given("the user is on the {string} page")
-	public void the_user_is_on_the_page(String topicPage) {
-		Assert.assertEquals(pom.getarraypage().Arraypage_link_Check().contains(topicPage),
+	@Given("the user is on the {string} subtopic array page")
+	public void the_user_is_on_the_subtopic_array_page(String topicPage) {
+		pom.getarraypage().clicktopiclink(topicPage);
+		Assert.assertTrue(pom.getarraypage().getheadingtext().contains(topicPage),
 				"user is not on Arraysubtopic page");
+		System.out.println("check "+topicPage);
 	}
 
-	@When("the user scrolls through the content")
-	public void the_user_scrolls_through_the_content() {
+	@When("the user scrolls the array topic page")
+	public void the_user_scrolls_the_array_topic_page() {
 		pom.getarraypage().scrolltobottom();
 	}
 
 	@Then("the {string} button should be visible below the {string} content")
 	public void the_button_should_be_visible_below_the_content(String buttonText, String section) {
 		Assert.assertTrue(pom.getarraypage().checktryherebutton_displayed(buttonText, section),
-				buttonText + " tey here button not visible in " + section);
+				buttonText + " try here button not visible in " + section);
+	}
+	
+	@Given("User is on the array subtopic {string} page")
+    public void user_is_on_the_array_subtopic_page(String topicPage) {
+		pom.getarraypage().clicktopiclink(topicPage);
+		Assert.assertTrue(pom.getarraypage().getheadingtext().contains(topicPage),
+				"user is not on Arraysubtopic page");
+		System.out.println("check "+topicPage);
 	}
 
 	@When("User clicks the {string} button")
@@ -99,71 +126,33 @@ public class ArrayPage_StepDefinition {
 
 	}
 
-	@Given("User is in {string} UI")
-	public void user_is_in_ui(String topicPage) {
-		pom.getarraypage().clicktopiclink(topicPage);
-		Assert.assertEquals(pom.getarraypage().Arraypage_link_Check().contains(topicPage),
-				"user is not on Arraysubtopic page");
-
-	}
-
-	@When("User enters {string} code in the Try Editor and clicks on {string} button")
-	public void user_enters_code_in_the_try_editor_and_clicks_on_button(String codeType, String buttonName) {
-		// need to enter code to read data from excel
-
-		pom.getarraypage().enterCode(codeType);
-		System.out.println("Entered " + codeType + " code into Try Editor.");
-		pom.getarraypage().clickRunButton();
-	}
-
-	@Then("User must see {string} in the UI")
-	public void user_must_see_in_the_ui(String expectedResult) {
-		String output_text = pom.getarraypage().getOutput_text();
-		if (!output_text.isEmpty()) {
-			Assert.assertTrue(output_text.contains(expectedResult),
-					"Expected output not found in console. Expected: " + expectedResult + ", Actual: " + output_text);
-
-		}
-
-		else {
-			String alertText = "";
-			try {
-				alertText = pom.getarraypage().getAlerttext();
-			} catch (NoAlertPresentException e) {
-
-			}
-			Assert.assertTrue(alertText.contains(expectedResult),
-					"Expected error message not found in alert. Expected: " + expectedResult + ", Actual: "
-							+ alertText);
-		}
-	}
+	
 
 	@When("User clicks on {string} link under Topics Covered section")
 	public void user_clicks_on_link_under_topics_covered_section(String topicPage) {
-		pom.getarraypage().subtopiclinks();
+		pom.getarraypage().clicktopiclink(topicPage);
 
 	}
 
-	@Then("User must see {string} link displayed in the side navigation bar in UI")
-	public void user_must_see_link_displayed_in_the_side_navigation_bar_in_ui(String linkText) {
+	@Then("User must see {string} clickable link displayed in the side navigation bar in UI")
+	public void user_must_see_clickable_link_displayed_in_the_side_navigation_bar_in_ui(String linkText) {
 		boolean islinkvisible = pom.getarraypage().isPracticeQuestionLinkVisible();
 		Assert.assertTrue(islinkvisible, "Expected link '" + linkText + "' is not visible in side navigation bar");
-	}
-
-	@Then("User must view {string} as clickable link in side nav bar")
-	public void user_must_view_as_clickable_link_in_side_nav_bar(String linkText) {
-		boolean islinkenabled = pom.getarraypage().isPracticeQuestionLinkVisible();
+		
+		boolean islinkenabled = pom.getarraypage().isPracticeQuestionLinkEnabled();
 		Assert.assertTrue(islinkenabled, "Expected link '" + linkText + "' is not enabled in side navigation bar");
 	}
 
-	@When("User clicks on {string} link in Array sub topic UI")
-	public void user_clicks_on_link_in_array_sub_topic_ui(String linkText) {
+
+	@When("User clicks on {string} link in Array {string} UI")
+	public void user_clicks_on_link_in_Array_ui(String linkText, String topicPage) {
+		pom.getarraypage().clicktopiclink(topicPage);
 		pom.getarraypage().clickPracticeQuestionsLink();
 	}
 
 	@Then("User must be navigated to {string} link containing list of questions")
 	public void user_must_be_navigated_to_link_containing_list_of_questions(String pageName) {
-		boolean iscontextpresent = pom.getarraypage().isPracticeQuestionsListNotEmpty();
+		boolean iscontextpresent = pom.getarraypage().isQuestionsListDisplayed();
 		Assert.assertTrue(iscontextpresent, "The " + pageName + " link does not contain any questions.");
 	}
 

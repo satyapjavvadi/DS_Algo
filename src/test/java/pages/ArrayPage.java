@@ -12,6 +12,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utils.JSUtils;
+import utils.WaitUtils;
+
 
 
 public class ArrayPage {
@@ -48,17 +51,29 @@ public class ArrayPage {
 
 	@FindBy(xpath = "//div[@class='list-group']")
 	private List<WebElement> questionslist;
+	
+	@FindBy(linkText = "Arrays in Python")
+	WebElement arraysInPythonLink;
+	
+
+	
+	@FindBy(xpath = "//a[@href='array']")
+	WebElement arrayGetStarted;
 
 	// action
 
+	public void arrayGetStarted() {
+		arrayGetStarted.click();
+	}
+	
 	public String Arraypage_link_Check() {
 
-		String actualurl = driver.getCurrentUrl();
-
-		return actualurl;
+		WaitUtils.waitForPageLoad(driver, 10);
+        return driver.getCurrentUrl();
 	}
 
 	public List<String> getheadingtext() {
+		WaitUtils.waitForVisibilityOfAll(driver, headings, 10);
 		List<String> headingtexts = new ArrayList<String>();
 		for (WebElement heading : headings) {
 			headingtexts.add(heading.getText().trim());
@@ -67,6 +82,7 @@ public class ArrayPage {
 	}
 
 	public List<String> subtopiclinks() {
+		WaitUtils.waitForVisibilityOfAll(driver, array_subtopicslinks, 10);
 		List<String> subtopiclinks = new ArrayList<String>();
 		for (WebElement topiclink : array_subtopicslinks) {
 			if (topiclink.isDisplayed() && topiclink.isEnabled()) {
@@ -77,9 +93,12 @@ public class ArrayPage {
 	}
 
 	public void clicktopiclink(String topicname) {
+		WaitUtils.waitForVisibilityOfAll(driver, array_subtopicslinks, 10);
 		for (WebElement link : array_subtopicslinks) {
 			if (link.getText().trim().equalsIgnoreCase(topicname)) {
-				link.click();
+				JSUtils.scrollIntoView(driver, link);
+                WaitUtils.waitForClickable(driver, link, 10).click();
+				
 				
 				return;
 			}
@@ -88,55 +107,37 @@ public class ArrayPage {
 	}
 
 	public void scrolltobottom() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		JSUtils.scrollToBottom(driver);
 	}
 
 	public boolean checktryherebutton_displayed(String buttonText, String section) {
-		try {
-			return tryhere_button.isDisplayed();
-
-		} catch (Exception e) {
-			System.out.println("try here button exception" + e);
-			return false;
-
-		}
-
+		return WaitUtils.isVisible(driver, tryhere_button, 10);
+		/*
+		 * try { return tryhere_button.isDisplayed();
+		 * 
+		 * } catch (Exception e) { System.out.println("try here button exception" + e);
+		 * return false;
+		 * 
+		 * }
+		 */
 	}
 
 	public void clickTryHereButton() {
-		tryhere_button.click();
+		JSUtils.scrollIntoView(driver, tryhere_button);
+        WaitUtils.waitForClickable(driver, tryhere_button, 10).click();
+		//tryhere_button.click();
 	}
 
-	public void enterCode(String code) {
-		coding_area.clear();
-		coding_area.sendKeys(code);
-	}
-
-	public void clickRunButton() {
-		run_button.click();
-		
-	}
-
-	public String getOutput_text() {
-		try {
-			return outputconsole.getText().trim();
-		} catch (NoSuchElementException e) {
-			System.out.println("outputconsole exception" + e);
-			return "";
-		}
-	}
-
-	public String getAlerttext() {
-		Alert alert = driver.switchTo().alert();
-		String alertmsgString = alert.getText();
-		alert.accept();
-		return alertmsgString;
-
+	
+	
+	public void clickArraysInPython() {
+		JSUtils.scrollIntoView(driver, arraysInPythonLink);
+        WaitUtils.waitForClickable(driver, arraysInPythonLink, 10).click();
+	    
 	}
 
 	public boolean isPracticeQuestionLinkVisible() {
-		return Practicequestionslink.isDisplayed();
+		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
 	}
 	
 	public boolean isPracticeQuestionLinkEnabled() {
@@ -144,11 +145,20 @@ public class ArrayPage {
 	}
 
 	public void clickPracticeQuestionsLink() {
-		Practicequestionslink.click();
-	}
+		JSUtils.scrollIntoView(driver, Practicequestionslink);
+        WaitUtils.waitForClickable(driver, Practicequestionslink, 10).click();
+    }
+		
 
-	public boolean isPracticeQuestionsListNotEmpty() {
-	    return !questionslist.isEmpty();
+	public boolean isQuestionsListDisplayed() {
+		try {
+            WaitUtils.waitForVisibilityOfAll(driver, questionslist, 10);
+            return !questionslist.isEmpty();
+        } catch (Exception e) {
+            System.out.println("Questions list not found: " + e);
+            return false;
+        }
 	}
+	
 
 }
