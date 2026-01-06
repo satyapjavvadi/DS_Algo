@@ -50,8 +50,8 @@ public class HomeStepDefinition {
 		System.out.println(homePage.getCompanyName());
 	}
 
-	@Then("The user should be able to see ResisterLink")
-	public void the_user_should_be_able_to_see_resister_link() {
+	@Then("The user should be able to see RegisterLink")
+	public void the_user_should_be_able_to_see_register_link() {
 		System.out.println(homePage.getRegisterLink());
 		Assert.assertEquals("Register", homePage.getRegisterLink());
 	}

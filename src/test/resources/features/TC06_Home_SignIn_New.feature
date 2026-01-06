@@ -7,9 +7,9 @@ Given The user has signed in with valid credentials
 When The user lands on the Home page after sign in
 Then The user should be able to see "<Links>" on the right corner of the Home page
 Examples:
-| Links               |
-|  Validuser |
-|  Sign out           |
+| Links |
+| Validuser |
+| Sign out |
 
 
 Scenario Outline: Verify that user is able to see "<OptionName>" details page while selecting "<Option>" from the drop down

@@ -9,51 +9,45 @@ Scenario Outline: Verifying static content on the graph page
 Given The user is in the Graph page
 When The Graph page loads
 Then the user should be able to see "<expected_topic>" in graph page
-
     Examples:
-      | expected_topic  |
-      | Graph          |
+      | expected_topic |
+      | Graph |
       | Topics Covered |
-
 
 Scenario: Verify that user is able to see and click all links uder Topics covered   
 Given The user is in the Graph page
 Then  "<Topic_link>" under the topics covered should be visible and clickable
 Examples:
-    | Topic_link               |
-    | Graph                  |
-    | Graph Representations  |
-
+    | Topic_link |
+    | Graph |
+    | Graph Representations |
 
 Scenario: Verify that user is able to navigate to Graph Topic page
 Given The user is on the Graph page
 When The user clicks "<Topic>" tab under Topics covered
 Then The user should be redirected to "<Topic_url>" page with related details
 Examples:
-    | Topic                  | Topic_url                        |
-    | Graph                  | Graph                            |
-    | Graph Representations  | Graph Representations            |
-
+    | Topic | Topic_url |
+    | Graph | Graph |
+    | Graph Representations | Graph Representations |
 
 Scenario: Verify that "Try here>>>" tab is visible and clickable
 Given The user is on the Graph page
 When The user clicks "<Topic>" page
 Then Try here>>> button should be visible and clickable below the "<Topic>" content
 Examples:
-    | Topic                  |
-    | Graph                  |
-    | Graph Representations  |
- 
-  
+    | Topic |
+    | Graph |
+    | Graph Representations |
+   
 Scenario: Verify that user is able to navigate to Try here>>> page from topic page
 Given The user is on the Graph page
 When The user clicks Try Here button in "<Topic>" in page
 Then The user should be redirected to a page having an try Editor with a Run button to test
 Examples:
-    | Topic                  |
-    | Graph                  |
-    | Graph Representations  |
-
+    | Topic |
+    | Graph |
+    | Graph Representations |
   
 Scenario: Verify that Run button is visible and clickable
 Given The user is on the Graph page
@@ -72,11 +66,11 @@ When User enters "<code_type>" code in the Try Editor and clicks on "Run" button
 Then User must see "<expected_result>" in the UI
 
 Examples:
-      | topic_page                | code_type | expected_result                                                          |
-	  | Graph			          | valid     | Hello                            |
-      | Graph      				| invalid   | an error popup stating NameError: name 'invalid' is not defined on line 1 |
-      | Graph Representations    				  | valid  | Hello                            |
-      | Graph Representations     | invalid   | an error popup stating NameError: name 'invalid' is not definedon line 1  |
+      | topic_page | code_type | expected_result |
+	  | Graph | valid | Hello |
+      | Graph | invalid | an error popup stating NameError: name 'invalid' is not defined on line 1 |
+      | Graph Representations | valid | Hello |
+      | Graph Representations | invalid | an error popup stating NameError: name 'invalid' is not definedon line 1  |
 
 Scenario: Verify Try Editor response using Excel driven data
   Given User reads and executes test data from excel TryEditor
