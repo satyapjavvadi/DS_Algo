@@ -10,6 +10,9 @@ public class PageObjectManager {
 	private LinkedListPage linkedlistPage;
 	private StackPage stackPage;
 	private HomePage homePage;
+	private DataStructurePage dataStructurePage;
+	private GraphPage graphPage;
+	
 
 	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
@@ -51,5 +54,19 @@ public class PageObjectManager {
 			homePage = new HomePage();
 		}
 		return homePage;
+	}
+	
+	public DataStructurePage getDataStructurePage() {
+		if (dataStructurePage == null) {
+			dataStructurePage = new DataStructurePage();
+		}
+		return dataStructurePage;
+	}
+	
+	public GraphPage getGraphPage() {
+		if (graphPage == null) {
+			graphPage = new GraphPage();
+		}
+		return graphPage;
 	}
 }
