@@ -3,46 +3,29 @@ package stepdefinition;
 import java.util.Arrays;
 import java.util.List;
 
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.ArrayPage;
+
 import pages.PageObjectManager;
 
 public class ArrayPage_StepDefinition {
 	private final PageObjectManager pom;
-	 WebDriver driver;
-	 private ArrayPage arrayPage;
 
-	public ArrayPage_StepDefinition() {
-		pom = new PageObjectManager();
-		driver=DriverFactory.getDriver();
-		arrayPage=pom.getarraypage();
-		
+	public ArrayPage_StepDefinition(PageObjectManager pom) {
+		this.pom = pom;
+
 	}
 
 	@Given("The registered user has navigated to the Array page")
 	public void the_registered_user_has_navigated_to_the_array_page() {
-		driver.get("https://dsportalapp.herokuapp.com/login");
-		pom.getLoginPage().enterUsername("validUser");
-		pom.getLoginPage().enterPassword("validPass");
-		pom.getLoginPage().clickLoginButton();
-		pom.getarraypage().arrayGetStarted();
+		pom.getarraypage().navigateToArrayUI();
 
-		//driver.get("https://dsportalapp.herokuapp.com/array");
-		
 		System.out.println("user is on Array page" + pom.getarraypage().Arraypage_link_Check());
 		Assert.assertTrue(pom.getarraypage().Arraypage_link_Check().contains("array"), "user is not on Array page");
 	}
-
-	
-		
-	
 
 	@Then("the user should be able to see {string} in Array page")
 	public void the_user_should_be_able_to_see_in_array_page(String expectedText) {
@@ -56,7 +39,6 @@ public class ArrayPage_StepDefinition {
 				break;
 			}
 		}
-		
 
 		Assert.assertTrue(found, "Expected heading '" + expectedText + "' not found. Actual headings: " + headings);
 	}
@@ -89,9 +71,8 @@ public class ArrayPage_StepDefinition {
 	@Given("the user is on the {string} subtopic array page")
 	public void the_user_is_on_the_subtopic_array_page(String topicPage) {
 		pom.getarraypage().clicktopiclink(topicPage);
-		Assert.assertTrue(pom.getarraypage().getheadingtext().contains(topicPage),
-				"user is not on Arraysubtopic page");
-		System.out.println("check "+topicPage);
+		Assert.assertTrue(pom.getarraypage().getheadingtext().contains(topicPage), "user is not on Arraysubtopic page");
+		System.out.println("check " + topicPage);
 	}
 
 	@When("the user scrolls the array topic page")
@@ -104,13 +85,12 @@ public class ArrayPage_StepDefinition {
 		Assert.assertTrue(pom.getarraypage().checktryherebutton_displayed(buttonText, section),
 				buttonText + " try here button not visible in " + section);
 	}
-	
+
 	@Given("User is on the array subtopic {string} page")
-    public void user_is_on_the_array_subtopic_page(String topicPage) {
+	public void user_is_on_the_array_subtopic_page(String topicPage) {
 		pom.getarraypage().clicktopiclink(topicPage);
-		Assert.assertTrue(pom.getarraypage().getheadingtext().contains(topicPage),
-				"user is not on Arraysubtopic page");
-		System.out.println("check "+topicPage);
+		Assert.assertTrue(pom.getarraypage().getheadingtext().contains(topicPage), "user is not on Arraysubtopic page");
+		System.out.println("check " + topicPage);
 	}
 
 	@When("User clicks the {string} button")
@@ -126,8 +106,6 @@ public class ArrayPage_StepDefinition {
 
 	}
 
-	
-
 	@When("User clicks on {string} link under Topics Covered section")
 	public void user_clicks_on_link_under_topics_covered_section(String topicPage) {
 		pom.getarraypage().clicktopiclink(topicPage);
@@ -138,11 +116,10 @@ public class ArrayPage_StepDefinition {
 	public void user_must_see_clickable_link_displayed_in_the_side_navigation_bar_in_ui(String linkText) {
 		boolean islinkvisible = pom.getarraypage().isPracticeQuestionLinkVisible();
 		Assert.assertTrue(islinkvisible, "Expected link '" + linkText + "' is not visible in side navigation bar");
-		
+
 		boolean islinkenabled = pom.getarraypage().isPracticeQuestionLinkEnabled();
 		Assert.assertTrue(islinkenabled, "Expected link '" + linkText + "' is not enabled in side navigation bar");
 	}
-
 
 	@When("User clicks on {string} link in Array {string} UI")
 	public void user_clicks_on_link_in_Array_ui(String linkText, String topicPage) {

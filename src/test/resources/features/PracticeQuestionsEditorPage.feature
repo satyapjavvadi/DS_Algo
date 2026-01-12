@@ -1,4 +1,4 @@
-@practicequestionseditor @Getstarted
+@practicequestionseditor @Getstarted @Login
 Feature: Practice Questions Editor page fuctionality
 
   Background:
@@ -14,4 +14,3 @@ Feature: Practice Questions Editor page fuctionality
       | Max Consecutive Ones                    |
       | Find Numbers with Even number of digits |
       | Squares of a sorted Array               |
- 

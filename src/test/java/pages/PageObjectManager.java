@@ -1,7 +1,5 @@
 package pages;
 
-import DriverManager.DriverFactory;
-
 public class PageObjectManager {
 
 	private LaunchPage launchPage;
@@ -10,13 +8,11 @@ public class PageObjectManager {
 	private LinkedListPage linkedlistPage;
 	private StackPage stackPage;
 	private HomePage homePage;
-	
-    private ArrayPage arrayPage;
-    private QueuePage queuePage;
-    private TreePage treePage;
-    private PracticeQuestionsPage practicePage;
 
-
+	private ArrayPage arrayPage;
+	private QueuePage queuePage;
+	private TreePage treePage;
+	private PracticeQuestionsPage practicePage;
 
 	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
@@ -31,48 +27,46 @@ public class PageObjectManager {
 		}
 		return loginPage;
 	}
-        
-    public RegisterPage getregisterpage() {
-        if(registerPage == null){
-            registerPage = new RegisterPage();
-        }
 
-        return registerPage;
-    }
-    
-    public ArrayPage getarraypage() {
-        if(arrayPage == null){
-            arrayPage = new ArrayPage();
-        }
+	public RegisterPage getregisterpage() {
+		if (registerPage == null) {
+			registerPage = new RegisterPage();
+		}
 
-        return arrayPage;
-    }
-    
-    public QueuePage getqueuepage() {
-        if(queuePage == null){
-            queuePage = new QueuePage();
-        }
+		return registerPage;
+	}
 
-        return queuePage;
-    }
-    
-    public TreePage gettreepage() {
-        if(treePage == null){
-            treePage = new TreePage();
-        }
+	public ArrayPage getarraypage() {
+		if (arrayPage == null) {
+			arrayPage = new ArrayPage();
+		}
 
-        return treePage;
-    }
-    public PracticeQuestionsPage getpracticepage() {
-        if(practicePage == null){
-            practicePage = new PracticeQuestionsPage();
-        }
+		return arrayPage;
+	}
 
-        return practicePage;
-    }
-	
+	public QueuePage getqueuepage() {
+		if (queuePage == null) {
+			queuePage = new QueuePage();
+		}
 
-	
+		return queuePage;
+	}
+
+	public TreePage gettreepage() {
+		if (treePage == null) {
+			treePage = new TreePage();
+		}
+
+		return treePage;
+	}
+
+	public PracticeQuestionsPage getpracticepage() {
+		if (practicePage == null) {
+			practicePage = new PracticeQuestionsPage();
+		}
+
+		return practicePage;
+	}
 
 	public LinkedListPage getLinkedListPage() {
 		if (linkedlistPage == null) {

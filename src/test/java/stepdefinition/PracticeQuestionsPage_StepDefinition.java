@@ -1,35 +1,25 @@
 
 package stepdefinition;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
 import pages.PracticeQuestionsPage;
-import pages.TreePage;
 
 public class PracticeQuestionsPage_StepDefinition {
 	private final PageObjectManager pom;
-	WebDriver driver;
-	private PracticeQuestionsPage practicePage;
 
-	public PracticeQuestionsPage_StepDefinition() {
-		pom = new PageObjectManager();
-		driver = DriverFactory.getDriver();
-		practicePage = pom.getpracticepage();
+	public PracticeQuestionsPage_StepDefinition(PageObjectManager pom) {
+		this.pom = pom;
+
 	}
 
 	@Given("Registered user has navigated to Practice Question UI from Array page")
 	public void registered_user_has_navigated_to_practice_question_ui_from_array_page() {
-		driver.get("https://dsportalapp.herokuapp.com/login");
-		pom.getLoginPage().enterUsername("validUser");
-		pom.getLoginPage().enterPassword("validPass");
-		pom.getLoginPage().clickLoginButton();
-		pom.getarraypage().arrayGetStarted();
+		pom.getarraypage().navigateToArrayUI();
 		pom.getarraypage().clickArraysInPython();
 		pom.getarraypage().clickPracticeQuestionsLink();
 		System.out.println("user is on Array practice questions page" + pom.getarraypage().Arraypage_link_Check());
@@ -46,17 +36,15 @@ public class PracticeQuestionsPage_StepDefinition {
 	public void user_must_be_navigated_to_practice_editor(String problemName) {
 		// getting instance of question UI to compare the elements in it
 		PracticeQuestionsPage page = pom.getpracticepage();
-		
+
 		Assert.assertTrue(page.getDisplayedQuestion(), "question is not displayed");
-		
 
 		Assert.assertTrue(page.isRunButtonVisible(), "Run button is not displayed");
 
 		Assert.assertTrue(page.isSubmitButtonVisible(), "Submit button is not displayed");
-		
+
 		Assert.assertTrue(page.isCodeEditorVisible(), " Code editor is not displayed");
-		
-		
+
 	}
 
 }

@@ -1,4 +1,4 @@
-@arrayfeature @Getstarted
+@arrayfeature @Getstarted @Login
 Feature: Array Page Functionality
 
   Background:
@@ -12,7 +12,7 @@ Feature: Array Page Functionality
       | Array          |
       | Topics Covered |
 
-  Scenario: Verifying topic links under "Topics Covered"
+  Scenario Outline: Verifying topic links under "Topics Covered"
     Then the user should be able to see Array topics as clickable links under "Topics_Covered"
 
     Examples:

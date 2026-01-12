@@ -21,8 +21,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
 
 	static List<Map<String, String>> dataList = new ArrayList<>();
+
 	public static List<Map<String, String>> readDataFromExcel(String filePath, String sheetName) {
-		;
+		//to clear out previous sheet data while execution
+		dataList.clear();
 
 		try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = new XSSFWorkbook(fis)) {
 
@@ -36,7 +38,8 @@ public class ExcelReader {
 
 			for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 				Row row = sheet.getRow(i);
-				if (row == null) continue;
+				if (row == null)
+					continue;
 
 				Map<String, String> rowData = new HashMap<>();
 				for (int j = 0; j < colCount; j++) {
@@ -48,13 +51,13 @@ public class ExcelReader {
 
 					if (cell != null) {
 						switch (cell.getCellType()) {
-							case STRING -> value = cell.getStringCellValue().trim();
-							case NUMERIC -> value = (DateUtil.isCellDateFormatted(cell))
-									? new SimpleDateFormat("yyyy-MM-dd").format(cell.getDateCellValue())
-									: String.valueOf((int) cell.getNumericCellValue());
-							case BOOLEAN -> value = String.valueOf(cell.getBooleanCellValue());
-							case FORMULA -> value = cell.getCellFormula();
-							default -> value = "";
+						case STRING -> value = cell.getStringCellValue().trim();
+						case NUMERIC -> value = (DateUtil.isCellDateFormatted(cell))
+								? new SimpleDateFormat("yyyy-MM-dd").format(cell.getDateCellValue())
+								: String.valueOf((int) cell.getNumericCellValue());
+						case BOOLEAN -> value = String.valueOf(cell.getBooleanCellValue());
+						case FORMULA -> value = cell.getCellFormula();
+						default -> value = "";
 						}
 					}
 					rowData.put(header, value);
@@ -74,6 +77,7 @@ public class ExcelReader {
 
 		for (Map<String, String> row : dataList) {
 			String cellValue = row.get("scenario_type");
+
 			if (cellValue != null && cellValue.equalsIgnoreCase(scenarioType)) {
 				return row;
 			}
@@ -83,4 +87,3 @@ public class ExcelReader {
 	}
 
 }
-

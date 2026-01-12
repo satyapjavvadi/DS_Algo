@@ -1,4 +1,4 @@
-@treefeature @Getstarted
+@treefeature @Getstarted @Login
 Feature: Tree Page Functionality
 
   Background:
@@ -15,8 +15,27 @@ Feature: Tree Page Functionality
   Scenario: Validate Tree page subtopic links
     Then user must see all tree subtopics from excel
 
-  Scenario: Navigate to Tree topic & validate page URL
-    Then user should land on the correct Tree topic page
+  
+  @Treetopics  
+  Scenario Outline: Navigate to Tree topic "<scenario_type>" and validate page URL
+   When user navigates to Tree topic "<scenario_type>"
+   Then user should land on the correct Tree topic page
+
+  Examples:
+    | scenario_type                  |
+    | Overview of Trees              |
+    | Terminologies                  |
+    | Types of Trees                 |
+    | Tree Traversals                |
+    | Traversals-Illustration        |
+    | Binary Trees                   |
+    | Types of Binary Trees          |
+    | Implementation in Python       |
+    | Binary Tree Traversals         |
+    | Implementation of Binary Trees |
+    | Applications of Binary trees   |
+    | Binary Search Trees            |
+    | Implementation Of BST          |
 
   Scenario Outline: Verify "Try here>>>" button presence in UI
     Given the user is in Tree "<topic_page>" page

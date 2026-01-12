@@ -1,10 +1,9 @@
-@queuefeature @Getstarted
+@queuefeature @Getstarted @Login
 Feature: Queue Page Functionality
 
   Background:
     Given The registered user has navigated to the Queue page
 
-  
   Scenario Outline: Verifying static content on the Queue page
     Then the user should be able to see "<expected_text>" in Queue page
 
@@ -13,7 +12,7 @@ Feature: Queue Page Functionality
       | Queue          |
       | Topics Covered |
 
-  Scenario: Verifying topic links under "Topics Covered"
+  Scenario Outline: Verifying topic links under "Topics Covered"
     Then the user should be able to see Queue topics as clickable links under "<Topics Covered>" section
 
     Examples:
@@ -58,11 +57,24 @@ Feature: Queue Page Functionality
       | Implementation using array             |
       | Queue Operations                       |
 
-  Scenario: Verify Try Editor responses for all Queue topics
-    When User validates Try Editor using Excel data
-    Then Validation must be completed successfully
+  @queueEditor
+  Scenario Outline: Validate Queue editor for "<scenario_type>" case on "<topic_page>"
+    Given user is on topic Queue "<topic_page>" page
+    When user clicks try here button and runs "<scenario_type>" code in the editor
+    Then result should be "<expected_result>"
 
-  Scenario Outline: Navigating to Practice Questions page
+    Examples:
+      | scenario_type                                           | topic_page                             | code           | expected_result                                                 |
+      | valid code for Implementation of Queue in Python        | Implementation of Queue in Python      | print('hello') | hello                                                           |
+      | invalid code for Implementation of Queue in Python      | Implementation of Queue in Python      | abcd           | NameError: name 'abcd' is not defined on line 1                 |
+      | valid code for Implementation using collections.deque   | Implementation using collections.deque | print(2+5.0)   | 7.0                                                             |
+      | invalid code for Implementation using collections.deque | Implementation using collections.deque | print('a       | SyntaxError: bad input on line 1                                |
+      | valid code for Implementation using array               | Implementation using array             | print('abcd')  | abcd                                                            |
+      | invalid code for Implementation using array             | Implementation using array             | prin('hi')     | NameError: name 'prin' is not defined on line 1                 |
+      | valid code for Queue Operations                         | Queue Operations                       | print('Queue') | Queue                                                           |
+      | invalid code for Queue Operations                       | Queue Operations                       | print(5/0)     | ZeroDivisionError: integer division or modulo by zero on line 1 |
+
+  Scenario: Navigating to Practice Questions page
     Given the user is on "<topic_page>" page
     When user clicks "Practice Questions" from the sidebar
     Then page loads with list of questions

@@ -1,53 +1,83 @@
 package stepdefinition;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+
 import java.util.Properties;
 
 import io.cucumber.java.*;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+
 
 import DriverManager.DriverFactory;
 import pages.PageObjectManager;
 import utils.ConfigReader;
 import utils.ExcelReader;
-import utils.ExcelReader;
+
 import utils.ScreenShot;
-import utils.TestContext;
+
 
 public class Hooks {
 
-	private  WebDriver driver;
+	
 	PageObjectManager pom;
 	@Before(order = 0)
 	public void setup() {
 
 		Properties prop = ConfigReader.initializeProperties();
-		ExcelReader.readDataFromExcel(
-				prop.getProperty("xlPath"),
-				prop.getProperty("loginsheetName")
-		);
-
+		
+		  ExcelReader.readDataFromExcel( prop.getProperty("xlPath"),
+		  prop.getProperty("loginsheetName") );
+		 
 		String browser = System.getProperty(
 				"browserName",
 				prop.getProperty("browserName")
 		);
 
-		DriverFactory.launchBrowser(browser);
+	DriverFactory.launchBrowser(browser);
+
+		
 		DriverFactory.getDriver().get(prop.getProperty("baseURL"));
-		DriverFactory.launchBrowser(browser);
-		DriverFactory.getDriver().get(prop.getProperty("baseURL"));
+		
 
 	}
 
 	@Before(value = "@Getstarted", order = 1)
 	public void GetstartedAction() {
-		// WebDriver driver = DriverFactory.getDriver();
+		 //WebDriver driver = DriverFactory.getDriver();
 	     pom = new PageObjectManager();
 		pom.getLaunchPage().clickGetStartedButton();
 	}
+	@Before(value = "@negativeRegister", order = 1)
+	public void loadRegisternegativeFunctionalData() {
+	    Properties prop = ConfigReader.initializeProperties();
+	    ExcelReader.readDataFromExcel(
+	            prop.getProperty("xlPath"),
+	            prop.getProperty("RegisterfunctionalsheetName"));
+	}
+	
+	@Before(value = "@positiveRegister", order = 1)
+	public void loadRegisterpositiveFunctionalData() {
+	    Properties prop = ConfigReader.initializeProperties();
+	    ExcelReader.readDataFromExcel(
+	            prop.getProperty("xlPath"),
+	            prop.getProperty("RegisterfunctionalsheetName"));
+	}
+	
+	@Before(value = "@queueEditor", order = 3)
+	public void queueEditorData() {
+	    Properties prop = ConfigReader.initializeProperties();
+	    ExcelReader.readDataFromExcel(
+	            prop.getProperty("xlPath"),
+	            prop.getProperty("QueuePage"));
+	}
+	
+	@Before(value = "@Treetopics", order = 3)
+	public void Treepageurl() {
+	    Properties prop = ConfigReader.initializeProperties();
+	    ExcelReader.readDataFromExcel(
+	            prop.getProperty("xlPath"),
+	            prop.getProperty("TreePage"));
+	}
+
 
 	@Before(value = "@Login", order = 2)
 	public void performLogin() throws IOException {

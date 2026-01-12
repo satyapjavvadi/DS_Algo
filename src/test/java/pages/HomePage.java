@@ -15,6 +15,8 @@ public class HomePage {
 	private WebElement loginAlert;
 	@FindBy(xpath = "//a[@href='/login']")
 	private WebElement loginButton;
+	@FindBy(css = "div.alert[role='alert']")
+	private WebElement registerAlert;
 
 	public HomePage() {
 		this.driver = DriverFactory.getDriver();
@@ -32,6 +34,13 @@ public class HomePage {
 	public void clickSignInButton(){
 		loginButton.click();
 	}
+	
+	public String getRegisterSuccessMessage() {
+		return WaitUtils.getVisibleText(driver, registerAlert, 10);
+	}
 
+	public String getSuccessRegisterMessage() {
+        return registerAlert.getText().trim();
+    }
 
 }

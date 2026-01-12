@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testng.Assert;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
@@ -46,24 +47,14 @@ public class Registerpage_NonFunctionalStepDefinition {
 		Assert.assertEquals(actuallabel_count, expectedlabelcount, "label count mismatch");
 	}
 
-	@Then("User must see labels with text in Register UI")
-	public void user_must_see_labels_with_text_in_register_ui() throws IOException {
+	@Then("User must see links with text in Register UI")
+	public void user_must_see_links_with_text_in_register_ui(DataTable dataTable) {
+		List<String> expectedlink_names = dataTable.asList();
 
-		List<Map<String, String>> registerlabels = ExcelReader.readDataFromExcel(filePath, sheetName);
+		List<String> actuallink_names = pom.getregisterpage().Registerpagelinktext();
 
-		List<String> actualLabels = pom.getregisterpage().getRegisterlabel_Names();
-
-		for (Map<String, String> row : registerlabels) {
-
-			if (!row.get("scenario_type").equalsIgnoreCase("Validate labels text in Register UI"))
-				continue;
-
-			String expectedLabel = row.get("expected_result").trim();
-
-			Assert.assertTrue(actualLabels.contains(expectedLabel), "Label missing - Expected: " + expectedLabel);
-		}
-
-		System.out.println("All label validations passed");
+		Assert.assertEquals(actuallink_names, expectedlink_names,
+				"Link text mismatch , Expected: " + expectedlink_names + " but found: " + actuallink_names);
 	}
 
 	@Then("User must see {int} button in Register UI")
@@ -82,48 +73,25 @@ public class Registerpage_NonFunctionalStepDefinition {
 		System.out.println("button label present in register ui is:" + actualButtons);
 	}
 
-	@Then("User must see links with text in Register UI")
-	public void user_must_see_links_with_text_in_register_ui() throws IOException {
+	@Then("User must see labels with text in Register UI")
+	public void user_must_see_labels_with_text_in_register_ui(DataTable dataTable) {
 
-		List<Map<String, String>> registerlinktext = ExcelReader.readDataFromExcel(filePath, sheetName);
+		List<String> expectedlabel_names = dataTable.asList();
 
-		List<String> actualLinks = pom.getregisterpage().Registerpagelinktext();
+		List<String> actuallabel_names = pom.getregisterpage().getRegisterlabel_Names();
 
-		for (Map<String, String> row : registerlinktext) {
+		Assert.assertEquals(actuallabel_names, expectedlabel_names,
+				"Label text mismatch , Expected: " + expectedlabel_names + " but found: " + actuallabel_names);
 
-			if (!row.get("scenario_type").equalsIgnoreCase("validate links text in Register UI"))
-				continue;
-
-			String expectedLink = row.get("expected_result").trim();
-
-			Assert.assertTrue(actualLinks.contains(expectedLink), "Link text missing - Expected: " + expectedLink);
-		}
-
-		System.out.println("All link validations passed");
 	}
 
 	@Then("User must see {string} company name in top nav bar of  Register UI")
-	public void user_must_see_company_name_in_top_nav_bar_of_register_ui(String expectedFromFeature)
-			throws IOException {
-
-		String filePath = "src/test/resources/DS_ExcelData.xlsx";
-		String sheetName = "RegisterPage_labels";
-
-		List<Map<String, String>> companyname = ExcelReader.readDataFromExcel(filePath, sheetName);
-
-		String expectedFromExcel = "";
-
-		for (Map<String, String> row : companyname) {
-			if (row.get("scenario_type").equalsIgnoreCase("company name must be present in nav bar")) {
-				expectedFromExcel = row.get("expected_result").trim();
-				break;
-			}
-		}
+	public void user_must_see_company_name_in_top_nav_bar_of_register_ui(String expectedFromFeature) {
 
 		String actualCompanyName = pom.getregisterpage().getcompanyString().trim();
 
-		Assert.assertEquals(actualCompanyName, expectedFromExcel,
-				"Company name mismatch! Expected: " + expectedFromExcel);
+		Assert.assertEquals(actualCompanyName, expectedFromFeature,
+				"Company name mismatch! Expected: " + expectedFromFeature);
 
 		System.out.println("Company name validated correctly");
 	}
@@ -137,12 +105,9 @@ public class Registerpage_NonFunctionalStepDefinition {
 
 		for (Map<String, String> row : passwordrules) {
 
-			if (!row.get("scenario_type").equalsIgnoreCase("password entry rules"))
-				continue;
-
 			String expectedList = row.get("expected_result").trim();
 
-			Assert.assertTrue(actualList.contains(expectedList), "password rule missing - Expected: " + expectedList);
+			Assert.assertTrue(actualList.contains(expectedList), "password rule missing.Expected: " + expectedList);
 		}
 
 		System.out.println("All password rules are checked");
