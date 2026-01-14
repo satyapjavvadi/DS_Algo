@@ -7,7 +7,7 @@ public class ElementUtil {
 
 
 
-    public static String getURL() {
+    public static String getCurrentURL() {
         return DriverFactory.getDriver().getCurrentUrl();
     }
 }

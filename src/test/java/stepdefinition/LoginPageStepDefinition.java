@@ -33,7 +33,7 @@ public class LoginPageStepDefinition {
 	// Background
 	@Given("the registered user has navigated to the home page")
 	public void navigateTohomePage() {
-		System.out.println(ElementUtil.getURL());
+		System.out.println(ElementUtil.getCurrentURL());
 	}
 
 	@When("the user clicks sign in link")
