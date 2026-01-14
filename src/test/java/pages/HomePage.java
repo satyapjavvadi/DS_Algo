@@ -58,6 +58,12 @@ public class HomePage {
 	@FindBy(xpath = "//a[text()='Sign out']")
 	WebElement signOutLink;
 
+	@FindBy(xpath = "//ul")
+	private WebElement parent;
+
+	@FindBy(css = "div.alert[role='alert']")
+	private WebElement alert;
+
 	public HomePage() {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
@@ -197,4 +203,24 @@ public class HomePage {
 			}
 		}
 	}
+
+    public void navigatetoPages(String pageInfo) {
+		WaitUtils.waitForVisibility(driver,parent,10);
+		List<WebElement> childLink = parent.findElements(By.xpath(".//a"));
+		for(WebElement eachLink : childLink){
+			String linkText = eachLink.getText();
+			System.out.println(linkText);
+			if(linkText.toLowerCase().contains(pageInfo.toLowerCase())){
+				System.out.println("in line 57");
+				WaitUtils.waitForVisibility(driver,eachLink,10);
+				eachLink.click();
+				break;
+			}
+		}
+	}
+
+	public String getAlertMessage() {
+		return alert.getText().trim();
+	}
+
 }

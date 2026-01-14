@@ -3,10 +3,7 @@ package utils;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,10 +11,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
 
 	static List<Map<String, String>> dataList = new ArrayList<>();
-	public static List<Map<String, String>> readDataFromExcel(String filePath, String sheetName) {
+	public static List<Map<String, String>> readDataFromExcel( String sheetName) {
 		;
+		Properties prop = ConfigReader.initializeProperties();
 
-		try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = new XSSFWorkbook(fis)) {
+		try (FileInputStream fis = new FileInputStream(prop.getProperty("xlPath")); Workbook workbook = new XSSFWorkbook(fis)) {
 
 			Sheet sheet = workbook.getSheet(sheetName);
 			if (sheet == null) {
@@ -57,7 +55,7 @@ public class ExcelReader {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Error reading Excel file: " + filePath, e);
+			throw new RuntimeException("Error reading Excel file: " + prop.getProperty("xlPath"), e);
 		}
 
 		return dataList;

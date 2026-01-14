@@ -22,15 +22,10 @@ public class Hooks {
 	public void setup() {
 
 		Properties prop = ConfigReader.initializeProperties();
-		ExcelReader.readDataFromExcel(
-				prop.getProperty("xlPath"),
-				prop.getProperty("loginsheetName")
-		);
+		ExcelReader.readDataFromExcel(prop.getProperty("loginsheetName"));
+		ExcelReader.readDataFromExcel(prop.getProperty("RegisterPage"));
 
-		String browser = System.getProperty(
-				"browserName",
-				prop.getProperty("browserName")
-		);
+		String browser = System.getProperty("browserName",	prop.getProperty("browserName"));
 
 		DriverFactory.launchBrowser(browser);
 		DriverFactory.getDriver().get(prop.getProperty("baseURL"));
