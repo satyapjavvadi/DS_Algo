@@ -25,8 +25,8 @@ public class HomePage {
 	@FindBy(css = "div.alert[role='alert']")
 	private WebElement registerAlert;
 
-	public HomePage() {
-		this.driver = DriverFactory.getDriver();
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
@@ -41,14 +41,14 @@ public class HomePage {
 	public void clickSignInButton(){
 		loginButton.click();
 	}
-	
+
 	public String getRegisterSuccessMessage() {
 		return WaitUtils.getVisibleText(driver, registerAlert, 10);
 	}
 
 	public String getSuccessRegisterMessage() {
-        return registerAlert.getText().trim();
-    }
+		return registerAlert.getText().trim();
+	}
 
 	public void navigatetoPages(String expectedPage){
 		WaitUtils.waitForVisibility(driver,parent,10);

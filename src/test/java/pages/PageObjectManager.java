@@ -1,55 +1,84 @@
 package pages;
 
+import org.openqa.selenium.WebDriver;
+
+import DriverManager.DriverFactory;
+
 public class PageObjectManager {
 
+	private final WebDriver driver;
+	
 	private LaunchPage launchPage;
 	private LoginPage loginPage;
-	private RegisterPage registerPage;
-	private LinkedListPage linkedlistPage;
-	private StackPage stackPage;
-	private HomePage homePage;
-
-	private ArrayPage arrayPage;
-	private QueuePage queuePage;
+    private RegisterPage registerPage;
+    private StackPage stackPage;
+    private DataStructurePage dataStructurePage;
+    private HomePage homePage;
+    private GraphPage graphPage;
+	private ArrayPage arraypage;
 	private TreePage treePage;
-	private PracticeQuestionsPage practicePage;
+
+	public PageObjectManager() {
+		this.driver = DriverFactory.getDriver();
+		if (this.driver == null) {
+			throw new IllegalStateException("WebDriver is not initialized");
+		}
+
+	}
+	
+	public DataStructurePage getDataStructurePage() {
+		if (dataStructurePage == null) {
+			dataStructurePage = new DataStructurePage(driver);
+		}
+		return dataStructurePage;
+	}
+	
+	public HomePage getHomePage() {
+		if (homePage == null) {
+			homePage = new HomePage(driver);
+		}
+		return homePage;
+	}
+	
+	public GraphPage getGraphPage() {
+		if (graphPage == null) {
+			graphPage = new GraphPage(driver);
+		}
+		return graphPage;
+	}
 
 	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
-			launchPage = new LaunchPage();
+			launchPage = new LaunchPage(driver);
 		}
+
 		return launchPage;
 	}
-
-	public LoginPage getLoginPage() {
-		if (loginPage == null) {
-			loginPage = new LoginPage();
+	
+	public LoginPage getLoginPage()
+	{
+		if(loginPage == null)
+		{
+			loginPage = new LoginPage(driver);
+	
 		}
 		return loginPage;
 	}
+    
+    public RegisterPage getregisterpage() {
+        if(registerPage == null){
+            registerPage = new RegisterPage(driver);
+        }
 
-	public RegisterPage getregisterpage() {
-		if (registerPage == null) {
-			registerPage = new RegisterPage();
-		}
-
-		return registerPage;
-	}
+        return registerPage;
+    }
 
 	public ArrayPage getarraypage() {
-		if (arrayPage == null) {
-			arrayPage = new ArrayPage();
+		if(arraypage == null){
+			arraypage = new ArrayPage(driver);
 		}
 
-		return arrayPage;
-	}
-
-	public QueuePage getqueuepage() {
-		if (queuePage == null) {
-			queuePage = new QueuePage();
-		}
-
-		return queuePage;
+		return arraypage;
 	}
 
 	public TreePage gettreepage() {
@@ -58,34 +87,5 @@ public class PageObjectManager {
 		}
 
 		return treePage;
-	}
-
-	public PracticeQuestionsPage getpracticepage() {
-		if (practicePage == null) {
-			practicePage = new PracticeQuestionsPage();
-		}
-
-		return practicePage;
-	}
-
-	public LinkedListPage getLinkedListPage() {
-		if (linkedlistPage == null) {
-			linkedlistPage = new LinkedListPage();
-		}
-		return linkedlistPage;
-	}
-
-	public StackPage getStackPage() {
-		if (stackPage == null) {
-			stackPage = new StackPage();
-		}
-		return stackPage;
-	}
-
-	public HomePage getHomePage() {
-		if (homePage == null) {
-			homePage = new HomePage();
-		}
-		return homePage;
 	}
 }

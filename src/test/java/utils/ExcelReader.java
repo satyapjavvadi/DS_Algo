@@ -1,41 +1,83 @@
-
 package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader {
 
-	static List<Map<String, String>> dataList = new ArrayList<>();
+	public static List<Map<String, String>> getScenarioRows(String filePath, String sheetName, String scenarioType)
+			throws IOException {
+		FileInputStream fis = new FileInputStream(filePath);
+		Workbook workbook = WorkbookFactory.create(fis);
+		// Sheet sheet = workbook.getSheet(sheetName);
 
-	public static List<Map<String, String>> readDataFromExcel(String filePath, String sheetName) {
-		//to clear out previous sheet data while execution
-		dataList.clear();
+		// Debug: List all sheet names
+		for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+			System.out.println("Sheet found: " + workbook.getSheetName(i));
+		}
+
+		Sheet sheet = workbook.getSheet(sheetName);
+		if (sheet == null) {
+			throw new IllegalStateException("Sheet not found: " + sheetName);
+		}
+
+		// Place your header check here
+		Row header = sheet.getRow(0);
+		if (header == null) {
+			throw new IllegalStateException("Header row is missing in sheet: " + sheetName);
+		}
+
+		List<Map<String, String>> rows = new ArrayList<>();
+
+		// Now loop through data rows safely
+		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+			Row row = sheet.getRow(i);
+			if (row == null)
+				continue;
+
+			Map<String, String> rowData = new HashMap<>();
+			for (int j = 0; j < header.getLastCellNum(); j++) {
+				String key = header.getCell(j).getStringCellValue();
+				String value = row.getCell(j) != null ? row.getCell(j).toString() : "";
+				rowData.put(key, value);
+			}
+
+			if (rowData.get("scenario_type").equalsIgnoreCase(scenarioType)) {
+				rows.add(rowData);
+			}
+		}
+
+		workbook.close();
+		fis.close();
+		return rows;
+	}
+
+	public static List<Map<String, String>> getTestData(String filePath, String sheetName) {
+		List<Map<String, String>> dataList = new ArrayList<>();
 
 		try (FileInputStream fis = new FileInputStream(filePath); Workbook workbook = new XSSFWorkbook(fis)) {
 
 			Sheet sheet = workbook.getSheet(sheetName);
 			if (sheet == null) {
-				throw new IllegalArgumentException("Sheet not found: " + sheetName);
+				throw new IllegalArgumentException("❌ Sheet not found: " + sheetName);
 			}
 
+			// First row = header
 			Row headerRow = sheet.getRow(0);
 			int colCount = headerRow.getLastCellNum();
 
+			// Iterate rows
 			for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 				Row row = sheet.getRow(i);
 				if (row == null)
@@ -47,43 +89,18 @@ public class ExcelReader {
 					Cell cell = row.getCell(j);
 
 					String header = headerCell.getStringCellValue().trim();
-					String value = "";
+					String value = (cell == null) ? "" : cell.toString().trim();
 
-					if (cell != null) {
-						switch (cell.getCellType()) {
-						case STRING -> value = cell.getStringCellValue().trim();
-						case NUMERIC -> value = (DateUtil.isCellDateFormatted(cell))
-								? new SimpleDateFormat("yyyy-MM-dd").format(cell.getDateCellValue())
-								: String.valueOf((int) cell.getNumericCellValue());
-						case BOOLEAN -> value = String.valueOf(cell.getBooleanCellValue());
-						case FORMULA -> value = cell.getCellFormula();
-						default -> value = "";
-						}
-					}
 					rowData.put(header, value);
 				}
 				dataList.add(rowData);
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Error reading Excel file: " + filePath, e);
+			throw new RuntimeException("❌ Error reading Excel file: " + filePath, e);
 		}
 
 		return dataList;
-	}
-
-	public static Map<String, String> getTestData(String scenarioType) {
-
-		for (Map<String, String> row : dataList) {
-			String cellValue = row.get("scenario_type");
-
-			if (cellValue != null && cellValue.equalsIgnoreCase(scenarioType)) {
-				return row;
-			}
-		}
-
-		throw new IllegalArgumentException("No row found with " + "scenario_type" + " = " + scenarioType);
 	}
 
 }

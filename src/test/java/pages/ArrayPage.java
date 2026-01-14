@@ -51,9 +51,9 @@ public class ArrayPage {
 
 	// action
 
-	public ArrayPage() {
+	public ArrayPage(WebDriver driver) {
 		this.driver = DriverFactory.getDriver();
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(this.driver, this);
 	}
 
 	private void navigateTo(String path, String expectedTitle) {

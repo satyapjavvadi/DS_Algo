@@ -17,8 +17,8 @@ public class RegisterPage {
 
     private WebDriver driver;
 
-    public RegisterPage() {
-        this.driver = DriverFactory.getDriver();
+    public RegisterPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 

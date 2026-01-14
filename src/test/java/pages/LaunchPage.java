@@ -29,8 +29,8 @@ public class LaunchPage {
     private List<WebElement> buttons;
 
     // Constructor
-    public LaunchPage( ) {
-        this.driver = DriverFactory.getDriver();
+    public LaunchPage(WebDriver driver ) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
