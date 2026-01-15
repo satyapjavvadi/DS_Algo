@@ -58,7 +58,7 @@ public class LoginPage {
 
     // Submission
     public void clickLoginButton() {
-        JSUtils.clickElement(driver, loginButton);
+        JSUtils.clickElement(loginButton);
     }
 
     public void pressEnterToSubmit() {

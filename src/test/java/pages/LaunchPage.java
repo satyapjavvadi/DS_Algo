@@ -42,7 +42,7 @@ public class LaunchPage {
     }
 
     public boolean doesPageContainText(String expectedText) {
-        return JSUtils.getPageInnerText(driver).contains(expectedText);
+        return JSUtils.getPageInnerText().contains(expectedText);
     }
 
     public void clickGetStartedButton() {

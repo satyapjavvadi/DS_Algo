@@ -2,48 +2,62 @@ package utils;
 
 import java.time.Duration;
 
+import DriverManager.DriverFactory;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class JSUtils {
-	public static void scrollIntoView(WebDriver driver, WebElement element) {
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+public class JSUtils extends DriverFactory {
+
+	// Scroll element into view
+	public static void scrollIntoView(WebElement element) {
+		((JavascriptExecutor) DriverFactory.getDriver())
+				.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
-	public static void scrollToTop(WebDriver driver) {
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");
+	// Scroll to top of page
+	public static void scrollToTop() {
+		((JavascriptExecutor) DriverFactory.getDriver())
+				.executeScript("window.scrollTo(0, 0)");
 	}
 
-	public static void scrollToBottom(WebDriver driver) {
-		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-		// pause(500); // small wait for lazy-loaded content
+	// Scroll to bottom of page
+	public static void scrollToBottom() {
+		((JavascriptExecutor) DriverFactory.getDriver())
+				.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		// pause(500); // optional small wait for lazy-loaded content
 	}
 
-	public static void scrollUp(WebDriver driver, int pixels) {
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -" + pixels + ")");
+	// Scroll up by given pixels
+	public static void scrollUp(int pixels) {
+		((JavascriptExecutor) DriverFactory.getDriver())
+				.executeScript("window.scrollBy(0, -" + pixels + ")");
 	}
 
-	public static void scrollToLoadAllTopics(WebDriver driver) {
+	// Scroll to load all topics (scroll down and slightly up to trigger lazy loading)
+	public static void scrollToLoadAllTopics() {
+		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), Duration.ofSeconds(5));
+		JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
+
 		// Scroll to bottom
-		scrollToBottom(driver);
+		scrollToBottom();
 
-		// JS wait until document is ready
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(d -> js.executeScript("return document.readyState").equals("complete"));
+		// Wait until page is fully loaded
+		wait.until(d -> js.executeScript("return document.readyState").equals("complete"));
 
 		// Scroll up slightly to trigger lazy loading
-		scrollUp(driver, 100);
+		scrollUp(100);
 	}
 
-	public static String getPageInnerText(WebDriver driver) {
-		return (String) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText;");
+	// Get full inner text of the page
+	public static String getPageInnerText() {
+		return (String) ((JavascriptExecutor) DriverFactory.getDriver())
+				.executeScript("return document.documentElement.innerText;");
 	}
 
-	public static void clickElement(WebDriver driver, WebElement element) {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+	// Click element via JS
+	public static void clickElement(WebElement element) {
+		((JavascriptExecutor) DriverFactory.getDriver())
+				.executeScript("arguments[0].click();", element);
 	}
-
 }

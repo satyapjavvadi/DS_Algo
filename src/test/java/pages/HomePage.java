@@ -223,4 +223,20 @@ public class HomePage {
 		return alert.getText().trim();
 	}
 
+	public void clickGetStarted(String cardTitle) {
+		System.out.println(cardTitle);
+		for (WebElement child : parentCard) {
+			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
+
+			for (WebElement element : grandChild) {
+				element.getText();
+				System.out.println("in home " +element.getText());
+				if(element.getText().equalsIgnoreCase(cardTitle)){
+					child.findElement(By.xpath(".//a")).click();
+					return;
+				}
+
+			}
+		}
+	}
 }

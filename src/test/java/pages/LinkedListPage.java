@@ -24,7 +24,7 @@ import utils.WaitUtils;
 public class LinkedListPage {
 
 	private WebDriver driver;
-
+	WaitUtils wait;
 	@FindBy(css = "a.list-group-item")
 	List<WebElement> topicLinks;
 
@@ -61,6 +61,7 @@ public class LinkedListPage {
 	public LinkedListPage( ) {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
+		 wait = new WaitUtils();
 	}
 
 	private void navigateTo(String path, String expectedTitle) {
@@ -76,10 +77,6 @@ public class LinkedListPage {
 		navigateTo("linked-list/introduction", "Introduction");
 	}
 
-	public boolean isSidebarVisible() {
-		return WaitUtils.waitForVisibilityOfAll(driver, sidebarLinks, 10);
-	}
-
 	public boolean isTopicsCoveredVisible(String expectedText) {
 
 		return driver.getPageSource().contains(expectedText);
@@ -87,7 +84,7 @@ public class LinkedListPage {
 
 	public Set<String> getAllDropDownLinks() {
 
-		JSUtils.scrollToLoadAllTopics(driver);
+		JSUtils.scrollToLoadAllTopics();
 		Set<String> linkTexts = new HashSet<>();
 		for (WebElement link : topicLinks) {
 			if (link.isDisplayed()) {
@@ -101,14 +98,14 @@ public class LinkedListPage {
 		String normalized = TopicNameNormalizer.normalize(topicName);
 
 		if (normalized.equalsIgnoreCase("Practice Questions")) {
-			WebElement link = WaitUtils.waitForClickable(driver, practiceQuestionsLink, 10);
-			JSUtils.scrollIntoView(driver, link);
+			WebElement link = wait.waitForClickable(practiceQuestionsLink);
+			JSUtils.scrollIntoView(link);
 			link.click();
 		} else {
 			for (WebElement link : sidebarLinks) {
 				if (link.getText().trim().equalsIgnoreCase(normalized)) {
-					WebElement clickableLink = WaitUtils.waitForClickable(driver, link, 10);
-					JSUtils.scrollIntoView(driver, clickableLink);
+					WebElement clickableLink = wait.waitForClickable(link);
+					JSUtils.scrollIntoView(clickableLink);
 					clickableLink.click();
 					return;
 				}
@@ -134,13 +131,13 @@ public class LinkedListPage {
 	}
 
 	public void scrollToBottom() {
-		JSUtils.scrollToBottom(driver);
+		JSUtils.scrollToBottom();
 	}
 
 	public boolean isTryHereButtonVisible() {
 		try {
 			WebElement button = WaitUtils.waitForVisibility(driver, tryHereButton, 10);
-			JSUtils.scrollIntoView(driver, button);
+			JSUtils.scrollIntoView(button);
 			return button.isDisplayed();
 		} catch (TimeoutException e) {
 			return false;
@@ -148,8 +145,8 @@ public class LinkedListPage {
 	}
 
 	public void clickTryHereButton() {
-		WebElement button = WaitUtils.waitForClickable(driver, tryHereButton, 10);
-		JSUtils.scrollIntoView(driver, button);
+		WebElement button = wait.waitForClickable(tryHereButton);
+		JSUtils.scrollIntoView(button);
 		button.click();
 	}
 
@@ -165,7 +162,7 @@ public class LinkedListPage {
 				+ "[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '"
 				+ lower + "')]");
 
-		WebElement contentElement = WaitUtils.waitForVisibility(driver, contentLocator, 10);
+		WebElement contentElement = wait.waitForVisibility(contentLocator);
 
 		return contentElement.getText().toLowerCase().contains(lower);
 	}

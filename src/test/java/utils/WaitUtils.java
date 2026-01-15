@@ -1,39 +1,35 @@
 package utils;
 
+import DriverManager.DriverFactory;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.List;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
 public class WaitUtils {
-	public static WebElement waitForVisibility(WebDriver driver, By locator, int timeoutSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+	private final WebDriverWait wait;
+	private final WebDriver driver;
+
+
+	public WaitUtils() {
+		this.driver = DriverFactory.getDriver();
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	}
+
+       public WebElement waitForVisibility(By locator) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
-	public static WebElement waitForClickable(WebDriver driver, By locator, int timeoutSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-		return wait.until(ExpectedConditions.elementToBeClickable(locator));
-	}
-
-	public static WebElement waitForClickable(WebDriver driver, WebElement element, int timeoutSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+	public WebElement waitForClickable(WebElement element) {
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
-	public static void waitForPageLoad(WebDriver driver, int timeoutSeconds) {
-		new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
-				.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState")
-						.equals("complete"));
+	public void waitForPageLoad() {
+		wait.until(driver ->
+				((JavascriptExecutor) driver)
+						.executeScript("return document.readyState").equals("complete"));
 	}
 
 	public static void waitForTitleContains(WebDriver driver, String titleFragment, int timeoutSeconds) {
@@ -41,13 +37,9 @@ public class WaitUtils {
 		wait.until(ExpectedConditions.titleContains(titleFragment));
 	}
 
-	public static void waitForTitleIs(WebDriver driver, String exactTitle, int timeoutSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-		wait.until(ExpectedConditions.titleIs(exactTitle));
-	}
 
-	public static boolean waitForVisibilityOfAll(WebDriver driver, List<WebElement> elements, int timeoutSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+	public boolean waitForVisibilityOfAll( List<WebElement> elements) {
+
 		try {
 			wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 			return !elements.isEmpty();
@@ -82,11 +74,6 @@ public class WaitUtils {
 		return elements.stream().anyMatch(el -> el.getText().toLowerCase().contains(keyword.toLowerCase()));
 	}
 
-	public static WebElement waitForPresence(WebDriver driver, By locator, int timeoutSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-	}
-
 	public static boolean isVisible(WebDriver driver, WebElement element, int timeoutSeconds) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
@@ -97,57 +84,18 @@ public class WaitUtils {
 		}
 	}
 
-	// ✅ Enter code into CodeMirror editor
-	public static void enterCodeInTryEditor(WebDriver driver, String codeSnippet) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(d -> d.findElement(By.cssSelector(".CodeMirror")).isDisplayed());
+	public String waitForCodeMirrorOutput(String elementId, int timeoutSeconds) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
 
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", codeSnippet);
-		System.out.println("✅ Code injected into CodeMirror: " + codeSnippet);
+		WebElement output = wait.until(driver -> {
+			WebElement el = driver.findElement(By.id(elementId));
+			String text = el.getAttribute("textContent").trim();
+			return !text.isEmpty() ? el : null;
+		});
+
+		return output.getAttribute("textContent").trim();
 	}
 
-	// ✅ Click Run button
-	public static void clickRunButton(WebDriver driver) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement runBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Run']")));
-		runBtn.click();
-	}
 
-	public static void validateOutputOrError(WebDriver driver, String expectedOutput, String errorMessage) {
-		try {
-			Alert alert = driver.switchTo().alert();
-			String actualError = alert.getText();
-			alert.accept();
-			if (errorMessage != null && !errorMessage.isEmpty()) {
-				Assert.assertTrue(actualError.contains(errorMessage),
-						"Expected error: " + errorMessage + " but got: " + actualError);
-			}
-		} catch (NoAlertPresentException e) {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			WebElement outputElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("output")));
-			String actualOutput = outputElement.getText().trim();
-
-			if (expectedOutput != null && !expectedOutput.isEmpty()) {
-				// ✅ Normalize numbers
-				if (isNumeric(expectedOutput) && isNumeric(actualOutput)) {
-					double expected = Double.parseDouble(expectedOutput);
-					double actual = Double.parseDouble(actualOutput);
-					Assert.assertEquals(actual, expected, "Numeric output mismatch");
-				} else {
-					Assert.assertEquals(actualOutput, expectedOutput.trim(), "Output mismatch");
-				}
-			}
-		}
-	}
-
-	private static boolean isNumeric(String str) {
-		try {
-			Double.parseDouble(str);
-			return true;
-		} catch (NumberFormatException e) {
-			return false;
-		}
-	}
 
 }

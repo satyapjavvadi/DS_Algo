@@ -12,7 +12,9 @@ public class PageObjectManager {
 	private HomePage homePage;
 	private DataStructurePage dataStructurePage;
 	private GraphPage graphPage;
-	
+	private ArrayPage arraypage;
+	private TryEditorPage tryeditorPage;
+
 
 	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
@@ -68,5 +70,19 @@ public class PageObjectManager {
 			graphPage = new GraphPage();
 		}
 		return graphPage;
+	}
+
+	public ArrayPage getArrayPage() {
+		if(arraypage == null){
+			arraypage = new ArrayPage( );
+		}
+		return arraypage;
+	}
+
+	public TryEditorPage getTryEditorPage() {
+		if(tryeditorPage == null){
+			tryeditorPage = new TryEditorPage( );
+		}
+		return tryeditorPage;
 	}
 }
