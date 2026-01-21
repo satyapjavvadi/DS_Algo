@@ -1,3 +1,4 @@
+
 package pages;
 
 import java.time.Duration;
@@ -25,44 +26,42 @@ import utils.JSUtils;
 import utils.TestContext;
 import utils.WaitUtils;
 
-public class ArrayPage {
-    private WaitUtils wait;
+public class TreePage {
+	private WaitUtils wait;
     private WebDriver driver;
 
-    // locators
-    @FindBy(xpath = "//*[@class='bg-secondary text-white']")
-    private List<WebElement> headings;
+	// locators
 
-    @FindBy(xpath = "//a[@class='list-group-item']")
-    private List<WebElement> array_subtopicslinks;
+	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
+	private List<WebElement> headings;
 
-    @FindBy(xpath = "//a[contains(text(),'Try')]")
-    private WebElement tryhere_button;
+	@FindBy(xpath = "//a[@class='list-group-item']")
+	private List<WebElement> tree_subtopicslinks;
 
-    @FindBy(xpath = "//button")
-    private WebElement run_button;
+	@FindBy(xpath = "//a[contains(text(),'Try')]")
+	private WebElement tryhere_button;
 
-    @FindBy(xpath = "//pre[@id='output']")
-    private WebElement outputconsole;
+	@FindBy(xpath = "//button[text()='Run']")
+	private WebElement run_button;
 
-    @FindBy(xpath = "//form[@id='answer_form']")
-    private WebElement coding_area;
+	@FindBy(xpath = "//pre[@id='output']")
+	private WebElement outputconsole;
 
-    @FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
-    private WebElement Practicequestionslink;
+	@FindBy(xpath = "//form[@id='answer_form']")
+	private WebElement coding_area;
 
-    @FindBy(xpath = "//div[@class='list-group']")
-    private List<WebElement> questionslist;
+	@FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
+	private WebElement Practicequestionslink;
 
-    @FindBy(xpath = "//*[@type='submit']")
-    private List<WebElement> submit;
+	@FindBy(xpath = "//div[@class='list-group']")
+	private List<WebElement> questionslist;
 
-	@FindBy(xpath ="//div[@align='left']")
-	private WebElement output;
+	@FindBy(xpath = "//a[@href='tree']")
+	WebElement treeGetStarted;
 
-    // action
+	// action
 
-    public ArrayPage() {
+	public TreePage() {
         this.driver = DriverFactory.getDriver();
         PageFactory.initElements(this.driver, this);
         wait = new WaitUtils();
@@ -78,9 +77,9 @@ public class ArrayPage {
     }
 
     public List<String> subtopiclinks() {
-        wait.waitForVisibilityOfAll(array_subtopicslinks);
+        wait.waitForVisibilityOfAll(tree_subtopicslinks);
         List<String> subtopiclinks = new ArrayList<String>();
-        for (WebElement topiclink : array_subtopicslinks) {
+        for (WebElement topiclink : tree_subtopicslinks) {
             if (topiclink.isDisplayed() && topiclink.isEnabled()) {
                 subtopiclinks.add(topiclink.getText().trim());
             }
@@ -89,8 +88,8 @@ public class ArrayPage {
     }
 
     public void clickTopicLink(String topicName) {
-        wait.waitForVisibilityOfAll(array_subtopicslinks);
-        for (WebElement link : array_subtopicslinks) {
+        wait.waitForVisibilityOfAll(tree_subtopicslinks);
+        for (WebElement link : tree_subtopicslinks) {
             if (link.getText().trim().equalsIgnoreCase(topicName)) {
                 JSUtils.scrollIntoView(link);
                 wait.waitForClickable(link).click();
@@ -145,45 +144,6 @@ public class ArrayPage {
 
     }
 
-    public boolean getButtonTextAssesmentPage(String buttonText) {
-        String button = run_button.getText();
-        if (button.equalsIgnoreCase(buttonText)) {
-            return true;
-        } else return false;
-
-    }
-
-    public boolean isSubmitButtonPresent() {
-        if (submit.size() > 0) {
-            return true;
-        } else return false;
-    }
-
-    public void submitProblem() {
-        for (WebElement eachType : submit) {
-            eachType.click();
-            return;
-        }
-    }
-
-	public String getConsoleOutput(){
-        wait.waitForPageLoad();
-
-        String result = wait.waitForCodeMirrorOutput("output", 120);
-        System.out.println("Submission result: " + result);
-		return result;
-	}
+   
 	
-	public String getAlertoutput() {
-		//wait.waitForPageLoad();
-
-	    String result = wait.waitForAlert(120);   
-	    System.out.println("Alert result: " + result);
-
-	    return result;
-	}
-	
-
-
-
 }

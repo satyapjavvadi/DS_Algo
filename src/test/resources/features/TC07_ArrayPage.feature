@@ -19,7 +19,6 @@ Feature: Array Page Functionality
       | Basic Operations in Lists |
       | Applications of Array     |
 
-
   Scenario Outline: Navigating to a Array topic page
     When the user selects "<topic>" Topics Covered
     Then the "<page_url>" content should be present
@@ -42,7 +41,7 @@ Feature: Array Page Functionality
       | Basic Operations in Lists |
       | Applications of Array     |
 
-   Scenario Outline: Navigating to the code editor from topic pages
+  Scenario Outline: Navigating to the code editor from topic pages
     Given User is on the array subtopic "<topic_page>" page
     When User clicks the "Try here>>>" button
     Then User must be navigated to code editor
@@ -53,7 +52,6 @@ Feature: Array Page Functionality
       | Arrays Using List         |
       | Basic Operations in Lists |
       | Applications of Array     |
-
 
   Scenario Outline: Presence of practice question link in "<topic_page>" UI
     When User clicks on "<topic_page>" link under Topics Covered section
@@ -66,7 +64,6 @@ Feature: Array Page Functionality
       | Basic Operations in Lists |
       | Applications of Array     |
 
-
   Scenario Outline: User must be navigated to Practice Questions page
     When User clicks on Practice Questions link in Array "<sub topic>" UI
     Then User must be navigated to "Practice Questions"
@@ -78,17 +75,15 @@ Feature: Array Page Functionality
       | Basic Operations in Lists |
       | Applications of Array     |
 
-
   Scenario: User must see list of Practice Questions for array
     When User clicks on Practice Questions link in Array "Arrays in Python" UI
     Then User must see list of question in practice question of array
-    |Search the array|
-    |Max Consecutive Ones|
-    |Find Numbers with Even Number of Digits|
-    |Squares of a Sorted Array|
+      | Search the array                        |
+      | Max Consecutive Ones                    |
+      | Find Numbers with Even Number of Digits |
+      | Squares of a Sorted Array               |
 
-
-  Scenario Outline:User must be able to navigate to assessment page for the "<problem_name>"
+  Scenario Outline: User must be able to navigate to assessment page for the "<problem_name>"
     Given User has navigated to Practice Question UI from Array page
     When User clicks on "<problem_name>" link in Practice Questions UI
     Then User must be navigated to "Assessment"
@@ -100,8 +95,7 @@ Feature: Array Page Functionality
       | Find Numbers with Even number of digits |
       | Squares of a sorted Array               |
 
-
-  Scenario Outline:User must see run button in assessment page
+  Scenario Outline: User must see run button in assessment page
     Given User has navigated to Practice Question UI from Array page
     When User clicks on "<problem_name>" link in Practice Questions UI
     Then User must see "Run" button in assessment page
@@ -113,8 +107,7 @@ Feature: Array Page Functionality
       | Find Numbers with Even number of digits |
       | Squares of a sorted Array               |
 
-
-  Scenario Outline:User must see Submit button in assessment page
+  Scenario Outline: User must see Submit button in assessment page
     Given User has navigated to Practice Question UI from Array page
     When User clicks on "<problem_name>" link in Practice Questions UI
     Then User must see "Submit" button in assessment page
@@ -126,7 +119,7 @@ Feature: Array Page Functionality
       | Find Numbers with Even number of digits |
       | Squares of a sorted Array               |
 
-  Scenario Outline:User must see error message when submitting empty ans
+  Scenario Outline: User must see error message when submitting empty ans
     Given User has navigated to Practice Question UI from Array page
     When User clicks on submit link after reaching "<problem_name>"
     Then User must see "Error occurred during submission" in output
@@ -137,8 +130,21 @@ Feature: Array Page Functionality
       | Max Consecutive Ones                    |
       | Find Numbers with Even number of digits |
       | Squares of a sorted Array               |
-@array1
+
+  # Try editor scenarios
+  @array1
   Scenario: Navigating to the code editor from topic pages
     Given User is on the Try editor
     When User clicks the Run button after entering "Question1"
     Then User must see "Element Found" in output
+
+  @arrayinvalidcode
+  Scenario: Navigating to the code editor from topic pages
+    Given User is on the Try editor
+    When User clicks the Run button after entering "Question2"
+    Then User must see "NameError: name 'abc' is not defined on line 5" alert message
+
+  @arraytryeditorui
+  Scenario: User must see Run button in array Try editor UI
+    Given User is on the Try editor
+    Then User must see "Run" button in try editor UI

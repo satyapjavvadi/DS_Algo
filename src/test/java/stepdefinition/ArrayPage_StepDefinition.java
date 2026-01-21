@@ -172,6 +172,11 @@ public class ArrayPage_StepDefinition {
 	public void userMustSeeInOutput(String expectedOutput) {
 		Assert.assertTrue(pom.getArrayPage().getConsoleOutput().contains(expectedOutput));
 	}
+	
+	@Then("User must see {string} alert message")
+	public void userMustSeeAlertAessage(String expectedOutput) {
+		Assert.assertTrue(pom.getArrayPage().getAlertoutput().contains(expectedOutput));
+	}
 
 	@Given("User is on the Try editor")
 	public void userIsOnTheTryEditor() {
@@ -181,6 +186,16 @@ public class ArrayPage_StepDefinition {
 	@When("User clicks the Run button after entering {string}")
 	public void userClicksTheButtonAfterEntering(String codeDetails) {
 		pom. getTryEditorPage().runCode(codeDetails);
+	}
+	
+	@Then("User must see {string} button in try editor UI")
+	public void user_must_see_button_in_try_editor_ui(String expectedButtonText) {
+		boolean flag = false;
+		switch (expectedButtonText){
+			case "Run" :  flag = pom.getArrayPage().getButtonTextAssesmentPage(expectedButtonText);
+		}
+		Assert.assertTrue(flag);
+
 	}
 
 }

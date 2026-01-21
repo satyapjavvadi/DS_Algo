@@ -95,6 +95,14 @@ public class WaitUtils {
 
 		return output.getAttribute("textContent").trim();
 	}
+	
+	public String waitForAlert(int timeoutInSeconds) {
+	    WebDriverWait alertWait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+	    Alert alert = alertWait.until(ExpectedConditions.alertIsPresent());
+	    String text = alert.getText().trim();
+	    alert.accept();
+	    return text;
+	}
 
 
 

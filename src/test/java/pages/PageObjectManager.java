@@ -13,6 +13,7 @@ public class PageObjectManager {
 	private DataStructurePage dataStructurePage;
 	private GraphPage graphPage;
 	private ArrayPage arraypage;
+    private TreePage treepage;
 	private TryEditorPage tryeditorPage;
 
 
@@ -77,6 +78,13 @@ public class PageObjectManager {
 			arraypage = new ArrayPage( );
 		}
 		return arraypage;
+	}
+	
+	public TreePage getTreePage() {
+		if(treepage == null){
+			treepage = new TreePage( );
+		}
+		return treepage;
 	}
 
 	public TryEditorPage getTryEditorPage() {
