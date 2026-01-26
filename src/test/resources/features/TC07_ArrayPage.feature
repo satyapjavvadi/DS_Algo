@@ -2,7 +2,7 @@
 Feature: Array Page Functionality
 
   Background:
-    Given The registered user has navigated to the "Array" page
+    Given signed in user has navigated to the "Array" UI
 
   Scenario Outline: Verifying static content "<expected_text>" on the Array page
     Then the user should be able to see "<expected_text>" in Array page

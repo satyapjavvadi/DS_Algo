@@ -126,7 +126,6 @@ public class TreePage_StepDefinition {
 	@Then("User must see list of question in practice question of Tree")
 	public void user_must_see_list_of_question_in_practice_question_of_tree() {
 		List<String> questions = pom.getTreePage().getQuestionsList();
-
 		Assert.assertTrue(!questions.isEmpty(), "No questions are displayed in Practice Questions section of tree module");
 
 	}

@@ -22,13 +22,6 @@ public class ArrayPage_StepDefinition {
 
 	}
 
-
-	@Given("The registered user has navigated to the {string} page")
-	public void the_registered_user_has_navigated_to_the_array_page(String moduleName) {
-		pom.getHomePage().clickGetStarted(moduleName);
-		System.out.println("In DS module : " + ElementUtil.getTitle());
-	}
-
 	@Then("the user should be able to see {string} in Array page")
 	public void the_user_should_be_able_to_see_in_array_page(String expectedText) {
 		List<String> headings = pom.getArrayPage().getheadingtext();
