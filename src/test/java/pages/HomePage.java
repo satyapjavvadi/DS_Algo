@@ -47,10 +47,9 @@ public class HomePage {
 
 	@FindBy(css = "div.alert[role='alert']")
 	private WebElement loginAlert;
-	
+
 	@FindBy(xpath = "//a[@href='/login']")
 	private WebElement loginButton;
-
 
 	@FindBy(xpath = "//a[text()=' ValidUser ']")
 	WebElement loggedInUser;
@@ -74,10 +73,10 @@ public class HomePage {
 	public String getLoginSuccessMessage() {
 		return WaitUtils.getVisibleText(driver, loginAlert, 0);
 	}
-	
+
 	public void clickSignInButton() {
 		loginButton.click();
-		}
+	}
 
 	public String getCompanyName() {
 		return companyName.getText();

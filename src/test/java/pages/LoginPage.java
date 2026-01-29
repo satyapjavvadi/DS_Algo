@@ -99,7 +99,7 @@ public class LoginPage {
     // Reusable login helper
     public void login(String method, String scenarioType) {
         TestContext.testData = ExcelReader.getTestData(scenarioType);
-
+ 
         enterUsername(TestContext.testData.get("username"));
         enterPassword(TestContext.testData.get("password"));
 

@@ -1,6 +1,6 @@
 @homewithoutSigninfeature @Getstarted
 Feature: DS Algo Portal functional testing 
-@1
+@21
 Scenario: Verify that user is able to see company name "NumpyNinja" 
 Given The user is on the Launch page
 When The user clicks the Get Started button

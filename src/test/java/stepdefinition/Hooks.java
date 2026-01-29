@@ -25,7 +25,7 @@ public class Hooks {
 		ExcelReader.readDataFromExcel(
 				prop.getProperty("xlPath"),
 				prop.getProperty("loginsheetName")
-		);
+			);
 
 		String browser = System.getProperty(
 				"browserName",
