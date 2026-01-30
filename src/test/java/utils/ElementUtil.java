@@ -11,6 +11,7 @@ public class ElementUtil {
         return DriverFactory.getDriver().getCurrentUrl();
     }
 
-    public static String getTitle() {return DriverFactory.getDriver().getTitle();
+    public static String getTitle() {
+    	return DriverFactory.getDriver().getTitle();
     }
 }

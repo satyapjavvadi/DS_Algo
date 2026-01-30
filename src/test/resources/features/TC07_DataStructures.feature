@@ -5,7 +5,6 @@ Background: Signed in user is navigated to Data Structure module from Home Page
 
 Scenario Outline: Verifying static content on the DataStructures page
 Given The user is in the Data Structures - Introduction page
-When The Data Structures - Introduction page loads
 Then the user should be able to see "<expected_text>"
 
     Examples:

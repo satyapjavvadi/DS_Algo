@@ -72,6 +72,18 @@ public class ExcelReader {
 
 		throw new IllegalArgumentException("No row found with " + "scenario_type" + " = " + scenarioType);
 	}
+	
+	public static Map<String, String> getTestData1(String scenarioGraph) {
+
+		for (Map<String, String> row : dataList) {
+			String cellValue = row.get("scenarioGraph");
+			if (cellValue != null && cellValue.equalsIgnoreCase(scenarioGraph)) {
+				return row;
+			}
+		}
+
+		throw new IllegalArgumentException("No row found with " + "scenario_type" + " = " + scenarioGraph);
+	}
 
 }
 

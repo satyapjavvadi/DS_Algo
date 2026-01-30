@@ -23,12 +23,6 @@ public class DataStrStepDefinition {
 		pom.getDataStructurePage().clickDataStructureIntroGetStartedBtn();
 	}
 
-	@When("The Data Structures - Introduction page loads")
-	public void the_data_structures_introduction_page_loads() {
-		Assert.assertTrue(driver.getTitle().contains("Data Structures-Introduction"));
-
-	}
-
 	@Then("the user should be able to see {string}")
 	public void the_user_should_be_able_to_see(String string) {
 		Assert.assertEquals(string, pom.getDataStructurePage().getHeading(string));

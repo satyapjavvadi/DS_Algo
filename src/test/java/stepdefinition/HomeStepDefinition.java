@@ -33,8 +33,8 @@ public class HomeStepDefinition {
 
 	@Given("The user is on the Launch page")
 	public void the_user_is_on_the_launch_page() {
-		System.out.println("Befor clicking Get Started User is on Launch Page");
-	}
+		System.out.println(ElementUtil.getTitle());
+		}
 
 	@When("The user clicks the Get Started button")
 	public void the_user_clicks_the_get_started_button() {

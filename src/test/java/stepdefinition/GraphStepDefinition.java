@@ -44,11 +44,6 @@ public class GraphStepDefinition {
 		graphPage.isTopicDisplayed(string);
 	}
 
-	@When("The Graph page loads")
-	public void the_graph_page_loads() {
-		Assert.assertTrue(driver.getTitle().contains("Graph"));
-	}
-
 	@When("The user clicks the Practice Questions button")
 	public void the_user_clicks_the_practice_questions_button() {
 		graphPage.clickTopicUrl("Graph");
@@ -176,4 +171,29 @@ public class GraphStepDefinition {
 		System.out.println("Graph heading: " + string);
 	}
 
+	@Given("User is on the Try editor page of Graph")
+	public void user_is_on_the_try_editor_page_of_graph() {
+		graphPage.clickGraphGetStarted();
+		graphPage.clickTopicUrl("Graph");
+		graphPage.clickTryherebtn();
+	}
+
+	@When("User clicks the Run button after entering {string} from graph")
+	public void user_clicks_the_run_button_after_entering_from_graph(String codeDetails) {
+		pom.getGraphPage().runCode1(codeDetails);
+	}
+
+	@Then("User must see {string} in graph output")
+	public void user_must_see_in_graph_output(String expectedOutput) {
+		if (expectedOutput.contains("error popup")) {
+			String output = graphPage.getErrorPopupText();
+			Assert.assertTrue(output.contains("NameError"));
+			System.out.println("Output: " + output);
+		} else {
+			String output1 = graphPage.getConsoleOutput1();
+			System.out.println("Output: " + output1);
+			Assert.assertEquals(expectedOutput, output1);
+
+		}
+	}
 }

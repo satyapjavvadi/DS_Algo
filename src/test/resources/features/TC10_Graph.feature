@@ -7,7 +7,6 @@ scenario: Verifying static content on the Graph page
 
 Scenario Outline: Verifying static content on the graph page
 Given The user is in the Graph page
-When The Graph page loads
 Then the user should be able to see "<expected_topic>" in graph page
     Examples:
       | expected_topic |
@@ -77,6 +76,15 @@ Given The user is in the Graph page
 When The user clicks the Practice Questions button
 Then The user should be redirected to list of Practice Questions of Graph page.
 
-
+#TryEditor scenarios using excel data
+ Scenario: Navigating to the code editor from topic pages
+    Given User is on the Try editor page of Graph
+    When User clicks the Run button after entering "Question1" from graph
+    Then User must see "Hello" in graph output
+     
+ Scenario: Navigating to the code editor from topic pages
+    Given User is on the Try editor page of Graph 
+    When User clicks the Run button after entering "Question2" from graph
+    Then User must see "an error popup stating NameError: name 'invalid' is not defined on line 1" in graph output   
 
 

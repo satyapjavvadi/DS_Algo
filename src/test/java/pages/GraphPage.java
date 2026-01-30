@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -22,8 +23,10 @@ import utils.WaitUtils;
 
 public class GraphPage {
 
-	WebDriver driver;
-
+	private WebDriver driver;
+	private WaitUtils wait;
+	
+	
 	@FindBy(xpath = "//a[@href='graph']")
 	WebElement graphGetStarted;
 
@@ -65,10 +68,10 @@ public class GraphPage {
 	public GraphPage() {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(driver, this);
-
+		wait = new WaitUtils();
 	}
 	
-
+	
 	public void navigateToGraphPage() {
 		driver.get(ConfigReader.getProperty("baseURL")+"/home");
 	//	WaitUtils.waitForVisibility(driver, usernameField, 10);
@@ -219,35 +222,29 @@ public class GraphPage {
 	public void clickPracticeQuestionsLink() {
 		practiceQuestionsLink.click();
 	}
-	
-   /* // Reusable excel try editor helper
-	public void enterCodeExcel(String code_type) {
-		TestContext.testData = ExcelReader.getTestData(code_type);
-		 
-		topicPage(TestContext.testData.get("topicPage"));
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("var cm = document.querySelector('.CodeMirror').CodeMirror;" + "cm.setValue(arguments[0]);",
-				code_type);
-	}
-	
-	public void login(String method, String scenarioType) {
-        TestContext.testData = ExcelReader.getTestData(scenarioType);
- 
-        enterUsername(TestContext.testData.get("username"));
-        enterPassword(TestContext.testData.get("password"));
 
-        switch (method.toLowerCase().trim()) {
-            case "submits the login form":
-            case "initiates login":
-            case "submits the login form with mouse click":
-                clickLoginButton();
-                break;
-            case "presses enter":
-            case "confirms login using enter":
-                pressEnterToSubmit();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown submission method: " + method);
-        }
-    }*/
+    @FindBy(xpath = "//button")
+    private WebElement run_button;
+
+    @FindBy(xpath = "//span[@role='presentation']//span")
+    private WebElement codeArea;
+
+
+    public void runCode1(String scenarioGraph) {
+        TestContext.testData = ExcelReader.getTestData1(scenarioGraph);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        Actions act = new Actions(driver);
+        act.moveToElement(codeArea).click();
+        js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue('');");
+        js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", TestContext.testData.get("code"));
+        run_button.click();
+    }
+
+    public String getConsoleOutput1(){
+        wait.waitForPageLoad();
+
+        String result = wait.waitForCodeMirrorOutput("output", 120);
+        System.out.println("Submission result: " + result);
+        return result;
+    }
 }
