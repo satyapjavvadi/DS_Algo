@@ -1,215 +1,190 @@
 package pages;
 
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import DriverManager.DriverFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
-import utils.ConfigReader;
+import DriverManager.DriverFactory;
 import utils.JSUtils;
-import utils.TopicNameNormalizer;
+import utils.NavigationUtil;
 import utils.WaitUtils;
 
 public class LinkedListPage {
-
+	private WaitUtils wait;
 	private WebDriver driver;
-	WaitUtils wait;
-	@FindBy(css = "a.list-group-item")
-	List<WebElement> topicLinks;
 
-	@FindBy(css = ".error-message, .alert")
-	WebElement errorMessage;
+	// locators
 
-	@FindBy(xpath = "//a[contains(text(),'Try here>>>')]")
-	WebElement tryHereButton;
+	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
+	private List<WebElement> headings;
 
-	@FindBy(css = ".CodeMirror")
-	WebElement codeEditor;
+	@FindBy(xpath = "//a[@class='list-group-item']")
+	private List<WebElement> LinkedList_subtopicslinks;
 
-	@FindBy(tagName = "body")
-	WebElement bodyText;
-
-	@FindBy(css = "li.list-group-item a")
-	private List<WebElement> sidebarLinks;
-
-	@FindBy(tagName = "code")
-	List<WebElement> codeBlocks;
-
-	@FindBy(css = "a[href$='/practice']")
-	private WebElement practiceQuestionsLink;
-
-	@FindBy(css = "div.content")
-	private WebElement topicContent;
+	@FindBy(xpath = "//a[contains(text(),'Try')]")
+	private WebElement tryhere_button;
 
 	@FindBy(xpath = "//button[text()='Run']")
-	WebElement runButton;
+	private WebElement run_button;
 
-	@FindBy(id = "output")
-	WebElement outputArea;
+	@FindBy(xpath = "//pre[@id='output']")
+	private WebElement outputconsole;
 
-	public LinkedListPage( ) {
+	@FindBy(xpath = "//form[@id='answer_form']")
+	private WebElement coding_area;
+
+	@FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
+	private WebElement Practicequestionslink;
+
+	@FindBy(xpath = "//div[@class='list-group']")
+	private List<WebElement> questionslist;
+
+	@FindBy(xpath = "//a[@href='linked-list']")
+	WebElement LinkedListGetStarted;
+
+	// action
+
+	public LinkedListPage() {
 		this.driver = DriverFactory.getDriver();
-		PageFactory.initElements(driver, this);
-		 wait = new WaitUtils();
+		PageFactory.initElements(this.driver, this);
+		wait = new WaitUtils();
 	}
 
-	private void navigateTo(String path, String expectedTitle) {
-		driver.get(ConfigReader.getProperty("baseURL") + path);
-		WaitUtils.waitForTitleContains(driver, expectedTitle, 10);
+	public List<String> getheadingtext() {
+		wait.waitForVisibilityOfAll(headings);
+		List<String> headingtexts = new ArrayList<String>();
+		for (WebElement heading : headings) {
+			headingtexts.add(heading.getText().trim());
+		}
+		return headingtexts;
 	}
 
-	public void navigateToLinkedListPage() {
-		navigateTo("linked-list", "Linked List");
-	}
-
-	public void navigateToIntroductionPage() {
-		navigateTo("linked-list/introduction", "Introduction");
-	}
-
-	public boolean isTopicsCoveredVisible(String expectedText) {
-
-		return driver.getPageSource().contains(expectedText);
-	}
-
-	public Set<String> getAllDropDownLinks() {
-
-		JSUtils.scrollToLoadAllTopics();
-		Set<String> linkTexts = new HashSet<>();
-		for (WebElement link : topicLinks) {
-			if (link.isDisplayed()) {
-				linkTexts.add(link.getText().trim());
+	public List<String> subtopiclinks() {
+		wait.waitForVisibilityOfAll(LinkedList_subtopicslinks);
+		List<String> subtopiclinks = new ArrayList<String>();
+		for (WebElement topiclink : LinkedList_subtopicslinks) {
+			if (topiclink.isDisplayed() && topiclink.isEnabled()) {
+				subtopiclinks.add(topiclink.getText().trim());
 			}
 		}
-		return linkTexts;
+		return subtopiclinks;
 	}
 
-	public void clickSidebarTopic(String topicName) {
-		String normalized = TopicNameNormalizer.normalize(topicName);
-
-		if (normalized.equalsIgnoreCase("Practice Questions")) {
-			WebElement link = wait.waitForClickable(practiceQuestionsLink);
-			JSUtils.scrollIntoView(link);
-			link.click();
-		} else {
-			for (WebElement link : sidebarLinks) {
-				if (link.getText().trim().equalsIgnoreCase(normalized)) {
-					WebElement clickableLink = wait.waitForClickable(link);
-					JSUtils.scrollIntoView(clickableLink);
-					clickableLink.click();
-					return;
-				}
-			}
-			throw new NoSuchElementException("Sidebar link not found: " + normalized);
-		}
-	}
-
-	// Verify current URL contains expected path
-	public boolean isCurrentUrlMatching(String expectedPath) {
-		String currentUrl =  driver.getCurrentUrl();
-		return currentUrl != null && currentUrl.toLowerCase().contains(expectedPath.toLowerCase());
-	}
-
-	public void clickTopic(String topicName) {
-		for (WebElement link : topicLinks) {
-			if (link.getText().trim().equalsIgnoreCase(topicName.trim())) {
-				link.click();
+	public void clickTopicLink(String topicName) {
+		wait.waitForVisibilityOfAll(LinkedList_subtopicslinks);
+		for (WebElement link : LinkedList_subtopicslinks) {
+			if (link.getText().trim().equalsIgnoreCase(topicName)) {
+				JSUtils.scrollIntoView(link);
+				wait.waitForClickable(link).click();
 				return;
 			}
 		}
 		throw new NoSuchElementException("Topic link not found: " + topicName);
 	}
 
-	public void scrollToBottom() {
-		JSUtils.scrollToBottom();
-	}
-
-	public boolean isTryHereButtonVisible() {
-		try {
-			WebElement button = WaitUtils.waitForVisibility(driver, tryHereButton, 10);
-			JSUtils.scrollIntoView(button);
-			return button.isDisplayed();
-		} catch (TimeoutException e) {
-			return false;
-		}
+	public boolean checktryherebutton_displayed() {
+		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
 
 	public void clickTryHereButton() {
-		WebElement button = wait.waitForClickable(tryHereButton);
-		JSUtils.scrollIntoView(button);
-		button.click();
+		JSUtils.scrollIntoView(tryhere_button);
+		wait.waitForClickable(tryhere_button).click();
 	}
 
-	public boolean isCodeEditorVisible() {
-		return codeEditor.isDisplayed();
+	public boolean isPracticeQuestionLinkVisible() {
+		JSUtils.scrollIntoView(Practicequestionslink);
+		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
 	}
 
-	public boolean waitForTopicContent(String expectedText) {
-		String lower = expectedText.toLowerCase();
-
-		// Build case-insensitive locator
-		By contentLocator = By.xpath("//*[self::h1 or self::h2 or self::h3 or self::h4 or self::p]"
-				+ "[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '"
-				+ lower + "')]");
-
-		WebElement contentElement = wait.waitForVisibility(contentLocator);
-
-		return contentElement.getText().toLowerCase().contains(lower);
+	public boolean isPracticeQuestionLinkEnabled() {
+		return Practicequestionslink.isEnabled();
 	}
 
-	public boolean isSilentFailureDetected() {
-		String pageText = bodyText.getText();
-		List<String> boilerplate = Arrays.asList("NumpyNinja", "Data Structures", "ValidUser", "Sign out");
-		return boilerplate.stream().allMatch(pageText::contains);
+	public void clickPracticeQuestionsLink() {
+		JSUtils.scrollIntoView(Practicequestionslink);
+		wait.waitForClickable(Practicequestionslink).click();
 	}
 
-	public boolean isTextVisible(String text) {
-		if (text.equalsIgnoreCase("Topics Covered")) {
-			return isTopicsCoveredVisible(text);
-		}
-		String pageText = bodyText.getText().toLowerCase();
-		return pageText.contains(text.toLowerCase().trim());
-	}
-
-	// helper: compare actual vs expected
-	public void assertTopicsMatch(Set<String> expectedTopics) {
-		Set<String> actualTopics = getAllDropDownLinks();
-
-		// normalize case/whitespace
-		Set<String> actualNormalized = actualTopics.stream().map(s -> s.toLowerCase().trim())
-				.collect(Collectors.toSet());
-		Set<String> expectedNormalized = expectedTopics.stream().map(s -> s.toLowerCase().trim())
-				.collect(Collectors.toSet());
-
-		if (!actualNormalized.equals(expectedNormalized)) {
-			Set<String> missing = new HashSet<>(expectedNormalized);
-			missing.removeAll(actualNormalized);
-
-			Set<String> extra = new HashSet<>(actualNormalized);
-			extra.removeAll(expectedNormalized);
-
-			Assert.fail("Mismatch in Linked List topics.\nMissing: " + missing + "\nExtra: " + extra);
+	public List<String> getQuestionsList() {
+		try {
+			wait.waitForVisibilityOfAll(questionslist);
+			return questionslist.stream().map(WebElement::getText).collect(Collectors.toList());
+		} catch (Exception e) {
+			System.out.println("Questions list not found: " + e.getMessage());
+			return Collections.emptyList();
 		}
 	}
 
-	public boolean containsKeyword(String keyword) {
-		String lower = keyword.toLowerCase();
-		return bodyText.getText().toLowerCase().contains(lower) || WaitUtils.isKeywordInHeaders(driver, lower)
-				|| WaitUtils.isKeywordInElements(codeBlocks, lower);
+	public void clickProblemLink(String problemName) {
+		for (WebElement eachQuestion : questionslist) {
+			String questionName = eachQuestion.getText();
+			if (questionName.equalsIgnoreCase(problemName)) {
+				eachQuestion.click();
+				return;
+			}
+		}
+
 	}
 
-	public String getBodyText() {
-		return bodyText.getText();
+	public void navigateToTryEditor(String topicPage) {
+		clickTopicLink(topicPage);
+		wait.waitForClickable(tryhere_button).click();
+		wait.waitForPageLoad();
+	}
+
+	public void enterCode(String codeSnippet) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		Actions act = new Actions(driver);
+		act.moveToElement(coding_area).click().perform();
+
+		js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue('');");
+		js.executeScript("document.querySelector('.CodeMirror').CodeMirror.setValue(arguments[0]);", codeSnippet);
+	}
+
+	public void clickRunButton() {
+		wait.waitForClickable(run_button).click();
+	}
+
+	public String getOutputText() {
+
+		// 1. Check for alert first
+		String alertText = handleAlertIfPresent();
+		if (alertText != null) {
+			System.out.println("Alert result: " + alertText);
+			return alertText;
+		}
+
+		// 2. Otherwise read console output
+		wait.waitForPageLoad();
+		String result = wait.waitForCodeMirrorOutput("output", 120);
+		System.out.println("Submission result: " + result);
+		return result;
+	}
+
+	public String handleAlertIfPresent() {
+		try {
+			Alert alert = driver.switchTo().alert();
+			String alertText = alert.getText();
+			alert.accept();
+			return alertText;
+		} catch (NoAlertPresentException e) {
+			return null;
+		}
+	}
+
+	public void goToLinkedListPage() {
+		NavigationUtil.goTo("linked-list");
 	}
 
 }

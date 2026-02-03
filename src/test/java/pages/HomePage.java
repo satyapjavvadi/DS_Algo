@@ -36,8 +36,11 @@ public class HomePage {
 	@FindBy(tagName = "h4")
 	WebElement headingTitle;
 
-	@FindBy(xpath = "//a[text()='Stack']")
-	WebElement stackOption;
+	@FindBy(xpath = "//a[contains(@href,'/stack/')]")
+	private WebElement stackOption;
+
+	@FindBy(xpath = "//a[text()=' Linked List']")
+	WebElement linkedListOption;
 
 	@FindBy(xpath = "//div[@role='alert']")
 	WebElement ErrMsg;
@@ -47,10 +50,9 @@ public class HomePage {
 
 	@FindBy(css = "div.alert[role='alert']")
 	private WebElement loginAlert;
-	
-	@FindBy(xpath = "//a[@href='/login']")
-	private WebElement loginButton;
 
+	@FindBy(xpath = "//a[contains(@href,'login')]")
+	private WebElement loginButton;
 
 	@FindBy(xpath = "//a[text()=' ValidUser ']")
 	WebElement loggedInUser;
@@ -80,10 +82,12 @@ public class HomePage {
 	public String getLoginSuccessMessage() {
 		return WaitUtils.getVisibleText(driver, loginAlert, 0);
 	}
-	
+
 	public void clickSignInButton() {
+		WaitUtils.waitForVisibility(driver, loginButton, 10);
 		loginButton.click();
-		}
+
+	}
 
 	public String getCompanyName() {
 		return companyName.getText();
@@ -125,6 +129,11 @@ public class HomePage {
 		dataStructureDropdown.click();
 		stackOption.click();
 
+	}
+
+	public void clickLinkedListOption() {
+		dataStructureDropdown.click();
+		linkedListOption.click();
 	}
 
 	public String getErrMsg() {
@@ -204,15 +213,15 @@ public class HomePage {
 		}
 	}
 
-    public void navigatetoPages(String pageInfo) {
-		WaitUtils.waitForVisibility(driver,parent,10);
+	public void navigatetoPages(String pageInfo) {
+		WaitUtils.waitForVisibility(driver, parent, 10);
 		List<WebElement> childLink = parent.findElements(By.xpath(".//a"));
-		for(WebElement eachLink : childLink){
+		for (WebElement eachLink : childLink) {
 			String linkText = eachLink.getText();
 			System.out.println(linkText);
-			if(linkText.toLowerCase().contains(pageInfo.toLowerCase())){
+			if (linkText.toLowerCase().contains(pageInfo.toLowerCase())) {
 				System.out.println("in line 57");
-				WaitUtils.waitForVisibility(driver,eachLink,10);
+				WaitUtils.waitForVisibility(driver, eachLink, 10);
 				eachLink.click();
 				break;
 			}
@@ -230,8 +239,8 @@ public class HomePage {
 
 			for (WebElement element : grandChild) {
 				element.getText();
-				System.out.println("in home " +element.getText());
-				if(element.getText().equalsIgnoreCase(cardTitle)){
+				System.out.println("in home " + element.getText());
+				if (element.getText().equalsIgnoreCase(cardTitle)) {
 					child.findElement(By.xpath(".//a")).click();
 					return;
 				}
