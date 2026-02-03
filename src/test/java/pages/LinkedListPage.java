@@ -26,7 +26,7 @@ public class LinkedListPage {
 
 	// locators
 
-	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
+	@FindBy(xpath = "//*[contains(@class,'text-white')]")
 	private List<WebElement> headings;
 
 	@FindBy(xpath = "//a[@class='list-group-item']")
