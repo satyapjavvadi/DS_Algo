@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import DriverManager.DriverFactory;
 import utils.WaitUtils;
@@ -108,6 +109,20 @@ public class HomePage {
 	public void clickDataStructureDropdown() {
 		dataStructureDropdown.click();
 	}
+	
+	public String getRightCornerLink(String linkText) {
+		if (linkText.equalsIgnoreCase("Sign out")) {
+			System.out.println("Link Text is: " + signOutLink.getText());
+			return signOutLink.getText();
+		} 
+		else if (linkText.equalsIgnoreCase("Validuser")) {
+			System.out.println("Link Text is: " + loggedInUser.getText());
+			return loggedInUser.getText();
+		} 
+		else {
+			return "Invalid Link Text";
+		}
+	}
 
 	public List<String> getDataStructureOptionsText() {
 		List<WebElement> options = dataStructureOptions;
@@ -157,6 +172,17 @@ public class HomePage {
 		return title;
 	}
 
+	public String getLinkName(String linkText) {
+		if (linkText.equalsIgnoreCase("Register")) {
+			System.out.println("Link Text is: " + registerLink.getText());
+			return registerLink.getText();	
+		} else if (linkText.equalsIgnoreCase("Sign in")) {
+			System.out.println("Link Text is: " + logInLink.getText());
+			return logInLink.getText();
+		} else {
+			return "Invalid Link Text";
+		}
+	}
 	public String getPageHeading(String OptionName) {
 
 		switch (OptionName) {
@@ -185,7 +211,7 @@ public class HomePage {
 		}
 		System.out.println("Page Heading is: " + headingTitle.getText());
 		return headingTitle.getText();
-		// return OptionName;
+	
 	}
 
 	public void clickTitlePage(String ExpectedTitle) {

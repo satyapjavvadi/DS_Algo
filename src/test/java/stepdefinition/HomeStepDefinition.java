@@ -1,5 +1,7 @@
 package stepdefinition;
 
+import static org.testng.Assert.ARRAY_MISMATCH_TEMPLATE;
+
 import org.testng.Assert;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -31,32 +33,15 @@ public class HomeStepDefinition {
 		System.out.println(pom.getHomePage().getErrMsg());
 	}
 
-	@Given("The user is on the Launch page")
-	public void the_user_is_on_the_launch_page() {
-		System.out.println(ElementUtil.getTitle());
-		}
-
-	@When("The user clicks the Get Started button")
-	public void the_user_clicks_the_get_started_button() {
-		System.out.println("Clicked on Get Started button");
-	}
-
 	@Then("The user should be able to see company name {string}")
 	public void the_user_should_be_able_to_see_company_name(String string) {
-		Assert.assertEquals("NumpyNinja", pom.getHomePage().getCompanyName());
+		Assert.assertEquals("string", pom.getHomePage().getCompanyName());
 		System.out.println(pom.getHomePage().getCompanyName());
 	}
 
-	@Then("The user should be able to see RegisterLink")
-	public void the_user_should_be_able_to_see_register_link() {
-		System.out.println(pom.getHomePage().getRegisterLink());
-		Assert.assertEquals("Register", pom.getHomePage().getRegisterLink());
-	}
-
-	@Then("The user should be able to see Sign in")
-	public void the_user_should_be_able_to_see_sign_in() {
-		System.out.println(pom.getHomePage().getLogInLink());
-		Assert.assertEquals("Sign in", pom.getHomePage().getLogInLink());
+	@Then("The user should be able to see {string}")
+	public void the_user_should_be_able_to_see(String string) {
+	    Assert.assertEquals(string, pom.getHomePage().getLinkName(string));
 	}
 
 	@When("The user clicks the Data Structures dropdown")
@@ -64,11 +49,11 @@ public class HomeStepDefinition {
 		pom.getHomePage().clickDataStructureDropdown();
 	}
 
-	@Then("The user should able to see {int} options Arrays {string} in dropdown menu")
-	public void the_user_should_able_to_see_options_arrays_in_dropdown_menu(Integer int6, String string) {
+	@Then("The user should able to see all options {string} in dropdown menu")
+	public void the_user_should_able_to_see_all_options_in_dropdown_menu(String string) {
 		Assert.assertTrue(pom.getHomePage().getDataStructureOptionsText().contains("Arrays"));
 	}
-
+	
 	@When("The user clicks Get Started buttons of {string} on the homepage without Sign in")
 	public void the_user_clicks_get_started_buttons_of_on_the_homepage_without_sign_in(String TabName) {
 		pom.getHomePage().clickTitlePage(TabName);
@@ -94,10 +79,6 @@ public class HomeStepDefinition {
 
 	@Then("The user should be able to see {string} on the right corner of the Home page")
 	public void the_user_should_be_able_to_see_on_the_right_corner_of_the_home_page(String Links) {
-		if (Links.equalsIgnoreCase("Sign out")) {
-			Assert.assertEquals(Links, pom.getHomePage().getSignOutLink());
-		} else if (Links.equalsIgnoreCase("Validuser")) {
-			Assert.assertEquals(Links, pom.getHomePage().getLoggedInUser());
-		}
+		Assert.assertEquals(Links, pom.getHomePage().getRightCornerLink(Links));
 	}
 }

@@ -2,23 +2,21 @@
 Feature: DS Algo Portal functional testing 
 
 Scenario: Verify that user is able to see company name "NumpyNinja" 
-Given The user is on the Launch page
-When The user clicks the Get Started button
+Given The user is on the Home page
 Then The user should be able to see company name "NumpyNinja"
 
 Scenario Outline: Verify that user is able to see "<LinkName>"
-Given The user is on the Launch page
-When The user clicks the Get Started button
-Then The user should be able to see <LinkName> 
+Given The user is on the Home page
+Then The user should be able to see "<LinkName>" 
 Examples:
 | LinkName |
-| RegisterLink |
+| Register |
 | Sign in |
 
 Scenario:Verify that user is able to view options for "Data Structures" dropdown on home page
 Given The user is on the Home page
 When The user clicks the Data Structures dropdown 
-Then The user should able to see 6 options Arrays "Linked,List,Stack,Queue,Tree,Graph" in dropdown menu
+Then The user should able to see all options "Arrays,Linked,List,Stack,Queue,Tree,Graph" in dropdown menu
 
 Scenario Outline: Verify that user able to see warning message while selecting "<Option>" from the drop down
 Given The user is on the Home page
