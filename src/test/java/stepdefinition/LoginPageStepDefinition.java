@@ -2,8 +2,11 @@ package stepdefinition;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,6 +18,7 @@ import utils.TestContext;
 public class LoginPageStepDefinition {
 
 	private final PageObjectManager pom;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	private final String filePath;
 	private final String sheetName;
@@ -30,7 +34,7 @@ public class LoginPageStepDefinition {
 	// Background
 	@Given("the registered user has navigated to the home page")
 	public void navigateTohomePage() {
-		System.out.println(ElementUtil.getURL());
+		logger.info(ElementUtil.getURL());
 	}
 
 	@When("the user clicks sign in link")

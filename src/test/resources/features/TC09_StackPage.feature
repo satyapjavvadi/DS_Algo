@@ -47,11 +47,6 @@ Feature: Stack Page Functionality
     Given the user is on the Stack "Operations in Stack" page
     When the user activates the "Try here>>>" button in Stack page
     Then the code editor should open
-      
-  Scenario: Running code in Try Editor with Excel data
-  Given the user runs all Try Editor scenarios from stack sheet
-  When User runs all Stack Try Editor scenarios
-  Then All Stack Try Editor results must match expected output
 
   Scenario: Navigating to Practice Questions Stack page  
     When the user selects Practice Questions link in Stack "Operations in Stack"

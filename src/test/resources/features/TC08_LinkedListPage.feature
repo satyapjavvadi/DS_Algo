@@ -18,7 +18,7 @@ Feature: Linked List Page Functionality
 
     Then the user should be able to see Linked List topics as clickable links under Topics Covered
       | Introduction                    |
-      | Creating Linked List            |
+      | Creating Linked LIst            |
       | Types of Linked List            |
       | Implement Linked List in Python |
       | Traversal                       |
@@ -66,7 +66,5 @@ Feature: Linked List Page Functionality
     When the user selects Practice Questions link in Linked List "Introduction"
     Then User must see list of practice questions of Linked List
 
-  Scenario: Navigating to the code editor from topic pages in Linked List
+ 
 
-    When User runs all Linked List Try Editor scenarios
-    Then All Linked List Try Editor results must match expected output

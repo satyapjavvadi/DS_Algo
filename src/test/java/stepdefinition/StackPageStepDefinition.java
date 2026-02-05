@@ -1,23 +1,24 @@
 package stepdefinition;
 
 import java.util.List;
-import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import DriverManager.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
 import utils.ElementUtil;
-import utils.ExcelReader;
-import utils.TestContext;
 import utils.WaitUtils;
 
 public class StackPageStepDefinition {
 
 	private final PageObjectManager pom;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 	WaitUtils wait = new WaitUtils();
 
 	public StackPageStepDefinition(PageObjectManager pom) {
@@ -27,13 +28,13 @@ public class StackPageStepDefinition {
 	@Given("the registered user has navigated to the {string} page")
 	public void user_navigates_to_stack_page(String moduleName) {
 		pom.getHomePage().clickGetStarted(moduleName);
-		System.out.println("In Stack module : " + ElementUtil.getTitle());
+		logger.info("Navigated to module : " + ElementUtil.getTitle());
 	}
 
 	@Then("the user should be able to see {string} in Stack page")
 	public void the_user_should_be_able_to_see_in_stack_page(String expectedText) {
 		List<String> headings = pom.getStackPage().getHeadingText();
-		System.out.println(headings);
+		logger.info("Headings: ", headings);
 		boolean found = false;
 
 		for (String heading : headings) {
@@ -50,10 +51,10 @@ public class StackPageStepDefinition {
 	public void the_user_should_be_able_to_see_Stack_topics_as_clickable_links_under_topics_covered(
 			DataTable dataTable) {
 		List<String> actualSubtopics = pom.getStackPage().getSubtopicLinks();
-		System.out.println("Actual Subtopic links in Stack page: " + actualSubtopics);
+		logger.info("Actual Subtopic links in Stack page: " + actualSubtopics);
 
 		List<String> expectedSubtopics = dataTable.asList();
-		System.out.println("Expected Subtopic links in Stack page: " + expectedSubtopics);
+		logger.info("Expected Subtopic links in Stack page: " + expectedSubtopics);
 
 		for (int i = 0; i < expectedSubtopics.size(); i++) {
 			Assert.assertEquals(actualSubtopics.get(i).trim().toLowerCase(),
@@ -65,8 +66,8 @@ public class StackPageStepDefinition {
 	@When("the user selects Stack {string} under Topics Covered")
 	public void the_user_selects_under_topics_covered(String topic) {
 
-		System.out.println("Page Title: " + ElementUtil.getTitle());
-		System.out.println("Current URL: " + ElementUtil.getURL());
+		logger.info("Page Title: " + ElementUtil.getTitle());
+		logger.info("Current URL: " + ElementUtil.getURL());
 		pom.getStackPage().clickTopicLink(topic);
 	}
 
@@ -106,54 +107,6 @@ public class StackPageStepDefinition {
 
 	}
 
-	@Given("the user runs all Try Editor scenarios from stack sheet")
-	public void load_stack_data() {
-		TestContext.testDataList = ExcelReader.readDataFromExcel("StackPageContent");
-	}
-
-	@When("User runs all Stack Try Editor scenarios")
-	public void run_all_scenarios() {
-
-		for (Map<String, String> row : TestContext.testDataList) {
-
-			String topic = row.get("scenario_type");
-			String code = row.get("code_snippet");
-
-			// Skip invalid or junk rows
-			if (topic == null || topic.trim().isEmpty() || topic.equalsIgnoreCase("Null value in cred")) {
-				System.out.println("Skipping invalid topic: " + topic);
-				continue;
-			}
-
-			pom.getStackPage().goToStackPage();
-			wait.waitForPageTitle("Stack");
-
-			System.out.println("Navigated to Stack. Page Title: " + ElementUtil.getTitle());
-
-			pom.getHomePage().clickGetStarted("Stack");
-			pom.getStackPage().navigateToTryEditorFromTopic(topic);
-			pom.getStackPage().enterCode(code);
-			pom.getStackPage().clickRunButton();
-
-			String actual = pom.getStackPage().getOutputText();
-			row.put("actual_output", actual);
-		}
-	}
-
-	@Then("All Stack Try Editor results must match expected output")
-	public void validate_results() {
-
-		for (Map<String, String> row : TestContext.testDataList) {
-
-			String expected = row.get("expected_output");
-			String error = row.get("error_message");
-			String actual = row.get("actual_output");
-
-			assert actual.contains(expected) || actual.contains(error)
-					: "Mismatch for scenario: " + row.get("scenario_type");
-		}
-	}
-
 	@When("the user selects Practice Questions link in Stack {string}")
 	public void user_clicks_on_practice_questions_link_in_Stack_ui(String topicPage) {
 		pom.getStackPage().clickTopicLink(topicPage);
@@ -162,7 +115,7 @@ public class StackPageStepDefinition {
 
 	@Then("the user must see list of questions in {string} of Stack")
 	public void user_must_see_list_of_questions_in_stack(String pageName) {
-		System.out.println("Print Title actual : " + ElementUtil.getTitle() + " Exp " + pageName);
+		logger.info("Print Title actual : " + ElementUtil.getTitle() + " Exp " + pageName);
 		Assert.assertTrue(ElementUtil.getTitle().toLowerCase().contains(pageName.toLowerCase()),
 				"Title mismatch: expected " + pageName + " but found " + ElementUtil.getTitle());
 

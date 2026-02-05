@@ -27,8 +27,6 @@ public class Hooks {
 		ExcelReader.readDataFromExcel(prop.getProperty("loginsheetName"));
 		ExcelReader.readDataFromExcel(prop.getProperty("RegisterPage"));
 		ExcelReader.readDataFromExcel(prop.getProperty("ArrayPractice"));
-		ExcelReader.readDataFromExcel(prop.getProperty("LinkedListPage"));
-		ExcelReader.readDataFromExcel(prop.getProperty("StackPage"));
 		String browser = System.getProperty("browserName", prop.getProperty("browserName"));
 
 		DriverFactory.launchBrowser(browser);
@@ -40,7 +38,6 @@ public class Hooks {
 
 	@Before(value = "@Getstarted", order = 1)
 	public void GetstartedAction() {
-		// WebDriver driver = DriverFactory.getDriver();
 		pom = new PageObjectManager();
 		pom.getLaunchPage().clickGetStartedButton();
 	}

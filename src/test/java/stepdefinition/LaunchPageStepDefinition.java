@@ -2,8 +2,11 @@ package stepdefinition;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import DriverManager.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,6 +16,7 @@ import pages.PageObjectManager;
 public class LaunchPageStepDefinition {
 
 	private final PageObjectManager pom;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	public LaunchPageStepDefinition(PageObjectManager pom) {
 		this.pom = pom;
@@ -25,7 +29,7 @@ public class LaunchPageStepDefinition {
 
 	@When("the user enters the correct DS Algo portal URL")
 	public void the_user_enters_the_correct_ds_algo_portal_url() {
-		System.out.println("Current URL: " + pom.getLaunchPage().getCurrentUrl());
+		logger.info("Current URL: " + pom.getLaunchPage().getCurrentUrl());
 	}
 
 	@Then("the user should be on the DS Algo Portal page")
