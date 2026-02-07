@@ -25,7 +25,6 @@ public class Hooks {
 		ExcelReader.readDataFromExcel(prop.getProperty("loginsheetName"));
 		ExcelReader.readDataFromExcel(prop.getProperty("RegisterPage"));
 		ExcelReader.readDataFromExcel(prop.getProperty("ArrayPractice"));
-		ExcelReader.readDataFromExcel(prop.getProperty("GraphPage"));
 		String browser = System.getProperty("browserName",	prop.getProperty("browserName"));
 
 		DriverFactory.launchBrowser(browser);

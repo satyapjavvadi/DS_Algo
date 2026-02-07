@@ -28,20 +28,20 @@ public class HomeStepDefinition {
 	}
 
 	@Then("The user should able to see an warning message {string}")
-	public void the_user_should_able_to_see_an_warning_message(String string) {
-		Assert.assertEquals(string, pom.getHomePage().getErrMsg());
+	public void the_user_should_able_to_see_an_warning_message(String warningMsg) {
+		Assert.assertEquals(warningMsg, pom.getHomePage().getErrMsg());
 		System.out.println(pom.getHomePage().getErrMsg());
 	}
 
 	@Then("The user should be able to see company name {string}")
-	public void the_user_should_be_able_to_see_company_name(String string) {
-		Assert.assertEquals("string", pom.getHomePage().getCompanyName());
+	public void the_user_should_be_able_to_see_company_name(String companyName) {
+		Assert.assertEquals(companyName, pom.getHomePage().getCompanyName());
 		System.out.println(pom.getHomePage().getCompanyName());
 	}
 
 	@Then("The user should be able to see {string}")
-	public void the_user_should_be_able_to_see(String string) {
-	    Assert.assertEquals(string, pom.getHomePage().getLinkName(string));
+	public void the_user_should_be_able_to_see(String linkName) {
+	    Assert.assertEquals(linkName, pom.getHomePage().getLinkName(linkName));
 	}
 
 	@When("The user clicks the Data Structures dropdown")
@@ -50,7 +50,7 @@ public class HomeStepDefinition {
 	}
 
 	@Then("The user should able to see all options {string} in dropdown menu")
-	public void the_user_should_able_to_see_all_options_in_dropdown_menu(String string) {
+	public void the_user_should_able_to_see_all_options_in_dropdown_menu(String menuOptions) {
 		Assert.assertTrue(pom.getHomePage().getDataStructureOptionsText().contains("Arrays"));
 	}
 	
@@ -72,8 +72,8 @@ public class HomeStepDefinition {
 	}
 
 	@When("The user clicks Get Started buttons of {string} tab on the homepage after Sign in")
-	public void the_user_clicks_Get_Started_buttons_of_tab_on_the_homepage_after_sign_in(String string2) {
-		pom.getHomePage().clickTitlePage(string2);
+	public void the_user_clicks_Get_Started_buttons_of_tab_on_the_homepage_after_sign_in(String optionTab) {
+		pom.getHomePage().clickTitlePage(optionTab);
 
 	}
 

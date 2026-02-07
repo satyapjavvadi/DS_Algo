@@ -33,7 +33,7 @@ Then The user should be redirected to a page having an try Editor with a Run but
 
 Scenario: Verify that user gets error message when click on Run button without entering code
 Given The user is in the tryEditor page
-When The user clicks the Run Button without entering the code in the Editor
+When The user clicks the Run button without entering the code in the Editor
 Then The user should able to get the error message "Empty Code Editor"
 
 Scenario Outline: Verify Try Editor response for "<topic_tab>" with "<code_type>" code

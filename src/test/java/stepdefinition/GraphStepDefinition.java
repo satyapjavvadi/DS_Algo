@@ -3,10 +3,11 @@ package stepdefinition;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
+import io.cucumber.datatable.DataTable;
 import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,63 +15,64 @@ import io.cucumber.java.en.When;
 import pages.GraphPage;
 import pages.PageObjectManager;
 import utils.ConfigReader;
+import utils.ElementUtil;
 
 public class GraphStepDefinition {
 	private PageObjectManager pom;
 	private WebDriver driver;
 	private GraphPage graphPage;
-
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	
 	public GraphStepDefinition() {
 		driver = DriverFactory.getDriver();
 		pom = new PageObjectManager();
 		graphPage = pom.getGraphPage();
 
 	}
+	
 
-	@Given("The user is on the Graph page")
-	public void the_user_is_on_the_graph_page() {
-		graphPage.clickGraphGetStarted();
+@Then("Topics under the topics covered should be visible and clickable")
+public void topics_under_the_topics_covered_should_be_visible_and_clickable(DataTable dataTable) {
+	List<String> actualSubtopics = graphPage.subtopiclinks();
+	logger.info("Actual Subtopic links in LinkedList page: " + actualSubtopics);
 
-	}
+	List<String> expectedSubtopics = dataTable.asList();
+	logger.info("Expected Subtopic links in LinkedList page: " + expectedSubtopics);
 
-	@Given("The user is in the Graph page")
-	public void the_user_is_in_the_graph_page() {
-		graphPage.clickGraphGetStarted();
-	}
+	Assert.assertEquals(actualSubtopics, expectedSubtopics,
+			"Mismatch in subtopic link texts in LinkedList page: " + dataTable.toString());
 
-	@Then("{string} under the topics covered should be visible and clickable")
-	public void under_the_topics_covered_should_be_visible_and_clickable(String string) {
-		graphPage.isTopicEnabled(string);
-		graphPage.isTopicDisplayed(string);
-	}
+}
 
 	@When("The user clicks the Practice Questions button")
 	public void the_user_clicks_the_practice_questions_button() {
-		graphPage.clickTopicUrl("Graph");
+		graphPage.clickTopicLink("Graph");
 		graphPage.clickPracticeQuestionsLink();
 	}
 
 	@Then("The user should be redirected to list of Practice Questions of Graph page.")
 	public void the_user_should_be_redirected_to_list_of_practice_questions_of_graph_page() {
-		Assert.assertTrue(graphPage.getPracticeQuestionsList().contains("Practice Questions"));
+		List<String> questions = graphPage.getQuestionsList();
+		Assert.assertTrue(!questions.isEmpty(),
+				"No questions are displayed in Practice Questions section of Linked List module");
+
 	}
-
+	
 	@When("The user clicks {string} page")
-	public void the_user_clicks_try_here_button_in_page(String string) {
-		graphPage.clickTopicUrl(string);
-
+	public void the_user_clicks_page(String topicUrl) {
+		graphPage.clickTopicLink(topicUrl);
 	}
 
 	@Then("Try here>>> button should be visible and clickable below the {string} content")
-	public void try_here_button_should_be_visible_and_clickable_below_the_content(String string) {
-		graphPage.isTryHereBtnVisible();
-		graphPage.isTryHereBtnClickable();
+	public void try_here_button_should_be_visible_and_clickable_below_the_content(String topic) {
+		Assert.assertTrue(graphPage.checktryherebutton_displayed(), " try here button not visible in ");
+		Assert.assertTrue(graphPage.checktryherebutton_clickable(), " try here button not clickable in ");
 	}
-
+ 
 	@When("The user clicks Try Here button in {string} in page")
-	public void the_user_clicks_try_here_button_in_in_page(String string) {
-		graphPage.clickTopicUrl(string);
-		graphPage.clickTryherebtn();
+	public void the_user_clicks_try_here_button_in_in_page(String topicUrl) {
+		graphPage.clickTopicLink(topicUrl);
+		graphPage.clickTryHereButton();
 	}
 
 	@When("The user clicks {string} button in {string} page")
@@ -78,21 +80,14 @@ public class GraphStepDefinition {
 
 	}
 
-	@Then("{string} button should be visible and clickable below the {string} content")
-	public void button_should_be_visible_and_clickable_below_the_content(String string, String string2) {
-
-	}
-
 	@Given("User is in tryEditor page of {string}")
-	public void user_is_in_try_editor_page_of(String string) {
-		// graphPage.clickLogIn();
-		graphPage.clickGraphGetStarted();
-		graphPage.clickTopicUrl(string);
-		graphPage.clickTryherebtn();
+	public void user_is_in_try_editor_page_of(String topicPage) {
+		graphPage.clickTopicLink(topicPage);
+		graphPage.clickTryHereButton();
 	}
 
 	@When("User enters {string} code in the Try Editor and clicks on {string} button")
-	public void user_enters_code_in_the_try_editor_and_clicks_on_button(String code_type, String string2)
+	public void user_enters_code_in_the_try_editor_and_clicks_on_button(String code_type, String button)
 			throws IOException {
 		String valid = "print('Hello')";
 		String invalid = "invalid";
@@ -101,7 +96,7 @@ public class GraphStepDefinition {
 		} else if (code_type.equalsIgnoreCase("invalid")) {
 			graphPage.enterCode(invalid);
 		}
-		graphPage.clickRunButton();
+		graphPage.clickrunBtn();
 
 	}
 
@@ -120,80 +115,48 @@ public class GraphStepDefinition {
 		}
 	}
 
-	@Then("User must see \"an error popup stating \"NameError: name {string} is not definedon line {int}\"\" in the UI")
-	public void user_must_see_an_error_popup_stating_name_error_name_is_not_definedon_line_in_the_ui(
-			String expected_result, Integer int1) {
-		if (expected_result.contains("error popup")) {
-			String output = graphPage.getErrorPopupText();
-			Assert.assertTrue(output.contains("NameError"));
-			System.out.println("Output: " + output);
-		} else {
-			String output = graphPage.getOutputText();
-			Assert.assertEquals(expected_result, output);
-			System.out.println("Output: " + output);
-		}
+	@When("The user clicks Try Here button in {string} page")
+	public void the_user_clicks_try_here_button_in_page(String topicUrl) {
+	graphPage.clickTopicLink(topicUrl);
+	graphPage.clickTryHereButton();
 	}
-
-	@When("The user clicks Try Here button in Graph page")
-	public void the_user_clicks_try_here_button_in_graph_page() {
-		graphPage.clickTopicUrl("Graph");
-		graphPage.clickTryherebtn();
-	}
-
+	
 	@Then("Run button should be visible and clickable")
 	public void run_button_should_be_visible_and_clickable() {
-		graphPage.isRunBtnVisible();
-		graphPage.isRunBtnClickable();
+	Assert.assertTrue(graphPage.checkrunbutton_displayed(), "Run button is not visible in Try Editor page");
+	Assert.assertTrue(graphPage.checkrunbutton_clickable(), "Run button is not clickable in Try Editor page");
 	}
-
-	@Given("The user is in the tryEditor page in Graph module")
-	public void the_user_is_in_the_try_editor_page_in_graph_module() {
-		graphPage.clickGraphGetStarted();
-		graphPage.clickTopicUrl("Graph");
-		graphPage.clickTryherebtn();
-
-	}
+	
+	@Given("The user is in the tryEditor page in {string} module")
+	public void the_user_is_in_the_try_editor_page_in_module(String topicUrl) {	  
+		graphPage.clickTopicLink(topicUrl);
+		graphPage.clickTryHereButton();
+}
 
 	@When("The user clicks {string} tab under Topics covered")
-	public void the_user_clicks_tab_under_topics_covered(String string) {
-		graphPage.clickTopic(string);
+	public void the_user_clicks_tab_under_topics_covered(String topicUrl) {
+		graphPage.clickTopicLink(topicUrl);
 	}
 
 	@Then("The user should be redirected to {string} page with related details")
-	public void the_user_should_be_redirected_to_page_with_related_details(String string) {
-		Assert.assertEquals(string, graphPage.getTopicUrl(string));
-		System.out.println("Graph heading: " + string);
+	public void the_user_should_be_redirected_to_page_with_related_details(String pageurltext) {
+		String expected = pageurltext.toLowerCase().replace(" ", "-");
+		Assert.assertTrue(ElementUtil.getURL().contains(expected),
+				"URL does not contain expected text: " + pageurltext);
 	}
 
 	@Then("the user should be able to see {string} in graph page")
-	public void the_user_should_be_able_to_see_in_graph_page(String string) {
-		Assert.assertEquals(string, graphPage.getHeading(string));
-		System.out.println("Graph heading: " + string);
-	}
+	public void the_user_should_be_able_to_see_in_graph_page(String expectedText) {
+		List<String> headings = graphPage.getheadingtext();
+		logger.info("Headings :",headings);
+		boolean found = false;
 
-	@Given("User is on the Try editor page of Graph")
-	public void user_is_on_the_try_editor_page_of_graph() {
-		graphPage.clickGraphGetStarted();
-		graphPage.clickTopicUrl("Graph");
-		graphPage.clickTryherebtn();
-	}
-
-	@When("User clicks the Run button after entering {string} from graph")
-	public void user_clicks_the_run_button_after_entering_from_graph(String codeDetails) {
-		pom.getGraphPage().runCode1(codeDetails);
-	}
-
-	@Then("User must see {string} in graph output")
-	public void user_must_see_in_graph_output(String expectedOutput) {
-		if (expectedOutput.contains("error popup")) {
-			String output = graphPage.getErrorPopupText();
-			Assert.assertTrue(output.contains("NameError"));
-			System.out.println("Output: " + output);
-		} else {
-			String output1 = graphPage.getConsoleOutput1();
-			System.out.println("Output: " + output1);
-			Assert.assertEquals(expectedOutput, output1);
-
+		for (String heading : headings) {
+			if (heading.equalsIgnoreCase(expectedText)) {
+				found = true;
+				break;
+			}
 		}
+		Assert.assertTrue(found, "Expected text '" + expectedText + "' not found in the headings: " + headings);
 	}
 }

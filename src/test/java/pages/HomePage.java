@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import DriverManager.DriverFactory;
 import utils.WaitUtils;
@@ -217,7 +216,7 @@ public class HomePage {
 	public void clickTitlePage(String ExpectedTitle) {
 		String topicHeading;
 		for (WebElement child : parentCard) {
-			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
+			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));//do i need to create web element
 
 			for (WebElement element : grandChild) {
 				topicHeading = element.getText();

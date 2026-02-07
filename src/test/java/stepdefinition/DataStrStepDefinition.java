@@ -52,11 +52,11 @@ public class DataStrStepDefinition {
 		pom.getDataStructurePage().clickTryherebtn();
 	}
 
-	@When("The user clicks the Run Button without entering the code in the Editor")
+	@When("The user clicks the Run button without entering the code in the Editor")
 	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor() {
 		pom.getDataStructurePage().clickrunBtn();
 	}
-
+	
 	@Then("The user should able to get the error message {string}")
 	public void the_user_should_able_to_get_the_error_message(String string) {
 		Assert.assertEquals(string, pom.getDataStructurePage().getErrAlert());
