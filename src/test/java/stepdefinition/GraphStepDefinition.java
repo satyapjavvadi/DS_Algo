@@ -86,7 +86,7 @@ public void topics_under_the_topics_covered_should_be_visible_and_clickable(Data
 		graphPage.clickTryHereButton();
 	}
 
-	@When("User enters {string} code in the Try Editor and clicks on {string} button")
+	@When("User enters {string} code in the Try Editor and clicks on {string} button")//glued
 	public void user_enters_code_in_the_try_editor_and_clicks_on_button(String code_type, String button)
 			throws IOException {
 		String valid = "print('Hello')";
@@ -100,7 +100,7 @@ public void topics_under_the_topics_covered_should_be_visible_and_clickable(Data
 
 	}
 
-	@Then("User must see {string} in the UI")
+	@Then("User must see {string} in the UI")//glued
 	public void user_must_see_in_the_ui(String expected_result) {
 
 		if (expected_result.contains("error popup")) {

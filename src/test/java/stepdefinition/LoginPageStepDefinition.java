@@ -31,7 +31,7 @@ public class LoginPageStepDefinition {
 	}
 
 	// Background
-	@Given("the registered user has navigated to the home page")
+	@Given("the registered user has navigated to the home page")//glued
 	public void navigateTohomePage() {
 		System.out.println(ElementUtil.getURL());
 	}

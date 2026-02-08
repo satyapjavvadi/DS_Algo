@@ -17,68 +17,63 @@ public class HomeStepDefinition {
 		this.pom = pom;
 	}
 
-	@Given("The user is on the Home page")
-	public void the_user_is_on_the_home_page() {
-		System.out.println(ElementUtil.getURL());
-	}
-
-	@When("The user selects {string} from the drop down without Sign in.")
+	@When("The user selects {string} from the drop down without Sign in.")//glued
 	public void the_user_selects_from_the_drop_down_without_sign_in(String Option) {
 		pom.getHomePage().selectOption(Option);
 	}
 
-	@Then("The user should able to see an warning message {string}")
+	@Then("The user should able to see an warning message {string}")//glued
 	public void the_user_should_able_to_see_an_warning_message(String warningMsg) {
-		Assert.assertEquals(warningMsg, pom.getHomePage().getErrMsg());
+		Assert.assertEquals(warningMsg, pom.getHomePage().getErrMsg(), "Warning message mismatch");
 		System.out.println(pom.getHomePage().getErrMsg());
 	}
 
-	@Then("The user should be able to see company name {string}")
+	@Then("The user should be able to see company name {string}")//glued
 	public void the_user_should_be_able_to_see_company_name(String companyName) {
-		Assert.assertEquals(companyName, pom.getHomePage().getCompanyName());
+		Assert.assertEquals(companyName, pom.getHomePage().getCompanyName(), "Company name mismatch");
 		System.out.println(pom.getHomePage().getCompanyName());
 	}
 
-	@Then("The user should be able to see {string}")
+	@Then("The user should be able to see {string}")//glued
 	public void the_user_should_be_able_to_see(String linkName) {
-	    Assert.assertEquals(linkName, pom.getHomePage().getLinkName(linkName));
+	    Assert.assertEquals(linkName, pom.getHomePage().getLinkName(linkName), "Link name mismatch");
 	}
 
-	@When("The user clicks the Data Structures dropdown")
+	@When("The user clicks the Data Structures dropdown")//glued
 	public void the_user_clicks_the_data_structures_dropdown() {
 		pom.getHomePage().clickDataStructureDropdown();
 	}
 
-	@Then("The user should able to see all options {string} in dropdown menu")
+	@Then("The user should able to see all options {string} in dropdown menu") //glued
 	public void the_user_should_able_to_see_all_options_in_dropdown_menu(String menuOptions) {
-		Assert.assertTrue(pom.getHomePage().getDataStructureOptionsText().contains("Arrays"));
+		Assert.assertTrue(pom.getHomePage().getDataStructureOptionsText().contains("Arrays"), "Menu option is missing in dropdown");
 	}
 	
-	@When("The user clicks Get Started buttons of {string} on the homepage without Sign in")
+	@When("The user clicks Get Started buttons of {string} on the homepage without Sign in")//glued
 	public void the_user_clicks_get_started_buttons_of_on_the_homepage_without_sign_in(String TabName) {
 		pom.getHomePage().clickTitlePage(TabName);
 
 	}
 
-	@When("The user selects {string} from the drop down after Sign in.")
+	@When("The user selects {string} from the drop down after Sign in.")//glued
 	public void the_user_selects_from_the_drop_down_after_sign_in(String option) {
 		pom.getHomePage().selectOption(option);
 
 	}
 
-	@Then("The user should be able to see {string} page with details.")
+	@Then("The user should be able to see {string} page with details.")//glued
 	public void the_user_should_be_able_to_see_page_with_details(String OptionName) {
-		Assert.assertEquals(OptionName, pom.getHomePage().getPageHeading(OptionName));
+		Assert.assertEquals(OptionName, pom.getHomePage().getPageHeading(OptionName), "Page heading mismatch");
 	}
 
-	@When("The user clicks Get Started buttons of {string} tab on the homepage after Sign in")
+	@When("The user clicks Get Started buttons of {string} tab on the homepage after Sign in")//glued
 	public void the_user_clicks_Get_Started_buttons_of_tab_on_the_homepage_after_sign_in(String optionTab) {
 		pom.getHomePage().clickTitlePage(optionTab);
 
 	}
 
-	@Then("The user should be able to see {string} on the right corner of the Home page")
+	@Then("The user should be able to see {string} on the right corner of the Home page")//glued
 	public void the_user_should_be_able_to_see_on_the_right_corner_of_the_home_page(String Links) {
-		Assert.assertEquals(Links, pom.getHomePage().getRightCornerLink(Links));
+		Assert.assertEquals(Links, pom.getHomePage().getRightCornerLink(Links), "Link name mismatch");
 	}
 }

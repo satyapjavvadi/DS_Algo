@@ -1,33 +1,27 @@
 @dataStructurefeature @Getstarted @Login 
 Feature: DS Algo Portal functional testing 
 
-Background: Signed in user is navigated to Data Structure module from Home Page
+Background:
+Given The registered user has navigated to the "Data Structures-Introduction" page
 
 Scenario Outline: Verifying static content on the DataStructures page
-Given The user is in the Data Structures - Introduction page
 Then the user should be able to see "<expected_text>"
 
     Examples:
       | expected_text  |
       | Data Structures-Introduction |
       | Topics Covered |
-     
-Scenario: Verify that Time Complexity tab is visible and clickable 
-Given The user is in the Data Structures - Introduction page
-When The user clicks Time Complexity button
-Then Time Complexity tab should be visible and clickable
 
-Scenario:Verify that user is able to navigate to Time Complexity page
-Given The user is in the Data Structures - Introduction page
-When The user clicks Time Complexity button
-Then The user should be redirected to Time Complexity page of Data structures-Introduction
+Scenario: Verify that user is able to navigate to Time Complexity page
+When The user clicks "Time Complexity" topic
+Then The user should be redirected to "Time Complexity" page
 
 Scenario: Verify that Try here tab is visible and clickable
-Given The user is in the Time Complexity tab
+Given The user is in the "Time Complexity" tab
 Then Try here tab should be visible and clickable
 
-Scenario:Verify that user is able to navigate to try Editor page
-Given The user is in the Time Complexity tab
+Scenario: Verify that user is able to navigate to try Editor page
+Given The user is in the "Time Complexity" tab
 When The user clicks Try Here button
 Then The user should be redirected to a page having an try Editor with a Run button to test
 
@@ -46,6 +40,6 @@ Scenario Outline: Verify Try Editor response for "<topic_tab>" with "<code_type>
       | Time Complexity | invalid | an error popup stating NameError: name 'invalid' is not defined on line 1 |
 
 Scenario: Verify that user is able to navigate to Practice Questions page
-Given The user is in the Time Complexity tab
+Given The user is in the "Time Complexity" tab
 When The user clicks the Practice Questions tab
 Then The user should be redirected to list of Practice Questions of Data structures-Introduction

@@ -1,115 +1,119 @@
 package stepdefinition;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.DataStructurePage;
 import pages.PageObjectManager;
+import utils.ElementUtil;
 
 public class DataStrStepDefinition {
 	private final PageObjectManager pom;
 	private final WebDriver driver;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private DataStructurePage dataStructuresPage;
 
 	public DataStrStepDefinition() {
 		pom = new PageObjectManager();
 		driver = DriverFactory.getDriver();
 	}
 
-	@Given("The user is in the Data Structures - Introduction page")
-	public void the_user_is_in_the_data_structures_introduction_page() {
-		pom.getDataStructurePage().clickDataStructureIntroGetStartedBtn();
+	@Then("the user should be able to see {string}")  //glued
+	public void the_user_should_be_able_to_see(String expectedText) {
+		List<String> headings = pom.getDataStructurePage().getheadingtext();
+		logger.info("Headings :", headings);
+		boolean found = false;
+
+		for (String heading : headings) {
+			if (heading.equalsIgnoreCase(expectedText)) {
+				found = true;
+				break;
+			}
+		}
+		Assert.assertTrue(found, "Expected text '" + expectedText + "' not found in the headings: " + headings);
 	}
 
-	@Then("the user should be able to see {string}")
-	public void the_user_should_be_able_to_see(String string) {
-		Assert.assertEquals(string, pom.getDataStructurePage().getHeading(string));
+	@Given("User is in {string} UI")//glued
+	public void user_is_in_ui(String topicName) {
+		pom.getDataStructurePage().clickTopicLink(topicName);
+		pom.getDataStructurePage().clickTryHereButton();
 	}
 
-	@Given("User is in {string} UI")
-	public void user_is_in_ui(String string) {
-		pom.getDataStructurePage().clickDataStructureIntroGetStartedBtn();
-		pom.getDataStructurePage().clickTimeComplexityLink();
-		pom.getDataStructurePage().clickTryherebtn();
-	}
-
-	@When("User enters {string} code in the Try Editor and clicks on run button")
-	public void user_enters_code_in_the_try_editor_and_clicks_on_run_button(String codeType) {
-		pom.getDataStructurePage().clickTryherebtn();
-		pom.getDataStructurePage().code();
-
-		// dataStructures.enterCode(codeType);
-		pom.getDataStructurePage().clickrunBtn();
-		System.out.println("Code entered and Run button clicked");
-	}
-
-	@Given("The user is in the tryEditor page")
+	@Given("The user is in the tryEditor page")//glued
 	public void the_user_is_in_the_try_editor_page() {
-		pom.getDataStructurePage().clickDataStructureIntroGetStartedBtn();
-		pom.getDataStructurePage().clickTimeComplexityLink();
-		pom.getDataStructurePage().clickTryherebtn();
+		pom.getDataStructurePage().clickTopicLink("time complexity");
+		pom.getDataStructurePage().clickTryHereButton();
 	}
 
-	@When("The user clicks the Run button without entering the code in the Editor")
+	@When("The user clicks the Run button without entering the code in the Editor")//glued
 	public void the_user_clicks_the_run_button_without_entering_the_code_in_the_editor() {
 		pom.getDataStructurePage().clickrunBtn();
 	}
-	
-	@Then("The user should able to get the error message {string}")
+
+	@Then("The user should able to get the error message {string}")//glued
 	public void the_user_should_able_to_get_the_error_message(String string) {
-		Assert.assertEquals(string, pom.getDataStructurePage().getErrAlert());
+		Assert.assertEquals(string, pom.getDataStructurePage().getErrAlert(),
+				"Expected error alert not found. Actual message: " + pom.getDataStructurePage().getErrAlert());
 	}
 
-	@When("The user clicks the Practice Questions tab")
+	@When("The user clicks the Practice Questions tab")//glued
 	public void the_user_clicks_the_practice_questions_tab() {
 		pom.getDataStructurePage().clickPracticeQuestionsLink();
 	}
 
-	@Then("The user should be redirected to list of Practice Questions of Data structures-Introduction")
+	@Then("The user should be redirected to list of Practice Questions of Data structures-Introduction")//glued
 	public void the_user_should_be_redirected_to_list_of_practice_questions_of_data_structures_introduction() {
-		Assert.assertTrue(pom.getDataStructurePage().getPracticeQuestionsList().contains("List of Practice Questions"));
+		List<String> questions = pom.getDataStructurePage().getQuestionsList();
+		Assert.assertTrue(!questions.isEmpty(),
+				"No questions are displayed in Practice Questions section of Linked List module");
 	}
 
-	@When("The user clicks Time Complexity button")
-	public void the_user_clicks_time_complexity_button() {
-		pom.getDataStructurePage().clickTimeComplexityLink();
-	}
-
-	@Then("The user should be redirected to Time Complexity page of Data structures-Introduction")
-	public void the_user_should_be_redirected_to_time_complexity_page_of_data_structures_introduction() {
-		Assert.assertTrue(pom.getDataStructurePage().getTimeComplexityText().contains("Time Complexity"));
+	@When("The user clicks {string} topic") //glued
+	public void the_user_clicks_topic(String topicUrl) {
+		pom.getDataStructurePage().clickTopicLink(topicUrl);
 
 	}
 
-	@Then("Time Complexity tab should be visible and clickable")
-	public void time_complexity_tab_should_be_visible_and_clickable() {
-		pom.getDataStructurePage().isTabVisible();
-		pom.getDataStructurePage().isTabClickable();
+	@Then("The user should be redirected to {string} page")//glued
+	public void the_user_should_be_redirected_to_page(String pageurltext) {
+		String expected = pageurltext.toLowerCase().replace(" ", "-");
+		Assert.assertTrue(ElementUtil.getURL().contains(expected),
+				"URL does not contain expected text: " + pageurltext);
+
 	}
 
-	@Then("The user should be redirected to a page having an try Editor with a Run button to test")
+	@Then("The user should be redirected to a page having an try Editor with a Run button to test")//glued
 	public void the_user_should_be_redirected_to_a_page_having_an_try_editor_with_a_run_button_to_test() {
-		Assert.assertTrue(pom.getDataStructurePage().getRunBtnText().contains("Run"));
+		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"), "user is not on tryeditor screen");
+
+		Assert.assertTrue(pom.getDataStructurePage().getRunBtnText().contains("Run"),
+				"Run button is not present in Try Editor page");
 	}
 
-	@Given("The user is in the Time Complexity tab")
-	public void the_user_is_in_the_time_complexity_tab() {
-		pom.getDataStructurePage().clickDataStructureIntroGetStartedBtn();
-		pom.getDataStructurePage().clickTimeComplexityLink();
-	}
-
-	@When("The user clicks Try Here button")
+	@When("The user clicks Try Here button")//glued
 	public void the_user_clicks_try_here_button() {
-		pom.getDataStructurePage().clickTryherebtn();
+		pom.getDataStructurePage().clickTryHereButton();
 	}
 
-	@Then("Try here tab should be visible and clickable")
-	public void try_here_tab_should_be_visible_and_clickable() {
+	@Given("The user is in the {string} tab")//glued
+	public void the_user_is_in_the_tab(String topicUrl) {
+		pom.getDataStructurePage().clickTopicLink(topicUrl);
+	}
 
-		pom.getDataStructurePage().isTryHereBtnVisible();
-		pom.getDataStructurePage().isTryHereBtnClickable();
+	@Then("Try here tab should be visible and clickable")//
+	public void try_here_tab_should_be_visible_and_clickable() {
+		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_displayed(),
+				"Run button is not visible in Try Editor page");
+		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_clickable(),
+				"Run button is not clickable in Try Editor page");
 	}
 
 }
