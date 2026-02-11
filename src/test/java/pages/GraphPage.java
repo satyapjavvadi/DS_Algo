@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,18 +36,15 @@ public class GraphPage {
 	@FindBy(xpath = "//div[@class='list-group']")
 	private List<WebElement> questionslist;
 	
-	@FindBy(xpath = "//div[@class='CodeMirror-scroll']")
-	WebElement codeEditor;
 
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement runBtn;
 	
 	@FindBy(id = "output")
 	WebElement output;
-	
 
-    @FindBy(xpath = "//span[@role='presentation']//span")
-    private WebElement codeArea;
+	
+	
 
 	public GraphPage() {
 		this.driver = DriverFactory.getDriver();
@@ -144,31 +138,5 @@ public class GraphPage {
 				return;
 			}
 		}
-
 	}
-
-	public void enterCode(String code_type) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("var cm = document.querySelector('.CodeMirror').CodeMirror;" + "cm.setValue(arguments[0]);",
-				code_type);
-	}
- 
-	public void clickrunBtn() {
-		run_Button.click();
-	}
-	
-		public String getOutputText() {
-			return output.getText().trim();
-		}
-
-		public String getErrorPopupText() {
-			try {
-				Alert alert = driver.switchTo().alert();
-				String msg = alert.getText();
-				alert.accept();
-				return msg;
-			} catch (NoAlertPresentException e) {
-				return null;
-			}
-		}
 }	

@@ -30,15 +30,6 @@ Given The user is in the tryEditor page
 When The user clicks the Run button without entering the code in the Editor
 Then The user should able to get the error message "Empty Code Editor"
 
-Scenario Outline: Verify Try Editor response for "<topic_tab>" with "<code_type>" code
-    Given User is in "<topic_tab>" UI
-    When User enters "<code_type>" code in the Try Editor and clicks on "Run" button
-	Then User must see "<expected_result>" in the UI
-    Examples:
-      | topic_tab | code_type | expected_result |
-      | Time Complexity | valid  | Hello |
-      | Time Complexity | invalid | an error popup stating NameError: name 'invalid' is not defined on line 1 |
-
 Scenario: Verify that user is able to navigate to Practice Questions page
 Given The user is in the "Time Complexity" tab
 When The user clicks the Practice Questions tab

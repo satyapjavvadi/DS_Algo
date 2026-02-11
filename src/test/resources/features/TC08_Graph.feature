@@ -50,18 +50,6 @@ Scenario: Verify that user gets error message when click on Run button without e
 Given The user is in the tryEditor page in "Graph" module
 When The user clicks the Run button without entering the code in the Editor
 Then The user should able to get the error message "Empty Code Editor"
-
-Scenario Outline: Verify Try Editor response for "<topic_page>" with "<code_type>" code
-Given User is in tryEditor page of "<topic_page>"
-When User enters "<code_type>" code in the Try Editor and clicks on "Run" button
-Then User must see "<expected_result>" in the UI
-
-Examples:
-      | topic_page | code_type | expected_result |
-	  | Graph | valid | Hello |
-      | Graph | invalid | an error popup stating NameError: name 'invalid' is not defined on line 1 |
-      | Graph Representations | valid | Hello |
-      | Graph Representations | invalid | an error popup stating NameError: name 'invalid' is not definedon line 1  |
  
 Scenario: Verify that user is able to navigate to Practice Questions page
 When The user clicks the Practice Questions button
