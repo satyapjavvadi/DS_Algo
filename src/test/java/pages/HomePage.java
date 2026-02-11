@@ -1,15 +1,12 @@
 package pages;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import DriverManager.DriverFactory;
 import utils.WaitUtils;
 
@@ -35,9 +32,6 @@ public class HomePage {
 
 	@FindBy(tagName = "h4")
 	WebElement headingTitle;
-
-	@FindBy(xpath = "//a[text()='Stack']")
-	WebElement stackOption;
 
 	@FindBy(xpath = "//div[@role='alert']")
 	WebElement ErrMsg;
@@ -68,13 +62,6 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void launchUrl(String baseURL) {
-		driver.get(baseURL);
-	}
-
-	public boolean getHomePage() {
-		return driver.getCurrentUrl().contains("/home");
-	}
 
 	public String getLoginSuccessMessage() {
 		return WaitUtils.getVisibleText(driver, loginAlert, 0);
@@ -88,27 +75,10 @@ public class HomePage {
 		return companyName.getText();
 	}
 
-	public String getRegisterLink() {
-		return registerLink.getText();
-
-	}
-
-	public String getLogInLink() {
-		return logInLink.getText();
-	}
-
-	public String getLoggedInUser() {
-		return loggedInUser.getText();
-	}
-
-	public String getSignOutLink() {
-		return signOutLink.getText();
-	}
-
 	public void clickDataStructureDropdown() {
 		dataStructureDropdown.click();
 	}
-	
+
 	public String getRightCornerLink(String linkText) {
 		if (linkText.equalsIgnoreCase("Sign out")) {
 			System.out.println("Link Text is: " + signOutLink.getText());
@@ -134,11 +104,6 @@ public class HomePage {
 
 	}
 
-	public void clickStackOption() {
-		dataStructureDropdown.click();
-		stackOption.click();
-
-	}
 
 	public String getErrMsg() {
 		return ErrMsg.getText();
@@ -154,23 +119,6 @@ public class HomePage {
 		}
 	}
 
-	public String getHeadingTitle() {
-		return headingTitle.getText();
-	}
-
-	public List<String> getTitles(String string2) {
-		List<String> title = new ArrayList<>();
-		for (WebElement child : parentCard) {
-			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
-
-			for (WebElement element : grandChild) {
-				title.add(element.getText());
-				System.out.println("Titles are: " + title);
-			}
-		}
-		return title;
-	}
-
 	public String getLinkName(String linkText) {
 		if (linkText.equalsIgnoreCase("Register")) {
 			System.out.println("Link Text is: " + registerLink.getText());
@@ -182,6 +130,7 @@ public class HomePage {
 			return "Invalid Link Text";
 		}
 	}
+
 	public String getPageHeading(String OptionName) {
 
 		switch (OptionName) {
@@ -213,10 +162,11 @@ public class HomePage {
 	
 	}
 
+
 	public void clickTitlePage(String ExpectedTitle) {
 		String topicHeading;
 		for (WebElement child : parentCard) {
-			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));//do i need to create web element
+			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
 
 			for (WebElement element : grandChild) {
 				topicHeading = element.getText();

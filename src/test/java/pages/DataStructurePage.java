@@ -39,15 +39,12 @@ public class DataStructurePage {
 	private List<WebElement> questionslist;
 	
 
-	@FindBy(id = "output")
-	WebElement output;
-
 	public DataStructurePage() {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(this.driver, this);
 		wait = new WaitUtils();
 	}
-
+	
 	public List<String> getheadingtext() {
 		wait.waitForVisibilityOfAll(headings);
 		List<String> headingtexts = new ArrayList<String>();
@@ -57,17 +54,7 @@ public class DataStructurePage {
 		return headingtexts;
 	}
 
-	public List<String> subtopiclinks() {
-		wait.waitForVisibilityOfAll(dataStr_subtopicslinks);
-		List<String> subtopiclinks = new ArrayList<String>();
-		for (WebElement topiclink : dataStr_subtopicslinks) {
-			if (topiclink.isDisplayed() && topiclink.isEnabled()) {
-				subtopiclinks.add(topiclink.getText().trim());
-			}
-		}
-		return subtopiclinks;
-	}
-
+	//used
 	public void clickTopicLink(String topicName) {
 		wait.waitForVisibilityOfAll(dataStr_subtopicslinks);
 		for (WebElement link : dataStr_subtopicslinks) {
@@ -80,42 +67,26 @@ public class DataStructurePage {
 		throw new NoSuchElementException("Topic link not found: " + topicName);
 	}
 
-	
+	//used
 	public boolean checktryherebutton_displayed() {
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
-	
+	//used
 	public boolean checktryherebutton_clickable() {
 		return WaitUtils.isClickable(driver, tryhere_button, 10);
 	}
-	
-	public boolean checkrunbutton_displayed() {
-		return WaitUtils.isVisible(driver, run_Button, 10);
-	}
-	
-	public boolean checkrunbutton_clickable() {
-		return WaitUtils.isClickable(driver, run_Button, 10);
-	}
-
+	//used
 	public void clickTryHereButton() {
 		JSUtils.scrollIntoView(tryhere_button);
 		wait.waitForClickable(tryhere_button).click();
 	}
 
-	public boolean isPracticeQuestionLinkVisible() {
-		JSUtils.scrollIntoView(Practicequestionslink);
-		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
-	}
-
-	public boolean isPracticeQuestionLinkEnabled() {
-		return Practicequestionslink.isEnabled();
-	}
-
+	//used
 	public void clickPracticeQuestionsLink() {
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}
-
+	//used
 	public List<String> getQuestionsList() {
 		try {
 			wait.waitForVisibilityOfAll(questionslist);
@@ -126,31 +97,20 @@ public class DataStructurePage {
 		}
 	}
 
-	public void clickProblemLink(String problemName) {
-		for (WebElement eachQuestion : questionslist) {
-			String questionName = eachQuestion.getText();
-			if (questionName.equalsIgnoreCase(problemName)) {
-				eachQuestion.click();
-				return;
-			}
-		}
-
-	}
-	
+		//used
 	public String getErrAlert() {
 		Alert alert = driver.switchTo().alert();
 		String alertText = alert.getText();
 		alert.accept();
 		return alertText;
 	}
-		public String getOutputText() {
-			return output.getText().trim();
-		}
 		
-
+		
+		//used
 		public void clickrunBtn() {
 			run_Button.click();
 }
+		//used
 		public String getRunBtnText() {
 			return run_Button.getText();
 		}

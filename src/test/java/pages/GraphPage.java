@@ -19,10 +19,10 @@ public class GraphPage {
 	private WaitUtils wait;
 	
 	@FindBy(xpath = "//*[contains(@class,'text-white')]")
-	private List<WebElement> headings;	//static content
+	private List<WebElement> headings;
 
 	@FindBy(xpath = "//a[@class='list-group-item']")
-	private List<WebElement> Graph_subtopicslinks;	//subtopic links under topics covered
+	private List<WebElement> Graph_subtopicslinks;
 
 	@FindBy(xpath = "//a[contains(text(),'Try')]")
 	private WebElement tryhere_button;
@@ -51,7 +51,7 @@ public class GraphPage {
 		PageFactory.initElements(this.driver, this);
 		wait = new WaitUtils();
 	}
-
+//used
 	public List<String> getheadingtext() {
 		wait.waitForVisibilityOfAll(headings);
 		List<String> headingtexts = new ArrayList<String>();
@@ -60,7 +60,7 @@ public class GraphPage {
 		}
 		return headingtexts;
 	}
-
+//used
 	public List<String> subtopiclinks() {
 		wait.waitForVisibilityOfAll(Graph_subtopicslinks);
 		List<String> subtopiclinks = new ArrayList<String>();
@@ -71,7 +71,7 @@ public class GraphPage {
 		}
 		return subtopiclinks;
 	}
-
+//used
 	public void clickTopicLink(String topicName) {
 		wait.waitForVisibilityOfAll(Graph_subtopicslinks);
 		for (WebElement link : Graph_subtopicslinks) {
@@ -84,28 +84,28 @@ public class GraphPage {
 		throw new NoSuchElementException("Topic link not found: " + topicName);
 	}
 
-	
+	//used
 	public boolean checktryherebutton_displayed() {
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
-	
+	//used
 	public boolean checktryherebutton_clickable() {
 		return WaitUtils.isClickable(driver, tryhere_button, 10);
 	}
-	
+	//used
 	public boolean checkrunbutton_displayed() {
 		return WaitUtils.isVisible(driver, run_Button, 10);
 	}
-	
+	//used
 	public boolean checkrunbutton_clickable() {
 		return WaitUtils.isClickable(driver, run_Button, 10);
 	}
-
+//used
 	public void clickTryHereButton() {
 		JSUtils.scrollIntoView(tryhere_button);
 		wait.waitForClickable(tryhere_button).click();
 	}
-
+/*
 	public boolean isPracticeQuestionLinkVisible() {
 		JSUtils.scrollIntoView(Practicequestionslink);
 		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
@@ -113,13 +113,13 @@ public class GraphPage {
 
 	public boolean isPracticeQuestionLinkEnabled() {
 		return Practicequestionslink.isEnabled();
-	}
-
+	}*/
+//used
 	public void clickPracticeQuestionsLink() {
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}
-
+//used
 	public List<String> getQuestionsList() {
 		try {
 			wait.waitForVisibilityOfAll(questionslist);

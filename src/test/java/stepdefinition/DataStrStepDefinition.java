@@ -18,7 +18,7 @@ public class DataStrStepDefinition {
 	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	public DataStrStepDefinition(PageObjectManager pom) {
-		this.pom = pom;
+	this.pom = pom;
 	}
 
 	@Then("the user should be able to see {string}")
@@ -35,6 +35,7 @@ public class DataStrStepDefinition {
 		}
 		Assert.assertTrue(found, "Expected text '" + expectedText + "' not found in the headings: " + headings);
 	}
+
 
 	@Given("The user is in the tryEditor page")
 	public void the_user_is_in_the_try_editor_page() {
@@ -92,12 +93,12 @@ public class DataStrStepDefinition {
 		pom.getDataStructurePage().clickTryHereButton();
 	}
 
-	@Given("The user is in the {string} tab") // glued
+	@Given("The user is in the {string} tab")
 	public void the_user_is_in_the_tab(String topicUrl) {
 		pom.getDataStructurePage().clickTopicLink(topicUrl);
 	}
 
-	@Then("Try here tab should be visible and clickable") //
+	@Then("Try here tab should be visible and clickable")
 	public void try_here_tab_should_be_visible_and_clickable() {
 		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_displayed(),
 				"Run button is not visible in Try Editor page");
