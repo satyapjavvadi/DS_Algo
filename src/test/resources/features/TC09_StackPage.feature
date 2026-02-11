@@ -43,7 +43,7 @@ Feature: Stack Page Functionality
       | Implementation        | 
       |  Applications         |  
 
-  Scenario Outline: Opening the code editor from topic pages
+  Scenario: Opening the code editor from topic pages
     Given the user is on the Stack "Operations in Stack" page
     When the user activates the "Try here>>>" button in Stack page
     Then the code editor should open

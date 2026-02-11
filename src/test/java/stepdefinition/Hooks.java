@@ -45,7 +45,7 @@ public class Hooks {
 	@Before(value = "@Login", order = 2)
 	public void performLogin() throws IOException {
 		pom.getHomePage().clickSignInButton();
-		pom.getLoginPage().login(" Submits the login form ", "valid_login");
+		pom.getLoginPage().login("Submits the login form ", "valid_login");
 
 	}
 
