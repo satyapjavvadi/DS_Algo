@@ -1,25 +1,25 @@
 package utils;
 
-import DriverManager.DriverFactory;
-import org.openqa.selenium.*;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.List;
+import DriverManager.DriverFactory;
 
 public class WaitUtils {
 	private final WebDriverWait wait;
 	private final WebDriver driver;
 
-
 	public WaitUtils() {
 		this.driver = DriverFactory.getDriver();
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	}
-
-       public WebElement waitForVisibility(By locator) {
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	public WebElement waitForClickable(WebElement element) {
@@ -27,18 +27,11 @@ public class WaitUtils {
 	}
 
 	public void waitForPageLoad() {
-		wait.until(driver ->
-				((JavascriptExecutor) driver)
-						.executeScript("return document.readyState").equals("complete"));
+		wait.until(
+				driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
 	}
 
-	public static void waitForTitleContains(WebDriver driver, String titleFragment, int timeoutSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-		wait.until(ExpectedConditions.titleContains(titleFragment));
-	}
-
-
-	public boolean waitForVisibilityOfAll( List<WebElement> elements) {
+	public boolean waitForVisibilityOfAll(List<WebElement> elements) {
 
 		try {
 			wait.until(ExpectedConditions.visibilityOfAllElements(elements));
@@ -57,21 +50,9 @@ public class WaitUtils {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
 		return wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	 public static String getVisibleText(WebDriver driver, WebElement loginAlert, int timeoutSeconds) {
-	        return waitForVisibility(driver, loginAlert, timeoutSeconds).getText().trim();
-	    }
 
-	public static boolean isKeywordInHeaders(WebDriver driver, String keyword) {
-		String xpath = "//*[self::h1 or self::h2 or self::h3 or self::h4 or self::p]"
-				+ "[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '"
-				+ keyword.toLowerCase() + "')]";
-		List<WebElement> headers = driver.findElements(By.xpath(xpath));
-		return !headers.isEmpty();
-	}
-
-	// Search for keyword in a list of elements
-	public static boolean isKeywordInElements(List<WebElement> elements, String keyword) {
-		return elements.stream().anyMatch(el -> el.getText().toLowerCase().contains(keyword.toLowerCase()));
+	public static String getVisibleText(WebDriver driver, WebElement loginAlert, int timeoutSeconds) {
+		return waitForVisibility(driver, loginAlert, timeoutSeconds).getText().trim();
 	}
 
 	public static boolean isVisible(WebDriver driver, WebElement element, int timeoutSeconds) {
@@ -95,7 +76,5 @@ public class WaitUtils {
 
 		return output.getAttribute("textContent").trim();
 	}
-
-
 
 }

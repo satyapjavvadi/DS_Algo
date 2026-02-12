@@ -21,6 +21,10 @@ public class TryEditorPage {
 
     @FindBy(xpath = "//span[@role='presentation']//span")
     private WebElement codeArea;
+    
+    @FindBy(css = ".CodeMirror")
+    private WebElement codeEditor;
+
 
     public TryEditorPage() {
         this.driver = DriverFactory.getDriver();
@@ -46,4 +50,14 @@ public class TryEditorPage {
         System.out.println("Submission result: " + result);
         return result;
     }
+    
+    public boolean isEditorVisible() {
+        try {
+            return codeEditor.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    
 }

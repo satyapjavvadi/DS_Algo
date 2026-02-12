@@ -1,7 +1,5 @@
 package pages;
 
-import DriverManager.DriverFactory;
-
 public class PageObjectManager {
 
 	private LaunchPage launchPage;
@@ -14,7 +12,6 @@ public class PageObjectManager {
 	private GraphPage graphPage;
 	private ArrayPage arraypage;
 	private TryEditorPage tryeditorPage;
-
 
 	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
@@ -57,14 +54,14 @@ public class PageObjectManager {
 		}
 		return homePage;
 	}
-	
+
 	public DataStructurePage getDataStructurePage() {
 		if (dataStructurePage == null) {
 			dataStructurePage = new DataStructurePage();
 		}
 		return dataStructurePage;
 	}
-	
+
 	public GraphPage getGraphPage() {
 		if (graphPage == null) {
 			graphPage = new GraphPage();
@@ -73,15 +70,15 @@ public class PageObjectManager {
 	}
 
 	public ArrayPage getArrayPage() {
-		if(arraypage == null){
-			arraypage = new ArrayPage( );
+		if (arraypage == null) {
+			arraypage = new ArrayPage();
 		}
 		return arraypage;
 	}
 
 	public TryEditorPage getTryEditorPage() {
-		if(tryeditorPage == null){
-			tryeditorPage = new TryEditorPage( );
+		if (tryeditorPage == null) {
+			tryeditorPage = new TryEditorPage();
 		}
 		return tryeditorPage;
 	}

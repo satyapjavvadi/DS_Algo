@@ -4,9 +4,7 @@ import java.util.Map;
 
 public class TestContext {
 
-    public static Map<String, String> testData;
-
-
+	// For single-row usage
+	public static Map<String, String> testData;
 
 }
-

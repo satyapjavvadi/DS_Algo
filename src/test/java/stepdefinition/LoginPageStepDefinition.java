@@ -1,23 +1,24 @@
 package stepdefinition;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
 import utils.ConfigReader;
 import utils.ElementUtil;
-import utils.ExcelReader;
 import utils.TestContext;
 
 public class LoginPageStepDefinition {
 
 	private final PageObjectManager pom;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	private final String filePath;
 	private final String sheetName;
@@ -33,19 +34,19 @@ public class LoginPageStepDefinition {
 	// Background
 	@Given("the registered user has navigated to the home page")
 	public void navigateTohomePage() {
-		System.out.println(ElementUtil.getURL());
+		logger.info(ElementUtil.getURL());
 	}
 
 	@When("the user clicks sign in link")
-	public void clickSignIn(){
+	public void clickSignIn() {
 		pom.getHomePage().clickSignInButton();
 	}
 
-	//Scenario starts here
+	// Scenario starts here
 	@When("the user {string} with {string}")
-	public void preformsLogin(String submissionMethod , String scenarioType){
+	public void preformsLogin(String submissionMethod, String scenarioType) {
 
-		pom.getLoginPage().login( submissionMethod ,  scenarioType);
+		pom.getLoginPage().login(submissionMethod, scenarioType);
 	}
 
 	@Then("the user should be redirected to the Home Page with a message {string}")
@@ -68,18 +69,17 @@ public class LoginPageStepDefinition {
 	@Then("the appropriate error messages should be displayed in {string}")
 	public void verifyErrorMessages(String expectedInField) throws IOException {
 
-       Assert.assertEquals(pom.getLoginPage().getDisplayedErrorMessage(expectedInField), TestContext.testData.get("expected_message"),
-			   "Mismatch for invalid login scenario: " + TestContext.testData.get("username") + "/" + TestContext.testData.get("password"));
+		Assert.assertEquals(pom.getLoginPage().getDisplayedErrorMessage(expectedInField),
+				TestContext.testData.get("expected_message"), "Mismatch for invalid login scenario: "
+						+ TestContext.testData.get("username") + "/" + TestContext.testData.get("password"));
 	}
 
 	// Valid login attempts from Excel
 	@Given("the user provides valid credentials from Excel")
 	public void validLoginFromExcel() throws IOException {
-		//runExcelDrivenLogin("valid_login");
+		// runExcelDrivenLogin("valid_login");
 	}
 
-
-
-    // Helper method to reduce duplication
+	// Helper method to reduce duplication
 
 }
