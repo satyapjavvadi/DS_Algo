@@ -7,13 +7,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import DriverManager.DriverFactory;
 import utils.WaitUtils;
 
 public class HomePage {
 
 	private WebDriver driver;
+	private WaitUtils wait;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
+	
 	@FindBy(linkText = "NumpyNinja")
 	WebElement companyName;
 
@@ -64,7 +70,7 @@ public class HomePage {
 
 
 	public String getLoginSuccessMessage() {
-		return WaitUtils.getVisibleText(driver, loginAlert, 0);
+		return wait.getVisibleText(driver, loginAlert, 0);
 	}
 
 	public void clickSignInButton() {
@@ -81,11 +87,11 @@ public class HomePage {
 
 	public String getRightCornerLink(String linkText) {
 		if (linkText.equalsIgnoreCase("Sign out")) {
-			System.out.println("Link Text is: " + signOutLink.getText());
+			logger.info("Getting text of Sign out link" + signOutLink.getText());
 			return signOutLink.getText();
 		} 
 		else if (linkText.equalsIgnoreCase("Validuser")) {
-			System.out.println("Link Text is: " + loggedInUser.getText());
+			logger.info("Getting text of ValidUser link" + loggedInUser.getText());
 			return loggedInUser.getText();
 		} 
 		else {
@@ -95,8 +101,6 @@ public class HomePage {
 
 	public List<String> getDataStructureOptionsText() {
 		List<WebElement> options = dataStructureOptions;
-		System.out.println("dropdown options are:" + options.size());
-
 		for (WebElement option : options) {
 			System.out.println(option.getText());
 		}
@@ -121,10 +125,10 @@ public class HomePage {
 
 	public String getLinkName(String linkText) {
 		if (linkText.equalsIgnoreCase("Register")) {
-			System.out.println("Link Text is: " + registerLink.getText());
+			logger.info("Getting text of Register link" + registerLink.getText());
 			return registerLink.getText();	
 		} else if (linkText.equalsIgnoreCase("Sign in")) {
-			System.out.println("Link Text is: " + logInLink.getText());
+			logger.info("Getting text of Sign in link" + logInLink.getText());
 			return logInLink.getText();
 		} else {
 			return "Invalid Link Text";
@@ -154,10 +158,10 @@ public class HomePage {
 			break;
 
 		default:
-			System.out.println("Invalid Heading");
+			logger.warn("Invalid Heading: " + OptionName);
 			break;
 		}
-		System.out.println("Page Heading is: " + headingTitle.getText());
+		logger.info("Page Heading is: " + headingTitle.getText());
 		return headingTitle.getText();
 	
 	}
@@ -179,14 +183,14 @@ public class HomePage {
 	}
 
     public void navigatetoPages(String pageInfo) {
-		WaitUtils.waitForVisibility(driver,parent,10);
+		wait.waitForVisibility(driver,parent,10);
 		List<WebElement> childLink = parent.findElements(By.xpath(".//a"));
 		for(WebElement eachLink : childLink){
 			String linkText = eachLink.getText();
-			System.out.println(linkText);
+			logger.info("Checking link: " + linkText);
 			if(linkText.toLowerCase().contains(pageInfo.toLowerCase())){
-				System.out.println("in line 57");
-				WaitUtils.waitForVisibility(driver,eachLink,10);
+				logger.info("in line 57");
+				wait.waitForVisibility(driver,eachLink,10);
 				eachLink.click();
 				break;
 			}
@@ -198,13 +202,13 @@ public class HomePage {
 	}
 
 	public void clickGetStarted(String cardTitle) {
-		System.out.println(cardTitle);
+		logger.info("Clicking Get Started for card: " + cardTitle);
 		for (WebElement child : parentCard) {
 			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
 
 			for (WebElement element : grandChild) {
 				element.getText();
-				System.out.println("in home " +element.getText());
+				logger.info("In home" +element.getText());
 				if(element.getText().equalsIgnoreCase(cardTitle)){
 					child.findElement(By.xpath(".//a")).click();
 					return;

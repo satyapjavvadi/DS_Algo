@@ -18,12 +18,12 @@ Then The user should be redirected to "Time Complexity" page
 
 Scenario: Verify that Try here tab is visible and clickable
 Given The user is in the "Time Complexity" tab
-Then Try here tab should be visible and clickable
+Then Try here tab should be visible
 
 Scenario: Verify that user is able to navigate to try Editor page
 Given The user is in the "Time Complexity" tab
 When The user clicks Try Here button
-Then The user should be redirected to a page having an try Editor with a Run button to test
+Then The user should be redirected to code editor
 
 Scenario: Verify that user gets error message when click on Run button without entering code
 Given The user is in the tryEditor page

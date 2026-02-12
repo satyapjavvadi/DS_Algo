@@ -1,10 +1,13 @@
 package stepdefinition;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
 import DriverManager.DriverFactory;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
@@ -45,10 +48,15 @@ public class HomeStepDefinition {
 		pom.getHomePage().clickDataStructureDropdown();
 	}
 
-	@Then("The user should able to see all options {string} in dropdown menu")
-	public void the_user_should_able_to_see_all_options_in_dropdown_menu(String menuOptions) {
-		Assert.assertTrue(pom.getHomePage().getDataStructureOptionsText().contains("Arrays"),
-				"Menu option is missing in dropdown");
+	@Then("The user should able to see all options")
+	public void the_user_should_able_to_see_all_options(DataTable dataTable) {
+		List<String> expectedOptions = dataTable.asList();
+		logger.info("Expected dropdown options: " + expectedOptions);
+		
+		List<String> actualOptions = pom.getHomePage().getDataStructureOptionsText();
+		logger.info("Actual dropdown options: " + actualOptions);
+		
+		Assert.assertEquals(actualOptions, expectedOptions, "Dropdown options mismatch");
 	}
 
 	@When("The user clicks Get Started buttons of {string} on the homepage without Sign in")

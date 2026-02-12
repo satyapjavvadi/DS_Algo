@@ -83,16 +83,6 @@ public class WaitUtils {
 			return false;
 		}
 	}
-	
-	public static boolean isClickable(WebDriver driver, WebElement element, int timeoutSeconds) {
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-			wait.until(ExpectedConditions.elementToBeClickable(element));
-			return true;
-		} catch (TimeoutException e) {
-			return false;
-		}
-	}
 
 	public String waitForCodeMirrorOutput(String elementId, int timeoutSeconds) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));

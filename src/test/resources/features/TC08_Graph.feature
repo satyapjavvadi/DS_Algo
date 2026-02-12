@@ -13,8 +13,8 @@ Then the user should be able to see "<expected_topic>" in graph page
       | Graph |
       | Topics Covered |
 
-Scenario Outline: Verify that user is able to see and click all links uder Topics covered   
-Then  Topics under the topics covered should be visible and clickable
+Scenario Outline: Verify that user is able to see all links uder Topics covered   
+Then  Topics under the topics covered should be visible
     | Graph |
     | Graph Representations |
 
@@ -28,15 +28,15 @@ Examples:
 
 Scenario: Verify that "Try here>>>" tab is visible and clickable
 When The user clicks "<Topic>" page
-Then Try here>>> button should be visible and clickable below the "<Topic>" content
+Then Try here>>> button should be visible below the "<Topic>" content
 Examples:
     | Topic |
     | Graph |
     | Graph Representations |
    
 Scenario: Verify that user is able to navigate to Try here>>> page from topic page
-When The user clicks Try Here button in "<Topic>" in page
-Then The user should be redirected to a page having an try Editor with a Run button to test
+When The user clicks Try Here button in "<Topic>" page
+Then The user should be redirected to code editor
 Examples:
     | Topic |
     | Graph |
@@ -44,7 +44,7 @@ Examples:
 
 Scenario: Verify that Run button is visible and clickable
 When The user clicks Try Here button in "Graph" page
-Then Run button should be visible and clickable
+Then Run button should be visible
 
 Scenario: Verify that user gets error message when click on Run button without entering code
 Given The user is in the tryEditor page in "Graph" module

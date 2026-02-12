@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import DriverManager.DriverFactory;
 import utils.JSUtils;
@@ -19,6 +21,8 @@ import utils.WaitUtils;
 public class DataStructurePage {
 	private WebDriver driver;
 	private WaitUtils wait;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+
 	
 	@FindBy(xpath = "//*[contains(@class,'text-white')]")
 	private List<WebElement> headings;	//static content
@@ -67,37 +71,30 @@ public class DataStructurePage {
 		throw new NoSuchElementException("Topic link not found: " + topicName);
 	}
 
-	//used
 	public boolean checktryherebutton_displayed() {
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
-	//used
-	public boolean checktryherebutton_clickable() {
-		return WaitUtils.isClickable(driver, tryhere_button, 10);
-	}
-	//used
+	
 	public void clickTryHereButton() {
 		JSUtils.scrollIntoView(tryhere_button);
 		wait.waitForClickable(tryhere_button).click();
 	}
 
-	//used
 	public void clickPracticeQuestionsLink() {
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}
-	//used
+	
 	public List<String> getQuestionsList() {
 		try {
 			wait.waitForVisibilityOfAll(questionslist);
 			return questionslist.stream().map(WebElement::getText).collect(Collectors.toList());
 		} catch (Exception e) {
-			System.out.println("Questions list not found: " + e.getMessage());
+			logger.info("Questions list not found: " + e.getMessage());
 			return Collections.emptyList();
 		}
 	}
 
-		//used
 	public String getErrAlert() {
 		Alert alert = driver.switchTo().alert();
 		String alertText = alert.getText();
@@ -106,11 +103,10 @@ public class DataStructurePage {
 	}
 		
 		
-		//used
 		public void clickrunBtn() {
 			run_Button.click();
 }
-		//used
+	
 		public String getRunBtnText() {
 			return run_Button.getText();
 		}

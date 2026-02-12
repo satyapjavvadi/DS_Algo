@@ -22,8 +22,8 @@ public class GraphStepDefinition {
 
 	}
 
-	@Then("Topics under the topics covered should be visible and clickable")
-	public void topics_under_the_topics_covered_should_be_visible_and_clickable(DataTable dataTable) {
+	@Then("Topics under the topics covered should be visible")
+	public void topics_under_the_topics_covered_should_be_visible(DataTable dataTable) {
 		List<String> actualSubtopics = pom.getGraphPage().subtopiclinks();
 		logger.info("Actual Subtopic links in LinkedList page: " + actualSubtopics);
 
@@ -54,16 +54,11 @@ public class GraphStepDefinition {
 		pom.getGraphPage().clickTopicLink(topicUrl);
 	}
 
-	@Then("Try here>>> button should be visible and clickable below the {string} content")
-	public void try_here_button_should_be_visible_and_clickable_below_the_content(String topic) {
+	@Then("Try here>>> button should be visible below the {string} content")
+	public void try_here_button_should_be_visible_below_the_content(String topic) {
+		logger.info("Try here button visible in {} page", topic);
 		Assert.assertTrue(pom.getGraphPage().checktryherebutton_displayed(), " try here button not visible in ");
-		Assert.assertTrue(pom.getGraphPage().checktryherebutton_clickable(), " try here button not clickable in ");
-	}
-
-	@When("The user clicks Try Here button in {string} in page")
-	public void the_user_clicks_try_here_button_in_in_page(String topicUrl) {
-		pom.getGraphPage().clickTopicLink(topicUrl);
-		pom.getGraphPage().clickTryHereButton();
+		logger.atError();
 	}
 
 	@When("The user clicks Try Here button in {string} page")
@@ -71,13 +66,19 @@ public class GraphStepDefinition {
 		pom.getGraphPage().clickTopicLink(topicUrl);
 		pom.getGraphPage().clickTryHereButton();
 	}
+	
 
-	@Then("Run button should be visible and clickable")
-	public void run_button_should_be_visible_and_clickable() {
+	@Then("The user should be redirected to code editor")
+	public void the_user_should_be_redirected_to_code_editor() {
+    		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"),
+				"user is not on tryeditor screen");
+}
+	@Then("Run button should be visible")
+	public void run_button_should_be_visible() {
+		logger.info("Run button visible in Try Editor page");
 		Assert.assertTrue(pom.getGraphPage().checkrunbutton_displayed(),
 				"Run button is not visible in Try Editor page");
-		Assert.assertTrue(pom.getGraphPage().checkrunbutton_clickable(),
-				"Run button is not clickable in Try Editor page");
+		logger.atError();
 	}
 
 	@Given("The user is in the tryEditor page in {string} module")

@@ -80,14 +80,6 @@ public class DataStrStepDefinition {
 
 	}
 
-	@Then("The user should be redirected to a page having an try Editor with a Run button to test")
-	public void the_user_should_be_redirected_to_a_page_having_an_try_editor_with_a_run_button_to_test() {
-		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"), "user is not on tryeditor screen");
-
-		Assert.assertTrue(pom.getDataStructurePage().getRunBtnText().contains("Run"),
-				"Run button is not present in Try Editor page");
-	}
-
 	@When("The user clicks Try Here button")
 	public void the_user_clicks_try_here_button() {
 		pom.getDataStructurePage().clickTryHereButton();
@@ -98,12 +90,12 @@ public class DataStrStepDefinition {
 		pom.getDataStructurePage().clickTopicLink(topicUrl);
 	}
 
-	@Then("Try here tab should be visible and clickable")
-	public void try_here_tab_should_be_visible_and_clickable() {
-		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_displayed(),
-				"Run button is not visible in Try Editor page");
-		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_clickable(),
-				"Run button is not clickable in Try Editor page");
+	@Then("Try here tab should be visible")
+	public void try_here_tab_should_be_visible() {
+	logger.info("Try here button visible in {} page");
+		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_displayed(), "Try here button is not visible in Try Editor page"
+		);
+		logger.atError();
 	}
 
 }

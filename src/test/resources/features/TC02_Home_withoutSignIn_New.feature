@@ -15,7 +15,13 @@ Examples:
 
 Scenario:Verify that user is able to view options for "Data Structures" dropdown on home page
 When The user clicks the Data Structures dropdown 
-Then The user should able to see all options "Arrays,Linked,List,Stack,Queue,Tree,Graph" in dropdown menu
+Then The user should able to see all options
+	| Arrays |
+	| Linked List |
+	| Stack |
+	| Queue |
+	| Tree |
+	| Graph |	
 
 Scenario Outline: Verify that user able to see warning message while selecting "<Option>" from the drop down
 When The user selects "<Option>" from the drop down without Sign in.

@@ -3,7 +3,6 @@ Feature: DS Algo Portal functional testing
 Background: 
 Given the registered user has navigated to the home page
 
-
 Scenario Outline: Verify that user is able to see "<Links>" on the right corner of the Home page
 Then The user should be able to see "<Links>" on the right corner of the Home page
 Examples:
