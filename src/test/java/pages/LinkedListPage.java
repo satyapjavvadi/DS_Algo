@@ -18,7 +18,7 @@ import org.testng.Assert;
 
 import utils.ConfigReader;
 import utils.JSUtils;
-import utils.TopicNameNormalizer;
+//import utils.TopicNameNormalizer;
 import utils.WaitUtils;
 
 public class LinkedListPage {
@@ -94,7 +94,7 @@ public class LinkedListPage {
 		return linkTexts;
 	}
 
-	public void clickSidebarTopic(String topicName) {
+/*	public void clickSidebarTopic(String topicName) {
 		String normalized = TopicNameNormalizer.normalize(topicName);
 
 		if (normalized.equalsIgnoreCase("Practice Questions")) {
@@ -113,6 +113,7 @@ public class LinkedListPage {
 			throw new NoSuchElementException("Sidebar link not found: " + normalized);
 		}
 	}
+	*/
 
 	// Verify current URL contains expected path
 	public boolean isCurrentUrlMatching(String expectedPath) {
