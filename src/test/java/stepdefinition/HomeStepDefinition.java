@@ -52,10 +52,10 @@ public class HomeStepDefinition {
 	public void the_user_should_able_to_see_all_options(DataTable dataTable) {
 		List<String> expectedOptions = dataTable.asList();
 		logger.info("Expected dropdown options: " + expectedOptions);
-		
+
 		List<String> actualOptions = pom.getHomePage().getDataStructureOptionsText();
 		logger.info("Actual dropdown options: " + actualOptions);
-		
+
 		Assert.assertEquals(actualOptions, expectedOptions, "Dropdown options mismatch");
 	}
 

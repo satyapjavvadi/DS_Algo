@@ -16,10 +16,8 @@ import utils.WaitUtils;
 public class HomePage {
 
 	private WebDriver driver;
-	private WaitUtils wait;
 	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
-	
 	@FindBy(linkText = "NumpyNinja")
 	WebElement companyName;
 
@@ -68,9 +66,8 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 
-
 	public String getLoginSuccessMessage() {
-		return wait.getVisibleText(driver, loginAlert, 0);
+		return WaitUtils.getVisibleText(driver, loginAlert, 0);
 	}
 
 	public void clickSignInButton() {
@@ -89,12 +86,10 @@ public class HomePage {
 		if (linkText.equalsIgnoreCase("Sign out")) {
 			logger.info("Getting text of Sign out link" + signOutLink.getText());
 			return signOutLink.getText();
-		} 
-		else if (linkText.equalsIgnoreCase("Validuser")) {
+		} else if (linkText.equalsIgnoreCase("Validuser")) {
 			logger.info("Getting text of ValidUser link" + loggedInUser.getText());
 			return loggedInUser.getText();
-		} 
-		else {
+		} else {
 			return "Invalid Link Text";
 		}
 	}
@@ -102,12 +97,11 @@ public class HomePage {
 	public List<String> getDataStructureOptionsText() {
 		List<WebElement> options = dataStructureOptions;
 		for (WebElement option : options) {
-			System.out.println(option.getText());
+			logger.info("Data Structure Option: " + option.getText());
 		}
 		return options.stream().map(WebElement::getText).collect(Collectors.toList());
 
 	}
-
 
 	public String getErrMsg() {
 		return ErrMsg.getText();
@@ -126,7 +120,7 @@ public class HomePage {
 	public String getLinkName(String linkText) {
 		if (linkText.equalsIgnoreCase("Register")) {
 			logger.info("Getting text of Register link" + registerLink.getText());
-			return registerLink.getText();	
+			return registerLink.getText();
 		} else if (linkText.equalsIgnoreCase("Sign in")) {
 			logger.info("Getting text of Sign in link" + logInLink.getText());
 			return logInLink.getText();
@@ -163,9 +157,8 @@ public class HomePage {
 		}
 		logger.info("Page Heading is: " + headingTitle.getText());
 		return headingTitle.getText();
-	
-	}
 
+	}
 
 	public void clickTitlePage(String ExpectedTitle) {
 		String topicHeading;
@@ -182,15 +175,15 @@ public class HomePage {
 		}
 	}
 
-    public void navigatetoPages(String pageInfo) {
-		wait.waitForVisibility(driver,parent,10);
+	public void navigatetoPages(String pageInfo) {
+		WaitUtils.waitForVisibility(driver, parent, 10);
 		List<WebElement> childLink = parent.findElements(By.xpath(".//a"));
-		for(WebElement eachLink : childLink){
+		for (WebElement eachLink : childLink) {
 			String linkText = eachLink.getText();
 			logger.info("Checking link: " + linkText);
-			if(linkText.toLowerCase().contains(pageInfo.toLowerCase())){
+			if (linkText.toLowerCase().contains(pageInfo.toLowerCase())) {
 				logger.info("in line 57");
-				wait.waitForVisibility(driver,eachLink,10);
+				WaitUtils.waitForVisibility(driver, eachLink, 10);
 				eachLink.click();
 				break;
 			}
@@ -208,8 +201,8 @@ public class HomePage {
 
 			for (WebElement element : grandChild) {
 				element.getText();
-				logger.info("In home" +element.getText());
-				if(element.getText().equalsIgnoreCase(cardTitle)){
+				logger.info("In home" + element.getText());
+				if (element.getText().equalsIgnoreCase(cardTitle)) {
 					child.findElement(By.xpath(".//a")).click();
 					return;
 				}

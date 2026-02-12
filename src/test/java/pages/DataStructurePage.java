@@ -23,32 +23,30 @@ public class DataStructurePage {
 	private WaitUtils wait;
 	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
-	
 	@FindBy(xpath = "//*[contains(@class,'text-white')]")
-	private List<WebElement> headings;	//static content
+	private List<WebElement> headings; // static content
 
 	@FindBy(xpath = "//a[@class='list-group-item']")
-	private List<WebElement> dataStr_subtopicslinks;	//subtopic links under topics covered
+	private List<WebElement> dataStr_subtopicslinks; // subtopic links under topics covered
 
 	@FindBy(xpath = "//a[contains(text(),'Try')]")
 	private WebElement tryhere_button;
 
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement run_Button;
-	
+
 	@FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
 	private WebElement Practicequestionslink;
 
 	@FindBy(xpath = "//div[@class='list-group']")
 	private List<WebElement> questionslist;
-	
 
 	public DataStructurePage() {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(this.driver, this);
 		wait = new WaitUtils();
 	}
-	
+
 	public List<String> getheadingtext() {
 		wait.waitForVisibilityOfAll(headings);
 		List<String> headingtexts = new ArrayList<String>();
@@ -58,7 +56,7 @@ public class DataStructurePage {
 		return headingtexts;
 	}
 
-	//used
+	// used
 	public void clickTopicLink(String topicName) {
 		wait.waitForVisibilityOfAll(dataStr_subtopicslinks);
 		for (WebElement link : dataStr_subtopicslinks) {
@@ -74,7 +72,7 @@ public class DataStructurePage {
 	public boolean checktryherebutton_displayed() {
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
-	
+
 	public void clickTryHereButton() {
 		JSUtils.scrollIntoView(tryhere_button);
 		wait.waitForClickable(tryhere_button).click();
@@ -84,7 +82,7 @@ public class DataStructurePage {
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}
-	
+
 	public List<String> getQuestionsList() {
 		try {
 			wait.waitForVisibilityOfAll(questionslist);
@@ -101,14 +99,13 @@ public class DataStructurePage {
 		alert.accept();
 		return alertText;
 	}
-		
-		
-		public void clickrunBtn() {
-			run_Button.click();
-}
-	
-		public String getRunBtnText() {
-			return run_Button.getText();
-		}
-			
+
+	public void clickrunBtn() {
+		run_Button.click();
+	}
+
+	public String getRunBtnText() {
+		return run_Button.getText();
+	}
+
 }

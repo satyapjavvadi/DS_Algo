@@ -33,25 +33,25 @@ public class GraphPage {
 
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement run_Button;
-	
+
 	@FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
 	private WebElement Practicequestionslink;
 
 	@FindBy(xpath = "//div[@class='list-group']")
 	private List<WebElement> questionslist;
-	
 
 	@FindBy(xpath = "//button[text()='Run']")
 	WebElement runBtn;
-	
+
 	@FindBy(id = "output")
 	WebElement output;
 
-		public GraphPage() {
+	public GraphPage() {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(this.driver, this);
 		wait = new WaitUtils();
 	}
+
 	public List<String> getheadingtext() {
 		wait.waitForVisibilityOfAll(headings);
 		List<String> headingtexts = new ArrayList<String>();
@@ -60,6 +60,7 @@ public class GraphPage {
 		}
 		return headingtexts;
 	}
+
 	public List<String> subtopiclinks() {
 		wait.waitForVisibilityOfAll(Graph_subtopicslinks);
 		List<String> subtopiclinks = new ArrayList<String>();
@@ -70,6 +71,7 @@ public class GraphPage {
 		}
 		return subtopiclinks;
 	}
+
 	public void clickTopicLink(String topicName) {
 		wait.waitForVisibilityOfAll(Graph_subtopicslinks);
 		for (WebElement link : Graph_subtopicslinks) {
@@ -85,28 +87,27 @@ public class GraphPage {
 	public boolean checktryherebutton_displayed() {
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
-	
+
 	public boolean checkrunbutton_displayed() {
 		return WaitUtils.isVisible(driver, run_Button, 10);
 	}
-	
 
 	public void clickTryHereButton() {
 		JSUtils.scrollIntoView(tryhere_button);
 		wait.waitForClickable(tryhere_button).click();
 	}
-	
+
 	public void clickPracticeQuestionsLink() {
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}
-	
+
 	public List<String> getQuestionsList() {
 		try {
 			wait.waitForVisibilityOfAll(questionslist);
 			return questionslist.stream().map(WebElement::getText).collect(Collectors.toList());
 		} catch (Exception e) {
-			System.out.println("Questions list not found: " + e.getMessage());
+			logger.info("Questions list not found: " + e.getMessage());
 			return Collections.emptyList();
 		}
 	}
@@ -120,4 +121,4 @@ public class GraphPage {
 			}
 		}
 	}
-}	
+}

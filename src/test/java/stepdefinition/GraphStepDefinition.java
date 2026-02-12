@@ -1,6 +1,5 @@
 package stepdefinition;
 
-import java.io.IOException;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +15,9 @@ import utils.ElementUtil;
 public class GraphStepDefinition {
 	private PageObjectManager pom;
 	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
-
+	
 	public GraphStepDefinition(PageObjectManager pom) {
 		this.pom = pom;
-
 	}
 
 	@Then("Topics under the topics covered should be visible")
@@ -45,7 +43,7 @@ public class GraphStepDefinition {
 	public void the_user_should_be_redirected_to_list_of_practice_questions_of_graph_page() {
 		List<String> questions = pom.getGraphPage().getQuestionsList();
 		Assert.assertTrue(!questions.isEmpty(),
-				"No questions are displayed in Practice Questions section of Linked List module");
+				"No questions are displayed in Practice Questions section of Graph module");
 
 	}
 
@@ -66,13 +64,12 @@ public class GraphStepDefinition {
 		pom.getGraphPage().clickTopicLink(topicUrl);
 		pom.getGraphPage().clickTryHereButton();
 	}
-	
 
 	@Then("The user should be redirected to code editor")
 	public void the_user_should_be_redirected_to_code_editor() {
-    		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"),
-				"user is not on tryeditor screen");
-}
+		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"), "user is not on tryeditor screen");
+	}
+
 	@Then("Run button should be visible")
 	public void run_button_should_be_visible() {
 		logger.info("Run button visible in Try Editor page");

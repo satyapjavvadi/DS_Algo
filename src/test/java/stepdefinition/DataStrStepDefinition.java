@@ -18,7 +18,7 @@ public class DataStrStepDefinition {
 	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	public DataStrStepDefinition(PageObjectManager pom) {
-	this.pom = pom;
+		this.pom = pom;
 	}
 
 	@Then("the user should be able to see {string}")
@@ -35,7 +35,6 @@ public class DataStrStepDefinition {
 		}
 		Assert.assertTrue(found, "Expected text '" + expectedText + "' not found in the headings: " + headings);
 	}
-
 
 	@Given("The user is in the tryEditor page")
 	public void the_user_is_in_the_try_editor_page() {
@@ -63,7 +62,7 @@ public class DataStrStepDefinition {
 	public void the_user_should_be_redirected_to_list_of_practice_questions_of_data_structures_introduction() {
 		List<String> questions = pom.getDataStructurePage().getQuestionsList();
 		Assert.assertTrue(!questions.isEmpty(),
-				"No questions are displayed in Practice Questions section of Linked List module");
+				"No questions are displayed in Practice Questions section of DataStructures module");
 	}
 
 	@When("The user clicks {string} topic")
@@ -92,9 +91,9 @@ public class DataStrStepDefinition {
 
 	@Then("Try here tab should be visible")
 	public void try_here_tab_should_be_visible() {
-	logger.info("Try here button visible in {} page");
-		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_displayed(), "Try here button is not visible in Try Editor page"
-		);
+		logger.info("Try here button visible in {} page");
+		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_displayed(),
+				"Try here button is not visible in Try Editor page");
 		logger.atError();
 	}
 
