@@ -18,23 +18,21 @@ import utils.JSUtils;
 import utils.WaitUtils;
 
 public class QueuePage {
-	private WaitUtils wait;
-	private WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
-
-	// locators
+	private final WaitUtils wait;
+	private final WebDriver driver;
+	private static final Logger logger = LoggerFactory.getLogger(QueuePage.class);
 
 	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
 	private List<WebElement> headings;
 
 	@FindBy(xpath = "//a[@class='list-group-item']")
-	private List<WebElement> queue_subtopicslinks;
+	private List<WebElement> queue_subTopicsLinks;
 
 	@FindBy(xpath = "//a[contains(text(),'Try')]")
 	private WebElement tryhere_button;
 
 	@FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
-	private WebElement Practicequestionslink;
+	private WebElement PracticeQuestionsLink;
 
 	@FindBy(xpath = "//div[@class='list-group']")
 	private List<WebElement> questionslist;
@@ -47,29 +45,29 @@ public class QueuePage {
 		wait = new WaitUtils();
 	}
 
-	public List<String> getheadingtext() {
+	public List<String> getHeadingText() {
 		wait.waitForVisibilityOfAll(headings);
-		List<String> headingtexts = new ArrayList<String>();
+		List<String> headingTexts = new ArrayList<>();
 		for (WebElement heading : headings) {
-			headingtexts.add(heading.getText().trim());
+			headingTexts.add(heading.getText().trim());
 		}
-		return headingtexts;
+		return headingTexts;
 	}
 
-	public List<String> subtopiclinks() {
-		wait.waitForVisibilityOfAll(queue_subtopicslinks);
-		List<String> subtopiclinks = new ArrayList<String>();
-		for (WebElement topiclink : queue_subtopicslinks) {
-			if (topiclink.isDisplayed() && topiclink.isEnabled()) {
-				subtopiclinks.add(topiclink.getText().trim());
+	public List<String> subTopicLinks() {
+		wait.waitForVisibilityOfAll(queue_subTopicsLinks);
+		List<String> subTopic = new ArrayList<>();
+		for (WebElement topicLink : queue_subTopicsLinks) {
+			if (topicLink.isDisplayed() && topicLink.isEnabled()) {
+				subTopic.add(topicLink.getText().trim());
 			}
 		}
-		return subtopiclinks;
+		return subTopic;
 	}
 
 	public void clickTopicLink(String topicName) {
-		wait.waitForVisibilityOfAll(queue_subtopicslinks);
-		for (WebElement link : queue_subtopicslinks) {
+		wait.waitForVisibilityOfAll(queue_subTopicsLinks);
+		for (WebElement link : queue_subTopicsLinks) {
 			if (link.getText().trim().equalsIgnoreCase(topicName)) {
 				JSUtils.scrollIntoView(link);
 				wait.waitForClickable(link).click();
@@ -79,7 +77,7 @@ public class QueuePage {
 		throw new NoSuchElementException("Topic link not found: " + topicName);
 	}
 
-	public boolean checktryherebutton_displayed() {
+	public boolean checkTryhereButton_Display() {
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
 
@@ -89,16 +87,16 @@ public class QueuePage {
 	}
 
 	public boolean isPracticeQuestionLinkVisible() {
-		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
+		return WaitUtils.isVisible(driver, PracticeQuestionsLink, 10);
 	}
 
 	public boolean isPracticeQuestionLinkEnabled() {
-		return Practicequestionslink.isEnabled();
+		return PracticeQuestionsLink.isEnabled();
 	}
 
 	public void clickPracticeQuestionsLink() {
-		JSUtils.scrollIntoView(Practicequestionslink);
-		wait.waitForClickable(Practicequestionslink).click();
+		JSUtils.scrollIntoView(PracticeQuestionsLink);
+		wait.waitForClickable(PracticeQuestionsLink).click();
 	}
 
 	public List<String> getQuestionsList() {
@@ -111,15 +109,5 @@ public class QueuePage {
 		}
 	}
 
-	public void clickProblemLink(String problemName) {
-		for (WebElement eachQuestion : questionslist) {
-			String questionName = eachQuestion.getText();
-			if (questionName.equalsIgnoreCase(problemName)) {
-				eachQuestion.click();
-				return;
-			}
-		}
-
-	}
 
 }

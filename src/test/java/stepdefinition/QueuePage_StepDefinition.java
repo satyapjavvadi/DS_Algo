@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
-import DriverManager.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,7 +15,7 @@ import utils.ElementUtil;
 
 public class QueuePage_StepDefinition {
 	private final PageObjectManager pom;
-	private static final Logger logger = LogManager.getLogger(DriverFactory.class);
+	private static final Logger logger = LogManager.getLogger(QueuePage_StepDefinition.class);
 
 	public QueuePage_StepDefinition(PageObjectManager pom) {
 		this.pom = pom;
@@ -31,7 +30,7 @@ public class QueuePage_StepDefinition {
 
 	@Then("the user should be able to see {string} in Queue page")
 	public void the_user_should_be_able_to_see_in_queue_page(String expectedText) {
-		List<String> headings = pom.getQueuePage().getheadingtext();
+		List<String> headings = pom.getQueuePage().getHeadingText();
 		logger.info("Queue page heading: {}", headings);
 		boolean found = false;
 
@@ -47,14 +46,14 @@ public class QueuePage_StepDefinition {
 
 	@Then("the user should be able to see Queue topics links under Topics_Covered")
 	public void the_user_should_be_able_to_see_queue_topics_links_under_topics_covered(DataTable dataTable) {
-		List<String> actualSubtopics = pom.getQueuePage().subtopiclinks();
+		List<String> actualSubtopics = pom.getQueuePage().subTopicLinks();
 		logger.info("Actual Subtopic links in queue page: {}", actualSubtopics);
 
 		List<String> expectedSubtopics = dataTable.asList();
 		logger.info("Expected Subtopic links in Queue page:{}", expectedSubtopics);
 
 		Assert.assertEquals(actualSubtopics, expectedSubtopics,
-				"Mismatch in subtopic link texts in Queue page: " + dataTable.toString());
+				"Mismatch in subtopic link texts in Queue page: " + dataTable);
 	}
 
 	@When("the user selects Queue {string} Topics Covered")
@@ -63,39 +62,39 @@ public class QueuePage_StepDefinition {
 	}
 
 	@Then("Queue {string} content should be present")
-	public void queue_content_should_be_present(String pageurltext) {
-		Assert.assertTrue(ElementUtil.getURL().contains(pageurltext),
-				"URL does not contain expected text: " + pageurltext);
+	public void queue_content_should_be_present(String pageUrlText) {
+		Assert.assertTrue(ElementUtil.getURL().contains(pageUrlText),
+				"URL does not contain expected text: " + pageUrlText);
 	}
 
 	@Given("the user is on the {string} subtopic Queue page")
 	public void the_user_is_on_the_subtopic_Queue_page(String topicPage) {
 		pom.getQueuePage().clickTopicLink(topicPage);
 
-		logger.info("checking Queuetopicpage: {}", topicPage);
+		logger.info("clickTopicLink: {}", topicPage);
 	}
 
 	@Then("the Try here>>> button should be visible in queue ui")
 	public void the_try_here_button_should_be_visible_in_queue_ui() {
-		Assert.assertTrue(pom.getQueuePage().checktryherebutton_displayed(), " try here button not visible ");
+		Assert.assertTrue(pom.getQueuePage().checkTryhereButton_Display(), " try here button not visible ");
 	}
 
 	@Given("User is on the queue subtopic {string} page")
 	public void user_is_on_the_queue_subtopic_page(String topicPage) {
 		pom.getQueuePage().clickTopicLink(topicPage);
-		Assert.assertTrue(pom.getQueuePage().getheadingtext().contains(topicPage), "user is not on Queuesubtopic page");
-		logger.info("checking Queuetopicpage: {}", topicPage);
+		Assert.assertTrue(pom.getQueuePage().getHeadingText().contains(topicPage), "user is not on Queue subtopic page");
+		logger.info("checking queue subtopic: {}", topicPage);
 	}
 
 	@When("User clicks the {string} button in queue ui")
-	public void user_clicks_the_buttonin_queue_ui(String buttonText) {
+	public void user_clicks_the_button_in_queue_ui(String buttonText) {
 		pom.getQueuePage().clickTryHereButton();
 	}
 
 	@Then("User must be navigated to queue code editor")
 	public void user_must_be_navigated_to_queue_code_editor() {
 
-		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"), "user is not on tryeditor screen");
+		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"), "user is not on try-editor screen");
 
 	}
 
@@ -107,11 +106,11 @@ public class QueuePage_StepDefinition {
 
 	@Then("User must see {string} clickable link displayed in the side navigation bar in Queue UI")
 	public void user_must_see_clickable_link_displayed_in_the_side_navigation_bar_in_queue_ui(String linkText) {
-		boolean islinkvisible = pom.getQueuePage().isPracticeQuestionLinkVisible();
-		Assert.assertTrue(islinkvisible, "Expected link '" + linkText + "' is not visible in side navigation bar");
+		boolean isLinkVisible = pom.getQueuePage().isPracticeQuestionLinkVisible();
+		Assert.assertTrue(isLinkVisible, "Expected link '" + linkText + "' is not visible in side navigation bar");
 
-		boolean islinkenabled = pom.getQueuePage().isPracticeQuestionLinkEnabled();
-		Assert.assertTrue(islinkenabled, "Expected link '" + linkText + "' is not enabled in side navigation bar");
+		boolean isLinkEnabled = pom.getQueuePage().isPracticeQuestionLinkEnabled();
+		Assert.assertTrue(isLinkEnabled, "Expected link '" + linkText + "' is not enabled in side navigation bar");
 	}
 
 	@When("User clicks on Practice Questions link in Queue {string} UI")
@@ -130,8 +129,7 @@ public class QueuePage_StepDefinition {
 	public void user_must_see_list_of_question_in_practice_question_of_queue() {
 		List<String> questions = pom.getQueuePage().getQuestionsList();
 
-		Assert.assertTrue(!questions.isEmpty(),
-				"No questions are displayed in Practice Questions section of queue module");
+        Assert.assertTrue(questions.isEmpty(), "No questions are displayed in Practice Questions section of queue module");
 
 	}
 }
