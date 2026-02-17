@@ -4,12 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import DriverManager.DriverFactory;
-import org.openqa.selenium.Keys;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import utils.ExcelReader;
 import utils.TestContext;
@@ -18,6 +20,7 @@ import utils.WaitUtils;
 public class RegisterPage {
 
 	private WebDriver driver;
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	public RegisterPage() {
 		this.driver = DriverFactory.getDriver();
@@ -60,7 +63,7 @@ public class RegisterPage {
 	public void register(String method, String scenarioType) {
 		TestContext.testData = ExcelReader.getTestData(scenarioType);
 
-		System.out.println(TestContext.testData);
+		logger.info("Test data: {}", TestContext.testData);
 		WaitUtils.waitForVisibility(driver, usernameField, 10);
 		usernameField.sendKeys(TestContext.testData.get("username"));
 
@@ -107,10 +110,7 @@ public class RegisterPage {
 	}
 
 	public List<String> getRegisterLabelNames() {
-		return labelList.stream()
-				.map(WebElement::getText)
-				.map(String::trim)
-				.toList();
+		return labelList.stream().map(WebElement::getText).map(String::trim).toList();
 	}
 
 	public int getButtonCount() {
@@ -118,21 +118,16 @@ public class RegisterPage {
 	}
 
 	public List<String> getButtonText() {
-		return buttonElements.stream()
-				.map(btn -> {
-					String text = btn.getText();
-					if (text == null || text.isEmpty()) text = btn.getAttribute("value");
-					return text != null ? text.trim() : "";
-				})
-				.filter(s -> !s.isEmpty())
-				.toList();
+		return buttonElements.stream().map(btn -> {
+			String text = btn.getText();
+			if (text == null || text.isEmpty())
+				text = btn.getAttribute("value");
+			return text != null ? text.trim() : "";
+		}).filter(s -> !s.isEmpty()).toList();
 	}
 
 	public List<String> getRegisterPageLinkText() {
-		return links.stream()
-				.map(WebElement::getText)
-				.map(String::trim)
-				.toList();
+		return links.stream().map(WebElement::getText).map(String::trim).toList();
 	}
 
 	public String getCompanyName() {
@@ -140,14 +135,7 @@ public class RegisterPage {
 	}
 
 	public List<String> getPasswordRequirementsText() {
-		return passwordReqList.stream()
-				.filter(WebElement::isDisplayed)
-				.map(WebElement::getText)
-				.map(String::trim)
-				.map(text -> text
-						.replaceAll("[’']", "")
-						.replaceAll("\\.$", "")
-				)
-				.toList();
+		return passwordReqList.stream().filter(WebElement::isDisplayed).map(WebElement::getText).map(String::trim)
+				.map(text -> text.replaceAll("[’']", "").replaceAll("\\.$", "")).toList();
 	}
 }

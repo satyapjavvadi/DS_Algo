@@ -3,36 +3,38 @@ package stepdefinition;
 import java.util.List;
 
 import io.cucumber.datatable.DataTable;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
+import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 
 import pages.PageObjectManager;
 import utils.ElementUtil;
 
 public class ArrayPage_StepDefinition {
 	private final PageObjectManager pom;
-
+	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	public ArrayPage_StepDefinition(PageObjectManager pom) {
 		this.pom = pom;
 
 	}
 
-
 	@Given("The registered user has navigated to the {string} page")
 	public void the_registered_user_has_navigated_to_the_array_page(String moduleName) {
 		pom.getHomePage().clickGetStarted(moduleName);
-		System.out.println("In DS module : " + ElementUtil.getTitle());
+		logger.info("In DS module: {}", ElementUtil.getTitle());
 	}
 
 	@Then("the user should be able to see {string} in Array page")
 	public void the_user_should_be_able_to_see_in_array_page(String expectedText) {
 		List<String> headings = pom.getArrayPage().getheadingtext();
-		System.out.println(headings);
+		logger.info("Headings in Array page: {}", headings);
 		boolean found = false;
 
 		for (String heading : headings) {
@@ -48,10 +50,10 @@ public class ArrayPage_StepDefinition {
 	@Then("the user should be able to see Array topics links under Topics_Covered")
 	public void the_user_should_be_able_to_see_array_topics_as_clickable_links_under(DataTable dataTable) {
 		List<String> actualSubtopics = pom.getArrayPage().subtopiclinks();
-		System.out.println("Actual Subtopic links in Array page: " + actualSubtopics);
+		logger.info("Actual Subtopic links in Array page: {}", actualSubtopics);
 
 		List<String> expectedSubtopics = dataTable.asList();
-		System.out.println("Expected Subtopic links in Array page: " + expectedSubtopics);
+		logger.info("Expected Subtopic links in Array page: {}", expectedSubtopics);
 
 		Assert.assertEquals(actualSubtopics, expectedSubtopics,
 				"Mismatch in subtopic link texts in Array page: " + dataTable.toString());
@@ -64,27 +66,27 @@ public class ArrayPage_StepDefinition {
 
 	@Then("the {string} content should be present")
 	public void the_content_should_be_present(String pageurltext) {
-			Assert.assertTrue(ElementUtil.getURL().contains(pageurltext), "URL does not contain expected text: " + pageurltext);
+		Assert.assertTrue(ElementUtil.getURL().contains(pageurltext),
+				"URL does not contain expected text: " + pageurltext);
 	}
 
 	@Given("the user is on the {string} subtopic array page")
 	public void the_user_is_on_the_subtopic_array_page(String topicPage) {
 		pom.getArrayPage().clickTopicLink(topicPage);
 
-		System.out.println("check " + topicPage);
+		logger.info("checking arraytopic page: {}", topicPage);
 	}
 
 	@Then("the Try here>>> button should be visible")
 	public void the_button_should_be_visible_below_the_content() {
-		Assert.assertTrue(pom.getArrayPage().checktryherebutton_displayed(),
-				  " try here button not visible in " );
+		Assert.assertTrue(pom.getArrayPage().checktryherebutton_displayed(), " try here button not visible in ");
 	}
 
 	@Given("User is on the array subtopic {string} page")
 	public void user_is_on_the_array_subtopic_page(String topicPage) {
 		pom.getArrayPage().clickTopicLink(topicPage);
 		Assert.assertTrue(pom.getArrayPage().getheadingtext().contains(topicPage), "user is not on Arraysubtopic page");
-		System.out.println("check " + topicPage);
+		logger.info("checking arraytopic page: {}", topicPage);
 	}
 
 	@When("User clicks the {string} button")
@@ -95,8 +97,7 @@ public class ArrayPage_StepDefinition {
 	@Then("User must be navigated to code editor")
 	public void user_must_be_navigated_to_code_editor() {
 
-		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"),
-				"user is not on tryeditor screen");
+		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"), "user is not on tryeditor screen");
 
 	}
 
@@ -123,16 +124,16 @@ public class ArrayPage_StepDefinition {
 
 	@Then("User must be navigated to {string}")
 	public void user_must_be_navigated_to_link_containing_list_of_questions(String pageName) {
-		System.out.println("Print Title actual : " + ElementUtil.getTitle() + " Exp " + pageName);
+		logger.info("Array Title actual: {} Exp{}", ElementUtil.getTitle(), pageName);
 		Assert.assertTrue(ElementUtil.getTitle().contains(pageName));
 	}
 
 	@Then("User must see list of question in practice question of array")
 	public void ListOfQuestionInPracticeQuestionOfArray(DataTable dataTable) {
 		List<String> expectedList = dataTable.asList();
-	     List<String>  actualList= pom.getArrayPage().getQuestionsList();
+		List<String> actualList = pom.getArrayPage().getQuestionsList();
 
-		 Assert.assertEquals(actualList,expectedList);
+		Assert.assertEquals(actualList, expectedList);
 
 	}
 
@@ -141,8 +142,7 @@ public class ArrayPage_StepDefinition {
 		pom.getArrayPage().clickTopicLink("Arrays in Python");
 		pom.getArrayPage().clickPracticeQuestionsLink();
 
-		Assert.assertTrue(ElementUtil.getURL().contains("practice"),
-				"user is not on Array practice questions page");
+		Assert.assertTrue(ElementUtil.getURL().contains("practice"), "user is not on Array practice questions page");
 	}
 
 	@When("User clicks on {string} link in Practice Questions UI")
@@ -150,13 +150,14 @@ public class ArrayPage_StepDefinition {
 		pom.getArrayPage().clickProblemLink(problemName);
 	}
 
-
 	@Then("User must see {string} button in assessment page")
 	public void userMustSeeButtonInAssessmentPage(String expectedButtonText) {
 		boolean flag = false;
-		switch (expectedButtonText){
-			case "Run" :  flag = pom.getArrayPage().getButtonTextAssesmentPage(expectedButtonText);
-			case "Submit": flag = pom.getArrayPage().isSubmitButtonPresent();
+		switch (expectedButtonText) {
+		case "Run":
+			flag = pom.getArrayPage().getButtonTextAssesmentPage(expectedButtonText);
+		case "Submit":
+			flag = pom.getArrayPage().isSubmitButtonPresent();
 		}
 		Assert.assertTrue(flag);
 
@@ -178,9 +179,10 @@ public class ArrayPage_StepDefinition {
 		pom.getArrayPage().clickTopicLink("Arrays in Python");
 		pom.getArrayPage().clickTryHereButton();
 	}
+
 	@When("User clicks the Run button after entering {string}")
 	public void userClicksTheButtonAfterEntering(String codeDetails) {
-		pom. getTryEditorPage().runCode(codeDetails);
+		pom.getTryEditorPage().runCode(codeDetails);
 	}
 
 }

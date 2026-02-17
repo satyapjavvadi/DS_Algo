@@ -10,36 +10,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import DriverManager.DriverFactory;
 import utils.JSUtils;
 import utils.WaitUtils;
 
-public class ArrayPage {
+public class QueuePage {
 	private WaitUtils wait;
 	private WebDriver driver;
 	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
 
 	// locators
+
 	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
 	private List<WebElement> headings;
 
 	@FindBy(xpath = "//a[@class='list-group-item']")
-	private List<WebElement> array_subtopicslinks;
+	private List<WebElement> queue_subtopicslinks;
 
 	@FindBy(xpath = "//a[contains(text(),'Try')]")
 	private WebElement tryhere_button;
-
-	@FindBy(xpath = "//button")
-	private WebElement run_button;
-
-	@FindBy(xpath = "//pre[@id='output']")
-	private WebElement outputconsole;
-
-	@FindBy(xpath = "//form[@id='answer_form']")
-	private WebElement coding_area;
 
 	@FindBy(xpath = "//a[contains(text(),'Practice Questions')]")
 	private WebElement Practicequestionslink;
@@ -47,15 +39,9 @@ public class ArrayPage {
 	@FindBy(xpath = "//div[@class='list-group']")
 	private List<WebElement> questionslist;
 
-	@FindBy(xpath = "//*[@type='submit']")
-	private List<WebElement> submit;
-
-	@FindBy(xpath = "//div[@align='left']")
-	private WebElement output;
-
 	// action
 
-	public ArrayPage() {
+	public QueuePage() {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(this.driver, this);
 		wait = new WaitUtils();
@@ -71,9 +57,9 @@ public class ArrayPage {
 	}
 
 	public List<String> subtopiclinks() {
-		wait.waitForVisibilityOfAll(array_subtopicslinks);
+		wait.waitForVisibilityOfAll(queue_subtopicslinks);
 		List<String> subtopiclinks = new ArrayList<String>();
-		for (WebElement topiclink : array_subtopicslinks) {
+		for (WebElement topiclink : queue_subtopicslinks) {
 			if (topiclink.isDisplayed() && topiclink.isEnabled()) {
 				subtopiclinks.add(topiclink.getText().trim());
 			}
@@ -82,8 +68,8 @@ public class ArrayPage {
 	}
 
 	public void clickTopicLink(String topicName) {
-		wait.waitForVisibilityOfAll(array_subtopicslinks);
-		for (WebElement link : array_subtopicslinks) {
+		wait.waitForVisibilityOfAll(queue_subtopicslinks);
+		for (WebElement link : queue_subtopicslinks) {
 			if (link.getText().trim().equalsIgnoreCase(topicName)) {
 				JSUtils.scrollIntoView(link);
 				wait.waitForClickable(link).click();
@@ -120,7 +106,7 @@ public class ArrayPage {
 			wait.waitForVisibilityOfAll(questionslist);
 			return questionslist.stream().map(WebElement::getText).collect(Collectors.toList());
 		} catch (Exception e) {
-			System.out.println("Questions list not found: " + e.getMessage());
+			logger.info("Questions list not found: {} ", e.getMessage());
 			return Collections.emptyList();
 		}
 	}
@@ -134,37 +120,6 @@ public class ArrayPage {
 			}
 		}
 
-	}
-
-	public boolean getButtonTextAssesmentPage(String buttonText) {
-		String button = run_button.getText();
-		if (button.equalsIgnoreCase(buttonText)) {
-			return true;
-		} else
-			return false;
-
-	}
-
-	public boolean isSubmitButtonPresent() {
-		if (submit.size() > 0) {
-			return true;
-		} else
-			return false;
-	}
-
-	public void submitProblem() {
-		for (WebElement eachType : submit) {
-			eachType.click();
-			return;
-		}
-	}
-
-	public String getConsoleOutput() {
-		wait.waitForPageLoad();
-
-		String result = wait.waitForCodeMirrorOutput("output", 120);
-		logger.info("Submission result: {}", result);
-		return result;
 	}
 
 }
