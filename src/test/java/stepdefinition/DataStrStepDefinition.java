@@ -75,7 +75,7 @@ public class DataStrStepDefinition {
 		String expected = pageurltext.toLowerCase().replace(" ", "-");
 		Assert.assertTrue(ElementUtil.getURL().contains(expected),
 				"URL does not contain expected text: " + pageurltext);
-
+		logger.info("User is on the expected page: " + pageurltext);
 	}
 
 	@When("The user clicks Try Here button")
