@@ -20,7 +20,7 @@ public class GraphPage {
 
 	private WebDriver driver;
 	private WaitUtils wait;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(GraphPage.class);
 
 	@FindBy(xpath = "//*[contains(@class,'text-white')]")
 	private List<WebElement> headings;

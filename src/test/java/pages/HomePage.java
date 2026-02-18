@@ -16,7 +16,7 @@ import utils.WaitUtils;
 public class HomePage {
 
 	private WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
 	@FindBy(linkText = "NumpyNinja")
 	WebElement companyName;

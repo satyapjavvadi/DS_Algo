@@ -21,7 +21,7 @@ import utils.WaitUtils;
 public class DataStructurePage {
 	private WebDriver driver;
 	private WaitUtils wait;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(DataStructurePage.class);
 
 	@FindBy(xpath = "//*[contains(@class,'text-white')]")
 	private List<WebElement> headings; // static content
