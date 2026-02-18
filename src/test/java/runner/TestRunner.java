@@ -9,10 +9,10 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(plugin = {"pretty", "html:target/DS_Algo.html", "json:target/cucumber.json",
-        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "rerun:target/failedrerun.txt"}, // reporting purpose
+        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "rerun:target/failedrerun.txt",
+        "com.aventstack.chaintest.plugins.ChainTestCucumberListener:"}, // reporting purpose
         monochrome = true, // console output color
         features = {"src/test/resources/features"}, // or @Getstarted",//location of feature files
-        tags = "@stackfeature",
         glue = "stepdefinition") // location of step definition files
 
 public class TestRunner extends AbstractTestNGCucumberTests {

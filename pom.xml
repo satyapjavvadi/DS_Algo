@@ -31,14 +31,14 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.27.0</version>
+			<version>7.14.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
-			<version>7.27.0</version>
+			<version>7.14.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -54,12 +54,19 @@
 			<version>5.4.1</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<!--	 https://mvnrepository.com/artifact/com.aventstack/extentreports 
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>5.1.2</version>
-		</dependency>
+		</dependency>-->
+		
+		 <!-- ChainTest Library -->
+       <dependency>
+           <groupId>com.aventstack</groupId>
+           <artifactId>chaintest-cucumber-jvm</artifactId>
+           <version>1.0.3</version>
+       </dependency>
 
 		<dependency>
 			<groupId>tech.grasshopper</groupId>
@@ -114,11 +121,10 @@
 			<version>2.0.9</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.5.27</version>
+			<version>1.4.14</version>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
