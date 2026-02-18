@@ -5,8 +5,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-
-import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,7 +13,7 @@ import utils.ElementUtil;
 
 public class DataStrStepDefinition {
 	private final PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(DataStrStepDefinition.class);
 
 	public DataStrStepDefinition(PageObjectManager pom) {
 		this.pom = pom;
@@ -24,7 +22,7 @@ public class DataStrStepDefinition {
 	@Then("the user should be able to see {string}")
 	public void the_user_should_be_able_to_see(String expectedText) {
 		List<String> headings = pom.getDataStructurePage().getheadingtext();
-		logger.info("Headings :", headings);
+		logger.info("Headings: {}", headings);
 		boolean found = false;
 
 		for (String heading : headings) {
@@ -49,8 +47,9 @@ public class DataStrStepDefinition {
 
 	@Then("The user should able to get the error message {string}")
 	public void the_user_should_able_to_get_the_error_message(String ErrorMsg) {
-		Assert.assertEquals(ErrorMsg, pom.getDataStructurePage().getErrAlert(),
+		Assert.assertEquals(pom.getDataStructurePage().getErrAlert(), ErrorMsg,
 				"Expected error alert not found. Actual message: " + pom.getDataStructurePage().getErrAlert());
+		logger.info("Error message displayed: " + pom.getDataStructurePage().getErrAlert());
 	}
 
 	@When("The user clicks the Practice Questions tab")
@@ -88,13 +87,24 @@ public class DataStrStepDefinition {
 	public void the_user_is_in_the_tab(String topicUrl) {
 		pom.getDataStructurePage().clickTopicLink(topicUrl);
 	}
-
+	
 	@Then("Try here tab should be visible")
 	public void try_here_tab_should_be_visible() {
-		logger.info("Try here button visible in {} page");
-		Assert.assertTrue(pom.getDataStructurePage().checktryherebutton_displayed(),
-				"Try here button is not visible in Try Editor page");
-		logger.atError();
-	}
 
+	    logger.info("Verifying Try Here button visibility");
+
+	    boolean isDisplayed =
+	        pom.getDataStructurePage().checktryherebutton_displayed();
+
+	    if (!isDisplayed) {
+	        logger.error("Try Here button is NOT visible in Try Editor page");
+	    }
+
+	    Assert.assertTrue(
+	            isDisplayed,
+	            "Try Here button is not visible in Try Editor page"
+	    );
+
+	    logger.info("Try Here button is visible");
+	}
 }

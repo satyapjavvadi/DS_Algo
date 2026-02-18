@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import io.cucumber.datatable.DataTable;
-import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,8 +13,8 @@ import utils.ElementUtil;
 
 public class GraphStepDefinition {
 	private PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(GraphStepDefinition.class);
+
 	public GraphStepDefinition(PageObjectManager pom) {
 		this.pom = pom;
 	}
@@ -54,9 +53,15 @@ public class GraphStepDefinition {
 
 	@Then("Try here>>> button should be visible below the {string} content")
 	public void try_here_button_should_be_visible_below_the_content(String topic) {
-		logger.info("Try here button visible in {} page", topic);
-		Assert.assertTrue(pom.getGraphPage().checktryherebutton_displayed(), " try here button not visible in ");
-		logger.atError();
+
+		logger.info("START: Verifying Try Here button visibility for topic: {}", topic);
+
+		boolean isDisplayed = pom.getGraphPage().checktryherebutton_displayed();
+		logger.info("Try Here button displayed status: {}", isDisplayed);
+
+		Assert.assertTrue(isDisplayed, "Try Here button is not visible in the '" + topic + "' content");
+
+		logger.info("END: Try Here button visibility verified successfully for topic: {}", topic);
 	}
 
 	@When("The user clicks Try Here button in {string} page")

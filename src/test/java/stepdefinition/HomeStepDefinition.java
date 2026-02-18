@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
-import DriverManager.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,7 +14,7 @@ import pages.PageObjectManager;
 public class HomeStepDefinition {
 
 	private final PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeStepDefinition.class);
 
 	public HomeStepDefinition(PageObjectManager pom) {
 		this.pom = pom;
@@ -34,13 +33,14 @@ public class HomeStepDefinition {
 
 	@Then("The user should be able to see company name {string}")
 	public void the_user_should_be_able_to_see_company_name(String companyName) {
-		Assert.assertEquals(companyName, pom.getHomePage().getCompanyName(), "Company name mismatch");
+		Assert.assertEquals(pom.getHomePage().getCompanyName(), companyName, "Company name mismatch");
 		logger.info("Company name displayed: " + pom.getHomePage().getCompanyName());
 	}
 
 	@Then("The user should be able to see {string}")
 	public void the_user_should_be_able_to_see(String linkName) {
-		Assert.assertEquals(linkName, pom.getHomePage().getLinkName(linkName), "Link name mismatch");
+		Assert.assertEquals(pom.getHomePage().getLinkName(linkName), linkName, "Link name mismatch");
+		logger.info("Link name displayed: " + pom.getHomePage().getLinkName(linkName));
 	}
 
 	@When("The user clicks the Data Structures dropdown")
@@ -73,7 +73,8 @@ public class HomeStepDefinition {
 
 	@Then("The user should be able to see {string} page with details.")
 	public void the_user_should_be_able_to_see_page_with_details(String OptionName) {
-		Assert.assertEquals(OptionName, pom.getHomePage().getPageHeading(OptionName), "Page heading mismatch");
+		Assert.assertEquals(pom.getHomePage().getPageHeading(OptionName), OptionName, "Page heading mismatch");
+		logger.info("Page heading displayed: " + pom.getHomePage().getPageHeading(OptionName));
 	}
 
 	@When("The user clicks Get Started buttons of {string} tab on the homepage after Sign in")
@@ -84,6 +85,7 @@ public class HomeStepDefinition {
 
 	@Then("The user should be able to see {string} on the right corner of the Home page")
 	public void the_user_should_be_able_to_see_on_the_right_corner_of_the_home_page(String Links) {
-		Assert.assertEquals(Links, pom.getHomePage().getRightCornerLink(Links), "Link name mismatch");
+		Assert.assertEquals(pom.getHomePage().getRightCornerLink(Links), Links, "Link name mismatch");
+		logger.info("Link name displayed: " + pom.getHomePage().getRightCornerLink(Links));
 	}
 }

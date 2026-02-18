@@ -83,15 +83,28 @@ public class HomePage {
 	}
 
 	public String getRightCornerLink(String linkText) {
-		if (linkText.equalsIgnoreCase("Sign out")) {
-			logger.info("Getting text of Sign out link" + signOutLink.getText());
-			return signOutLink.getText();
-		} else if (linkText.equalsIgnoreCase("Validuser")) {
-			logger.info("Getting text of ValidUser link" + loggedInUser.getText());
-			return loggedInUser.getText();
-		} else {
+
+		if (linkText == null) {
+			logger.warn("Link text is null");
 			return "Invalid Link Text";
 		}
+		String value;
+		switch (linkText.toLowerCase()) {
+		case "sign out":
+			value = signOutLink.getText();
+			break;
+
+		case "validuser":
+			value = loggedInUser.getText();
+			break;
+
+		default:
+			logger.warn("Invalid Link Text: {}", linkText);
+			return "Invalid Link Text";
+		}
+
+		logger.info("Getting text of '{}' link: {}", linkText, value);
+		return value;
 	}
 
 	public List<String> getDataStructureOptionsText() {
@@ -129,35 +142,14 @@ public class HomePage {
 		}
 	}
 
-	public String getPageHeading(String OptionName) {
+	public String getPageHeading(String optionName) {
 
-		switch (OptionName) {
-		case "Graph":
-			headingTitle.getText();
-			break;
-		case "Array":
-			headingTitle.getText();
-			break;
-		case "Linked List":
-			headingTitle.getText();
-			break;
-		case "Stack":
-			headingTitle.getText();
-			break;
-		case "Queue":
-			headingTitle.getText();
-			break;
-		case "Tree":
-			headingTitle.getText();
-			break;
+		logger.info("Getting page heading for: {}", optionName);
 
-		default:
-			logger.warn("Invalid Heading: " + OptionName);
-			break;
-		}
-		logger.info("Page Heading is: " + headingTitle.getText());
-		return headingTitle.getText();
+		String heading = headingTitle.getText();
+		logger.info("Page Heading is: {}", heading);
 
+		return heading;
 	}
 
 	public void clickTitlePage(String ExpectedTitle) {
