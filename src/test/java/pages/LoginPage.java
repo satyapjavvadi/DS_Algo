@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,6 +34,12 @@ public class LoginPage {
 
 	@FindBy(linkText = "Register")
 	private WebElement registerLink;
+	
+	@FindBy(xpath = "//label")
+	private List<WebElement> labelList;
+	
+	@FindBy(xpath = "//input[@type='submit']")
+	private List<WebElement> buttonElements;
 
 	// Constructor
 	public LoginPage() {
@@ -124,5 +132,32 @@ public class LoginPage {
 	public void waitForHomeRedirect() {
 		WaitUtils.waitForUrlContains(driver, "/home", 10);
 	}
-
+	
+	//Non functional testcases
+	
+	public int getInputFieldCount() {
+		return labelList.size();
+	}
+	
+	public int getButtonCount() {
+		return buttonElements.size();
+	}
+	
+	public List<String> getButtonText() {
+		return buttonElements.stream()
+				.map(btn -> {
+					String text = btn.getText();
+					if (text == null || text.isEmpty()) text = btn.getAttribute("value");
+					return text != null ? text.trim() : "";
+				})
+				.filter(s -> !s.isEmpty())
+				.toList();
+	}
+	
+	public List<String> getLoginLabelNames() {
+		return labelList.stream()
+				.map(WebElement::getText)
+				.map(String::trim)
+				.toList();
+	}
 }
