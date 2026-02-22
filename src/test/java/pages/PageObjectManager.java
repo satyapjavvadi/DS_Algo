@@ -11,6 +11,8 @@ public class PageObjectManager {
 	private DataStructurePage dataStructurePage;
 	private GraphPage graphPage;
 	private ArrayPage arraypage;
+	private QueuePage queuepage;
+	private TreePage treepage;
 	private TryEditorPage tryeditorPage;
 
 	public LaunchPage getLaunchPage() {
@@ -75,7 +77,19 @@ public class PageObjectManager {
 		}
 		return arraypage;
 	}
-
+	public QueuePage getQueuePage() {
+		if (queuepage == null) {
+			queuepage = new QueuePage();
+		}
+		return queuepage;
+	}
+	
+	public TreePage getTreePage() {
+		if (treepage == null) {
+			treepage = new TreePage();
+		}
+		return treepage;
+	}
 	public TryEditorPage getTryEditorPage() {
 		if (tryeditorPage == null) {
 			tryeditorPage = new TryEditorPage();

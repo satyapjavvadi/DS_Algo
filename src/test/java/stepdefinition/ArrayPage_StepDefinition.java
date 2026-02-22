@@ -3,10 +3,14 @@ package stepdefinition;
 import java.util.List;
 
 import io.cucumber.datatable.DataTable;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import DriverManager.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,6 +22,7 @@ public class ArrayPage_StepDefinition {
 
 	private final PageObjectManager pom;
 	private static final Logger logger = LoggerFactory.getLogger(ArrayPage_StepDefinition.class);
+	
 
 	public ArrayPage_StepDefinition(PageObjectManager pom) {
 		this.pom = pom;

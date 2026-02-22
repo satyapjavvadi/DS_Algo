@@ -4,10 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import DriverManager.DriverFactory;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,9 +21,10 @@ import utils.WaitUtils;
 
 public class RegisterPage {
 
-	private static final Logger logger = LoggerFactory.getLogger(RegisterPage.class);
+	
 
 	private WebDriver driver;
+	private static final Logger logger = LoggerFactory.getLogger(RegisterPage.class);
 
 	public RegisterPage() {
 		this.driver = DriverFactory.getDriver();
@@ -113,6 +118,7 @@ public class RegisterPage {
 				return "NO_ERROR_FOUND";
 			}
 		}
+		logger.info("No validation message found. Returning null.");
 		return null;
 	}
 

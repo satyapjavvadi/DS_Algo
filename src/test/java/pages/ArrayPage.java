@@ -71,8 +71,7 @@ public class ArrayPage {
 		for (WebElement heading : headings) {
 			headingtexts.add(heading.getText().trim());
 		}
-
-		logger.debug("Headings found: {}", headingtexts);
+		logger.info("Headings found: {}", headingtexts);
 		return headingtexts;
 	}
 
@@ -86,8 +85,7 @@ public class ArrayPage {
 				subtopiclinks.add(topiclink.getText().trim());
 			}
 		}
-
-		logger.debug("Subtopics found: {}", subtopiclinks);
+		logger.info("Subtopic links found: {}", subtopiclinks);
 		return subtopiclinks;
 	}
 
@@ -115,8 +113,9 @@ public class ArrayPage {
 	}
 
 	public void clickTryHereButton() {
-		logger.info("Clicking Try Here button.");
+		logger.info("Clicking Try Here button");
 		JSUtils.scrollIntoView(tryhere_button);
+
 		wait.waitForClickable(tryhere_button).click();
 	}
 
@@ -133,6 +132,7 @@ public class ArrayPage {
 	}
 
 	public void clickPracticeQuestionsLink() {
+		logger.info("Clicking Practice Questions link");
 		logger.info("Clicking Practice Questions link.");
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
@@ -163,6 +163,7 @@ public class ArrayPage {
 			String questionName = eachQuestion.getText();
 			if (questionName.equalsIgnoreCase(problemName)) {
 				eachQuestion.click();
+				logger.info("Successfully clicked problem: {}", problemName);
 				logger.info("Successfully clicked problem: {}", problemName);
 				return;
 			}

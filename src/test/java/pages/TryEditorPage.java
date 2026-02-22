@@ -10,19 +10,23 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import utils.ExcelReader;
 import utils.TestContext;
 import utils.WaitUtils;
 
 public class TryEditorPage {
 
-    private static final Logger logger = LoggerFactory.getLogger(TryEditorPage.class);
+   
 
-    private WaitUtils wait;
-    private WebDriver driver;
+	private WaitUtils wait;
+	private WebDriver driver;
+	private static final Logger logger = LoggerFactory.getLogger(TryEditorPage.class);
 
-    @FindBy(xpath = "//button")
-    private WebElement run_button;
+	@FindBy(xpath = "//button")
+	private WebElement run_button;
 
     @FindBy(xpath = "//span[@role='presentation']//span")
     private WebElement codeArea;
