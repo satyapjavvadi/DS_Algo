@@ -16,7 +16,7 @@ import pages.PageObjectManager;
 public class LaunchPageStepDefinition {
 
 	private final PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(LaunchPageStepDefinition.class);
 
 	public LaunchPageStepDefinition(PageObjectManager pom) {
 		this.pom = pom;
