@@ -18,7 +18,7 @@ public class TryEditorPage {
 
 	private WaitUtils wait;
 	private WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(TryEditorPage.class);
 
 	@FindBy(xpath = "//button")
 	private WebElement run_button;

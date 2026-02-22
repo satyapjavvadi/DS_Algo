@@ -18,7 +18,7 @@ import utils.ElementUtil;
 
 public class ArrayPage_StepDefinition {
 	private final PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArrayPage_StepDefinition.class);
 
 	public ArrayPage_StepDefinition(PageObjectManager pom) {
 		this.pom = pom;
@@ -62,12 +62,15 @@ public class ArrayPage_StepDefinition {
 	@When("the user selects {string} Topics Covered")
 	public void the_user_selects_topics_covered(String topic) {
 		pom.getArrayPage().clickTopicLink(topic);
+		logger.info("Selecting Array topic: {}", topic);
 	}
 
 	@Then("the {string} content should be present")
 	public void the_content_should_be_present(String pageurltext) {
 		Assert.assertTrue(ElementUtil.getURL().contains(pageurltext),
 				"URL does not contain expected text: " + pageurltext);
+		logger.info("Validating URL contains: {}", pageurltext);
+
 	}
 
 	@Given("the user is on the {string} subtopic array page")
@@ -80,6 +83,7 @@ public class ArrayPage_StepDefinition {
 	@Then("the Try here>>> button should be visible")
 	public void the_button_should_be_visible_below_the_content() {
 		Assert.assertTrue(pom.getArrayPage().checktryherebutton_displayed(), " try here button not visible in ");
+		logger.info("Checking visibility of Try Here button");
 	}
 
 	@Given("User is on the array subtopic {string} page")
@@ -92,12 +96,14 @@ public class ArrayPage_StepDefinition {
 	@When("User clicks the {string} button")
 	public void user_clicks_the_button(String buttonText) {
 		pom.getArrayPage().clickTryHereButton();
+		logger.info("Clicking Try Here button");
 	}
 
 	@Then("User must be navigated to code editor")
 	public void user_must_be_navigated_to_code_editor() {
 
 		Assert.assertTrue(ElementUtil.getURL().contains("tryEditor"), "user is not on tryeditor screen");
+		logger.info("Current URL: {}", ElementUtil.getURL());
 
 	}
 
@@ -114,12 +120,15 @@ public class ArrayPage_StepDefinition {
 
 		boolean islinkenabled = pom.getArrayPage().isPracticeQuestionLinkEnabled();
 		Assert.assertTrue(islinkenabled, "Expected link '" + linkText + "' is not enabled in side navigation bar");
+
+		logger.info("Checking enabled Practice Questions link is displayed");
 	}
 
 	@When("User clicks on Practice Questions link in Array {string} UI")
 	public void user_clicks_on_link_in_Array_ui(String topicPage) {
 		pom.getArrayPage().clickTopicLink(topicPage);
 		pom.getArrayPage().clickPracticeQuestionsLink();
+		logger.info("practice question link is clicked in Array page");
 	}
 
 	@Then("User must be navigated to {string}")
@@ -134,6 +143,8 @@ public class ArrayPage_StepDefinition {
 		List<String> actualList = pom.getArrayPage().getQuestionsList();
 
 		Assert.assertEquals(actualList, expectedList);
+		logger.info("Expected Questions: {}", expectedList);
+		logger.info("Actual Questions: {}", actualList);
 
 	}
 
@@ -143,11 +154,13 @@ public class ArrayPage_StepDefinition {
 		pom.getArrayPage().clickPracticeQuestionsLink();
 
 		Assert.assertTrue(ElementUtil.getURL().contains("practice"), "user is not on Array practice questions page");
+		logger.info("Navigating to Practice Questions from Array page");
 	}
 
 	@When("User clicks on {string} link in Practice Questions UI")
 	public void user_clicks_on_problem_link_in_practice_questions_ui(String problemName) {
 		pom.getArrayPage().clickProblemLink(problemName);
+		logger.info("Clicking problem link: {}", problemName);
 	}
 
 	@Then("User must see {string} button in assessment page")
@@ -156,10 +169,13 @@ public class ArrayPage_StepDefinition {
 		switch (expectedButtonText) {
 		case "Run":
 			flag = pom.getArrayPage().getButtonTextAssesmentPage(expectedButtonText);
+			break;
 		case "Submit":
 			flag = pom.getArrayPage().isSubmitButtonPresent();
+			break;
 		}
 		Assert.assertTrue(flag);
+		logger.info("Validating button presence on assessment page: {}", expectedButtonText);
 
 	}
 
@@ -167,22 +183,27 @@ public class ArrayPage_StepDefinition {
 	public void userClicksOnSubmitLinkAfterReaching(String problemName) {
 		pom.getArrayPage().clickProblemLink(problemName);
 		pom.getArrayPage().submitProblem();
+		logger.info("Submitting problem: {}", problemName);
+
 	}
 
 	@Then("User must see {string} in output")
 	public void userMustSeeInOutput(String expectedOutput) {
 		Assert.assertTrue(pom.getArrayPage().getConsoleOutput().contains(expectedOutput));
+		logger.info("Validating expected output: {}", expectedOutput);
 	}
 
 	@Given("User is on the Try editor")
 	public void userIsOnTheTryEditor() {
 		pom.getArrayPage().clickTopicLink("Arrays in Python");
 		pom.getArrayPage().clickTryHereButton();
+		logger.info("Navigating to Try Editor from Arrays UI");
 	}
 
 	@When("User clicks the Run button after entering {string}")
 	public void userClicksTheButtonAfterEntering(String codeDetails) {
 		pom.getTryEditorPage().runCode(codeDetails);
+		logger.info("Running code in Try Editor");
 	}
 
 }

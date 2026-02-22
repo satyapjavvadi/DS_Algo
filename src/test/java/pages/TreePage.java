@@ -25,7 +25,7 @@ import utils.WaitUtils;
 public class TreePage {
 	private WaitUtils wait;
 	private WebDriver driver;
-	private static final Logger logger = LogManager.getLogger(DriverFactory.class);
+	private static final Logger logger = LogManager.getLogger(TreePage.class);
 	// locators
 
 	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
@@ -57,6 +57,7 @@ public class TreePage {
 		for (WebElement heading : headings) {
 			headingtexts.add(heading.getText().trim());
 		}
+		logger.info("Tree Headings found: {}", headingtexts);
 		return headingtexts;
 	}
 
@@ -68,6 +69,7 @@ public class TreePage {
 				subtopiclinks.add(topiclink.getText().trim());
 			}
 		}
+		logger.info("Tree Subtopic links found: {}", subtopiclinks);
 		return subtopiclinks;
 	}
 
@@ -77,6 +79,7 @@ public class TreePage {
 			if (link.getText().trim().equalsIgnoreCase(topicName)) {
 				JSUtils.scrollIntoView(link);
 				wait.waitForClickable(link).click();
+				logger.info("Successfully clicked Tree topic link: {}", topicName);
 				return;
 			}
 		}
@@ -84,23 +87,28 @@ public class TreePage {
 	}
 
 	public boolean checktryherebutton_displayed() {
+		logger.info("Checking visibility of Try Here button");
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
 
 	public void clickTryHereButton() {
+		logger.info("Clicking Try Here button");
 		JSUtils.scrollIntoView(tryhere_button);
 		wait.waitForClickable(tryhere_button).click();
 	}
 
 	public boolean isPracticeQuestionLinkVisible() {
+		logger.info("Checking if Practice Questions link is visible");
 		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
 	}
 
 	public boolean isPracticeQuestionLinkEnabled() {
+		logger.info("Checking if Practice Questions link is enabled");
 		return Practicequestionslink.isEnabled();
 	}
 
 	public void clickPracticeQuestionsLink() {
+		logger.info("Clicking Practice Questions link");
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}

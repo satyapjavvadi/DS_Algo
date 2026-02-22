@@ -20,7 +20,7 @@ import utils.WaitUtils;
 public class RegisterPage {
 
 	private WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(RegisterPage.class);
 
 	public RegisterPage() {
 		this.driver = DriverFactory.getDriver();
@@ -85,6 +85,7 @@ public class RegisterPage {
 	}
 
 	public String getRegisterErrorMessage(String scenarioType) {
+		logger.info("Fetching register error message for scenario type: {}", scenarioType);
 		if (scenarioType.toLowerCase().contains("null")) {
 			for (WebElement field : Arrays.asList(usernameField, passwordField, confirmPasswordField)) {
 				String tooltip = field.getAttribute("validationMessage");
@@ -100,30 +101,38 @@ public class RegisterPage {
 				return "NO_ERROR_FOUND";
 			}
 		}
+		logger.info("No validation message found. Returning null.");
 		return null;
 	}
 
 	// ===== Non-functional Helpers =====
 
 	public int getInputFieldCount() {
-		return labelList.size();
+		int count = labelList.size();
+		logger.info("Total input fields found on Register page: {}", count);
+		return count;
 	}
 
 	public List<String> getRegisterLabelNames() {
+		logger.info("Register page label names");
 		return labelList.stream().map(WebElement::getText).map(String::trim).toList();
+
 	}
 
 	public int getButtonCount() {
+
 		return buttonElements.size();
 	}
 
 	public List<String> getButtonText() {
+		logger.info("Button texts found on Register page: {}", buttonElements);
 		return buttonElements.stream().map(btn -> {
 			String text = btn.getText();
 			if (text == null || text.isEmpty())
 				text = btn.getAttribute("value");
 			return text != null ? text.trim() : "";
 		}).filter(s -> !s.isEmpty()).toList();
+
 	}
 
 	public List<String> getRegisterPageLinkText() {
@@ -135,7 +144,9 @@ public class RegisterPage {
 	}
 
 	public List<String> getPasswordRequirementsText() {
+		logger.info("Password requirement texts check");
 		return passwordReqList.stream().filter(WebElement::isDisplayed).map(WebElement::getText).map(String::trim)
 				.map(text -> text.replaceAll("[’']", "").replaceAll("\\.$", "")).toList();
+		
 	}
 }

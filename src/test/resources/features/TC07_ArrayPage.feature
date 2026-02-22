@@ -101,7 +101,7 @@ Feature: Array Page Functionality
       | Squares of a sorted Array               |
 
 
-  Scenario Outline:User must see run button in assessment page
+  Scenario Outline: User must see run button in assessment page
     Given User has navigated to Practice Question UI from Array page
     When User clicks on "<problem_name>" link in Practice Questions UI
     Then User must see "Run" button in assessment page
@@ -114,7 +114,7 @@ Feature: Array Page Functionality
       | Squares of a sorted Array               |
 
 
-  Scenario Outline:User must see Submit button in assessment page
+  Scenario Outline: User must see Submit button in assessment page
     Given User has navigated to Practice Question UI from Array page
     When User clicks on "<problem_name>" link in Practice Questions UI
     Then User must see "Submit" button in assessment page
@@ -126,7 +126,7 @@ Feature: Array Page Functionality
       | Find Numbers with Even number of digits |
       | Squares of a sorted Array               |
 
-  Scenario Outline:User must see error message when submitting empty ans
+  Scenario Outline: User must see error message when submitting empty ans
     Given User has navigated to Practice Question UI from Array page
     When User clicks on submit link after reaching "<problem_name>"
     Then User must see "Error occurred during submission" in output

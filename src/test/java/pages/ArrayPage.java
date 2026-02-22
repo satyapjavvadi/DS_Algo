@@ -20,7 +20,7 @@ import utils.WaitUtils;
 public class ArrayPage {
 	private WaitUtils wait;
 	private WebDriver driver;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArrayPage.class);
 
 	// locators
 	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
@@ -67,6 +67,7 @@ public class ArrayPage {
 		for (WebElement heading : headings) {
 			headingtexts.add(heading.getText().trim());
 		}
+		logger.info("Headings found: {}", headingtexts);
 		return headingtexts;
 	}
 
@@ -78,6 +79,7 @@ public class ArrayPage {
 				subtopiclinks.add(topiclink.getText().trim());
 			}
 		}
+		logger.info("Subtopic links found: {}", subtopiclinks);
 		return subtopiclinks;
 	}
 
@@ -87,6 +89,7 @@ public class ArrayPage {
 			if (link.getText().trim().equalsIgnoreCase(topicName)) {
 				JSUtils.scrollIntoView(link);
 				wait.waitForClickable(link).click();
+				logger.info("Successfully clicked topic link: {}", topicName);
 				return;
 			}
 		}
@@ -94,31 +97,39 @@ public class ArrayPage {
 	}
 
 	public boolean checktryherebutton_displayed() {
+		logger.info("Checking visibility of Try Here button");
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
 
 	public void clickTryHereButton() {
+		logger.info("Clicking Try Here button");
 		JSUtils.scrollIntoView(tryhere_button);
+
 		wait.waitForClickable(tryhere_button).click();
 	}
 
 	public boolean isPracticeQuestionLinkVisible() {
+		logger.info("Checking if Practice Questions link is visible");
 		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
 	}
 
 	public boolean isPracticeQuestionLinkEnabled() {
+		logger.info("Checking if Practice Questions link is enabled");
 		return Practicequestionslink.isEnabled();
 	}
 
 	public void clickPracticeQuestionsLink() {
+		logger.info("Clicking Practice Questions link");
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}
 
 	public List<String> getQuestionsList() {
 		try {
+			logger.info("Fetching list of practice questions");
 			wait.waitForVisibilityOfAll(questionslist);
 			return questionslist.stream().map(WebElement::getText).collect(Collectors.toList());
+
 		} catch (Exception e) {
 			System.out.println("Questions list not found: " + e.getMessage());
 			return Collections.emptyList();
@@ -130,6 +141,7 @@ public class ArrayPage {
 			String questionName = eachQuestion.getText();
 			if (questionName.equalsIgnoreCase(problemName)) {
 				eachQuestion.click();
+				logger.info("Successfully clicked problem: {}", problemName);
 				return;
 			}
 		}
@@ -138,6 +150,7 @@ public class ArrayPage {
 
 	public boolean getButtonTextAssesmentPage(String buttonText) {
 		String button = run_button.getText();
+		logger.info("Validating button text. Expected: {}, Actual: {}", buttonText, button);
 		if (button.equalsIgnoreCase(buttonText)) {
 			return true;
 		} else
@@ -146,6 +159,7 @@ public class ArrayPage {
 	}
 
 	public boolean isSubmitButtonPresent() {
+		logger.info("Submit button presence check");
 		if (submit.size() > 0) {
 			return true;
 		} else
@@ -153,6 +167,7 @@ public class ArrayPage {
 	}
 
 	public void submitProblem() {
+		logger.info("Submitting problem");
 		for (WebElement eachType : submit) {
 			eachType.click();
 			return;
@@ -160,6 +175,7 @@ public class ArrayPage {
 	}
 
 	public String getConsoleOutput() {
+		logger.info("Fetching console output");
 		wait.waitForPageLoad();
 
 		String result = wait.waitForCodeMirrorOutput("output", 120);

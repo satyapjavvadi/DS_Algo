@@ -51,6 +51,7 @@ public class QueuePage {
 		for (WebElement heading : headings) {
 			headingTexts.add(heading.getText().trim());
 		}
+		logger.info("Queue Headings found: {}", headingTexts);
 		return headingTexts;
 	}
 
@@ -62,6 +63,7 @@ public class QueuePage {
 				subTopic.add(topicLink.getText().trim());
 			}
 		}
+		logger.info("Queue Subtopic links found: {}", subTopic);
 		return subTopic;
 	}
 
@@ -71,6 +73,7 @@ public class QueuePage {
 			if (link.getText().trim().equalsIgnoreCase(topicName)) {
 				JSUtils.scrollIntoView(link);
 				wait.waitForClickable(link).click();
+				logger.info("Successfully clicked Queue topic link: {}", topicName);
 				return;
 			}
 		}
@@ -78,29 +81,35 @@ public class QueuePage {
 	}
 
 	public boolean checkTryhereButton_Display() {
+		logger.info("Checking visibility of Try Here button");
 		return WaitUtils.isVisible(driver, tryhere_button, 10);
 	}
 
 	public void clickTryHereButton() {
+		logger.info("Clicking Try Here button");
 		JSUtils.scrollIntoView(tryhere_button);
 		wait.waitForClickable(tryhere_button).click();
 	}
 
 	public boolean isPracticeQuestionLinkVisible() {
+		logger.info("Checking if Practice Questions link is visible");
 		return WaitUtils.isVisible(driver, PracticeQuestionsLink, 10);
 	}
 
 	public boolean isPracticeQuestionLinkEnabled() {
+		logger.info("Checking if Practice Questions link is enabled");
 		return PracticeQuestionsLink.isEnabled();
 	}
 
 	public void clickPracticeQuestionsLink() {
+		logger.info("Clicking Practice Questions link");
 		JSUtils.scrollIntoView(PracticeQuestionsLink);
 		wait.waitForClickable(PracticeQuestionsLink).click();
 	}
 
 	public List<String> getQuestionsList() {
 		try {
+			logger.info("Fetching list of practice questions");
 			wait.waitForVisibilityOfAll(questionslist);
 			return questionslist.stream().map(WebElement::getText).collect(Collectors.toList());
 		} catch (Exception e) {
@@ -108,6 +117,5 @@ public class QueuePage {
 			return Collections.emptyList();
 		}
 	}
-
 
 }

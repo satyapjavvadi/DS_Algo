@@ -17,7 +17,7 @@ import java.util.List;
 
 public class RegisterPageStep {
 	private final PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(RegisterPageStep.class);
 
 	public RegisterPageStep(PageObjectManager pom) {
 		this.pom = pom;
@@ -28,6 +28,7 @@ public class RegisterPageStep {
 	@When("User clicks {string} link in home page")
 	public void user_clicks_register_link_in_home_page(String pageInfo) {
 		pom.getHomePage().navigatetoPages(pageInfo);
+		logger.info("User clicking link: {}", pageInfo);
 	}
 
 	@Given("user register using {string} with {string}")
@@ -41,6 +42,7 @@ public class RegisterPageStep {
 
 		Assert.assertTrue(actualMessage.contains(expectedmessage),
 				"Expected message to contain: [" + expectedmessage + "] but found [" + actualMessage + "]");
+		logger.info("Validating home page alert message");
 	}
 
 	@Then("appropriate message {string} should be displayed {string}")
@@ -48,7 +50,11 @@ public class RegisterPageStep {
 
 		String actualMessage = pom.getRegisterPage().getRegisterErrorMessage(scenarioType);
 
+		logger.info("Validating error message for scenario: {} | Expected: {} | Actual: {}", scenarioType,
+				expectedMessage, actualMessage);
+
 		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Validation message mismatch");
+
 	}
 
 	// ********************** Non -Functional Testing scenarios *************** //
@@ -63,6 +69,7 @@ public class RegisterPageStep {
 	public void user_must_see_links_with_text_in_register_ui(DataTable dataTable) {
 		List<String> expectedlink_names = dataTable.asList();
 		List<String> actuallink_names = pom.getRegisterPage().getRegisterPageLinkText();
+		logger.info("Validating Register page links. Expected: {} | Actual: {}", expectedlink_names, actuallink_names);
 
 		Assert.assertEquals(actuallink_names, expectedlink_names,
 				"Link text mismatch , Expected: " + expectedlink_names + " but found: " + actuallink_names);
@@ -87,6 +94,10 @@ public class RegisterPageStep {
 	public void user_must_see_labels_with_text_in_register_ui(DataTable dataTable) {
 
 		List<String> expectedlabel_names = dataTable.asList();
+
+		logger.info("Validating label texts. Expected: {} | Actual: {}", expectedlabel_names,
+				pom.getRegisterPage().getRegisterLabelNames());
+
 		Assert.assertEquals(pom.getRegisterPage().getRegisterLabelNames(), expectedlabel_names,
 				"Label text mismatch , Expected: " + expectedlabel_names + " but found: "
 						+ pom.getRegisterPage().getRegisterLabelNames());
@@ -98,6 +109,8 @@ public class RegisterPageStep {
 
 		Assert.assertEquals(pom.getRegisterPage().getCompanyName().trim(), expectedFromFeature,
 				"Company name mismatch! Expected: " + expectedFromFeature);
+		logger.info("Validating company name. Expected: {} | Actual: {}", expectedFromFeature,
+				pom.getRegisterPage().getCompanyName().trim());
 
 	}
 
@@ -107,6 +120,7 @@ public class RegisterPageStep {
 		List<String> dataTableList = dataTable.asList(String.class);
 		List<String> actualList = pom.getRegisterPage().getPasswordRequirementsText();
 		Assert.assertEquals(actualList, dataTableList, "Password help texts do not match");
+		logger.info("Validating password requirement list. Expected: {} | Actual: {}", dataTableList, actualList);
 	}
 
 }
