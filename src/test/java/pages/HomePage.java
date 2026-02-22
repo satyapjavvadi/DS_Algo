@@ -150,9 +150,7 @@ public class HomePage {
 		}
 	}
 
-	public String getHeadingTitle() {
-		return headingTitle.getText();
-	}
+
 
 	public List<String> getTitles(String string2) {
 		List<String> title = new ArrayList<>();

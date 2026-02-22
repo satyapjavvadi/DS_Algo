@@ -13,7 +13,7 @@ Feature: Login Functionality
       | Username:              |
       | Password:              |
       
-      Scenario: Number of buttons present in Login UI
+  Scenario: Number of buttons present in Login UI
     Then User must see 1 button in Login UI
     
     Scenario: The button should have text "Login"
