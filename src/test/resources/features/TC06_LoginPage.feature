@@ -4,6 +4,20 @@ Feature: Login Functionality
   Background:
     Given the registered user has navigated to the home page
     When the user clicks sign in link
+    
+    Scenario: Number of fields present in Login UI
+    Then User must see 2 input fields in Login UI
+    
+    Scenario: Validate labels text in Login UI
+    Then User must see labels with text in Login UI
+      | Username:              |
+      | Password:              |
+      
+  Scenario: Number of buttons present in Login UI
+    Then User must see 1 button in Login UI
+    
+    Scenario: The button should have text "Login"
+    Then User should be able to see button with text "Login" in Login UI
 
   @negativeTC_Login
   Scenario Outline: Invalid login attempts for "<testCaseType>"

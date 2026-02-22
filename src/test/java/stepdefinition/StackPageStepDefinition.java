@@ -18,7 +18,7 @@ import utils.WaitUtils;
 public class StackPageStepDefinition {
 
 	private final PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+	private static final Logger logger = LoggerFactory.getLogger(StackPageStepDefinition.class);
 
 
 	public StackPageStepDefinition(PageObjectManager pom) {
