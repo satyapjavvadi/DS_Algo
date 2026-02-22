@@ -1,131 +1,116 @@
 package stepdefinition;
 
-import java.util.stream.Stream;
+import java.io.IOException;
+import java.util.List;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 
-import DriverManager.DriverFactory;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.LoginPage;
 import pages.PageObjectManager;
+import utils.ElementUtil;
+import utils.TestContext;
 
 public class LoginPageStepDefinition {
 
 	private final PageObjectManager pom;
-	WebDriver driver;
-	private LoginPage loginPage;
+	private static final Logger logger = LoggerFactory.getLogger(LoginPageStepDefinition.class);
 
-	private String username;
-	private String password;
-
-	public LoginPageStepDefinition() {
-
-		pom = new PageObjectManager();
-		driver = DriverFactory.getDriver();
-		loginPage = pom.getLoginPage();
-
+	public LoginPageStepDefinition(PageObjectManager pom) {
+		this.pom = pom;
 	}
 
-	// Background
-	@Given("the registered user has navigated to the login page")
-	public void the_registered_user_has_navigated_to_the_login_page() {
-
-		driver.get("https://dsportalapp.herokuapp.com/login");
-
-		String actualUrl = driver.getCurrentUrl();
-		System.out.println("Navigated to Login page: " + actualUrl);
-		Assert.assertTrue(actualUrl.contains("/login"), "Navigation failed: Not on login page");
-
+	// Background step
+	@Given("the registered user has navigated to the home page")
+	public void navigateTohomePage() {
+		String currentUrl = ElementUtil.getURL();
+		logger.info("Navigated to Home Page URL: {}", currentUrl);
 	}
 
-	// Invalid login attempts
-	@Given("the user provides {string} and {string}")
-	public void the_user_provides_credentials(String username, String password) {
-		this.username = username;
-		this.password = password;
-
-		loginPage.enterUsername(username);
-		loginPage.enterPassword(password);
-
+	@When("the user clicks sign in link")
+	public void clickSignIn() {
+		pom.getHomePage().clickSignInButton();
+		logger.info("Clicked Sign In link on Home Page");
 	}
 
-	@When("the user {string}")
-	public void the_user_submits_by_method(String method) {
-		loginPage.login(username, password, method);
-	}
-
-	@Then("the error message {string} should be displayed")
-	public void the_error_message_should_be_displayed(String expectedError) {
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		String usernameMessage = (String) js.executeScript("return arguments[0].validationMessage;",
-				loginPage.getUsernameField());
-
-		String passwordMessage = (String) js.executeScript("return arguments[0].validationMessage;",
-				loginPage.getPasswordField());
-
-		if (expectedError.equalsIgnoreCase("Invalid username and password")) {
-			// App-specific error message (not native validation)
-			String actualError = loginPage.getDisplayedErrorMessage(); // You may need to implement this
-			Assert.assertEquals(actualError.trim().toLowerCase(), expectedError.trim().toLowerCase(),
-					"App error message mismatch");
-		} else {
-			boolean matchFound = Stream.of(usernameMessage, passwordMessage)
-					.anyMatch(msg -> msg.trim().equalsIgnoreCase(expectedError.trim()));
-			Assert.assertTrue(matchFound, "Expected validation message not found: " + expectedError);
-		}
-
-	}
-
-	@When("the user presses Enter")
-	public void the_user_presses_enter() {
-		loginPage.pressEnterToSubmit();
-	}
-
-	// Successful login
-	@Given("the user provides valid credentials")
-	public void the_user_provides_valid_credentials() {
-		username = "validUser";
-		password = "validPass";
-		loginPage.enterUsername(username);
-		loginPage.enterPassword(password);
-	}
-
-	@When("the user submits the login form")
-	public void the_user_submits_the_login_form() {
-		loginPage.clickLoginButton();
-	}
-
-	@When("the user confirms login using Enter")
-	public void the_user_confirms_login_using_enter() {
-		loginPage.pressEnterToSubmit();
+	// Scenario step
+	@When("the user {string} with {string}")
+	public void preformsLogin(String submissionMethod, String scenarioType) {
+		logger.info("Performing login using method '{}' for scenario '{}'", submissionMethod, scenarioType);
+		pom.getLoginPage().login(submissionMethod, scenarioType);
 	}
 
 	@Then("the user should be redirected to the Home Page with a message {string}")
-	public void the_user_should_be_redirected_to_the_home_page_with_a_message(String expectedMessage) {
-		String actualUrl = driver.getCurrentUrl();
-		System.out.println("Redirected to: " + actualUrl);
-		Assert.assertTrue(actualUrl.contains("/home"), "User is not redirected to the home page");
+	public void verifyLoginSuccess(String expectedMessage) {
+		pom.getLoginPage().waitForHomeRedirect();
+		String actualMessage = pom.getHomePage().getLoginSuccessMessage();
+		logger.info("Expected login success message: '{}', Actual: '{}'", expectedMessage, actualMessage);
+		Assert.assertEquals(actualMessage, expectedMessage, "Login success message mismatch");
 	}
 
 	// Register link visibility
 	@When("the login page is displayed")
-	public void the_login_page_is_displayed() {
-		Assert.assertTrue(loginPage.isLoginPageVisible(), "Login page is not visible");
+	public void verifyLoginPageVisible() {
+		boolean visible = pom.getLoginPage().isLoginPageVisible();
+		logger.info("Login page visibility: {}", visible);
+		Assert.assertTrue(visible, "Login page is not visible");
 	}
 
 	@Then("the user should be able to see the {string} link")
-	public void the_user_should_be_able_to_see_the_link(String linkText) {
-		Assert.assertTrue(loginPage.isRegisterLinkVisible(), "Register link not visible");
+	public void verifyRegisterLink(String linkText) {
+		boolean visible = pom.getLoginPage().isRegisterLinkVisible();
+		logger.info("Register link '{}' visibility: {}", linkText, visible);
+		Assert.assertTrue(visible, "Register link not visible");
 	}
 
-	@When("the user initiates login")
-	public void the_user_initiates_login() {
-		loginPage.clickLoginButton();
+	@Then("the appropriate error messages should be displayed in {string}")
+	public void verifyErrorMessages(String expectedInField) throws IOException {
+		String actualErrorMessage = pom.getLoginPage().getDisplayedErrorMessage(expectedInField);
+		String expectedErrorMessage = TestContext.testData.get("expected_message");
+
+		logger.info("Verifying error message for field '{}'. Expected: '{}', Actual: '{}'",
+				expectedInField, expectedErrorMessage, actualErrorMessage);
+
+		Assert.assertEquals(actualErrorMessage, expectedErrorMessage,
+				"Mismatch for invalid login scenario: "
+						+ TestContext.testData.get("username") + "/" + TestContext.testData.get("password"));
+	}
+
+	// Input field validations
+	@Then("User must see {int} input fields in Login UI")
+	public void User_must_see_input_fields_in_Login_ui(Integer expectedLabelCount) {
+		int actualCount = pom.getLoginPage().getInputFieldCount();
+		logger.info("Login page input field count: {}, Expected: {}", actualCount, expectedLabelCount);
+		Assert.assertEquals(actualCount, expectedLabelCount, "Input field count mismatch");
+	}
+
+	@Then("User must see {int} button in Login UI")
+	public void user_must_see_button_in_Login_ui(Integer expectedButtonCount) {
+		int actualCount = pom.getLoginPage().getButtonCount();
+		logger.info("Login page button count: {}, Expected: {}", actualCount, expectedButtonCount);
+		Assert.assertEquals(actualCount, expectedButtonCount, "Button count mismatch in Login page");
+	}
+
+	@Then("User should be able to see button with text {string} in Login UI")
+	public void user_should_be_able_to_see_button_with_text_in_Login_ui(String expectedText) {
+		List<String> actualButtons = pom.getLoginPage().getButtonText();
+		logger.info("Checking button text presence. Expected: '{}', Actual: {}", expectedText, actualButtons);
+		Assert.assertTrue(actualButtons.contains(expectedText),
+				"Button text mismatch. Expected: " + expectedText + ", Actual: " + actualButtons);
+	}
+
+	@Then("User must see labels with text in Login UI")
+	public void user_must_see_labels_with_text_in_Login_ui(DataTable dataTable) {
+		List<String> expectedLabels = dataTable.asList();
+		List<String> actualLabels = pom.getLoginPage().getLoginLabelNames();
+
+		logger.info("Verifying Login UI labels. Expected: {}, Actual: {}", expectedLabels, actualLabels);
+		Assert.assertEquals(actualLabels, expectedLabels,
+				"Label text mismatch. Expected: " + expectedLabels + ", Actual: " + actualLabels);
 	}
 
 }

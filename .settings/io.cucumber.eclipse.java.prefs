@@ -1,0 +1,6 @@
+activeFilters=io.cucumber.core.feature.*,stepdefinition.*
+eclipse.preferences.version=1
+enableProjectSpecific=true
+enableShowHook=false
+inactiveFilters=
+validationPlugins=

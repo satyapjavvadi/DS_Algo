@@ -1,0 +1,497 @@
+2026-02-04 23:03:11 [main] INFO  DriverManager.DriverFactory - Headings :
+2026-02-04 23:03:17 [main] INFO  DriverManager.DriverFactory - Headings :
+2026-02-04 23:03:24 [main] INFO  DriverManager.DriverFactory - Actual Subtopic links in LinkedList page: [Introduction, Creating Linked LIst, Types of Linked List, Implement Linked List in Python, Traversal, Insertion, Deletion]
+2026-02-04 23:03:24 [main] INFO  DriverManager.DriverFactory - Expected Subtopic links in LinkedList page: [Introduction, Creating Linked LIst, Types of Linked List, Implement Linked List in Python, Traversal, Insertion, Deletion]
+2026-02-04 23:04:27 [main] INFO  DriverManager.DriverFactory - check Introduction
+2026-02-04 23:04:44 [main] INFO  DriverManager.DriverFactory - Print Title actual : Practice Questions Exp Practice questions
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 1 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 3 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 18 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-04 23:11:14 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse-1104198905\testng-customsuite.xml
+
+2026-02-04 23:11:15 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 5 ms.
+2026-02-04 23:11:19 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-04 23:11:21 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-04 23:11:23 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-04 23:11:25 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-04 23:12:42 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:12:47 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:12:51 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:12:56 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:00 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:05 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:10 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:15 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:20 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:25 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:30 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:35 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:13:40 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-04 23:19:08 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:08 [main] INFO  DriverManager.DriverFactory - Headings :
+2026-02-04 23:19:14 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:14 [main] INFO  DriverManager.DriverFactory - Headings :
+2026-02-04 23:19:20 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:20 [main] INFO  DriverManager.DriverFactory - Actual Subtopic links in LinkedList page: [Introduction, Creating Linked LIst, Types of Linked List, Implement Linked List in Python, Traversal, Insertion, Deletion]
+2026-02-04 23:19:20 [main] INFO  DriverManager.DriverFactory - Expected Subtopic links in LinkedList page: [Introduction, Creating Linked LIst, Types of Linked List, Implement Linked List in Python, Traversal, Insertion, Deletion]
+2026-02-04 23:19:26 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:33 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:39 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:46 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:52 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:19:58 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:20:04 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:20:11 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:20:18 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:20:18 [main] INFO  DriverManager.DriverFactory - check Introduction
+2026-02-04 23:20:26 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:20:33 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:20:33 [main] INFO  DriverManager.DriverFactory - Print Title actual : Practice Questions Exp Practice questions
+2026-02-04 23:20:39 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-04 23:21:26 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:21:27 [main] INFO  DriverManager.DriverFactory - Headings: 
+2026-02-04 23:21:32 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:21:32 [main] INFO  DriverManager.DriverFactory - Headings: 
+2026-02-04 23:21:38 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:21:38 [main] INFO  DriverManager.DriverFactory - Actual Subtopic links in Stack page: [Operations in Stack, Implementation, Applications]
+2026-02-04 23:21:38 [main] INFO  DriverManager.DriverFactory - Expected Subtopic links in Stack page: [Operations in Stack, Implementation, Applications]
+2026-02-04 23:21:44 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:21:44 [main] INFO  DriverManager.DriverFactory - Page Title: Stack
+2026-02-04 23:21:44 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/stack/
+2026-02-04 23:21:50 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:21:50 [main] INFO  DriverManager.DriverFactory - Page Title: Stack
+2026-02-04 23:21:50 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/stack/
+2026-02-04 23:21:56 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:21:56 [main] INFO  DriverManager.DriverFactory - Page Title: Stack
+2026-02-04 23:21:56 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/stack/
+2026-02-04 23:22:03 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:22:09 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:22:15 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:22:21 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:22:28 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:22:30 [main] INFO  DriverManager.DriverFactory - Print Title actual : Practice Questions Exp Practice questions
+2026-02-04 23:22:35 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:23:22 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-04 23:23:24 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@20df4edc: 55 ms
+2026-02-04 23:23:24 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@619f2981: 11 ms
+2026-02-04 23:23:24 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@d8d9c7a: 18 ms
+2026-02-04 23:23:24 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@289d4ca7: 7 ms
+2026-02-04 23:23:24 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@486ec211: 10 ms
+2026-02-04 23:23:24 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@5ef37c73: 0 ms
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 1 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 3 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 20 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 1 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse-1293242555\testng-customsuite.xml
+
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 4 ms.
+2026-02-10 17:16:56 [main] WARN  org.testng.internal.Utils - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@576f63f6: 48 ms
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@23aa363a: 2 ms
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@663411de: 10 ms
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@74960bfa: 10 ms
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@7f36662c: 5 ms
+2026-02-10 17:16:56 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@28e8dde3: 0 ms
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 1 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 4 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 17 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 1 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse--1150513893\testng-customsuite.xml
+
+2026-02-10 17:23:30 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 3 ms.
+2026-02-10 17:23:30 [main] WARN  org.testng.internal.Utils - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2026-02-10 17:23:31 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@2dca0d64: 39 ms
+2026-02-10 17:23:31 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@5ef6ae06: 1 ms
+2026-02-10 17:23:31 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@63dd899: 8 ms
+2026-02-10 17:23:31 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@42721fe: 5 ms
+2026-02-10 17:23:31 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@28e8dde3: 7 ms
+2026-02-10 17:23:31 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@6d23017e: 0 ms
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 4 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 15 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse--469680195\testng-customsuite.xml
+
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 4 ms.
+2026-02-10 17:24:11 [main] WARN  org.testng.internal.Utils - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@2dca0d64: 37 ms
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@5ef6ae06: 2 ms
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@63dd899: 8 ms
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@42721fe: 8 ms
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@28e8dde3: 5 ms
+2026-02-10 17:24:11 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@6d23017e: 0 ms
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 2 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 16 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse-886714565\testng-customsuite.xml
+
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 3 ms.
+2026-02-10 17:27:53 [main] WARN  org.testng.internal.Utils - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@2dca0d64: 39 ms
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@5ef6ae06: 2 ms
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@63dd899: 9 ms
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@42721fe: 7 ms
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@28e8dde3: 5 ms
+2026-02-10 17:27:53 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@6d23017e: 0 ms
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 2 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 18 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse-1804704659\testng-customsuite.xml
+
+2026-02-10 17:30:00 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 4 ms.
+2026-02-10 17:30:00 [main] WARN  org.testng.internal.Utils - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2026-02-10 17:30:01 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@2dca0d64: 38 ms
+2026-02-10 17:30:01 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@5ef6ae06: 2 ms
+2026-02-10 17:30:01 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@63dd899: 9 ms
+2026-02-10 17:30:01 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@42721fe: 6 ms
+2026-02-10 17:30:01 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@28e8dde3: 7 ms
+2026-02-10 17:30:01 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@6d23017e: 0 ms
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 2 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 3 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 23 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse--814299185\testng-customsuite.xml
+
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 3 ms.
+2026-02-11 19:03:20 [main] WARN  org.testng.internal.Utils - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@7859e786: 48 ms
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@664a9613: 1 ms
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@77307458: 8 ms
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@6b5176f2: 11 ms
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@21c64522: 5 ms
+2026-02-11 19:03:20 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@7997b197: 0 ms
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:56 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 3 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 16 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse-856835498\testng-customsuite.xml
+
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 3 ms.
+2026-02-11 19:04:57 [main] WARN  org.testng.internal.Utils - The test method 'io.cucumber.testng.AbstractTestNGCucumberTests.runScenario' will be skipped since its data provider 'scenarios' returned an empty array or iterator. 
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@4985cbcb: 37 ms
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@332a7fce: 1 ms
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@74cec793: 7 ms
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@460f76a6: 6 ms
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@6bab2585: 6 ms
+2026-02-11 19:04:57 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@74bdc168: 0 ms
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 2 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 14 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\saphi\AppData\Local\Temp\testng-eclipse-301699207\testng-customsuite.xml
+
+2026-02-12 11:13:02 [main] INFO  org.testng.internal.Utils - [Utils] DynamicGraphHelper.createDynamicGraph() took 4 ms.
+2026-02-12 11:13:07 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-12 11:13:09 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-12 11:13:10 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-12 11:13:12 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/
+2026-02-12 11:14:35 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:14:40 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:14:45 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:14:49 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:14:54 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:14:59 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:15:04 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:15:09 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:15:13 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:15:18 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:15:23 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:15:29 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:15:34 [main] INFO  DriverManager.DriverFactory - https://dsportalapp.herokuapp.com/home
+2026-02-12 11:20:45 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:20:45 [main] INFO  DriverManager.DriverFactory - Headings :
+2026-02-12 11:20:51 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:20:51 [main] INFO  DriverManager.DriverFactory - Headings :
+2026-02-12 11:20:56 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:20:56 [main] INFO  DriverManager.DriverFactory - Actual Subtopic links in LinkedList page: [Introduction, Creating Linked LIst, Types of Linked List, Implement Linked List in Python, Traversal, Insertion, Deletion]
+2026-02-12 11:20:56 [main] INFO  DriverManager.DriverFactory - Expected Subtopic links in LinkedList page: [Introduction, Creating Linked LIst, Types of Linked List, Implement Linked List in Python, Traversal, Insertion, Deletion]
+2026-02-12 11:21:02 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:09 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:17 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:24 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:30 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:37 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:44 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:52 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:21:59 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:22:00 [main] INFO  DriverManager.DriverFactory - check Introduction
+2026-02-12 11:22:07 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:22:14 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:22:16 [main] INFO  DriverManager.DriverFactory - Print Title actual : Practice Questions Exp Practice questions
+2026-02-12 11:22:24 [main] INFO  DriverManager.DriverFactory - Navigated to module : Linked List
+2026-02-12 11:23:14 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:23:14 [main] INFO  DriverManager.DriverFactory - Headings: 
+2026-02-12 11:23:20 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:23:20 [main] INFO  DriverManager.DriverFactory - Headings: 
+2026-02-12 11:23:25 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:23:26 [main] INFO  DriverManager.DriverFactory - Actual Subtopic links in Stack page: [Operations in Stack, Implementation, Applications]
+2026-02-12 11:23:26 [main] INFO  DriverManager.DriverFactory - Expected Subtopic links in Stack page: [Operations in Stack, Implementation, Applications]
+2026-02-12 11:23:32 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:23:32 [main] INFO  DriverManager.DriverFactory - Page Title: Stack
+2026-02-12 11:23:32 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/stack/
+2026-02-12 11:23:38 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:23:38 [main] INFO  DriverManager.DriverFactory - Page Title: Stack
+2026-02-12 11:23:38 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/stack/
+2026-02-12 11:23:45 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:23:45 [main] INFO  DriverManager.DriverFactory - Page Title: Stack
+2026-02-12 11:23:45 [main] INFO  DriverManager.DriverFactory - Current URL: https://dsportalapp.herokuapp.com/stack/
+2026-02-12 11:23:51 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:23:58 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:24:05 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:24:11 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:24:19 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:24:20 [main] INFO  DriverManager.DriverFactory - Print Title actual : Practice Questions Exp Practice questions
+2026-02-12 11:24:26 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:25:13 [main] INFO  DriverManager.DriverFactory - Navigated to module : Stack
+2026-02-12 11:25:15 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.jq.Main@577ef375: 59 ms
+2026-02-12 11:25:15 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.FailedReporter@3a14e7f3: 15 ms
+2026-02-12 11:25:15 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.XMLReporter@1e334e47: 16 ms
+2026-02-12 11:25:15 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.EmailableReporter2@3ca27a2e: 7 ms
+2026-02-12 11:25:15 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.reporters.JUnitReportReporter@71c5c18e: 14 ms
+2026-02-12 11:25:15 [main] INFO  org.testng.internal.Utils - [TestNG] Time taken by org.testng.internal.ExitCodeListener@58303fc8: 0 ms

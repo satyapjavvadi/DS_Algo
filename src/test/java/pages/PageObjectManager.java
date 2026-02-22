@@ -1,53 +1,85 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-
-import DriverManager.DriverFactory;
-
 public class PageObjectManager {
 
-	private final WebDriver driver;
-	
 	private LaunchPage launchPage;
-	public LoginPage loginPage;
-    private final WebDriver driver;
-    private LaunchPage launchPage;
-    private RegisterPage registerPage;
+	private LoginPage loginPage;
+	private RegisterPage registerPage;
+	private LinkedListPage linkedlistPage;
+	private StackPage stackPage;
+	private HomePage homePage;
+	private DataStructurePage dataStructurePage;
+	private GraphPage graphPage;
+	private ArrayPage arraypage;
+	private TryEditorPage tryeditorPage;
 
-	public PageObjectManager() {
-		this.driver = DriverFactory.getDriver();
-		if (this.driver == null) {
-			throw new IllegalStateException("WebDriver is not initialized");
-		}
-
-	}
-
-	public LaunchPage getLaunchpage() {
+	public LaunchPage getLaunchPage() {
 		if (launchPage == null) {
-			launchPage = new LaunchPage(driver);
+			launchPage = new LaunchPage();
 		}
-
 		return launchPage;
 	}
-	
-	public LoginPage getLoginPage()
-	{
-		if(loginPage == null)
-		{
-			loginPage = new LoginPage(driver);
-	
+
+	public LoginPage getLoginPage() {
+		if (loginPage == null) {
+			loginPage = new LoginPage();
 		}
 		return loginPage;
 	}
-        return launchPage;
-    }
-    
-    public RegisterPage getregisterpage() {
-        if(registerPage == null){
-            registerPage = new RegisterPage(driver);
-        }
 
-        return registerPage;
-    }
-    
+	public RegisterPage getRegisterPage() {
+		if (registerPage == null) {
+			registerPage = new RegisterPage();
+		}
+		return registerPage;
+	}
+
+	public LinkedListPage getLinkedListPage() {
+		if (linkedlistPage == null) {
+			linkedlistPage = new LinkedListPage();
+		}
+		return linkedlistPage;
+	}
+
+	public StackPage getStackPage() {
+		if (stackPage == null) {
+			stackPage = new StackPage();
+		}
+		return stackPage;
+	}
+
+	public HomePage getHomePage() {
+		if (homePage == null) {
+			homePage = new HomePage();
+		}
+		return homePage;
+	}
+
+	public DataStructurePage getDataStructurePage() {
+		if (dataStructurePage == null) {
+			dataStructurePage = new DataStructurePage();
+		}
+		return dataStructurePage;
+	}
+
+	public GraphPage getGraphPage() {
+		if (graphPage == null) {
+			graphPage = new GraphPage();
+		}
+		return graphPage;
+	}
+
+	public ArrayPage getArrayPage() {
+		if (arraypage == null) {
+			arraypage = new ArrayPage();
+		}
+		return arraypage;
+	}
+
+	public TryEditorPage getTryEditorPage() {
+		if (tryeditorPage == null) {
+			tryeditorPage = new TryEditorPage();
+		}
+		return tryeditorPage;
+	}
 }

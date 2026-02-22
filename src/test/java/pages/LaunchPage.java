@@ -2,100 +2,123 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import org.openqa.selenium.JavascriptExecutor;
+import DriverManager.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import utils.JSUtils;
 
 public class LaunchPage {
 
-	private static JavascriptExecutor js;
-	private WebDriver driver;
+    private static final Logger logger = LoggerFactory.getLogger(LaunchPage.class);
 
-	// Locators
-	@FindBy(xpath = "//*[text()='Preparing for the Interviews']")
-	WebElement InterviewText;
+    private WebDriver driver;
 
-	@FindBy(linkText = "Get Started")
-	WebElement getStartedButton;
+    // Locators
+    @FindBy(xpath = "//*[text()='Preparing for the Interviews']")
+    private WebElement interviewText;
 
-	@FindBy(xpath = "//*[contains(text(),'Copyright@NumpyNinja2021')]")
-	WebElement copyrightInfo;
+    @FindBy(linkText = "Get Started")
+    private WebElement getStartedButton;
 
-	@FindBy(tagName = "button")
-	private List<WebElement> buttons;
+    @FindBy(xpath = "//*[contains(text(),'Copyright@NumpyNinja2021')]")
+    private WebElement copyrightInfo;
 
-	@FindBy(xpath = "//nav[@class='navbar navbar-expand-md navbar-light bg-light']//a[normalize-space() != '']")
-	private List<WebElement> linkList;
+    @FindBy(tagName = "button")
+    private List<WebElement> buttons;
 
-	// Constructor
-	public LaunchPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+    // Constructor
+    public LaunchPage() {
+        this.driver = DriverFactory.getDriver();
+        PageFactory.initElements(driver, this);
+        logger.info("LaunchPage initialized successfully.");
+    }
 
-	}
+    // Browser checks
+    public void browserIsOpen() {
+        logger.info("Checking if browser is initialized.");
+        if (driver == null) {
+            logger.error("WebDriver is not initialized.");
+            throw new IllegalStateException("WebDriver is not initialized");
+        }
+        logger.info("WebDriver is active.");
+    }
 
-	public void BrowserIsOpen() {
-		System.out.println("Browser is already launched via hooks setup");
+    public boolean doesPageContainText(String expectedText) {
+        logger.info("Validating page contains text: {}", expectedText);
+        boolean result = JSUtils.getPageInnerText().contains(expectedText);
+        logger.info("Text validation result: {}", result);
+        return result;
+    }
 
-		if (driver == null) {
-			throw new IllegalStateException("WebDriver is not initialized");
-		}
-	}
+    public void clickGetStartedButton() {
+        logger.info("Clicking 'Get Started' button.");
+        getStartedButton.click();
+    }
 
-	public boolean isPreparingTextVisible() {
-		return InterviewText.isDisplayed();
-	}
+    public int getButtonCount() {
+        int count = buttons.size();
+        logger.info("Total buttons found on page: {}", count);
+        return count;
+    }
 
-	public boolean isGetStartedButtonVisible() {
-		return getStartedButton.isDisplayed();
-	}
+    public List<String> getButtonText() {
+        logger.info("Fetching all button texts.");
+        List<String> buttonTexts = new ArrayList<>();
 
-	public boolean isGetStartedButtonEnabled() {
-		return getStartedButton.isEnabled();
-	}
+        for (WebElement button : buttons) {
+            buttonTexts.add(button.getText());
+        }
 
-	public void clickGetStartedButton() {
-		getStartedButton.click();
-	}
+        logger.debug("Button texts: {}", buttonTexts);
+        return buttonTexts;
+    }
 
-	public boolean isCopyrightInfoVisible() {
-		return copyrightInfo.isDisplayed();
-	}
+    public boolean doesPageContainButtonWithText(String expectedButtonText) {
+        logger.info("Checking if button with text '{}' exists.", expectedButtonText);
+        boolean exists = getButtonText().contains(expectedButtonText);
+        logger.info("Button existence result: {}", exists);
+        return exists;
+    }
 
-	public String getCurrentUrl() {
+    public void clickButtonByText(String buttonText) {
+        logger.info("Attempting to click button with text: {}", buttonText);
 
-		String actualUrl = driver.getCurrentUrl();
-		System.out.println("Navigation to launch page successful: " + actualUrl);
-		return driver.getCurrentUrl();
-	}
+        for (WebElement button : buttons) {
+            if (button.getText().equalsIgnoreCase(buttonText)) {
+                button.click();
+                logger.info("Clicked button: {}", buttonText);
+                return;
+            }
+        }
 
-	public String getAllFieldSpellings() {
-		js = (JavascriptExecutor) driver;
-		String text = (String) js.executeScript("return document.documentElement.innerText;");
-		return text;
-	}
+        logger.warn("Button with text '{}' not found.", buttonText);
+    }
 
-	public List<String> getButtonText() {
-		List<String> buttonTexts = new ArrayList<>();
-		for (WebElement button : buttons) {
-			buttonTexts.add(button.getText());
-		}
-		return buttonTexts;
-	}
-	
+    // URL
+    public String getCurrentUrl() {
+        String url = driver.getCurrentUrl();
+        logger.info("Current URL: {}", url);
+        return url;
+    }
 
+    public boolean isButtonEnabled(String buttonText) {
+        logger.info("Checking if button '{}' is enabled.", buttonText);
 
-	public void clickButtonByText(String buttonText) {
-		for (WebElement button : buttons) {
-			if (button.getText().toLowerCase().equals(buttonText.toLowerCase())) {
-				button.click();
-				break;
-			}
-		}
-	}
+        for (WebElement button : buttons) {
+            if (button.getText().equalsIgnoreCase(buttonText)) {
+                boolean enabled = button.isEnabled();
+                logger.info("Button '{}' enabled status: {}", buttonText, enabled);
+                return enabled;
+            }
+        }
 
+        logger.warn("Button '{}' not found.", buttonText);
+        return false;
+    }
 }
