@@ -19,7 +19,7 @@ import utils.WaitUtils;
 
 public class TryEditorPage {
 
-    private static final Logger logger = LoggerFactory.getLogger(TryEditorPage.class);
+   
 
 	private WaitUtils wait;
 	private WebDriver driver;

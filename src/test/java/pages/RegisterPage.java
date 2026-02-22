@@ -21,7 +21,7 @@ import utils.WaitUtils;
 
 public class RegisterPage {
 
-	private static final Logger logger = LoggerFactory.getLogger(RegisterPage.class);
+	
 
 	private WebDriver driver;
 	private static final Logger logger = LoggerFactory.getLogger(RegisterPage.class);

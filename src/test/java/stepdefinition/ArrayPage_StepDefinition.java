@@ -22,7 +22,7 @@ public class ArrayPage_StepDefinition {
 
 	private final PageObjectManager pom;
 	private static final Logger logger = LoggerFactory.getLogger(ArrayPage_StepDefinition.class);
-	private static final Logger logger = LoggerFactory.getLogger(ArrayPage_StepDefinition.class);
+	
 
 	public ArrayPage_StepDefinition(PageObjectManager pom) {
 		this.pom = pom;
