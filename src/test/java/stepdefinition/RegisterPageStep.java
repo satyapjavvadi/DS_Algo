@@ -1,126 +1,180 @@
-package stepdefinition;
+package pages;
 
-import io.cucumber.datatable.DataTable;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.Assert;
-
-import DriverManager.DriverFactory;
-import pages.PageObjectManager;
-
-import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
-public class RegisterPageStep {
-	private final PageObjectManager pom;
-	private static final Logger logger = LoggerFactory.getLogger(RegisterPageStep.class);
+import DriverManager.DriverFactory;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-	public RegisterPageStep(PageObjectManager pom) {
-		this.pom = pom;
+import utils.ExcelReader;
+import utils.TestContext;
+import utils.WaitUtils;
 
+public class RegisterPage {
+
+	private static final Logger logger = LoggerFactory.getLogger(RegisterPage.class);
+
+	private WebDriver driver;
+
+	public RegisterPage() {
+		this.driver = DriverFactory.getDriver();
+		PageFactory.initElements(driver, this);
+		logger.info("RegisterPage initialized successfully.");
 	}
 
-	// Functional Steps ******************************
-	@When("User clicks {string} link in home page")
-	public void user_clicks_register_link_in_home_page(String pageInfo) {
-		pom.getHomePage().navigatetoPages(pageInfo);
-		logger.info("User clicking link: {}", pageInfo);
+	// ===== Locators =====
+	@FindBy(xpath = "//a[@class='navbar-brand']")
+	private WebElement companyName;
+
+	@FindBy(xpath = "//ul//a")
+	private List<WebElement> links;
+
+	@FindBy(id = "id_username")
+	private WebElement usernameField;
+
+	@FindBy(id = "id_password1")
+	private WebElement passwordField;
+
+	@FindBy(id = "id_password2")
+	private WebElement confirmPasswordField;
+
+	@FindBy(xpath = "//input[@type='submit']")
+	private List<WebElement> buttonElements;
+
+	@FindBy(xpath = "//label")
+	private List<WebElement> labelList;
+
+	@FindBy(xpath = "//input[@value='Register']")
+	private WebElement registerBtn;
+
+	@FindBy(xpath = "//div[@role='alert']")
+	private WebElement alertMessage;
+
+	@FindBy(xpath = "//ul/li")
+	private List<WebElement> passwordReqList;
+
+	// ===== Actions =====
+
+	public void register(String method, String scenarioType) {
+
+		logger.info("Executing register with method: {} and scenario: {}", method, scenarioType);
+
+		TestContext.testData = ExcelReader.getTestData(scenarioType);
+		logger.debug("Test data loaded: {}", TestContext.testData);
+
+		WaitUtils.waitForVisibility(driver, usernameField, 10);
+		usernameField.sendKeys(TestContext.testData.get("username"));
+		logger.info("Username entered.");
+
+		WaitUtils.waitForVisibility(driver, passwordField, 10);
+		passwordField.sendKeys(TestContext.testData.get("password"));
+		logger.info("Password entered.");
+
+		WaitUtils.waitForVisibility(driver, confirmPasswordField, 10);
+		confirmPasswordField.sendKeys(TestContext.testData.get("confirmpassword"));
+		logger.info("Confirm password entered.");
+
+		if ("submits the register form".equalsIgnoreCase(method.trim())) {
+			logger.info("Clicking Register button.");
+			registerBtn.click();
+		} else {
+			logger.error("Unknown submission method: {}", method);
+			throw new IllegalArgumentException("Unknown submission method: " + method);
+		}
 	}
 
-	@Given("user register using {string} with {string}")
-	public void user_tries_register_using_with(String submissionMethod, String scenarioType) {
-		pom.getRegisterPage().register(submissionMethod, scenarioType);
+	public String getRegisterErrorMessage(String scenarioType) {
+
+		logger.info("Fetching register error message for scenario: {}", scenarioType);
+
+		if (scenarioType.toLowerCase().contains("null")) {
+
+			for (WebElement field : Arrays.asList(usernameField, passwordField, confirmPasswordField)) {
+				String tooltip = field.getAttribute("validationMessage");
+				if (tooltip != null && !tooltip.isEmpty()) {
+					logger.info("Validation tooltip found: {}", tooltip.trim());
+					return tooltip.trim();
+				}
+			}
+		} else {
+			try {
+				WaitUtils.waitForVisibility(driver, alertMessage, 10);
+				String alertText = alertMessage.getText().trim();
+				logger.info("Alert message found: {}", alertText);
+				return alertText;
+
+			} catch (Exception e) {
+				logger.warn("No alert message displayed.");
+				return "NO_ERROR_FOUND";
+			}
+		}
+		return null;
 	}
 
-	@Then("user should be redirected to  Home Page with a message {string}")
-	public void user_should_be_redirected_to_home_page_with_a_message(String expectedmessage) {
-		String actualMessage = pom.getHomePage().getAlertMessage();
+	// ===== Non-functional Helpers =====
 
-		Assert.assertTrue(actualMessage.contains(expectedmessage),
-				"Expected message to contain: [" + expectedmessage + "] but found [" + actualMessage + "]");
-		logger.info("Validating home page alert message");
+	public int getInputFieldCount() {
+		int count = labelList.size();
+		logger.info("Total input fields found: {}", count);
+		return count;
 	}
 
-	@Then("appropriate message {string} should be displayed {string}")
-	public void appropriate_message_should_be_displayed(String expectedMessage, String scenarioType) {
-
-		String actualMessage = pom.getRegisterPage().getRegisterErrorMessage(scenarioType);
-
-		logger.info("Validating error message for scenario: {} | Expected: {} | Actual: {}", scenarioType,
-				expectedMessage, actualMessage);
-
-		Assert.assertEquals(actualMessage.trim(), expectedMessage.trim(), "Validation message mismatch");
-
+	public List<String> getRegisterLabelNames() {
+		logger.info("Fetching register page label names.");
+		return labelList.stream()
+				.map(WebElement::getText)
+				.map(String::trim)
+				.toList();
 	}
 
-	// ********************** Non -Functional Testing scenarios *************** //
-	@Then("User must see {int} input fields in Register UI")
-	public void User_must_see_input_fields_in_register_ui(Integer expectedlabelcount) {
-		int actuallabel_count = pom.getRegisterPage().getInputFieldCount();
-		logger.info("total input field in Register page is: {}", actuallabel_count);
-		Assert.assertEquals(actuallabel_count, expectedlabelcount, "label count mismatch");
+	public int getButtonCount() {
+		int count = buttonElements.size();
+		logger.info("Total buttons found: {}", count);
+		return count;
 	}
 
-	@Then("User must see links with text in Register UI")
-	public void user_must_see_links_with_text_in_register_ui(DataTable dataTable) {
-		List<String> expectedlink_names = dataTable.asList();
-		List<String> actuallink_names = pom.getRegisterPage().getRegisterPageLinkText();
-		logger.info("Validating Register page links. Expected: {} | Actual: {}", expectedlink_names, actuallink_names);
-
-		Assert.assertEquals(actuallink_names, expectedlink_names,
-				"Link text mismatch , Expected: " + expectedlink_names + " but found: " + actuallink_names);
+	public List<String> getButtonText() {
+		logger.info("Fetching register page button texts.");
+		return buttonElements.stream()
+				.map(btn -> {
+					String text = btn.getText();
+					if (text == null || text.isEmpty())
+						text = btn.getAttribute("value");
+					return text != null ? text.trim() : "";
+				})
+				.filter(s -> !s.isEmpty())
+				.toList();
 	}
 
-	@Then("User must see {int} button in Register UI")
-	public void user_must_see_button_in_register_ui(Integer expectedbuttoncount) {
-		int actualbuttoncount = pom.getRegisterPage().getButtonCount();
-		logger.info("total buttons in Register page is: {}", actualbuttoncount);
-		Assert.assertEquals(actualbuttoncount, expectedbuttoncount, "Button count in Register page is not 1");
+	public List<String> getRegisterPageLinkText() {
+		logger.info("Fetching register page links.");
+		return links.stream()
+				.map(WebElement::getText)
+				.map(String::trim)
+				.toList();
 	}
 
-	@Then("User should be able to see button with text {string} in Register UI")
-	public void user_should_be_able_to_see_button_with_text_in_register_ui(String expectedtext) {
-		List<String> actualButtons = pom.getRegisterPage().getButtonText();
-		Assert.assertTrue(actualButtons.contains(expectedtext),
-				"button text mismatch , Expected: " + expectedtext + " but found: " + actualButtons);
-		logger.info("button label present in register ui is: {}", actualButtons);
+	public String getCompanyName() {
+		String name = companyName.getText().trim();
+		logger.info("Company name displayed: {}", name);
+		return name;
 	}
 
-	@Then("User must see labels with text in Register UI")
-	public void user_must_see_labels_with_text_in_register_ui(DataTable dataTable) {
-
-		List<String> expectedlabel_names = dataTable.asList();
-
-		logger.info("Validating label texts. Expected: {} | Actual: {}", expectedlabel_names,
-				pom.getRegisterPage().getRegisterLabelNames());
-
-		Assert.assertEquals(pom.getRegisterPage().getRegisterLabelNames(), expectedlabel_names,
-				"Label text mismatch , Expected: " + expectedlabel_names + " but found: "
-						+ pom.getRegisterPage().getRegisterLabelNames());
-
+	public List<String> getPasswordRequirementsText() {
+		logger.info("Fetching password requirement text.");
+		return passwordReqList.stream()
+				.filter(WebElement::isDisplayed)
+				.map(WebElement::getText)
+				.map(String::trim)
+				.map(text -> text
+						.replaceAll("[’']", "")
+						.replaceAll("\\.$", "")
+				)
+				.toList();
 	}
-
-	@Then("User must see {string} company name in top nav bar of  Register UI")
-	public void user_must_see_company_name_in_top_nav_bar_of_register_ui(String expectedFromFeature) {
-
-		Assert.assertEquals(pom.getRegisterPage().getCompanyName().trim(), expectedFromFeature,
-				"Company name mismatch! Expected: " + expectedFromFeature);
-		logger.info("Validating company name. Expected: {} | Actual: {}", expectedFromFeature,
-				pom.getRegisterPage().getCompanyName().trim());
-
-	}
-
-	@Then("User must see list items for password entry field in Register UI")
-	public void user_must_see_list_items_for_password_entry_field_in_register_ui(DataTable dataTable)
-			throws IOException {
-		List<String> dataTableList = dataTable.asList(String.class);
-		List<String> actualList = pom.getRegisterPage().getPasswordRequirementsText();
-		Assert.assertEquals(actualList, dataTableList, "Password help texts do not match");
-		logger.info("Validating password requirement list. Expected: {} | Actual: {}", dataTableList, actualList);
-	}
-
 }

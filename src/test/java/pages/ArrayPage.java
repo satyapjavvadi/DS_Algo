@@ -10,19 +10,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import DriverManager.DriverFactory;
 import utils.JSUtils;
 import utils.WaitUtils;
 
 public class ArrayPage {
-	private WaitUtils wait;
-	private WebDriver driver;
+
 	private static final Logger logger = LoggerFactory.getLogger(ArrayPage.class);
 
-	// locators
+	private final WaitUtils wait;
+	private final WebDriver driver;
+
+
 	@FindBy(xpath = "//*[@class='bg-secondary text-white']")
 	private List<WebElement> headings;
 
@@ -53,17 +55,19 @@ public class ArrayPage {
 	@FindBy(xpath = "//div[@align='left']")
 	private WebElement output;
 
-	// action
 
 	public ArrayPage() {
 		this.driver = DriverFactory.getDriver();
 		PageFactory.initElements(this.driver, this);
 		wait = new WaitUtils();
+		logger.info("ArrayPage initialized successfully.");
 	}
 
 	public List<String> getheadingtext() {
+		logger.info("Fetching heading texts from Array page.");
 		wait.waitForVisibilityOfAll(headings);
-		List<String> headingtexts = new ArrayList<String>();
+
+		List<String> headingtexts = new ArrayList<>();
 		for (WebElement heading : headings) {
 			headingtexts.add(heading.getText().trim());
 		}
@@ -72,8 +76,10 @@ public class ArrayPage {
 	}
 
 	public List<String> subtopiclinks() {
+		logger.info("Fetching Array subtopic links.");
 		wait.waitForVisibilityOfAll(array_subtopicslinks);
-		List<String> subtopiclinks = new ArrayList<String>();
+
+		List<String> subtopiclinks = new ArrayList<>();
 		for (WebElement topiclink : array_subtopicslinks) {
 			if (topiclink.isDisplayed() && topiclink.isEnabled()) {
 				subtopiclinks.add(topiclink.getText().trim());
@@ -84,21 +90,26 @@ public class ArrayPage {
 	}
 
 	public void clickTopicLink(String topicName) {
+		logger.info("Clicking on topic link: {}", topicName);
 		wait.waitForVisibilityOfAll(array_subtopicslinks);
+
 		for (WebElement link : array_subtopicslinks) {
 			if (link.getText().trim().equalsIgnoreCase(topicName)) {
 				JSUtils.scrollIntoView(link);
 				wait.waitForClickable(link).click();
-				logger.info("Successfully clicked topic link: {}", topicName);
+				logger.info("Successfully clicked topic: {}", topicName);
 				return;
 			}
 		}
+
+		logger.error("Topic link not found: {}", topicName);
 		throw new NoSuchElementException("Topic link not found: " + topicName);
 	}
 
 	public boolean checktryherebutton_displayed() {
-		logger.info("Checking visibility of Try Here button");
-		return WaitUtils.isVisible(driver, tryhere_button, 10);
+		boolean visible = WaitUtils.isVisible(driver, tryhere_button, 10);
+		logger.info("Try Here button visible: {}", visible);
+		return visible;
 	}
 
 	public void clickTryHereButton() {
@@ -109,78 +120,87 @@ public class ArrayPage {
 	}
 
 	public boolean isPracticeQuestionLinkVisible() {
-		logger.info("Checking if Practice Questions link is visible");
-		return WaitUtils.isVisible(driver, Practicequestionslink, 10);
+		boolean visible = WaitUtils.isVisible(driver, Practicequestionslink, 10);
+		logger.info("Practice Question link visible: {}", visible);
+		return visible;
 	}
 
 	public boolean isPracticeQuestionLinkEnabled() {
-		logger.info("Checking if Practice Questions link is enabled");
-		return Practicequestionslink.isEnabled();
+		boolean enabled = Practicequestionslink.isEnabled();
+		logger.info("Practice Question link enabled: {}", enabled);
+		return enabled;
 	}
 
 	public void clickPracticeQuestionsLink() {
 		logger.info("Clicking Practice Questions link");
+		logger.info("Clicking Practice Questions link.");
 		JSUtils.scrollIntoView(Practicequestionslink);
 		wait.waitForClickable(Practicequestionslink).click();
 	}
 
 	public List<String> getQuestionsList() {
 		try {
-			logger.info("Fetching list of practice questions");
+			logger.info("Fetching practice questions list.");
 			wait.waitForVisibilityOfAll(questionslist);
-			return questionslist.stream().map(WebElement::getText).collect(Collectors.toList());
+
+			List<String> questions = questionslist.stream()
+					.map(WebElement::getText)
+					.collect(Collectors.toList());
+
+			logger.debug("Questions found: {}", questions);
+			return questions;
 
 		} catch (Exception e) {
-			System.out.println("Questions list not found: " + e.getMessage());
+			logger.error("Questions list not found: {}", e.getMessage());
 			return Collections.emptyList();
 		}
 	}
 
 	public void clickProblemLink(String problemName) {
+		logger.info("Clicking problem link: {}", problemName);
+
 		for (WebElement eachQuestion : questionslist) {
 			String questionName = eachQuestion.getText();
 			if (questionName.equalsIgnoreCase(problemName)) {
 				eachQuestion.click();
 				logger.info("Successfully clicked problem: {}", problemName);
+				logger.info("Successfully clicked problem: {}", problemName);
 				return;
 			}
 		}
 
+		logger.warn("Problem link not found: {}", problemName);
 	}
 
-	public boolean getButtonTextAssesmentPage(String buttonText) {
+	public boolean getButtonTextAssessmentPage(String buttonText) {
 		String button = run_button.getText();
-		logger.info("Validating button text. Expected: {}, Actual: {}", buttonText, button);
-		if (button.equalsIgnoreCase(buttonText)) {
-			return true;
-		} else
-			return false;
-
+		boolean match = button.equalsIgnoreCase(buttonText);
+		logger.info("Run button text match with '{}': {}", buttonText, match);
+		return match;
 	}
 
 	public boolean isSubmitButtonPresent() {
-		logger.info("Submit button presence check");
-		if (submit.size() > 0) {
-			return true;
-		} else
-			return false;
+		boolean present = !submit.isEmpty();
+		logger.info("Submit button present: {}", present);
+		return present;
 	}
 
 	public void submitProblem() {
-		logger.info("Submitting problem");
+		logger.info("Clicking submit button.");
 		for (WebElement eachType : submit) {
 			eachType.click();
 			return;
 		}
+		logger.warn("Submit button not found.");
 	}
 
 	public String getConsoleOutput() {
-		logger.info("Fetching console output");
+		logger.info("Fetching console output.");
 		wait.waitForPageLoad();
 
 		String result = wait.waitForCodeMirrorOutput("output", 120);
 		logger.info("Submission result: {}", result);
+
 		return result;
 	}
-
 }

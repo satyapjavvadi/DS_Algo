@@ -29,7 +29,7 @@ Feature: Stack Page Functionality
 
     Examples:
       | topic                  | page_url             |
-       | Operations in Stack   |  Operations in Stack |
+      | Operations in Stack    |  Operations in Stack |
       | Implementation         |  Implementation      |
       |  Applications          |  Applications		  |
 
