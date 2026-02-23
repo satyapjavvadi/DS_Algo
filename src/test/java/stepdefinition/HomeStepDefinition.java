@@ -1,23 +1,23 @@
 package stepdefinition;
 
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import io.cucumber.java.en.Given;
+
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.PageObjectManager;
-import utils.ElementUtil;
 
 public class HomeStepDefinition {
 
 	private final PageObjectManager pom;
+	private static final Logger logger = LoggerFactory.getLogger(HomeStepDefinition.class);
 
 	public HomeStepDefinition(PageObjectManager pom) {
 		this.pom = pom;
-	}
-
-	@Given("The user is on the Home page")
-	public void the_user_is_on_the_home_page() {
-		System.out.println(ElementUtil.getURL());
 	}
 
 	@When("The user selects {string} from the drop down without Sign in.")
@@ -26,37 +26,21 @@ public class HomeStepDefinition {
 	}
 
 	@Then("The user should able to see an warning message {string}")
-	public void the_user_should_able_to_see_an_warning_message(String string) {
-		Assert.assertEquals(string, pom.getHomePage().getErrMsg());
-		System.out.println(pom.getHomePage().getErrMsg());
-	}
-
-	@Given("The user is on the Launch page")
-	public void the_user_is_on_the_launch_page() {
-		System.out.println("Befor clicking Get Started User is on Launch Page");
-	}
-
-	@When("The user clicks the Get Started button")
-	public void the_user_clicks_the_get_started_button() {
-		System.out.println("Clicked on Get Started button");
+	public void the_user_should_able_to_see_an_warning_message(String warningMsg) {
+		Assert.assertEquals(warningMsg, pom.getHomePage().getErrMsg(), "Warning message mismatch");
+		logger.info("Warning message displayed: " + pom.getHomePage().getErrMsg());
 	}
 
 	@Then("The user should be able to see company name {string}")
-	public void the_user_should_be_able_to_see_company_name(String string) {
-		Assert.assertEquals("NumpyNinja", pom.getHomePage().getCompanyName());
-		System.out.println(pom.getHomePage().getCompanyName());
+	public void the_user_should_be_able_to_see_company_name(String companyName) {
+		Assert.assertEquals(pom.getHomePage().getCompanyName(), companyName, "Company name mismatch");
+		logger.info("Company name displayed: " + pom.getHomePage().getCompanyName());
 	}
 
-	@Then("The user should be able to see RegisterLink")
-	public void the_user_should_be_able_to_see_register_link() {
-		System.out.println(pom.getHomePage().getRegisterLink());
-		Assert.assertEquals("Register", pom.getHomePage().getRegisterLink());
-	}
-
-	@Then("The user should be able to see Sign in")
-	public void the_user_should_be_able_to_see_sign_in() {
-		System.out.println(pom.getHomePage().getLogInLink());
-		Assert.assertEquals("Sign in", pom.getHomePage().getLogInLink());
+	@Then("The user should be able to see {string}")
+	public void the_user_should_be_able_to_see(String linkName) {
+		Assert.assertEquals(pom.getHomePage().getLinkName(linkName), linkName, "Link name mismatch");
+		logger.info("Link name displayed: " + pom.getHomePage().getLinkName(linkName));
 	}
 
 	@When("The user clicks the Data Structures dropdown")
@@ -64,9 +48,15 @@ public class HomeStepDefinition {
 		pom.getHomePage().clickDataStructureDropdown();
 	}
 
-	@Then("The user should able to see {int} options Arrays {string} in dropdown menu")
-	public void the_user_should_able_to_see_options_arrays_in_dropdown_menu(Integer int6, String string) {
-		Assert.assertTrue(pom.getHomePage().getDataStructureOptionsText().contains("Arrays"));
+	@Then("The user should able to see all options")
+	public void the_user_should_able_to_see_all_options(DataTable dataTable) {
+		List<String> expectedOptions = dataTable.asList();
+		logger.info("Expected dropdown options: " + expectedOptions);
+
+		List<String> actualOptions = pom.getHomePage().getDataStructureOptionsText();
+		logger.info("Actual dropdown options: " + actualOptions);
+
+		Assert.assertEquals(actualOptions, expectedOptions, "Dropdown options mismatch");
 	}
 
 	@When("The user clicks Get Started buttons of {string} on the homepage without Sign in")
@@ -83,21 +73,19 @@ public class HomeStepDefinition {
 
 	@Then("The user should be able to see {string} page with details.")
 	public void the_user_should_be_able_to_see_page_with_details(String OptionName) {
-		Assert.assertEquals(OptionName, pom.getHomePage().getPageHeading(OptionName));
+		Assert.assertEquals(pom.getHomePage().getPageHeading(OptionName), OptionName, "Page heading mismatch");
+		logger.info("Page heading displayed: " + pom.getHomePage().getPageHeading(OptionName));
 	}
 
 	@When("The user clicks Get Started buttons of {string} tab on the homepage after Sign in")
-	public void the_user_clicks_Get_Started_buttons_of_tab_on_the_homepage_after_sign_in(String string2) {
-		pom.getHomePage().clickTitlePage(string2);
+	public void the_user_clicks_Get_Started_buttons_of_tab_on_the_homepage_after_sign_in(String optionTab) {
+		pom.getHomePage().clickTitlePage(optionTab);
 
 	}
 
 	@Then("The user should be able to see {string} on the right corner of the Home page")
 	public void the_user_should_be_able_to_see_on_the_right_corner_of_the_home_page(String Links) {
-		if (Links.equalsIgnoreCase("Sign out")) {
-			Assert.assertEquals(Links, pom.getHomePage().getSignOutLink());
-		} else if (Links.equalsIgnoreCase("Validuser")) {
-			Assert.assertEquals(Links, pom.getHomePage().getLoggedInUser());
-		}
+		Assert.assertEquals(pom.getHomePage().getRightCornerLink(Links), Links, "Link name mismatch");
+		logger.info("Link name displayed: " + pom.getHomePage().getRightCornerLink(Links));
 	}
 }

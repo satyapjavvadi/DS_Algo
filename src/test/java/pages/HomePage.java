@@ -1,14 +1,14 @@
 package pages;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import DriverManager.DriverFactory;
 import utils.WaitUtils;
@@ -16,6 +16,7 @@ import utils.WaitUtils;
 public class HomePage {
 
 	private WebDriver driver;
+	private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
 	@FindBy(linkText = "NumpyNinja")
 	WebElement companyName;
@@ -36,12 +37,6 @@ public class HomePage {
 	@FindBy(tagName = "h4")
 	WebElement headingTitle;
 
-	@FindBy(xpath = "//a[contains(@href,'/stack/')]")
-	private WebElement stackOption;
-
-	@FindBy(xpath = "//a[text()=' Linked List']")
-	WebElement linkedListOption;
-
 	@FindBy(xpath = "//div[@role='alert']")
 	WebElement ErrMsg;
 
@@ -51,7 +46,7 @@ public class HomePage {
 	@FindBy(css = "div.alert[role='alert']")
 	private WebElement loginAlert;
 
-	@FindBy(xpath = "//a[contains(@href,'login')]")
+	@FindBy(xpath = "//a[@href='/login']")
 	private WebElement loginButton;
 
 	@FindBy(xpath = "//a[text()=' ValidUser ']")
@@ -71,69 +66,54 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void launchUrl(String baseURL) {
-		driver.get(baseURL);
-	}
-
-	public boolean getHomePage() {
-		return driver.getCurrentUrl().contains("/home");
-	}
-
 	public String getLoginSuccessMessage() {
 		return WaitUtils.getVisibleText(driver, loginAlert, 0);
 	}
 
 	public void clickSignInButton() {
-		WaitUtils.waitForVisibility(driver, loginButton, 10);
 		loginButton.click();
-
 	}
 
 	public String getCompanyName() {
 		return companyName.getText();
 	}
 
-	public String getRegisterLink() {
-		return registerLink.getText();
-
-	}
-
-	public String getLogInLink() {
-		return logInLink.getText();
-	}
-
-	public String getLoggedInUser() {
-		return loggedInUser.getText();
-	}
-
-	public String getSignOutLink() {
-		return signOutLink.getText();
-	}
-
 	public void clickDataStructureDropdown() {
 		dataStructureDropdown.click();
 	}
 
+	public String getRightCornerLink(String linkText) {
+
+		if (linkText == null) {
+			logger.warn("Link text is null");
+			return "Invalid Link Text";
+		}
+		String value;
+		switch (linkText.toLowerCase()) {
+		case "sign out":
+			value = signOutLink.getText();
+			break;
+
+		case "validuser":
+			value = loggedInUser.getText();
+			break;
+
+		default:
+			logger.warn("Invalid Link Text: {}", linkText);
+			return "Invalid Link Text";
+		}
+
+		logger.info("Getting text of '{}' link: {}", linkText, value);
+		return value;
+	}
+
 	public List<String> getDataStructureOptionsText() {
 		List<WebElement> options = dataStructureOptions;
-		System.out.println("dropdown options are:" + options.size());
-
 		for (WebElement option : options) {
-			System.out.println(option.getText());
+			logger.info("Data Structure Option: " + option.getText());
 		}
 		return options.stream().map(WebElement::getText).collect(Collectors.toList());
 
-	}
-
-	public void clickStackOption() {
-		dataStructureDropdown.click();
-		stackOption.click();
-
-	}
-
-	public void clickLinkedListOption() {
-		dataStructureDropdown.click();
-		linkedListOption.click();
 	}
 
 	public String getErrMsg() {
@@ -150,50 +130,26 @@ public class HomePage {
 		}
 	}
 
-
-
-	public List<String> getTitles(String string2) {
-		List<String> title = new ArrayList<>();
-		for (WebElement child : parentCard) {
-			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
-
-			for (WebElement element : grandChild) {
-				title.add(element.getText());
-				System.out.println("Titles are: " + title);
-			}
+	public String getLinkName(String linkText) {
+		if (linkText.equalsIgnoreCase("Register")) {
+			logger.info("Getting text of Register link" + registerLink.getText());
+			return registerLink.getText();
+		} else if (linkText.equalsIgnoreCase("Sign in")) {
+			logger.info("Getting text of Sign in link" + logInLink.getText());
+			return logInLink.getText();
+		} else {
+			return "Invalid Link Text";
 		}
-		return title;
 	}
 
-	public String getPageHeading(String OptionName) {
+	public String getPageHeading(String optionName) {
 
-		switch (OptionName) {
-		case "Graph":
-			headingTitle.getText();
-			break;
-		case "Array":
-			headingTitle.getText();
-			break;
-		case "Linked List":
-			headingTitle.getText();
-			break;
-		case "Stack":
-			headingTitle.getText();
-			break;
-		case "Queue":
-			headingTitle.getText();
-			break;
-		case "Tree":
-			headingTitle.getText();
-			break;
+		logger.info("Getting page heading for: {}", optionName);
 
-		default:
-			System.out.println("Invalid Heading");
-			break;
-		}
-		System.out.println("Page Heading is: " + headingTitle.getText());
-		return headingTitle.getText();
-		// return OptionName;
+		String heading = headingTitle.getText();
+		logger.info("Page Heading is: {}", heading);
+
+		return heading;
 	}
 
 	public void clickTitlePage(String ExpectedTitle) {
@@ -216,9 +172,9 @@ public class HomePage {
 		List<WebElement> childLink = parent.findElements(By.xpath(".//a"));
 		for (WebElement eachLink : childLink) {
 			String linkText = eachLink.getText();
-			System.out.println(linkText);
+			logger.info("Checking link: " + linkText);
 			if (linkText.toLowerCase().contains(pageInfo.toLowerCase())) {
-				System.out.println("in line 57");
+				logger.info("in line 57");
 				WaitUtils.waitForVisibility(driver, eachLink, 10);
 				eachLink.click();
 				break;
@@ -231,13 +187,13 @@ public class HomePage {
 	}
 
 	public void clickGetStarted(String cardTitle) {
-		System.out.println(cardTitle);
+		logger.info("Clicking Get Started for card: " + cardTitle);
 		for (WebElement child : parentCard) {
 			List<WebElement> grandChild = child.findElements(By.xpath(".//h5"));
 
 			for (WebElement element : grandChild) {
 				element.getText();
-				System.out.println("in home " + element.getText());
+				logger.info("In home" + element.getText());
 				if (element.getText().equalsIgnoreCase(cardTitle)) {
 					child.findElement(By.xpath(".//a")).click();
 					return;
