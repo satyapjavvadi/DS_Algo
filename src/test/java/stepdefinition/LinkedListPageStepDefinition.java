@@ -132,5 +132,11 @@ public class LinkedListPageStepDefinition {
 				"No questions are displayed in Practice Questions section of Linked List module");
 		logger.info("Verified that practice questions are displayed in Linked List module");
 	}
+	
+	@When("the user selects {string} topics covered")
+	public void the_user_selects_topics_covered(String topic) {
+	    pom.getLinkedListPage().clickTopicLink(topic);
+	    logger.info("Clicked Linked List topic '{}'", topic);
+	}
 
 }

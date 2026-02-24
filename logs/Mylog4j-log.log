@@ -16,3 +16,327 @@
 [INFO ]2026-02-1713:01:25.378[main]DriverManager.DriverFactory1)-In DS module: Queue
 [INFO ]2026-02-1713:01:26.156[main]DriverManager.DriverFactory1)-Queue Title actual: Practice Questions ExpPractice Questions
 [INFO ]2026-02-1713:01:29.789[main]DriverManager.DriverFactory1)-In DS module: Queue
+[INFO ]2026-02-2317:05:52.880[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:05:53.040[main]stepdefinition.QueuePage_StepDefinition1)-Queue page heading: [Queue, Topics Covered]
+[INFO ]2026-02-2317:05:57.376[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:05:57.449[main]stepdefinition.QueuePage_StepDefinition1)-Queue page heading: [Queue, Topics Covered]
+[INFO ]2026-02-2317:06:01.844[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:01.974[main]stepdefinition.QueuePage_StepDefinition1)-Actual Subtopic links in queue page: [Implementation of Queue in Python, Implementation using collections.deque, Implementation using array, Queue Operations]
+[INFO ]2026-02-2317:06:01.975[main]stepdefinition.QueuePage_StepDefinition1)-Expected Subtopic links in Queue page:[Implementation of Queue in Python, Implementation using collections.deque, Implementation using array, Queue Operations]
+[INFO ]2026-02-2317:06:06.013[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:06.734[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation of Queue in Python
+[INFO ]2026-02-2317:06:06.748[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: implementation-lists
+[INFO ]2026-02-2317:06:11.144[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:11.741[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation using collections.deque
+[INFO ]2026-02-2317:06:11.751[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: implementation-collections
+[INFO ]2026-02-2317:06:15.755[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:16.402[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation using array
+[INFO ]2026-02-2317:06:16.413[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: Implementation-array
+[INFO ]2026-02-2317:06:20.755[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:21.380[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Queue Operations
+[INFO ]2026-02-2317:06:21.390[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: QueueOp
+[INFO ]2026-02-2317:06:25.162[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:25.736[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation of Queue in Python
+[INFO ]2026-02-2317:06:25.791[main]stepdefinition.QueuePage_StepDefinition1)-Checking visibility of Try Here button
+[INFO ]2026-02-2317:06:29.681[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:30.140[main]stepdefinition.QueuePage_StepDefinition1)-checking queue subtopic: Implementation of Queue in Python
+[INFO ]2026-02-2317:06:31.257[main]stepdefinition.QueuePage_StepDefinition1)-Clicking Try Here button
+[INFO ]2026-02-2317:06:31.270[main]stepdefinition.QueuePage_StepDefinition1)-Current URL: https://dsportalapp.herokuapp.com/tryEditor
+[INFO ]2026-02-2317:06:35.004[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:35.784[main]stepdefinition.QueuePage_StepDefinition1)-clickTopicLink: Implementation of Queue in Python
+[INFO ]2026-02-2317:06:35.829[main]stepdefinition.QueuePage_StepDefinition1)-Checking enabled Practice Questions link is displayed
+[INFO ]2026-02-2317:06:39.770[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:40.812[main]stepdefinition.QueuePage_StepDefinition1)-practice question link is clicked in Queue page
+[INFO ]2026-02-2317:06:40.825[main]stepdefinition.QueuePage_StepDefinition1)-Queue Title actual: Practice Questions ExpPractice Questions
+[INFO ]2026-02-2317:06:44.849[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:06:45.627[main]stepdefinition.QueuePage_StepDefinition1)-practice question link is clicked in Queue page
+[INFO ]2026-02-2317:07:25.798[main]stepdefinition.QueuePage_StepDefinition1)-practice questions check in Queue page
+[INFO ]2026-02-2317:07:30.005[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:07:30.083[main]pages.TreePage1)-Tree Headings found: [Tree, Topics Covered]
+[INFO ]2026-02-2317:07:30.084[main]stepdefinition.TreePage_StepDefinition1)-heading in tree page: [Tree, Topics Covered]
+[INFO ]2026-02-2317:07:33.871[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:07:33.946[main]pages.TreePage1)-Tree Headings found: [Tree, Topics Covered]
+[INFO ]2026-02-2317:07:33.946[main]stepdefinition.TreePage_StepDefinition1)-heading in tree page: [Tree, Topics Covered]
+[INFO ]2026-02-2317:07:38.277[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:07:38.865[main]pages.TreePage1)-Tree Subtopic links found: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2317:07:38.866[main]stepdefinition.TreePage_StepDefinition1)-Actual Subtopic links in Tree page: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2317:07:38.866[main]stepdefinition.TreePage_StepDefinition1)-Expected Subtopic links in Tree page: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2317:07:42.954[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:07:43.775[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:07:43.775[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2317:07:47.670[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:07:48.621[main]pages.TreePage1)-Successfully clicked Tree topic link: Terminologies
+[INFO ]2026-02-2317:07:48.621[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Terminologies
+[INFO ]2026-02-2317:07:52.693[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:07:53.475[main]pages.TreePage1)-Successfully clicked Tree topic link: Types of Trees
+[INFO ]2026-02-2317:07:53.477[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Types of Trees
+[INFO ]2026-02-2317:07:57.180[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:07:57.917[main]pages.TreePage1)-Successfully clicked Tree topic link: Tree Traversals
+[INFO ]2026-02-2317:07:57.917[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Tree Traversals
+[INFO ]2026-02-2317:08:01.970[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:02.612[main]pages.TreePage1)-Successfully clicked Tree topic link: Traversals-Illustration
+[INFO ]2026-02-2317:08:02.612[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Traversals-Illustration
+[INFO ]2026-02-2317:08:06.482[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:07.507[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Trees
+[INFO ]2026-02-2317:08:07.507[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Trees
+[INFO ]2026-02-2317:08:11.122[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:12.080[main]pages.TreePage1)-Successfully clicked Tree topic link: Types of Binary Trees
+[INFO ]2026-02-2317:08:12.081[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Types of Binary Trees
+[INFO ]2026-02-2317:08:16.074[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:16.679[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation in Python
+[INFO ]2026-02-2317:08:16.679[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation in Python
+[INFO ]2026-02-2317:08:20.763[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:21.603[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Tree Traversals
+[INFO ]2026-02-2317:08:21.603[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Tree Traversals
+[INFO ]2026-02-2317:08:25.542[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:26.358[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation of Binary Trees
+[INFO ]2026-02-2317:08:26.358[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation of Binary Trees
+[INFO ]2026-02-2317:08:30.026[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:31.031[main]pages.TreePage1)-Successfully clicked Tree topic link: Applications of Binary trees
+[INFO ]2026-02-2317:08:31.031[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Applications of Binary trees
+[INFO ]2026-02-2317:08:35.719[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:36.883[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Search Trees
+[INFO ]2026-02-2317:08:36.883[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Search Trees
+[INFO ]2026-02-2317:08:40.942[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:41.764[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation Of BST
+[INFO ]2026-02-2317:08:41.764[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation Of BST
+[INFO ]2026-02-2317:08:45.897[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:46.594[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:08:46.594[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2317:08:46.597[main]pages.TreePage1)-Checking visibility of Try Here button
+[INFO ]2026-02-2317:08:50.362[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:51.284[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:08:51.448[main]pages.TreePage1)-Tree Headings found: [Tree, Overview of Trees]
+[INFO ]2026-02-2317:08:51.448[main]stepdefinition.TreePage_StepDefinition1)-checking treepage: Overview of Trees
+[INFO ]2026-02-2317:08:51.449[main]pages.TreePage1)-Clicking Try Here button
+[INFO ]2026-02-2317:08:52.535[main]stepdefinition.TreePage_StepDefinition1)-Clicking Try Here button
+[INFO ]2026-02-2317:08:56.348[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:08:57.112[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:08:57.112[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2317:08:57.113[main]pages.TreePage1)-Checking if Practice Questions link is visible
+[INFO ]2026-02-2317:08:57.149[main]stepdefinition.TreePage_StepDefinition1)-Checking enabled Practice Questions link is displayed
+[INFO ]2026-02-2317:09:00.844[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:09:01.955[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:09:01.956[main]pages.TreePage1)-Clicking Practice Questions link
+[INFO ]2026-02-2317:09:02.355[main]stepdefinition.TreePage_StepDefinition1)-practice question link is clicked in Tree page
+[INFO ]2026-02-2317:09:06.078[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:09:06.879[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:09:06.879[main]pages.TreePage1)-Clicking Practice Questions link
+[INFO ]2026-02-2317:09:07.324[main]stepdefinition.TreePage_StepDefinition1)-practice question link is clicked in Tree page
+[INFO ]2026-02-2317:09:47.413[main]stepdefinition.TreePage_StepDefinition1)-practice questions check in Tree page
+[INFO ]2026-02-2317:26:42.308[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:26:42.436[main]stepdefinition.QueuePage_StepDefinition1)-Queue page heading: [Queue, Topics Covered]
+[INFO ]2026-02-2317:26:46.955[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:26:47.090[main]stepdefinition.QueuePage_StepDefinition1)-Queue page heading: [Queue, Topics Covered]
+[INFO ]2026-02-2317:26:51.335[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:26:51.550[main]stepdefinition.QueuePage_StepDefinition1)-Actual Subtopic links in queue page: [Implementation of Queue in Python, Implementation using collections.deque, Implementation using array, Queue Operations]
+[INFO ]2026-02-2317:26:51.550[main]stepdefinition.QueuePage_StepDefinition1)-Expected Subtopic links in Queue page:[Implementation of Queue in Python, Implementation using collections.deque, Implementation using array, Queue Operations]
+[INFO ]2026-02-2317:26:55.841[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:26:56.463[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation of Queue in Python
+[INFO ]2026-02-2317:26:56.475[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: implementation-lists
+[INFO ]2026-02-2317:27:00.810[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:01.561[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation using collections.deque
+[INFO ]2026-02-2317:27:01.569[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: implementation-collections
+[INFO ]2026-02-2317:27:06.099[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:06.772[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation using array
+[INFO ]2026-02-2317:27:06.790[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: Implementation-array
+[INFO ]2026-02-2317:27:11.226[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:11.922[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Queue Operations
+[INFO ]2026-02-2317:27:11.935[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: QueueOp
+[INFO ]2026-02-2317:27:16.803[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:17.426[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation of Queue in Python
+[INFO ]2026-02-2317:27:17.466[main]stepdefinition.QueuePage_StepDefinition1)-Checking visibility of Try Here button
+[INFO ]2026-02-2317:27:22.325[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:23.220[main]stepdefinition.QueuePage_StepDefinition1)-checking queue subtopic: Implementation of Queue in Python
+[INFO ]2026-02-2317:27:25.476[main]stepdefinition.QueuePage_StepDefinition1)-Clicking Try Here button
+[INFO ]2026-02-2317:27:25.491[main]stepdefinition.QueuePage_StepDefinition1)-Current URL: https://dsportalapp.herokuapp.com/tryEditor
+[INFO ]2026-02-2317:27:29.657[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:30.260[main]stepdefinition.QueuePage_StepDefinition1)-clickTopicLink: Implementation of Queue in Python
+[INFO ]2026-02-2317:27:30.306[main]stepdefinition.QueuePage_StepDefinition1)-Checking enabled Practice Questions link is displayed
+[INFO ]2026-02-2317:27:34.004[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:35.046[main]stepdefinition.QueuePage_StepDefinition1)-practice question link is clicked in Queue page
+[INFO ]2026-02-2317:27:35.055[main]stepdefinition.QueuePage_StepDefinition1)-Queue Title actual: Practice Questions ExpPractice Questions
+[INFO ]2026-02-2317:27:38.765[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2317:27:39.549[main]stepdefinition.QueuePage_StepDefinition1)-practice question link is clicked in Queue page
+[INFO ]2026-02-2317:28:19.748[main]stepdefinition.QueuePage_StepDefinition1)-practice questions check in Queue page
+[INFO ]2026-02-2317:28:24.327[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:24.380[main]pages.TreePage1)-Tree Headings found: [Tree, Topics Covered]
+[INFO ]2026-02-2317:28:24.380[main]stepdefinition.TreePage_StepDefinition1)-heading in tree page: [Tree, Topics Covered]
+[INFO ]2026-02-2317:28:28.477[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:28.600[main]pages.TreePage1)-Tree Headings found: [Tree, Topics Covered]
+[INFO ]2026-02-2317:28:28.600[main]stepdefinition.TreePage_StepDefinition1)-heading in tree page: [Tree, Topics Covered]
+[INFO ]2026-02-2317:28:33.330[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:33.827[main]pages.TreePage1)-Tree Subtopic links found: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2317:28:33.827[main]stepdefinition.TreePage_StepDefinition1)-Actual Subtopic links in Tree page: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2317:28:33.827[main]stepdefinition.TreePage_StepDefinition1)-Expected Subtopic links in Tree page: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2317:28:37.909[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:38.840[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:28:38.840[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2317:28:43.024[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:43.978[main]pages.TreePage1)-Successfully clicked Tree topic link: Terminologies
+[INFO ]2026-02-2317:28:43.978[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Terminologies
+[INFO ]2026-02-2317:28:48.125[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:48.926[main]pages.TreePage1)-Successfully clicked Tree topic link: Types of Trees
+[INFO ]2026-02-2317:28:48.926[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Types of Trees
+[INFO ]2026-02-2317:28:52.705[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:53.642[main]pages.TreePage1)-Successfully clicked Tree topic link: Tree Traversals
+[INFO ]2026-02-2317:28:53.642[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Tree Traversals
+[INFO ]2026-02-2317:28:57.477[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:28:58.638[main]pages.TreePage1)-Successfully clicked Tree topic link: Traversals-Illustration
+[INFO ]2026-02-2317:28:58.638[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Traversals-Illustration
+[INFO ]2026-02-2317:29:02.787[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:03.626[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Trees
+[INFO ]2026-02-2317:29:03.627[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Trees
+[INFO ]2026-02-2317:29:08.049[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:09.228[main]pages.TreePage1)-Successfully clicked Tree topic link: Types of Binary Trees
+[INFO ]2026-02-2317:29:09.228[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Types of Binary Trees
+[INFO ]2026-02-2317:29:13.131[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:14.143[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation in Python
+[INFO ]2026-02-2317:29:14.143[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation in Python
+[INFO ]2026-02-2317:29:19.161[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:20.093[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Tree Traversals
+[INFO ]2026-02-2317:29:20.093[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Tree Traversals
+[INFO ]2026-02-2317:29:25.349[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:26.460[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation of Binary Trees
+[INFO ]2026-02-2317:29:26.460[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation of Binary Trees
+[INFO ]2026-02-2317:29:31.031[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:32.106[main]pages.TreePage1)-Successfully clicked Tree topic link: Applications of Binary trees
+[INFO ]2026-02-2317:29:32.106[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Applications of Binary trees
+[INFO ]2026-02-2317:29:36.536[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:37.576[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Search Trees
+[INFO ]2026-02-2317:29:37.576[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Search Trees
+[INFO ]2026-02-2317:29:42.342[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:43.179[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation Of BST
+[INFO ]2026-02-2317:29:43.179[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation Of BST
+[INFO ]2026-02-2317:29:48.417[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:49.251[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:29:49.252[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2317:29:49.254[main]pages.TreePage1)-Checking visibility of Try Here button
+[INFO ]2026-02-2317:29:53.737[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:29:54.675[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:29:54.823[main]pages.TreePage1)-Tree Headings found: [Tree, Overview of Trees]
+[INFO ]2026-02-2317:29:54.824[main]stepdefinition.TreePage_StepDefinition1)-checking treepage: Overview of Trees
+[INFO ]2026-02-2317:29:54.825[main]pages.TreePage1)-Clicking Try Here button
+[INFO ]2026-02-2317:29:56.011[main]stepdefinition.TreePage_StepDefinition1)-Clicking Try Here button
+[INFO ]2026-02-2317:29:59.943[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:30:01.195[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:30:01.195[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2317:30:01.195[main]pages.TreePage1)-Checking if Practice Questions link is visible
+[INFO ]2026-02-2317:30:01.287[main]stepdefinition.TreePage_StepDefinition1)-Checking enabled Practice Questions link is displayed
+[INFO ]2026-02-2317:30:05.811[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:30:06.518[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:30:06.518[main]pages.TreePage1)-Clicking Practice Questions link
+[INFO ]2026-02-2317:30:06.841[main]stepdefinition.TreePage_StepDefinition1)-practice question link is clicked in Tree page
+[INFO ]2026-02-2317:30:11.435[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2317:30:12.124[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2317:30:12.124[main]pages.TreePage1)-Clicking Practice Questions link
+[INFO ]2026-02-2317:30:12.429[main]stepdefinition.TreePage_StepDefinition1)-practice question link is clicked in Tree page
+[INFO ]2026-02-2317:30:52.606[main]stepdefinition.TreePage_StepDefinition1)-practice questions check in Tree page
+[INFO ]2026-02-2318:02:56.688[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:02:56.839[main]stepdefinition.QueuePage_StepDefinition1)-Queue page heading: [Queue, Topics Covered]
+[INFO ]2026-02-2318:03:00.458[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:00.522[main]stepdefinition.QueuePage_StepDefinition1)-Queue page heading: [Queue, Topics Covered]
+[INFO ]2026-02-2318:03:04.482[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:04.613[main]stepdefinition.QueuePage_StepDefinition1)-Actual Subtopic links in queue page: [Implementation of Queue in Python, Implementation using collections.deque, Implementation using array, Queue Operations]
+[INFO ]2026-02-2318:03:04.613[main]stepdefinition.QueuePage_StepDefinition1)-Expected Subtopic links in Queue page:[Implementation of Queue in Python, Implementation using collections.deque, Implementation using array, Queue Operations]
+[INFO ]2026-02-2318:03:08.515[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:08.984[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation of Queue in Python
+[INFO ]2026-02-2318:03:08.991[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: implementation-lists
+[INFO ]2026-02-2318:03:12.914[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:13.373[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation using collections.deque
+[INFO ]2026-02-2318:03:13.379[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: implementation-collections
+[INFO ]2026-02-2318:03:17.030[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:17.445[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation using array
+[INFO ]2026-02-2318:03:17.454[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: Implementation-array
+[INFO ]2026-02-2318:03:21.113[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:21.696[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Queue Operations
+[INFO ]2026-02-2318:03:21.705[main]stepdefinition.QueuePage_StepDefinition1)-Validating URL contains: QueueOp
+[INFO ]2026-02-2318:03:25.359[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:25.878[main]stepdefinition.QueuePage_StepDefinition1)-Selecting Queue topic: Implementation of Queue in Python
+[INFO ]2026-02-2318:03:25.901[main]stepdefinition.QueuePage_StepDefinition1)-Checking visibility of Try Here button
+[INFO ]2026-02-2318:03:29.832[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:30.362[main]stepdefinition.QueuePage_StepDefinition1)-checking queue subtopic: Implementation of Queue in Python
+[INFO ]2026-02-2318:03:32.279[main]stepdefinition.QueuePage_StepDefinition1)-Clicking Try Here button
+[INFO ]2026-02-2318:03:32.288[main]stepdefinition.QueuePage_StepDefinition1)-Current URL: https://dsportalapp.herokuapp.com/tryEditor
+[INFO ]2026-02-2318:03:36.339[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:36.902[main]stepdefinition.QueuePage_StepDefinition1)-clickTopicLink: Implementation of Queue in Python
+[INFO ]2026-02-2318:03:36.952[main]stepdefinition.QueuePage_StepDefinition1)-Checking enabled Practice Questions link is displayed
+[INFO ]2026-02-2318:03:41.013[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:42.024[main]stepdefinition.QueuePage_StepDefinition1)-practice question link is clicked in Queue page
+[INFO ]2026-02-2318:03:42.035[main]stepdefinition.QueuePage_StepDefinition1)-Queue Title actual: Practice Questions ExpPractice Questions
+[INFO ]2026-02-2318:03:46.203[main]stepdefinition.QueuePage_StepDefinition1)-In DS module: Queue
+[INFO ]2026-02-2318:03:47.044[main]stepdefinition.QueuePage_StepDefinition1)-practice question link is clicked in Queue page
+[INFO ]2026-02-2318:04:27.188[main]stepdefinition.QueuePage_StepDefinition1)-practice questions check in Queue page
+[INFO ]2026-02-2318:04:31.031[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:04:31.128[main]pages.TreePage1)-Tree Headings found: [Tree, Topics Covered]
+[INFO ]2026-02-2318:04:31.128[main]stepdefinition.TreePage_StepDefinition1)-heading in tree page: [Tree, Topics Covered]
+[INFO ]2026-02-2318:04:35.065[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:04:35.136[main]pages.TreePage1)-Tree Headings found: [Tree, Topics Covered]
+[INFO ]2026-02-2318:04:35.136[main]stepdefinition.TreePage_StepDefinition1)-heading in tree page: [Tree, Topics Covered]
+[INFO ]2026-02-2318:04:38.865[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:04:39.158[main]pages.TreePage1)-Tree Subtopic links found: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2318:04:39.158[main]stepdefinition.TreePage_StepDefinition1)-Actual Subtopic links in Tree page: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2318:04:39.158[main]stepdefinition.TreePage_StepDefinition1)-Expected Subtopic links in Tree page: [Overview of Trees, Terminologies, Types of Trees, Tree Traversals, Traversals-Illustration, Binary Trees, Types of Binary Trees, Implementation in Python, Binary Tree Traversals, Implementation of Binary Trees, Applications of Binary trees, Binary Search Trees, Implementation Of BST]
+[INFO ]2026-02-2318:04:43.467[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:04:44.190[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2318:04:44.190[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2318:04:48.037[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:04:48.638[main]pages.TreePage1)-Successfully clicked Tree topic link: Terminologies
+[INFO ]2026-02-2318:04:48.638[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Terminologies
+[INFO ]2026-02-2318:04:52.589[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:04:53.107[main]pages.TreePage1)-Successfully clicked Tree topic link: Types of Trees
+[INFO ]2026-02-2318:04:53.108[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Types of Trees
+[INFO ]2026-02-2318:04:57.067[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:04:57.665[main]pages.TreePage1)-Successfully clicked Tree topic link: Tree Traversals
+[INFO ]2026-02-2318:04:57.666[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Tree Traversals
+[INFO ]2026-02-2318:05:01.957[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:02.688[main]pages.TreePage1)-Successfully clicked Tree topic link: Traversals-Illustration
+[INFO ]2026-02-2318:05:02.688[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Traversals-Illustration
+[INFO ]2026-02-2318:05:06.721[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:07.492[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Trees
+[INFO ]2026-02-2318:05:07.493[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Trees
+[INFO ]2026-02-2318:05:11.614[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:12.488[main]pages.TreePage1)-Successfully clicked Tree topic link: Types of Binary Trees
+[INFO ]2026-02-2318:05:12.488[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Types of Binary Trees
+[INFO ]2026-02-2318:05:16.623[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:17.202[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation in Python
+[INFO ]2026-02-2318:05:17.203[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation in Python
+[INFO ]2026-02-2318:05:20.942[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:21.543[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Tree Traversals
+[INFO ]2026-02-2318:05:21.543[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Tree Traversals
+[INFO ]2026-02-2318:05:25.376[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:26.063[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation of Binary Trees
+[INFO ]2026-02-2318:05:26.063[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation of Binary Trees
+[INFO ]2026-02-2318:05:29.821[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:30.403[main]pages.TreePage1)-Successfully clicked Tree topic link: Applications of Binary trees
+[INFO ]2026-02-2318:05:30.403[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Applications of Binary trees
+[INFO ]2026-02-2318:05:34.144[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:34.997[main]pages.TreePage1)-Successfully clicked Tree topic link: Binary Search Trees
+[INFO ]2026-02-2318:05:34.998[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Binary Search Trees
+[INFO ]2026-02-2318:05:39.133[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:39.823[main]pages.TreePage1)-Successfully clicked Tree topic link: Implementation Of BST
+[INFO ]2026-02-2318:05:39.823[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Implementation Of BST
+[INFO ]2026-02-2318:05:43.897[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:44.553[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2318:05:44.554[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2318:05:44.555[main]pages.TreePage1)-Checking visibility of Try Here button
+[INFO ]2026-02-2318:05:48.958[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:49.670[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2318:05:49.767[main]pages.TreePage1)-Tree Headings found: [Tree, Overview of Trees]
+[INFO ]2026-02-2318:05:49.767[main]stepdefinition.TreePage_StepDefinition1)-checking treepage: Overview of Trees
+[INFO ]2026-02-2318:05:49.768[main]pages.TreePage1)-Clicking Try Here button
+[INFO ]2026-02-2318:05:50.894[main]stepdefinition.TreePage_StepDefinition1)-Clicking Try Here button
+[INFO ]2026-02-2318:05:54.637[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:05:55.203[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2318:05:55.203[main]stepdefinition.TreePage_StepDefinition1)-clickTopicLink: Overview of Trees
+[INFO ]2026-02-2318:05:55.204[main]pages.TreePage1)-Checking if Practice Questions link is visible
+[INFO ]2026-02-2318:05:55.282[main]stepdefinition.TreePage_StepDefinition1)-Checking enabled Practice Questions link is displayed
+[INFO ]2026-02-2318:05:59.391[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:06:00.096[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2318:06:00.096[main]pages.TreePage1)-Clicking Practice Questions link
+[INFO ]2026-02-2318:06:00.367[main]stepdefinition.TreePage_StepDefinition1)-practice question link is clicked in Tree page
+[INFO ]2026-02-2318:06:04.146[main]stepdefinition.TreePage_StepDefinition1)-In DS module: Tree
+[INFO ]2026-02-2318:06:04.769[main]pages.TreePage1)-Successfully clicked Tree topic link: Overview of Trees
+[INFO ]2026-02-2318:06:04.769[main]pages.TreePage1)-Clicking Practice Questions link
+[INFO ]2026-02-2318:06:05.046[main]stepdefinition.TreePage_StepDefinition1)-practice question link is clicked in Tree page
+[INFO ]2026-02-2318:06:45.161[main]stepdefinition.TreePage_StepDefinition1)-practice questions check in Tree page
